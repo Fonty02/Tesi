@@ -21,5 +21,13 @@ rad.json
 #Test results file
 TestResults.xml
 
+# Missing ignores
 .Thumbs
 .DS_Store
+.env
+*.log
+*.csv
+!carbon-intensity-electricity.csv
+*.pth
+*.tsv
+log_tensorboard/

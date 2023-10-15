@@ -4,18 +4,15 @@ from recbole.quick_start import run_recbole
 import sys
 import os
 from recbole.quick_start import load_data_and_model
-import pandas as pd
-from recbole.data.interaction import Interaction
 from recbole.utils import get_trainer
 import csv
-import json
-import time
 
 
 def process(dataset, model, counter):
 
 	# check weather performances have been already computed	skip = False
 
+	skip = False
 	list_metrics_file = os.listdir('results/'+dataset+'/')
 	for file in list_metrics_file:
 		if model in file:
@@ -70,19 +67,17 @@ def process(dataset, model, counter):
 		elif model == 'amazon_books_60core_kg':
 
 			parameter_dict = {
-
 				'epochs': 20,
 				'embedding_size': 8,
 				'kg_embedding_size': 8,
 				'checkpoint_dir': 'saved/'+dataset+'/',
 				'repeatable': True,
 				'metrics':  [ 'Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 
-						'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex',
-						'ShannonEntropy', 'TailPercentage']
+					'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex',
+					'ShannonEntropy', 'TailPercentage']
 			}
 
 		else:
-
 			print('wrong dataset, exiting')
 			exit(0)
 
@@ -123,14 +118,14 @@ def process(dataset, model, counter):
 		name_out2 = 'results/'+dataset+'/recbole_'+model_path.split('/')[-1].replace('.pth','.tsv')
 
 		with open(name_out1, "w") as outfile:
-		    csvwriter = csv.writer(outfile, delimiter='\t')
-		    csvwriter.writerow(dict(codecarbon_results))
-		    csvwriter.writerow(dict(codecarbon_results).values())
+			csvwriter = csv.writer(outfile, delimiter='\t')
+			csvwriter.writerow(dict(codecarbon_results))
+			csvwriter.writerow(dict(codecarbon_results).values())
 
 		with open(name_out2, 'w') as outfile:
-		    csvwriter = csv.writer(outfile, delimiter='\t')
-		    csvwriter.writerow(dict(metrics))
-		    csvwriter.writerow(dict(metrics).values())
+			csvwriter = csv.writer(outfile, delimiter='\t')
+			csvwriter.writerow(dict(metrics))
+			csvwriter.writerow(dict(metrics).values())
 
 	except Exception as e:	
 
