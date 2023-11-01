@@ -1,0 +1,4 @@
+# BPR
+epochs choice [50,100,150,200]
+learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+embedding_size choice [16,32,64,128,256]

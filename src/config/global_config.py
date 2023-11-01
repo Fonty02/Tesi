@@ -32,9 +32,11 @@ CONFIG = {
 							],
 	'LOG_FILE':				'log/carbon.log',
 	'RESULT_PATH':			'results/',
-	'RESULT_FILE':			'/emissions.csv',
-	'STATIC_CONFIG_PATH':	'config/static/',
-	'HP_CONFIG_PATH':		'config/hyperparam/',
+	'EMISSIONS_FILE':		'/emissions.csv',
+	'METRICS_FILE':			'/metrics.csv',
+	'PARAMS_FILE':			'/params.csv',
+	'STATIC_CONFIG_FILE':	'src/config/_params.yaml',
+	'HP_CONFIG_PATH':		'src/config/hyperparam/',
 }
 
 

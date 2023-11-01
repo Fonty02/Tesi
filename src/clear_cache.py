@@ -49,3 +49,4 @@ if __name__ == "__main__":
 				clear_cache('log_tensorboard')
 				clear_cache('results')
 				clear_cache('saved')
+	sys.exit(0)
