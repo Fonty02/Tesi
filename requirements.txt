@@ -1,0 +1,2 @@
+recbole==1.1.1
+codecarbon==2.3.1
