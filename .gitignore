@@ -95,6 +95,10 @@ target/
 *.pth
 *.tsv
 log_tensorboard/*
+!log_tensorboard/.gitignore
 results/*
+!results/.gitignore
 saved/*
+!saved/.gitignore
 log/*
+!log/.gitignore
