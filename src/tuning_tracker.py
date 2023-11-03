@@ -8,21 +8,21 @@ from recbole.trainer import HyperTuning
 from recbole.config import Config
 from recbole.data import create_dataset, data_preparation
 from recbole.utils import get_trainer, get_model, init_seed
-from config.global_config import get_global_config
+from config.global_config import get_global_config, set_global_config
 from config.params_config import get_params, set_param
-from utils import create_folders, get_device, write_dict_to_csv
+from utils import create_folders, get_device, write_dict_to_csv, get_date_time, get_total_iterations
 
-config = get_global_config()
+_config = get_global_config()
 config_dict = get_params()
-DATASETS = config.get('DATASETS')
-MODELS = config.get('MODELS')
-LOG_FILE = config.get('LOG_FILE')
-RESULT_PATH = config.get('RESULT_PATH')
-EMISSIONS_FILE = config.get('EMISSIONS_FILE')
-STATIC_CONFIG_FILE = config.get('STATIC_CONFIG_FILE')
-HP_CONFIG_PATH = config.get('HP_CONFIG_PATH')
-METRICS_FILE = config.get('METRICS_FILE')
-PARAMS_FILE = config.get('PARAMS_FILE')
+DATASETS = _config.get('DATASETS')
+MODELS = _config.get('MODELS')
+LOG_FILE = _config.get('LOG_FILE')
+RESULT_PATH = _config.get('RESULT_PATH')
+EMISSIONS_FILE = _config.get('EMISSIONS_FILE')
+STATIC_CONFIG_FILE = _config.get('STATIC_CONFIG_FILE')
+HP_CONFIG_PATH = _config.get('HP_CONFIG_PATH')
+METRICS_FILE = _config.get('METRICS_FILE')
+PARAMS_FILE = _config.get('PARAMS_FILE')
 
 
 def objective_function(config_dict=None, config_file_list=None):
@@ -61,6 +61,13 @@ def objective_function(config_dict=None, config_file_list=None):
 	write_dict_to_csv(results_path + METRICS_FILE, metrics)
 	write_dict_to_csv(results_path + PARAMS_FILE, full_params)
 
+	log = open(LOG_FILE, 'a', encoding='utf-8')
+	n = get_total_iterations(HP_CONFIG_PATH + config['model'] + '.hyper')
+	log.write('['+get_date_time()+'] EXECUTING.'+proj_name+' RUN '+str(_config.get('COUNTER'))+' OF '+str(n)+' \n')
+	set_global_config('COUNTER', _config.get('COUNTER') + 1)
+	log.flush()
+	log.close()
+
 	return {
 		'model': config['model'],
 		'best_valid_score': best_valid_score,
@@ -77,9 +84,11 @@ def process(dataset, model):
 	create_folders([dataset], [model], [RESULT_PATH, _saved])
 
 	# Log for the current dataset
+	set_global_config('COUNTER', 1)
 	log = open(LOG_FILE, 'a', encoding='utf-8')
-	log.write('New experiment session started.')
 	proj_name = dataset.upper() + '_' + model.upper() + '_PARAMS_TUNING'
+	log.write('['+get_date_time()+'] Experiment session started.EXECUTING: ' + proj_name + '\n')
+	log.flush()
 	print('executing', proj_name)
 
 	# Setup runtime config
@@ -103,14 +112,12 @@ def process(dataset, model):
 
 		if os.path.isfile(STATIC_CONFIG_FILE):
 			os.unlink(STATIC_CONFIG_FILE)
-		log_str = 'EXECUTED: ' + proj_name + '\n'
-		log.write(log_str)
+		log.write('['+get_date_time()+'] Experiment session ended.EXECUTED: ' + proj_name + '\n')
 		log.flush()
-		print(log_str)
 
 	except Exception as e:
 		print(traceback.format_exc())
-		log_str = 'ERROR: ' + proj_name + '. ' + str(e) + '\n'
+		log_str = '['+get_date_time()+'] ERROR: ' + proj_name + '. ' + str(e) + '\n'
 		log.write(log_str)
 		log.flush()
 		print(log_str)
@@ -141,7 +148,9 @@ if __name__ == "__main__":
 				print('WARNING: invalid MODEL value!')
 				print('Valid: ', MODELS)
 			else:
-				process(dataset, model)
+
+				for i in [1,2,3]:
+					process(dataset, model)
 		else:
 			print('WARNING: required arguments are missing!')
 			if 'DATASET' not in keys:

@@ -1,7 +1,12 @@
+"""
+A collection of utility functions
+"""
 import os
 from pathlib import Path
 import torch
 import csv
+from datetime import datetime
+from functools import reduce
 
 
 def create_folders(datasets, models, first_level_folders):
@@ -57,3 +62,27 @@ def write_dict_to_csv(file, my_dict):
 			csvwriter = csv.writer(outfile, delimiter=',')
 			csvwriter.writerow(my_dict)
 			csvwriter.writerow(my_dict.values())
+
+
+def get_date_time():
+	"""Returns the current date in datetime format
+	Args: None
+	"""
+	ts = datetime.timestamp(datetime.now())
+	date_time = datetime.fromtimestamp(ts)
+	return date_time.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def get_total_iterations(file):
+	"""Returns the total number of iterations according to the grid-search
+	Args:
+	file: cofiguration's file (.hyper)
+	"""
+	lenghts = []
+	with open(file, "r") as fp:
+		for line in fp:
+			para_list = line.strip().split(" ")
+			if len(para_list) < 3:
+				continue
+			lenghts.append(len(eval("".join(para_list[2:]))))
+	return reduce(lambda x, y: x * y, lenghts)

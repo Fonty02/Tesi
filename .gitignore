@@ -102,3 +102,4 @@ saved/*
 !saved/.gitignore
 log/*
 !log/.gitignore
+*.yaml

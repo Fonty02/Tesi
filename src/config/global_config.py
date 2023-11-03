@@ -37,6 +37,7 @@ CONFIG = {
 	'PARAMS_FILE':			'/params.csv',
 	'STATIC_CONFIG_FILE':	'src/config/_params.yaml',
 	'HP_CONFIG_PATH':		'src/config/hyperparam/',
+	'COUNTER':				1
 }
 
 

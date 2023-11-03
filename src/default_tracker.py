@@ -9,7 +9,7 @@ from recbole.utils import get_trainer
 from recbole.config import Config
 from config.global_config import get_global_config
 from config.params_config import get_params, set_param
-from utils import create_folders, write_dict_to_csv
+from utils import create_folders, write_dict_to_csv, get_date_time
 
 config = get_global_config()
 config_dict = get_params()
@@ -30,8 +30,9 @@ def process(dataset, model):
 
 	# Log for the current dataset
 	log = open(LOG_FILE, 'a', encoding='utf-8')
-	log.write('New experiment session started.')
 	proj_name = dataset.upper() + '_' + model.upper() + '_DEFAULT_PARAM'
+	log.write('['+get_date_time()+'] Experiment session started.EXECUTING: ' + proj_name + '\n')
+	log.flush()
 	print('executing', proj_name)
 
 	# Setup runtime config
@@ -56,10 +57,8 @@ def process(dataset, model):
 			tracker.stop()
 			codecarbon_results = dict(vars(tracker))
 
-		log_str = 'EXECUTED: ' + proj_name + '\n'
-		log.write(log_str)
+		log.write('['+get_date_time()+'] Experiment session ended.EXECUTED: ' + proj_name + '\n')
 		log.flush()
-		print(log_str)
 
 		# Compute metrics
 		model_saved = os.path.join(pth, sorted(os.listdir(pth))[-1])
@@ -81,7 +80,7 @@ def process(dataset, model):
 
 	except Exception as e:
 		print(traceback.format_exc())
-		log_str = 'ERROR: ' + proj_name + '. ' + str(e) + '\n'
+		log_str = '['+get_date_time()+'] ERROR: ' + proj_name + '. ' + str(e) + '\n'
 		log.write(log_str)
 		log.flush()
 		print(log_str)
