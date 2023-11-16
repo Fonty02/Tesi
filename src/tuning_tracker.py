@@ -3,6 +3,8 @@ import os
 import copy
 import traceback
 import yaml
+import calendar
+import time
 from codecarbon import EmissionsTracker
 from recbole.trainer import HyperTuning
 from recbole.config import Config
@@ -23,7 +25,7 @@ STATIC_CONFIG_FILE = _config.get('STATIC_CONFIG_FILE')
 HP_CONFIG_PATH = _config.get('HP_CONFIG_PATH')
 METRICS_FILE = _config.get('METRICS_FILE')
 PARAMS_FILE = _config.get('PARAMS_FILE')
-
+ts = calendar.timegm(time.gmtime())
 
 def objective_function(config_dict=None, config_file_list=None):
 
@@ -35,7 +37,7 @@ def objective_function(config_dict=None, config_file_list=None):
 	trainer = get_trainer(config['MODEL_TYPE'], config['model'])(config, model)
 
 	_el = config['checkpoint_dir'].split('/')
-	proj_name = _el[1].upper() + '_' + _el[2].upper() + '_PARAMS_TUNING'
+	proj_name = _el[1].upper() + '_' + _el[2].upper() + '_PARAMS_TUNING_' + str(ts)
 	results_path = os.path.join(RESULT_PATH, _el[1], _el[2])
 
 	# Start tracking emissions
@@ -86,7 +88,7 @@ def process(dataset, model):
 	# Log for the current dataset
 	set_global_config('COUNTER', 1)
 	log = open(LOG_FILE, 'a', encoding='utf-8')
-	proj_name = dataset.upper() + '_' + model.upper() + '_PARAMS_TUNING'
+	proj_name = dataset.upper() + '_' + model.upper() + '_PARAMS_TUNING_' + str(ts)
 	log.write('['+get_date_time()+'] Experiment session started.EXECUTING: ' + proj_name + '\n')
 	log.flush()
 	print('executing', proj_name)
@@ -148,9 +150,7 @@ if __name__ == "__main__":
 				print('WARNING: invalid MODEL value!')
 				print('Valid: ', MODELS)
 			else:
-
-				for i in [1,2,3]:
-					process(dataset, model)
+				process(dataset, model)
 		else:
 			print('WARNING: required arguments are missing!')
 			if 'DATASET' not in keys:
