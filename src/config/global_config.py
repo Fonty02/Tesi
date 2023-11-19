@@ -10,7 +10,6 @@ CONFIG = {
 	'MODELS':				[
 								# General Recommendation
 								'ItemKNN',
-								'Pop',
 								# Matrix fact & Linear
 								'BPR',
 								'DMF',
