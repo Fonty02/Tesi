@@ -107,6 +107,7 @@ def process(dataset, model):
 		hp = HyperTuning(
 			objective_function=objective_function,
 			algo='exhaustive',
+			max_evals=15 * int(get_total_iterations(HP_CONFIG_PATH + model + '.hyper')),
 			params_file=HP_CONFIG_PATH + model + '.hyper',
 			fixed_config_file_list=[STATIC_CONFIG_FILE]
 		)
