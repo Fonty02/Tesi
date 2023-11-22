@@ -1,5 +1,5 @@
-recbole==1.1.1
-codecarbon==2.3.1
+-e git+ssh://git@github.com/albertovalerio/sustainability-of-recsys.git@457d21cd770788ac05f1da29fc1cd7cf0942e2ff#egg=recbole&subdirectory=deps/RecBole-master
+codecarbon==2.1.4
 hyperopt==0.2.5
 torch==2.0.1
 pandas==2.0.2
