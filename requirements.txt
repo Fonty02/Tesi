@@ -1,5 +1,5 @@
+-e deps/codecarbon-apple-silicon-chips
 recbole==1.1.1
-codecarbon==2.1.4
 hyperopt==0.2.5
 torch==2.0.1
 pandas==2.0.2
