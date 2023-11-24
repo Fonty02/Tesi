@@ -13,7 +13,7 @@ Yanghui Yan, Junqi Jin, Han Li, Kun Gai
 
 **Abstract:** Click-through rate prediction is an essential task in industrial
 applications, such as online advertising. Recently deep learning
-based models have been proposed, which follow a similar Embedding&MLP 
+based models have been proposed, which follow a similar Embedding&MLP
 paradigm. In these methods large scale sparse input
 features are first mapped into low dimensional embedding vectors,
 and then transformed into fixed-length vectors in a group-wise
@@ -76,7 +76,7 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
    dropout_prob choice [0.0,0.1,0.2,0.3,0.4,0.5]
    mlp_hidden_size choice ['[64,64,64]','[128,128,128]','[256,256,256]','[512,512,512]']
    pooling_mode choice ['mean','max','sum']

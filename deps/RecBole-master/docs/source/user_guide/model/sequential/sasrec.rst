@@ -75,7 +75,7 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
    attn_dropout_prob choice [0.2, 0.5]
    hidden_dropout_prob choice [0.2, 0.5]
    n_heads choice [1, 2]

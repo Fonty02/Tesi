@@ -93,7 +93,7 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
    dropout_prob choice [0.0,0.1,0.2,0.3,0.4,0.5]
    cnn_channels choice ['[1,128,128,64,32]','[1,32,32,32,32,32,32]','[1,64,32,32,32,32]','[1,64,32,32,32]']
    cnn_kernels choice ['[4,4,2,2]','[2,2,2,2,2,2]','[4,2,2,2,2]','[8,4,2]']

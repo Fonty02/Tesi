@@ -10,22 +10,22 @@ Introduction
 
 **Authors:** Zhen Tian, Ting Bai, Zibin Zhang, Zhiyuan Xu, Kangyi Lin, Ji-Rong Wen, Wayne Xin Zhao
 
-**Abstract:** With the growth of high-dimensional sparse data in web-scale recommender systems, 
-the computational cost to learn high-order feature interaction in CTR prediction task largely increases, 
-which limits the use of high-order interaction models in real industrial applications. 
-Some recent knowledge distillation based methods transfer knowledge from complex teacher models 
-to shallow student models for accelerating the online model inference. However, they suffer from 
-the degradation of model accuracy in knowledge distillation process. It is challenging to balance the 
-efficiency and effectiveness of the shallow student models. To address this problem, we propose a 
-Directed Acyclic Graph Factorization Machine (KD-DAGFM) to learn the high-order feature interactions 
-from existing complex interaction models for CTR prediction via Knowledge Distillation. The proposed 
-lightweight student model DAGFM can learn arbitrary explicit feature interactions from teacher networks, 
-which achieves approximately lossless performance and is proved by a dynamic programming algorithm. 
-Besides, an improved general model KD-DAGFM+ is shown to be effective in distilling both explicit and 
-implicit feature interactions from any complex teacher model. Extensive experiments are conducted on 
-four real-world datasets, including a large-scale industrial dataset from WeChat platform with billions 
+**Abstract:** With the growth of high-dimensional sparse data in web-scale recommender systems,
+the computational cost to learn high-order feature interaction in CTR prediction task largely increases,
+which limits the use of high-order interaction models in real industrial applications.
+Some recent knowledge distillation based methods transfer knowledge from complex teacher models
+to shallow student models for accelerating the online model inference. However, they suffer from
+the degradation of model accuracy in knowledge distillation process. It is challenging to balance the
+efficiency and effectiveness of the shallow student models. To address this problem, we propose a
+Directed Acyclic Graph Factorization Machine (KD-DAGFM) to learn the high-order feature interactions
+from existing complex interaction models for CTR prediction via Knowledge Distillation. The proposed
+lightweight student model DAGFM can learn arbitrary explicit feature interactions from teacher networks,
+which achieves approximately lossless performance and is proved by a dynamic programming algorithm.
+Besides, an improved general model KD-DAGFM+ is shown to be effective in distilling both explicit and
+implicit feature interactions from any complex teacher model. Extensive experiments are conducted on
+four real-world datasets, including a large-scale industrial dataset from WeChat platform with billions
 of feature dimensions. KD-DAGFM achieves the best performance with less than 21.5% FLOPs of the state-of-the-art
-method on both online and offline experiments, showing the superiority of DAGFM to deal with the industrial 
+method on both online and offline experiments, showing the superiority of DAGFM to deal with the industrial
 scale data in CTR prediction task.
 
 .. image:: ../../../asset/kd_dagfm.png
@@ -61,7 +61,7 @@ Quick Start with RecBole
    config_dict = {
        'phase': 'teacher_training',
    }
-   run_recbole(model='KD_DAGFM', dataset='ml-100k', 
+   run_recbole(model='KD_DAGFM', dataset='ml-100k',
         config_dict=config_dict)
 
 And then:
@@ -80,7 +80,7 @@ And then:
        'phase': 'distillation',
        'warm_up': './saved/<saved path of teacher model>',
    }
-   run_recbole(model='KD_DAGFM', dataset='ml-100k', 
+   run_recbole(model='KD_DAGFM', dataset='ml-100k',
         config_dict=config_dict)
 
 And then:
@@ -99,7 +99,7 @@ And then:
        'phase': 'finetuning',
        'warm_up': './saved/<saved path of student model>',
    }
-   run_recbole(model='KD_DAGFM', dataset='ml-100k', 
+   run_recbole(model='KD_DAGFM', dataset='ml-100k',
         config_dict=config_dict)
 
 And then:
@@ -121,7 +121,7 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
    embedding_size choice [16, 32, 64]
    train_batch_size choice [512,1024,2048]
    alpha choice [0.1, 1, 10]

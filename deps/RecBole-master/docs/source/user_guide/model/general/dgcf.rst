@@ -82,13 +82,13 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
-   n_factors choice [2,4,8] 
-   reg_weight choice [1e-03] 
+   learning_rate choice [0.01,0.001,0.0001]
+   n_factors choice [2,4,8]
+   reg_weight choice [1e-03]
    cor_weight choice [0.005,0.01,0.02,0.05]
    n_layers choice [1]
    n_iterations choice [2]
-   delay choice [1e-03] 
+   delay choice [1e-03]
    cor_delay choice [1e-02]
 
 Note that we just provide these hyper parameter ranges for reference only, and we can not guarantee that they are the optimal range of this model.

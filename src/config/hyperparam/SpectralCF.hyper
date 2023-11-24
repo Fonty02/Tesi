@@ -1,0 +1,8 @@
+# SpectralCF
+embedding_size choice [32,64,128]
+reg_weight choice [0.01,0.003,0.001,0.0005]
+n_layers choice [1,2,3,4]
+
+# ADDITIONAL_PARAMS
+epochs choice [50,100,150]
+learning_rate choice [0.01,0.001,0.0001]

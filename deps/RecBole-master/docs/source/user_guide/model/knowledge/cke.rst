@@ -65,7 +65,7 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
    kg_embedding_size choice [16,32,64,128]
    reg_weights choice ['[0.1,0.1]','[0.01,0.01]','[0.001,0.001]']
 

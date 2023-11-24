@@ -28,7 +28,7 @@ of the representations to independently reflect an isolated low-level factor (e.
 the size or the color of a shirt). Empirical results show that our approach can
 achieve substantial improvement over the state-of-the-art baselines. We further
 demonstrate that the learned representations are interpretable and controllable,
-which can potentially lead to a new paradigm for recommendation where users are given 
+which can potentially lead to a new paradigm for recommendation where users are given
 fine-grained control over targeted aspects of the recommendation lists.
 
 .. image:: ../../../asset/macridvae.png
@@ -80,7 +80,7 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
    kafc choice [3,5,10,20]
 
 Note that we just provide these hyper parameter ranges for reference only, and we can not guarantee that they are the optimal range of this model.

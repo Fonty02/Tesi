@@ -10,7 +10,7 @@ Introduction
 
 **Authors:** Qiao Liu, Yifu Zeng, Refuoe Mokhosi, Haibin Zhang
 
-**Abstract:**  Predicting users' actions based on anonymous sessions is a 
+**Abstract:**  Predicting users' actions based on anonymous sessions is a
 hallenging problem in web-based behavioral modeling research, mainly
 due to the uncertainty of user behavior and the limited information.
 Recent advances in recurrent neural networks have led to promising
@@ -22,7 +22,7 @@ account. In this study, we argue that a long-term memory model
 may be insufficient for modeling long sessions that usually contain
 user interests drift caused by unintended clicks. A novel short-term
 attention/memory priority model is proposed as a remedy, which is
-capable of capturing users' general interests from the long-term memory 
+capable of capturing users' general interests from the long-term memory
 of a session context, whilst taking into account users' current
 interests from the short-term memory of the last-clicks. The validity
 and efficacy of the proposed attention mechanism is extensively
@@ -68,7 +68,7 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
 
 Note that we just provide these hyper parameter ranges for reference only, and we can not guarantee that they are the optimal range of this model.
 

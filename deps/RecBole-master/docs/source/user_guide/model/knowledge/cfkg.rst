@@ -66,7 +66,7 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
    loss_function choice ['inner_product', 'transe']
    margin choice [0.5,1.0,2.0]
 

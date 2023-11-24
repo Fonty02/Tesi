@@ -52,10 +52,10 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code::
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
+   learning_rate choice [0.01,0.001,0.0001]
    dropout_prob choice [0.0,0.1,0.2,0.3,0.4,0.5]
    mlp_hidden_size choice ['[10,10]','[20,20]','[30,30]','[40,40]','[50,50]',[20,20,20]','[30,30,30]','[40,40,40]','[50,50,50]']
-   
+
 Note that we just provide these hyper parameter ranges for reference only, and we can not guarantee that they are the optimal range of this model.
 
 Then, with the source code of RecBole (you can download it from GitHub), you can run the ``run_hyper.py`` to tuning:

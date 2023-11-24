@@ -51,8 +51,8 @@ If you want to use ``HyperTuning`` to tune hyper parameters of this model, you c
 
 .. code:: bash
 
-   learning_rate choice [0.01,0.005,0.001,0.0005,0.0001]
-   
+   learning_rate choice [0.01,0.001,0.0001]
+
 Note that we just provide these hyper parameter ranges for reference only, and we can not guarantee that they are the optimal range of this model.
 
 Then, with the source code of RecBole (you can download it from GitHub), you can run the ``run_hyper.py`` to tuning:
