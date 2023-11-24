@@ -4,7 +4,7 @@ n_factors choice [2,4,8]
 n_iterations choice [2]
 n_layers choice [1]
 reg_weight choice [1e-03]
-cor_weight choice [0.005,0.01,0.02,0.05]
+cor_weight choice [0.005,0.01,0.02]
 
 # ADDITIONAL_PARAMS
 epochs choice [50,100,150]
