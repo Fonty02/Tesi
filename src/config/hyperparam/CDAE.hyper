@@ -8,5 +8,5 @@ reg_weight_1 choice [0.0,0.5]
 reg_weight_2 choice [0.01,0.001]
 
 # ADDITIONAL_PARAMS
-epochs choice [50,100,150]
+epochs choice [10,50,100]
 learning_rate choice [0.01,0.001,0.0001]

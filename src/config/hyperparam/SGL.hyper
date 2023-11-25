@@ -7,5 +7,5 @@ drop_ratio choice [0,0.1,0.2,0.4,0.5]
 ssl_weight choice [0.005,0.05,0.1,0.5,1.0]
 
 # ADDITIONAL_PARAMS
-epochs choice [50,100,150]
+epochs choice [10,50,100]
 learning_rate choice [0.01,0.001,0.0001]

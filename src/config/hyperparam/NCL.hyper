@@ -11,5 +11,5 @@ m_step choice [1,5]
 warm_up_step choice [20,40]
 
 # ADDITIONAL_PARAMS
-epochs choice [50,100,150]
+epochs choice [10,50,100]
 learning_rate choice [0.01,0.001,0.0001]

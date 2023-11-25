@@ -15,5 +15,5 @@ build_graph_separately choice [True,False]
 loss_type choice ['BPR','BCE']
 
 # ADDITIONAL_PARAMS
-epochs choice [50,100,150]
+epochs choice [10,50,100]
 learning_rate choice [1e-4,1e-3,5e-3]

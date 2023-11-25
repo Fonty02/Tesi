@@ -11,5 +11,5 @@ neigh_info_method choice ['random','knn','louvain']
 resolution choice [1.0,5.0]
 
 # ADDITIONAL_PARAMS
-epochs choice [50,100,150]
+epochs choice [10,50,100]
 learning_rate choice [0.0005,0.0001,0.00005]

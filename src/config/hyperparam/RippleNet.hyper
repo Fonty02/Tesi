@@ -6,5 +6,5 @@ kg_weigh choice [0.01,0.05]
 reg_weight choice [1e-7,1e-4]
 
 # ADDITIONAL_PARAMS
-epochs choice [50,100,150]
+epochs choice [10,50,100]
 learning_rate choice [0.01,0.001,0.0001]

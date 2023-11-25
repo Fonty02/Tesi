@@ -18,5 +18,5 @@ w_min choice [0.1,0.2,0.3]
 w_max choice [1]
 
 # ADDITIONAL_PARAMS
-epochs choice [50,100,150]
+epochs choice [10,50,100]
 learning_rate choice [1e-3,1e-4,1e-5]

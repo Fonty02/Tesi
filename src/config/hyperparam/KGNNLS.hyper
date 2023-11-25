@@ -7,5 +7,5 @@ n_iter choice [1]
 ls_weight choice [0.5]
 
 # ADDITIONAL_PARAMS
-epochs choice [50,100,150]
+epochs choice [10,50,100]
 learning_rate choice [0.01,0.001,0.0001]
