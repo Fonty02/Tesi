@@ -202,7 +202,7 @@ class HyperTuning(object):
         if isinstance(algo, str):
             if algo == "exhaustive":
                 self.algo = partial(exhaustive_search, nbMaxSucessiveFailures=1000)
-                # self.max_evals = _spacesize(self.space)
+                self.max_evals = _spacesize(self.space)
             elif algo == "random":
                 from hyperopt import rand
 
