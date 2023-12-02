@@ -59,6 +59,7 @@ CONFIG = {
 							],
 	'LOG_FILE':				'log/carbon.log',
 	'RESULT_PATH':			'results/',
+	'RESULT_PATH_SHARED':	'results_shared/',
 	'EMISSIONS_FILE':		'/emissions.csv',
 	'METRICS_FILE':			'/metrics.csv',
 	'PARAMS_FILE':			'/params.csv',
