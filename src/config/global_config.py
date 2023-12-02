@@ -5,7 +5,8 @@ CONFIG = {
 	'DATASETS':				[
 								'amazon_books_60core_kg',
 								'mind',
-								'movielens'
+								'movielens100k',
+								'movielens1m'
 							],
 	'MODELS':				[
 								# General Recommendation
