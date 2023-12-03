@@ -5,8 +5,8 @@ CONFIG = {
 	'DATASETS':				[
 								'amazon_books_60core_kg',
 								'mind',
-								'movielens100k',
-								'movielens1m'
+								'movielens',
+								'movielens_1m'
 							],
 	'MODELS':				[
 								# General Recommendation
@@ -57,7 +57,8 @@ CONFIG = {
 								'MKR',
 								'RippleNet'
 							],
-	'LOG_FILE':				'log/carbon.log',
+	'LOG_FILE':				'log/carbon_tuning.log',
+	'LOG_FILE_DEFAULT':		'log/carbon_default.log',
 	'RESULT_PATH':			'results/',
 	'RESULT_PATH_SHARED':	'results_shared/',
 	'EMISSIONS_FILE':		'/emissions.csv',

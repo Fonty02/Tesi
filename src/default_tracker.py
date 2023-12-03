@@ -17,7 +17,7 @@ config = get_global_config()
 config_dict = get_params()
 DATASETS = config.get('DATASETS')
 MODELS = config.get('MODELS')
-LOG_FILE = config.get('LOG_FILE')
+LOG_FILE = config.get('LOG_FILE_DEFAULT')
 RESULT_PATH = config.get('RESULT_PATH_SHARED')
 EMISSIONS_FILE = config.get('EMISSIONS_FILE')
 METRICS_FILE = config.get('METRICS_FILE')
@@ -33,7 +33,7 @@ def process(dataset, model):
 
 	# Log for the current dataset
 	log = open(LOG_FILE, 'a', encoding='utf-8')
-	proj_name = dataset.upper() + '_' + model.upper() + '_DEFAULT_PARAM' + str(ts)
+	proj_name = dataset.upper() + '_' + model.upper() + '_DEFAULT_PARAM_' + str(ts)
 	log.write('['+get_date_time()+'] Experiment session started.EXECUTING: ' + proj_name + '\n')
 	log.flush()
 	print('executing', proj_name)
