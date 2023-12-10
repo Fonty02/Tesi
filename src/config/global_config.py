@@ -15,7 +15,7 @@ CONFIG = {
 								'Random',
 								'SimpleX',
 								# Matrix fact & Linear
-								'ADMMSLIM',
+							#	'ADMMSLIM',
 								'BPR',
 								'DMF',
 								'ENMF',

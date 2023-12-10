@@ -4,6 +4,7 @@ import copy
 import traceback
 import calendar
 import time
+from sys import platform
 from codecarbon import EmissionsTracker
 from recbole.quick_start import run_recbole
 from recbole.quick_start import load_data_and_model
@@ -11,14 +12,19 @@ from recbole.utils import get_trainer
 from recbole.config import Config
 from config.global_config import get_global_config
 from config.params_config import get_params, set_param
-from utils import create_folders, write_dict_to_csv, get_date_time
+from utils import create_folders, write_dict_to_csv, get_date_time, get_device
 
 config = get_global_config()
 config_dict = get_params()
 DATASETS = config.get('DATASETS')
 MODELS = config.get('MODELS')
-LOG_FILE = config.get('LOG_FILE_DEFAULT')
-RESULT_PATH = config.get('RESULT_PATH_SHARED')
+BASE_PATH = '/'.join(os.getcwd().split('/'))
+LOG_FILE = os.path.join(BASE_PATH, config.get('LOG_FILE_DEFAULT'))
+RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED'))
+if platform == 'win32':
+	BASE_PATH = BASE_PATH.replace('/', '\\')
+	LOG_FILE = LOG_FILE.replace('/', '\\')
+	RESULT_PATH = RESULT_PATH.replace('/', '\\')
 EMISSIONS_FILE = config.get('EMISSIONS_FILE')
 METRICS_FILE = config.get('METRICS_FILE')
 PARAMS_FILE = config.get('PARAMS_FILE')
@@ -41,6 +47,8 @@ def process(dataset, model):
 	# Setup runtime config
 	pth = os.path.join(config_dict.get('checkpoint_dir'), dataset, model)
 	set_param('checkpoint_dir', pth)
+	set_param('device', get_device())
+	set_param('my_log_file', LOG_FILE)
 	results_path = os.path.join(RESULT_PATH, dataset, model)
 
 	try:

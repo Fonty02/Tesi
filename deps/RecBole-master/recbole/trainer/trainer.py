@@ -21,6 +21,7 @@ import os
 
 from logging import getLogger
 from time import time
+from datetime import datetime
 
 import numpy as np
 import torch
@@ -144,6 +145,8 @@ class Trainer(AbstractTrainer):
         self.evaluator = Evaluator(config)
         self.item_tensor = None
         self.tot_item_num = None
+
+        self.my_log_file = self.config["my_log_file"]
 
     def _build_optimizer(self, **kwargs):
         r"""Init the Optimizer
@@ -436,6 +439,15 @@ class Trainer(AbstractTrainer):
         for epoch_idx in range(self.start_epoch, self.epochs):
             # train
             training_start_time = time()
+
+            # Log epochs
+            ts = datetime.timestamp(datetime.now())
+            date_time = datetime.fromtimestamp(ts)
+            log = open(self.my_log_file, 'a', encoding='utf-8')
+            log.write('['+str(date_time.strftime("%Y-%m-%d %H:%M:%S"))+'] EXECUTING.EPOCH '+str(epoch_idx+1)+' OF '+str(self.epochs)+' \n')
+            log.flush()
+            log.close()
+
             train_loss = self._train_epoch(
                 train_data, epoch_idx, show_progress=show_progress
             )
