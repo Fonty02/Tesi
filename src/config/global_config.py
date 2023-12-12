@@ -37,7 +37,7 @@ CONFIG = {
 								'NGCF',
 								'NNCF',
 								'LightGCN',
-								'RaCT',
+							#	'RaCT',
 								'RecVAE',
 								# Graph-based
 								'DGCF',
@@ -48,7 +48,7 @@ CONFIG = {
 								# Knowledge-aware
 								'CKE',
 								'CFKG',
-								'KGAT',
+							#	'KGAT',
 								'KGCN',
 								'KGIN',
 								'KGNNLS',
@@ -59,6 +59,7 @@ CONFIG = {
 							],
 	'LOG_FILE':				'log/carbon_tuning.log',
 	'LOG_FILE_DEFAULT':		'log/carbon_default.log',
+	'DATASET_PATH':			'data/',
 	'RESULT_PATH':			'results/',
 	'RESULT_PATH_SHARED':	'results_shared/',
 	'EMISSIONS_FILE':		'/emissions.csv',
