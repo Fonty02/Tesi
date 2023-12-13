@@ -53,7 +53,7 @@ CONFIG = {
 								'KGIN',
 								'KGNNLS',
 								'KTUP',
-								'MCCLK',
+							#	'MCCLK',
 								'MKR',
 								'RippleNet'
 							],
