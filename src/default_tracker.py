@@ -47,6 +47,8 @@ def process(dataset, model):
 	# Setup runtime config
 	pth = os.path.join(config_dict.get('checkpoint_dir'), dataset, model)
 	set_param('checkpoint_dir', pth)
+	set_param('dataset', dataset)
+	set_param('model', model)
 	set_param('device', get_device())
 	set_param('my_log_file', LOG_FILE)
 	results_path = os.path.join(RESULT_PATH, dataset, model)
