@@ -120,10 +120,12 @@ if __name__ == "__main__":
 				print('Valid: ', MODELS)
 			else:
 				process(dataset, model)
+		elif 'DATASET' in keys and 'MODEL' not in keys:
+			dataset = values[keys.index('DATASET')]
+			for model in MODELS:
+				process(dataset, model)
 		else:
 			print('WARNING: required arguments are missing!')
 			if 'DATASET' not in keys:
 				print('MISSING: DATASET=""')
-			if 'MODEL' not in keys:
-				print('MISSING: MODEL=""')
 	sys.exit(0)
