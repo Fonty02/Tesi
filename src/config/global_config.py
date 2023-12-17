@@ -24,7 +24,7 @@ CONFIG = {
 								'SLIMElastic',
 								# Deep Learning-based
 								'CDAE',
-								'ConvNCF',
+							#	'ConvNCF',
 								'DiffRec',
 								'EASE',
 								'GCMC',
@@ -35,7 +35,7 @@ CONFIG = {
 								'NAIS',
 								'NeuMF',
 								'NGCF',
-								'NNCF',
+							#	'NNCF',
 								'LightGCN',
 							#	'RaCT',
 								'RecVAE',
