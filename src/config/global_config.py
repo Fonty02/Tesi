@@ -15,7 +15,7 @@ CONFIG = {
 								'Random',
 								'SimpleX',
 								# Matrix fact & Linear
-							#	'ADMMSLIM',
+								'ADMMSLIM', # NOT_EXEC
 								'BPR',
 								'DMF',
 								'ENMF',
@@ -24,7 +24,7 @@ CONFIG = {
 								'SLIMElastic',
 								# Deep Learning-based
 								'CDAE',
-							#	'ConvNCF',
+								'ConvNCF', # NOT_EXEC
 								'DiffRec',
 								'EASE',
 								'GCMC',
@@ -35,9 +35,9 @@ CONFIG = {
 								'NAIS',
 								'NeuMF',
 								'NGCF',
-							#	'NNCF',
+								'NNCF', # NOT_EXEC
 								'LightGCN',
-							#	'RaCT',
+								'RaCT', # NOT_EXEC
 								'RecVAE',
 								# Graph-based
 								'DGCF',
@@ -48,12 +48,12 @@ CONFIG = {
 								# Knowledge-aware
 								'CKE',
 								'CFKG',
-							#	'KGAT',
+								'KGAT', # NOT_EXEC
 								'KGCN',
 								'KGIN',
 								'KGNNLS',
 								'KTUP',
-							#	'MCCLK',
+								'MCCLK', # NOT_EXEC
 								'MKR',
 								'RippleNet'
 							],
