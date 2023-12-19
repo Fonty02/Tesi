@@ -42,11 +42,13 @@ if __name__ == "__main__":
 				clear_cache('log_tensorboard')
 			if 'results' in values:
 				clear_cache('results')
+				clear_cache('results_shared')
 			if 'saved' in values:
 				clear_cache('saved')
 			if 'all' in values:
 				clear_cache('log')
 				clear_cache('log_tensorboard')
 				clear_cache('results')
+				clear_cache('results_shared')
 				clear_cache('saved')
 	sys.exit(0)

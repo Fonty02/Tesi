@@ -135,8 +135,8 @@ if __name__ == "__main__":
 		print('\n' + ''.join(['> ' for i in range(25)]))
 		print(f'\n{"PARAM":<16}{"VALUE RANGE":<18}\n')
 		print(''.join(['> ' for i in range(25)]))
-		print(f'{"--dataset":<16}{DATASETS:<18}')
-		print(f'{"--model":<16}{MODELS:<18}')
+		print(f'{"--dataset":<16}{str(DATASETS):<18}')
+		print(f'{"--model":<16}{str(MODELS):<18}')
 		print(''.join(['> ' for i in range(25)]) + '\n')
 	else:
 		keys = [i.split('=')[0].upper()[2:] for i in args]
