@@ -98,6 +98,8 @@ log_tensorboard/*
 !log_tensorboard/.gitignore
 results/*
 !results/.gitignore
+results_shared/*
+!results_shared/.gitignore
 saved/*
 !saved/.gitignore
 log/*
