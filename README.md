@@ -96,6 +96,8 @@ NOTE: since no external knowledge was available for the Mind datasets, knowledge
 ![movielens tradeoff](/graphs/movielens_tradeoff.png)
 ![movielens power](/graphs/movielens_power.png)
 
+NOTE: for the full analysis of results please refers to notebooks section.
+
 ## Authors
 
 The present project has been realized by me **[@albertovalerio](https://github.com/albertovalerio)** and my colleague **[@FranchiniFelice720034](https://github.com/FranchiniFelice720034)** as university laboratory activity for the exam in **Semantics In Intelligent Information Access**, Master's Degree in Computer Science, curriculum studies in Artificial Intelligence, with **Professor Giovanni Semeraro** and **Professor Cataldo Musto** and the supervision of PHD student **[@giuspillo](https://github.com/giuspillo)** at University of Bari "Aldo Moro", Italy.
