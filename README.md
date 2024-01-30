@@ -7,7 +7,7 @@ The system tracks the emissions of a given recommended system algorithm on a giv
 
 
 ## Requirements
-* **Global requirements**: Python >= 3.7 (tested on 3.8.0 and 3.11.4)
+* **Global requirements**: Python >= 3.7 (tested on 3.8.5 and 3.11.4)
 * **System requirements**: see [requirements.txt](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/requirements.txt)
 
 
