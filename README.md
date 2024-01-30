@@ -1,70 +1,110 @@
-# CarbonRecommenderRecSys23
-Source code and datasets for the paper "Towards Sustainability-aware Recommender Systems: Analyzing the Trade-off Between Algorithms Performance and Carbon Footprint"
+# sustainability-of-recsys
+The system tracks the emissions of a given recommended system algorithm on a given dataset. It performs the model execution by applying the default parameters or by applying the hyperparameters tuning carrying out the grid search. It also saves the metrics and the parameters configuration obtained during each run.
 
-### Requirements
-* RecBole 1.1.1: https://recbole.io/
-* CodeCarbon: https://codecarbon.io/
-* Pytorch
+**Recommended models, datasets and metrics refers to [@Recbole](https://recbole.io/) implementation.**
 
-If you should need more info about the requirements, 'req.txt' is the output of the 'pip freeze' command for the conda environment used for these experiments.
+**Emission tracking is made by mean of [@CodeCarbon](https://mlco2.github.io/codecarbon/) library.**
 
-### Python scripts
 
-* 'script.py' launches the training for each dataset and for each model
-* 'full_model.py' executes the training of the selected model on the selected dataset if no results have been computed for that setting, while keeping track of emissions during the training; then, it saves the results on a 'results' folder (which must be created).
+## Requirements
+* **Global requirements**: Python >= 3.7 (tested on 3.8.0 and 3.11.4)
+* **System requirements**: see [requirements.txt](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/requirements.txt)
+
+
+## Scripts
+
+* **src/tuning_tracker.py** performs the hyper-parameter tuning of a given algorithm on a given dataset (both passed as script’s arguments), carrying out grid-search.
+
+NOTES:
+1. All the available models and dataset are defined in **src/config/global_config.py** file.
+2. All the grid search params ranges for each model are defined in **src/config/hyperparam** folder.
+3. The results are saved in **results** folder.
+4. Parameters names are case unsensitive while parameters values are case sensitive.
+
+**Example**
+```python
+$ python3 src/tuning_tracker.py --dataset=mind --model=BPR
+```
+* **src/default_tracker.py** tracks the emissions of a given algorithm with default and statically defined parameters on a given dataset (both passed as script’s arguments).
+
+NOTES:
+1. All the available models and dataset are defined in **src/config/global_config.py** file.
+2. The deafult parameters are definded in **src/config/params_config.py** file.
+3. The results are saved in **results_shared** folder.
+4. Parameters names are case unsensitive while parameters values are case sensitive.
+
+**Example**
+```python
+$ python3 src/default_tracker.py --dataset=mind --model=BPR
+```
+* **src/clear_cache.py** the libraries and modules above mentioned automatically generate a series of intermediate results, serializations and logs, this script was created to remove them from file system, especially useful in the early stages of work.
+
+It accepts the following arguments:
+
+| Flag | Description |
+|---|---|
+|--log|It removes the contents of the **log** folder.|
+|--tb|It removes the contents of the **log_tensorboard** folder.|
+|--results|It removes the contents of the **results** and **results_shared** folder.|
+|--saved|It removes the contents of the **saved** folder.|
+|--all|It removes all the previous folders.|
+
+
+## Notebooks
+* **notebooks/tuning-results.ipynb** overview of the results obtained by performing the hyperparameter tuning on a selected subset of models and datasets.
+* **notebooks/defaults-results.ipynb** overview of the results obtained by performing the same selected subset of models and datasets with defaults parameters.
+* **notebooks/counters.ipynb** overview of the execution time necessary to perform the exepriments for each model involved. The total number of runs involved in the grid search for each model is also shown.
+* **notebooks/model-building.ipynb** a proposal for a ML model able to predict the expected emission for a given model and dataset represented by a set of features (**currently-under-development**).
 
 ## Datasets
 
-* 'dataset/' contains the three datasets used for this experiment:
-    * movielens 1m: dataset about movies, already splitted into train, validation, and test set. knowledge data is available for this dataset.
-    * mind: dataset about news. to repliacate our experiments, set 'repeatable' to 'True' in the recbole parameter dict. no knowledge data is available for this dataset.
-    * amazon books: dataset about books. to repliacate our experiments, set 'repeatable' to 'True' in the recbole parameter dict. knowledge data is available for this dataset.
-
-RecBole 1.1.1 has been used: https://recbole.io/
-
-CodeCarbon has been used:https://codecarbon.io/
-
-Dataset have been preprocessed by us, and original version can be found here: https://github.com/RUCAIBox/RecSysDatasets
-
+* **data/amazon_books_60core_kg**: dataset about books. Knowledge data is also available.
+* **data/mind**: dataset about news. Knowledge data is not available.
+* **data/movielens**: dataset about movies, version size 100K. Knowledge data is also available.
+* **data/movielens_1m**: dataset about movies, version size 1M. Knowledge data is also available.
 
 ## Results
 
-Graphical results obtained and described in the original paper.
-Full results available in the 'results.xlsx' file.
+Experiments were carried out for the hyperparameter tuning on the following resources:
 
-### Mind
-![](/graphs/sum_mind_dataset.png)
-If the image should not be visible, it is possible to find it here: https://imgur.com/kzakVk2
+* CPU: 1 x AMD EPYC 7V12.
+* GPU: 1 x NVIDIA Tesla T4.
+* RAM: 28 GB.
 
-### Movielens-1M
-![](/graphs/sum_movielens_dataset.png)
-If the image should not be visible, it is possible to find it here: https://imgur.com/4N2kY8F
+The selected models and datasets list is as follow:
 
-### Amazon-books
-![](/graphs/sum_amazon_books_dataset.png)
-If the image should not be visible, it is possible to find it here: https://imgur.com/96Lh2zK
+* Datasets: **amazon_books_60core_kg**, **mind**, **movielens_1m**.
+* Models: **BPR**, **CFKG**, **CKE**, **DMF**, **ItemKNN**, **KGNNLS**, **LINE**, **LightGCN**, **MultiDAE**, **SpectralCF**.
 
+NOTE: since no external knowledge was available for the Mind datasets, knowledge-aware models (CFKG, CKE and KGNNLS) have not been trained on that dataset.
 
-### Movielens-1M: Hyper-parameter impact
+### amazon_books_60core_kg
 
-In this section, for some hyper-parameters (embedding size, negative examples), we set different values and compared with the default values. These experiments have been conducted on the ML1M dataset, considering DGCF as recommendation model, and considering two recommendation metrics (Recall@10, NDCG@10).
-We considered these values:
-* embedding size:
-    * 32
-    * 64 (default)
-    * 128
-* negative examples:
-    * 1 (default)
-    * 2
+![amazon results](/graphs/amazon_results.png)
+![amazon tradeoff](/graphs/amazon_tradeoff.png)
+![amazon power](/graphs/amazon_power.png)
 
-![](/graphs/sum_sens_movielens_dgcf.png)
-If the image should not be visible, it is possible to find it here: https://imgur.com/bYjhqr5
+### mind
 
-Full results available in the 'sens.xlsx' file.
+![mind results](/graphs/mind_results.png)
+![mind tradeoff](/graphs/mind_tradeoff.png)
+![mind power](/graphs/mind_power.png)
 
+### movielens_1m
 
-## Full results
+![movielens results](/graphs/movielens_results.png)
+![movielens tradeoff](/graphs/movielens_tradeoff.png)
+![movielens power](/graphs/movielens_power.png)
 
-* 'results.xlsx' is an Excel file containing all results measured and computed, including all metrics provided by CodeCarbon and all evaluation metrics provided by RecBole
+## Authors
 
-* 'sens.xlsx' contains the full results of the hyper-parameter impact. 
+The present project has been realized by me **[@albertovalerio](https://github.com/albertovalerio)** and my colleague **[@FranchiniFelice720034](https://github.com/FranchiniFelice720034)** as university laboratory activity for the exam in **Semantics In Intelligent Information Access**, Master's Degree in Computer Science, curriculum studies in Artificial Intelligence, with **Professor Giovanni Semeraro** and **Professor Cataldo Musto** and the supervision of PHD student **[@giuspillo](https://github.com/giuspillo)** at University of Bari "Aldo Moro", Italy.
+
+## Acknowledgments
+
+- **[@Recbole](https://recbole.io/)**
+- **[@CodeCarbon](https://mlco2.github.io/codecarbon/)**
+
+## License
+
+Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License. See `LICENSE.txt` for more information.
