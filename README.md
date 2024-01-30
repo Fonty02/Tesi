@@ -1,5 +1,5 @@
 # sustainability-of-recsys
-The system tracks the emissions of a given recommended system algorithm on a given dataset. It performs the model execution by applying the default parameters or by applying the hyperparameters tuning carrying out the grid search. It also saves the metrics and the parameters configuration obtained during each run.
+The system tracks the emissions of a given recommendation algorithm on a given dataset. It performs the model execution by applying the default parameters or by applying the hyperparameters tuning carrying out the grid search. It also saves the metrics and the parameters configuration obtained during each run.
 
 **Recommended models, datasets and metrics refers to [@Recbole](https://recbole.io/) implementation.**
 
