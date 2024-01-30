@@ -53,7 +53,7 @@ It accepts the following arguments:
 ## Notebooks
 * **notebooks/tuning-results.ipynb** overview of the results obtained by performing the hyperparameter tuning on a selected subset of models and datasets.
 * **notebooks/defaults-results.ipynb** overview of the results obtained by performing the same selected subset of models and datasets with defaults parameters.
-* **notebooks/counters.ipynb** overview of the execution time necessary to perform the exepriments for each model involved. The total number of runs involved in the grid search for each model is also shown.
+* **notebooks/counters.ipynb** overview of the execution time necessary to perform the experiments for each model involved. The total number of runs involved in the grid search for each model is also shown.
 * **notebooks/model-building.ipynb** a proposal for a ML model able to predict the expected emission for a given model and dataset represented by a set of features (**currently-under-development**).
 
 ## Datasets
