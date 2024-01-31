@@ -1,7 +1,7 @@
 # sustainability-of-recsys
-The system tracks the emissions of a given recommendation algorithm on a given dataset. It performs the model execution by applying the default parameters or by applying the hyperparameters tuning carrying out the grid search. It also saves the metrics and the parameters configuration obtained during each run.
+The system tracks the emissions of a given recommendation algorithm on a given dataset. It performs the model execution by applying the default parameters set or by applying the hyperparameters tuning carrying out the grid search. It also saves the metrics and the parameters configuration obtained during each run.
 
-**Recommended models, datasets and metrics refers to [@Recbole](https://recbole.io/) implementation.**
+**Recommendations models, datasets and metrics refers to [@Recbole](https://recbole.io/) implementation.**
 
 **Emission tracking is made by mean of [@CodeCarbon](https://mlco2.github.io/codecarbon/) library.**
 
@@ -13,11 +13,11 @@ The system tracks the emissions of a given recommendation algorithm on a given d
 
 ## Scripts
 
-* **src/tuning_tracker.py** performs the hyper-parameter tuning of a given algorithm on a given dataset (both passed as script’s arguments), carrying out grid-search.
+* **src/tuning_tracker.py** performs the hyper-parameter tuning of a given algorithm on a given dataset (both passed as script’s arguments), carrying out the grid-search.
 
 NOTES:
-1. All the available models and dataset are defined in **src/config/global_config.py** file.
-2. All the grid search params ranges for each model are defined in **src/config/hyperparam** folder.
+1. All the available models and datasets are defined in **src/config/global_config.py** file.
+2. All the grid-search params ranges for each model are defined in **src/config/hyperparam** folder.
 3. The results are saved in **results** folder.
 4. Parameters names are case unsensitive while parameters values are case sensitive.
 
@@ -28,7 +28,7 @@ $ python3 src/tuning_tracker.py --dataset=mind --model=BPR
 * **src/default_tracker.py** tracks the emissions of a given algorithm with default and statically defined parameters on a given dataset (both passed as script’s arguments).
 
 NOTES:
-1. All the available models and dataset are defined in **src/config/global_config.py** file.
+1. All the available models and datasets are defined in **src/config/global_config.py** file.
 2. The deafult parameters are definded in **src/config/params_config.py** file.
 3. The results are saved in **results_shared** folder.
 4. Parameters names are case unsensitive while parameters values are case sensitive.
@@ -45,15 +45,20 @@ It accepts the following arguments:
 |---|---|
 |--log|It removes the contents of the **log** folder.|
 |--tb|It removes the contents of the **log_tensorboard** folder.|
-|--results|It removes the contents of the **results** and **results_shared** folder.|
+|--results|It removes the contents of the **results** and **results_shared** folders.|
 |--saved|It removes the contents of the **saved** folder.|
 |--all|It removes all the previous folders.|
+
+**Example**
+```python
+$ python3 src/clear_cache.py --saved
+```
 
 
 ## Notebooks
 * **notebooks/tuning-results.ipynb** overview of the results obtained by performing the hyperparameter tuning on a selected subset of models and datasets.
 * **notebooks/defaults-results.ipynb** overview of the results obtained by performing the same selected subset of models and datasets with defaults parameters.
-* **notebooks/counters.ipynb** overview of the execution time necessary to perform the experiments for each model involved. The total number of runs involved in the grid search for each model is also shown.
+* **notebooks/counters.ipynb** overview of the execution times necessary to perform the experiments for each model involved. The total number of runs involved in the grid search for each model is also shown.
 * **notebooks/model-building.ipynb** a proposal for a ML model able to predict the expected emission for a given model and dataset represented by a set of features (**currently-under-development**).
 
 ## Datasets
