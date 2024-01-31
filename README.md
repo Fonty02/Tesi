@@ -101,7 +101,7 @@ NOTE: since no external knowledge was available for the Mind datasets, knowledge
 ![movielens tradeoff](/graphs/movielens_tradeoff.png)
 ![movielens power](/graphs/movielens_power.png)
 
-**NOTE: <u>for a more extensive analysis of results please refers to notebooks section</u>.**
+**NOTE: <ins>for a more extensive analysis of results please refers to notebooks section</ins>.**
 
 ## Authors
 
