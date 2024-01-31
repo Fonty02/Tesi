@@ -59,7 +59,7 @@ $ python3 src/clear_cache.py --saved
 * **notebooks/tuning-results.ipynb** overview of the results obtained by performing the hyperparameter tuning on a selected subset of models and datasets.
 * **notebooks/defaults-results.ipynb** overview of the results obtained by performing the same selected subset of models and datasets with defaults parameters.
 * **notebooks/counters.ipynb** overview of the execution times necessary to perform the experiments for each model involved. The total number of runs involved in the grid search for each model available is also shown.
-* **notebooks/model-building.ipynb** a proposal for a ML model able to predict the expected emission for a given model and dataset represented by a set of features (**currently-under-development**).
+* **notebooks/model-building.ipynb** a proposal for a ML model able to predict the expected emissions for a given model and dataset represented by a set of features (**currently-under-development**).
 
 ## Datasets
 
@@ -101,7 +101,7 @@ NOTE: since no external knowledge was available for the Mind datasets, knowledge
 ![movielens tradeoff](/graphs/movielens_tradeoff.png)
 ![movielens power](/graphs/movielens_power.png)
 
-NOTE: for the full analysis of results please refers to notebooks section.
+**NOTE: <u>for a more extensive analysis of results please refers to notebooks section</u>.**
 
 ## Authors
 
