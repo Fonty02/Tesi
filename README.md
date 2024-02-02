@@ -13,31 +13,31 @@ The system tracks the emissions of a given recommendation algorithm on a given d
 
 ## Scripts
 
-* **src/tuning_tracker.py** performs the hyper-parameter tuning of a given algorithm on a given dataset (both passed as script’s arguments), carrying out the grid-search.
+1. [**<ins>src/tuning_tracker.py</ins>**](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/src/tuning_tracker.py) performs the hyper-parameter tuning of a given algorithm on a given dataset (both passed as script’s arguments), carrying out the grid-search.
 
 NOTES:
-1. All the available models and datasets are defined in **src/config/global_config.py** file.
-2. All the grid-search params ranges for each model are defined in **src/config/hyperparam** folder.
-3. The results are saved in **results** folder.
-4. Parameters names are case unsensitive while parameters values are case sensitive.
+- All the available models and datasets are defined in [src/config/global_config.py](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/src/config/global_config.py) file.
+- All the grid-search params ranges for each model are defined in [src/config/hyperparam](https://github.com/albertovalerio/sustainability-of-recsys/tree/main/src/config/hyperparam) folder.
+- The results are saved in [results](https://github.com/albertovalerio/sustainability-of-recsys/tree/main/results) folder.
+- Parameters names are case unsensitive while parameters values are case sensitive.
 
 **Example**
 ```python
 $ python3 src/tuning_tracker.py --dataset=mind --model=BPR
 ```
-* **src/default_tracker.py** tracks the emissions of a given algorithm with default and statically defined parameters on a given dataset (both passed as script’s arguments).
+2. [**<ins>src/default_tracker.py</ins>**](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/src/default_tracker.py) tracks the emissions of a given algorithm with default and statically defined parameters on a given dataset (both passed as script’s arguments).
 
 NOTES:
-1. All the available models and datasets are defined in **src/config/global_config.py** file.
-2. The deafult parameters are definded in **src/config/params_config.py** file.
-3. The results are saved in **results_shared** folder.
-4. Parameters names are case unsensitive while parameters values are case sensitive.
+- All the available models and datasets are defined in [src/config/global_config.py](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/src/config/global_config.py) file.
+- The deafult parameters are definded in [src/config/params_config.py](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/src/config/params_config.py) file.
+- The results are saved in [results_shared](https://github.com/albertovalerio/sustainability-of-recsys/tree/main/results_shared) folder.
+- Parameters names are case unsensitive while parameters values are case sensitive.
 
 **Example**
 ```python
 $ python3 src/default_tracker.py --dataset=mind --model=BPR
 ```
-* **src/clear_cache.py** the libraries and modules above mentioned automatically generate a series of intermediate results, serializations and logs, this script was created to remove them from file system, especially useful in the early stages of work.
+3. [**<ins>src/clear_cache.py</ins>**](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/src/clear_cache.py) the libraries and modules above mentioned automatically generate a series of intermediate results, serializations and logs, this script was created to remove them from file system, especially useful in the early stages of work.
 
 It accepts the following arguments:
 
@@ -56,17 +56,17 @@ $ python3 src/clear_cache.py --saved
 
 
 ## Notebooks
-* **notebooks/tuning-results.ipynb** overview of the results obtained by performing the hyperparameter tuning on a selected subset of models and datasets.
-* **notebooks/defaults-results.ipynb** overview of the results obtained by performing the same selected subset of models and datasets with defaults parameters.
-* **notebooks/counters.ipynb** overview of the execution times necessary to perform the experiments for each model involved. The total number of runs involved in the grid search for each model available is also shown.
-* **notebooks/model-building.ipynb** a proposal for a ML model able to predict the expected emissions for a given model and dataset represented by a set of features (**currently-under-development**).
+* [notebooks/tuning-results.ipynb](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/notebooks/tuning-results.ipynb) overview of the results obtained by performing the hyperparameter tuning on a selected subset of models and datasets.
+* [notebooks/defaults-results.ipynb](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/notebooks/defaults-results.ipynb) overview of the results obtained by performing the same selected subset of models and datasets with defaults parameters.
+* [notebooks/counters.ipynb](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/notebooks/counters.ipynb) overview of the execution times necessary to perform the experiments for each model involved. The total number of runs involved in the grid search for each model available is also shown.
+* [notebooks/model-building.ipynb](https://github.com/albertovalerio/sustainability-of-recsys/blob/main/notebooks/model-building.ipynb) a proposal for a ML model able to predict the expected emissions for a given model and dataset represented by a set of features (**currently-under-development**).
 
 ## Datasets
 
-* **data/amazon_books_60core_kg**: dataset about books. Knowledge data is also available.
-* **data/mind**: dataset about news. Knowledge data is not available.
-* **data/movielens**: dataset about movies, version size 100K. Knowledge data is also available.
-* **data/movielens_1m**: dataset about movies, version size 1M. Knowledge data is also available.
+* [data/amazon_books_60core_kg](https://github.com/albertovalerio/sustainability-of-recsys/tree/main/data/amazon_books_60core_kg): dataset about books. Knowledge data is also available.
+* [data/mind](https://github.com/albertovalerio/sustainability-of-recsys/tree/main/data/mind): dataset about news. Knowledge data is not available.
+* [data/movielens](https://github.com/albertovalerio/sustainability-of-recsys/tree/main/data/movielens): dataset about movies, version size 100K. Knowledge data is also available.
+* [data/movielens_1m](https://github.com/albertovalerio/sustainability-of-recsys/tree/main/data/movielens_1m): dataset about movies, version size 1M. Knowledge data is also available.
 
 ## Results
 
