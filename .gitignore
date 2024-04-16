@@ -107,4 +107,9 @@ log/*
 *.yaml
 go_online.sh
 
+# Ignora tutti i contenuti della cartella data
 data/*
+
+# Eccetto i file con estensione .py e .ipynb
+!data/*.py
+!data/*.ipynb

@@ -1,3 +1,8 @@
+# TIROCIINIO e TESI LAUREA TRIENNALEE IN INFORMATICA UniBa
+
+Il lavoro è ereditato dalla seguente repository: [sustainability-of-recsys](https://github.com/albertovalerio/sustainability-of-recsys)
+
+
 # sustainability-of-recsys
 The system tracks the emissions of a given recommendation algorithm on a given dataset. It performs the model execution by applying the default parameters set or by applying the hyperparameters tuning carrying out the grid search. It also saves the metrics and the parameters configuration obtained during each run.
 
