@@ -61,13 +61,13 @@ def write_dict_to_csv(file, my_dict):
 		my_dict (dict): Data to be written as a Python dictionary.
 	Returns:
 		None.
-	"""
+	
 	if os.path.isfile(file):
 		with open(file, 'a', encoding='utf-8') as outfile:
 			csvwriter = csv.writer(outfile, delimiter=',')
 			csvwriter.writerow(my_dict.values())
-	else:
-		with open(file, 'w', encoding='utf-8') as outfile:
+	else:"""
+	with open(file, 'w', encoding='utf-8') as outfile:
 			csvwriter = csv.writer(outfile, delimiter=',')
 			csvwriter.writerow(my_dict)
 			csvwriter.writerow(my_dict.values())

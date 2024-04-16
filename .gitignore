@@ -106,3 +106,5 @@ log/*
 !log/.gitignore
 *.yaml
 go_online.sh
+
+data/*

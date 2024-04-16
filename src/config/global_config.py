@@ -3,59 +3,71 @@ The collection of global configurations
 """
 CONFIG = {
 	'DATASETS':				[
-								'amazon_books_60core_kg',
-								'mind',
-								'movielens',
-								'movielens_1m'
+								'LFM-1b_artist_20U50I'
 							],
 	'MODELS':				[
 								# General Recommendation
-								'ItemKNN',
-								'Pop',
-								'Random',
-								'SimpleX',
+								#'ItemKNN', #-> FORZATO K=20
+								#'Pop',
+								#'Random', #NON VA -> GPU e CPU
+								#'SimpleX',
 								# Matrix fact & Linear
-								'ADMMSLIM', # NOT_EXEC
-								'BPR',
-								'DMF',
-								'ENMF',
-								'FISM',
-								'NCEPLRec',
-								'SLIMElastic',
+								#'ADMMSLIM', # NON VA ->TERMINA CON ERRORE
+								#'BPR',
+								#'DMF',
+								#'ENMF',
+								#'FISM',
+								#'NCEPLRec',
+								#'SLIMElastic'#, NON VA -> CPU E GPU
 								# Deep Learning-based
-								'CDAE',
-								'ConvNCF', # NOT_EXEC
-								'DiffRec',
-								'EASE',
-								'GCMC',
-								'LDiffRec',
-								'MacridVAE',
-								'MultiDAE',
-								'MultiVAE',
-								'NAIS',
-								'NeuMF',
-								'NGCF',
-								'NNCF', # NOT_EXEC
-								'LightGCN',
-								'RaCT', # NOT_EXEC
-								'RecVAE',
+								#'CDAE',
+								#'ConvNCF',
+								#'DiffRec',
+								#'EASE', #NON VA -> TERMINA CON ERRORE
+								#'GCMC',
+								#'LDiffRec',
+								#'MacridVAE', #NON VA -> memoria
+								#'MultiDAE',
+								#'MultiVAE',
+								#'NAIS', #NON VA -> memoria
+								#'NeuMF',
+								#'NGCF',
+								#'NNCF',
+								#'LightGCN',
+								#'RecVAE', -> abortito
 								# Graph-based
-								'DGCF',
-								'LINE',
-								'NCL',
-								'SGL',
-								'SpectralCF',
+								#'DGCF',
+								#'LINE',
+								#'NCL', #-> INSTALLA MODULO FAISS
+								#'SGL',
+								#'SpectralCF',
 								# Knowledge-aware
-								'CKE',
-								'CFKG',
-								'KGAT', # NOT_EXEC
-								'KGCN',
-								'KGIN',
-								'KGNNLS',
-								'KTUP',
-								'MCCLK', # NOT_EXEC
-								'MKR',
-								'RippleNet'
+								#'CKE',
+								#'CFKG',
+								#'KGCN',
+								#'KGIN', -> Errore con la libreria torch
+								#'KGNNLS',
+								#'KTUP',
+								#'MKR',
+								#'RippleNet'
+
+
+
+								
+								#'BPR',
+								#'CFKG',
+								#'CKE',
+								#'DMF',
+								#'ItemKNN',
+								#'KGCN',
+								#'KGNNLS',
+								#'LINE',
+								#'MultiDAE',
+								#'LightGCN',
+								#'NGCF',
+								#'RippleNet',
+								#'DGCF'
+
 							],
 	'LOG_FILE':				'log/carbon_tuning.log',
 	'LOG_FILE_DEFAULT':		'log/carbon_default.log',

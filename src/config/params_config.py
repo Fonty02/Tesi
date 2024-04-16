@@ -9,7 +9,7 @@ DEFAULT_PARAMS = {
 	'gpu_id': 0,
 	'worker': 0,
 	'use_gpu': 'True',
-	'seed': 42,
+	'seed': 2020,
 	'state': 'INFO', # ['INFO', 'DEBUG', 'WARNING', 'ERROR', 'CRITICAL']
 	'encoding': 'utf-8',
 	'reproducibility': True,
@@ -19,7 +19,7 @@ DEFAULT_PARAMS = {
 	'shuffle': True,
 
 	# Training Setting
-	'epochs': 10,
+	'epochs': 1,
 	'train_batch_size': 2048,
 	'learner': 'adam', # ['adam', 'sgd', 'adagrad', 'rmsprop', 'sparse_adam']
 	'learning_rate': .001,
@@ -46,7 +46,7 @@ DEFAULT_PARAMS = {
 		'mode': 'full' # ['full','unixxx','popxxx','labeled']
 	},
 	'repeatable': False,
-	'metrics': ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage'],
+	'metrics': ['Recall','MRR','NDCG','Hit','MAP','Precision','GAUC','ItemCoverage','AveragePopularity','GiniIndex','ShannonEntropy','TailPercentage'],
 	'topk': 10,
 	'valid_metric': 'MRR@10',
 	'eval_batch_size': 4096,

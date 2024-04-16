@@ -87,12 +87,13 @@ def get_outcome(
 	"""
 	experiments = []
 	for m in next(os.walk(result_path + dataset))[1]:
+		print(m)
 		if m in models:
 			e = pd.read_csv(os.path.join(result_path, dataset, m, emissions_file))
 			if len(e[e['os'].str.contains(machine)]):
 				experiments.append(os.path.join(dataset, m))
 	experiments = sorted(experiments)
-	metrics_list = ['recall@10', 'mrr@10', 'ndcg@10', 'hit@10', 'map@10', 'precision@10', 'gauc', 'itemcoverage@10', 'averagepopularity@10', 'giniindex@10', 'shannonentropy@10']
+	metrics_list = ['recall@10', 'ndcg@10','averagepopularity@10', 'giniindex@10']
 	results = {'emissions': [], 'duration': [], 'cpu_power': [], 'gpu_power': [], 'ram_power': []}
 	metrics = {}
 	for m in metrics_list:

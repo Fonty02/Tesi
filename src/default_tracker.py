@@ -13,11 +13,14 @@ from recbole.config import Config
 from config.global_config import get_global_config
 from config.params_config import get_params, set_param
 from utils import create_folders, write_dict_to_csv, get_date_time, get_device
+import gc
+import torch
 
 config = get_global_config()
 config_dict = get_params()
 DATASETS = config.get('DATASETS')
 MODELS = config.get('MODELS')
+CHECKPOINT_DIR = config_dict.get('checkpoint_dir')
 BASE_PATH = '/'.join(os.getcwd().split('/'))
 LOG_FILE = os.path.join(BASE_PATH, config.get('LOG_FILE_DEFAULT'))
 RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED'))
@@ -32,7 +35,7 @@ ts = calendar.timegm(time.gmtime())
 
 
 def process(dataset, model):
-
+	set_param('checkpoint_dir', CHECKPOINT_DIR)
 	# Create directory structure is not already exists
 	_saved = copy.deepcopy(config_dict.get('checkpoint_dir'))
 	create_folders([dataset], [model], [RESULT_PATH, _saved])
@@ -90,7 +93,10 @@ def process(dataset, model):
 		full_params['project_name'] = proj_name
 		write_dict_to_csv(results_path + METRICS_FILE, metrics)
 		write_dict_to_csv(results_path + PARAMS_FILE, full_params)
-
+		#delete all variables created in try block
+		del config_rec, model_rec, train_data, test_data, trainer, metrics, full_params
+		gc.collect()
+		torch.cuda.empty_cache()
 	except Exception as e:
 		print(traceback.format_exc())
 		log_str = '['+get_date_time()+'] ERROR: ' + proj_name + '. ' + str(e) + '\n'
@@ -105,23 +111,23 @@ def process(dataset, model):
 if __name__ == "__main__":
 	args = sys.argv[1:]
 	if len(args) == 0:
-		for dataset in DATASETS:
-			for model in MODELS:
-				process(dataset, model)
+		#for dataset in DATASETS:
+			#for model in MODELS:
+				process('mind', 'NGCF')
 	else:
 		keys = [i.split('=')[0].upper()[2:] for i in args]
 		values = [i.split('=')[1] for i in args]
 		if 'DATASET' in keys and 'MODEL' in keys:
 			dataset = values[keys.index('DATASET')]
 			model = values[keys.index('MODEL')]
-			if dataset not in DATASETS:
+			'''if dataset not in DATASETS:
 				print('WARNING: invalid DATASET value!')
 				print('Valid: ', DATASETS)
 			elif model not in MODELS:
 				print('WARNING: invalid MODEL value!')
 				print('Valid: ', MODELS)
-			else:
-				process(dataset, model)
+			else:'''
+			process(dataset, model)
 		else:
 			print('WARNING: required arguments are missing!')
 			if 'DATASET' not in keys:
