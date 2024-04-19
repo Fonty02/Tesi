@@ -89,7 +89,6 @@ target/
 .mypy_cache/
 
 # Project ignores
-*.log
 !carbon-intensity-electricity.csv
 *.pth
 *.tsv
@@ -97,9 +96,6 @@ log_tensorboard/*
 !log_tensorboard/.gitignore
 saved/*
 !saved/.gitignore
-log/*
-!log/.gitignore
-*.yaml
 go_online.sh
 
 # Ignora tutti i contenuti della cartella data
