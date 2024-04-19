@@ -80,7 +80,8 @@ CONFIG = {
 	'STATIC_CONFIG_FILE':	'src/config/_params.yaml',
 	'HP_CONFIG_PATH':		'src/config/hyperparam/',
 	'COUNTER':				1,
-	'DATASET_FILE':			'notebooks/data/dataset.csv'
+	'DATASETAZURE_FILE':	'notebooks/data/dataset_azure.csv',
+	'DATASET_FILE':			'notebooks/data/dataset2.csv'
 }
 
 
