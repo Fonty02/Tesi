@@ -1,0 +1,63 @@
+\section{Configurazione}
+
+\subsection{Parametri di running}
+Qui di seguito vengono riportati i parametri di running dei vari esperimenti effettuati.
+\subsubsection*{Parametri di environment}
+I parametri di environment servono per configurare l'ambiente di esecuzione.
+\begin{itemize}
+    \item \textbf{gpu\_id}: 0
+    \item \textbf{worker}: 0
+    \item \textbf{use\_gpu}: True
+    \item \textbf{seed}: 2020
+    \item \textbf{state}: INFO
+    \item \textbf{encoding}: utf-8
+    \item \textbf{reproducibility}: True
+    \item \textbf{shuffle}: True
+\end{itemize}
+
+\subsubsection*{Parametri di training}
+I parametri di training servono per l'addestramento dei modelli.
+\begin{itemize}
+    \item \textbf{epochs}: 200
+    \item \textbf{train\_batch\_size}: 2048
+    \item \textbf{learner}: adam
+    \item \textbf{learning\_rate}: .001
+    \item \textbf{train\_neg\_sample\_args}: 
+    \begin{itemize}
+        \item \textbf{distribution}: uniform
+        \item \textbf{sample\_num}: 1
+        \item \textbf{dynamic}: False
+        \item \textbf{candidate\_num}: 0
+    \end{itemize}
+    \item \textbf{eval\_step}: 1
+    \item \textbf{stopping\_step}: 10
+    \item \textbf{clip\_grad\_norm}: None
+    \item \textbf{loss\_decimal\_place}: 4
+    \item \textbf{weight\_decay}: .0
+    \item \textbf{require\_pow}: False
+    \item \textbf{enable\_amp}: False
+    \item \textbf{enable\_scaler}: False
+\end{itemize}
+
+\subsubsection*{Parametri di evaluation}
+I parametri di evaluation servono per valutare i modelli.
+\begin{itemize}
+    \item \textbf{eval\_args}:
+    \item \begin{itemize}
+                \item \textbf{group\_by}: user
+                \item \textbf{order}: RO
+                \item \textbf{split}: RS : [0.8, 0.1, 0.1]
+                \item \textbf{mode}: full
+            \end{itemize}
+    \item \textbf{repeatable}: False
+    \item \textbf{metrics}: ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+    \item \textbf{topk}: 10
+    \item \textbf{valid\_metric}: MRR@10
+    \item \textbf{eval\_batch\_size}: 4096
+    \item \textbf{metric\_decimal\_place}: 4
+\end{itemize}
+
+\subsubsection*{Iper parametri dei modelli}
+Gli iper parametri dei modelli sono un insieme di parametri che vengono utilizzati per configurare i modelli. La loro configurazione può influenzare il risultato finale. Esistono delle tecniche di HyperTuning che permettono di trovare i migliori iper parametri per un determinato modello e dataset.
+In questo caso si è scelto di utilizzare gli iper parametri di default
+

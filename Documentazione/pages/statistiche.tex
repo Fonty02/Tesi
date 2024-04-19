@@ -1,0 +1,362 @@
+\section{Statistiche dei dataset}
+
+LFM1b\_artist è un dataset contenente informazioni riguardanti le interazioni tra utenti e artisti musicali.
+
+
+
+\subsection{Dataset originale}
+
+
+Descrizione del dataset
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        \textbf{Feature} & \textbf{Descrizione} \\
+        \hline
+        n\_users & 120322 \\
+        \hline
+        n\_items & 3123496 \\
+        \hline
+        n\_inter & 65133026 \\
+        \hline
+        sparsity & 0.9998266933373666 \\
+        \hline
+        avg\_inter\_user & 541.3226675088513 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul dataset LFM1b\_artist}
+    \label{tab:dataset_info}
+\end{table}
+
+
+\noindent Descrizione del knowledge graph
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        n\_ent\_head & 823213 \\
+        \hline
+        n\_ent\_tail & 353607 \\
+        \hline
+        n\_rel & 8 \\
+        \hline
+        n\_triple & 2114049 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul knowledge graph del dataset LFM1b\_artist}
+    \label{tab:dataset_info}
+\end{table}
+
+\noindent I nomi delle relazioni presenti nel knowledge graph sono i seguenti:
+\begin{itemize}
+    \item music.recording.artist
+    \item music.recording.releases
+    \item music.recording.producer
+    \item music.recording.engineer
+    \item music.recording.featured\_artists
+    \item music.featured\_artist.recordings
+    \item music.release.artist
+    \item music.artist.release
+\end{itemize}
+
+\subsection{Processing del dataset}
+
+\subsubsection{Descrizione procedimento}
+
+\noindent Il dataset originale risultava essere troppo grande per le risorse a nostra disposizione, dunque è stato opportunamente processato. In paritcolare sono state svolte le seguenti operazioni
+\begin{itemize}
+    \item \textbf{Filtraggio:} il dataset è stato filtrato eliminando tutte le interazioni in cui erano coinvolti utenti e/o item con meno di 5 interazioni
+    \item \textbf{Sampling:} dopo la fase di filtraggio, è stato effettuato un sampling casuale il cui scopo era quello di ridurre il numero di utenti e di item presenti. In particolare sono stati selezionati casualmente 20000 utenti e 50000 item e sono state mantenute solo le interazioni in cui erano coinvolti utenti e item selezionati
+\end{itemize}
+
+\noindent In questo modo è stato ottenuto un dataset più piccolo e più facilmente gestibile rispetto a quello originale.
+Per poter lavorare su più dataset si è deciso di effettuare un ulteriore processing del dataset, andando a creare dei sampling con una strategia di stratificazione: \footnote{{{Mantenendo il numero di utenti inalterato per ognuno di essi sono stati campionati casualmente un determinato numero di interazioni cercando di mantenere inalterati i "rapporti originali" tra i diversi utenti}}}{}
+\begin{itemize}
+    \item \textbf{75\%:} Per ogni utente sono state mantenute il 75\% delle interazioni originali
+    \item \textbf{50\%:} Dal dataset al 75\% sono state mantenute circa il 66.67\% delle interazioni di ogni utente, in modo tale da avere il 50\% delle interazioni originali
+    \item \textbf{25\%:} Dal dataset al 50\% sono state mantenute il 50\% delle interazioni di ogni utente, in modo tale da avere il 25\% delle interazioni originali
+\end{itemize}
+
+\subsubsection{Dataset core5}
+
+Descrizione del dataset
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        \textbf{Feature} & \textbf{Descrizione} \\
+        \hline
+        n\_users & 120175 \\
+        \hline
+        n\_items & 585095 \\
+        \hline
+        n\_inter & 61534450 \\
+        \hline
+        sparsity & 0.9991248594539152 \\
+        \hline
+        avg\_inter\_user & 512.0403578115248 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul dataset LFM1b\_artist\_core5}
+    \label{tab:dataset_info}
+\end{table}
+
+
+\noindent Descrizione del knowledge graph
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        n\_ent\_head & 823213 \\
+        \hline
+        n\_ent\_tail & 353607 \\
+        \hline
+        n\_rel & 8 \\
+        \hline
+        n\_triple & 2114049 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul knowledge graph del dataset LFM1b\_artist\_core5}
+    \label{tab:dataset_info}
+\end{table}
+
+\noindent I nomi delle relazioni presenti nel knowledge graph sono i seguenti:
+\begin{itemize}
+    \item music.recording.artist
+    \item music.recording.releases
+    \item music.recording.producer
+    \item music.recording.engineer
+    \item music.recording.featured\_artists
+    \item music.featured\_artist.recordings
+    \item music.release.artist
+    \item music.artist.release
+\end{itemize}
+
+
+
+\subsubsection{Dataset 20.000 users, 50.000 items}
+
+Descrizione del dataset
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        \textbf{Feature} & \textbf{Descrizione} \\
+        \hline
+        n\_users & 19841 \\
+        \hline
+        n\_items & 42457 \\
+        \hline
+        n\_inter & 900212 \\
+        \hline
+        sparsity & 0.9989313587429705 \\
+        \hline
+        avg\_inter\_user & 45.371301849705155 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul dataset LFM1b\_artist\_20U50I}
+    \label{tab:dataset_info}
+\end{table}
+
+
+\noindent Descrizione del knowledge graph
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        n\_ent\_head & 15509 \\
+        \hline
+        n\_ent\_tail & 35156 \\
+        \hline
+        n\_rel & 5 \\
+        \hline
+        n\_triple & 46827 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul knowledge graph del dataset LFM1b\_artist\_20U50I}
+    \label{tab:dataset_info}
+\end{table}
+
+\noindent I nomi delle relazioni presenti nel knowledge graph sono i seguenti:
+\begin{itemize}
+    \item music.recording.artist
+    \item music.recording.releases
+    \item music.recording.producer
+    \item music.recording.engineer
+    \item music.recording.featured\_artists
+\end{itemize}
+
+
+
+\subsubsection{Dataset 75\%}
+
+Descrizione del dataset
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        \textbf{Feature} & \textbf{Descrizione} \\
+        \hline
+        n\_users & 19841 \\
+        \hline
+        n\_items & 38932 \\
+        \hline
+        n\_inter & 667850 \\
+        \hline
+        sparsity & 0.9991354130849345 \\
+        \hline
+        avg\_inter\_user & 33.660097777329774 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul dataset LFM1b\_artist\_20U50I\_75strat}
+    \label{tab:dataset_info}
+\end{table}
+
+
+\noindent Descrizione del knowledge graph
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        n\_ent\_head & 14327 \\
+        \hline
+        n\_ent\_tail & 32981 \\
+        \hline
+        n\_rel & 5 \\
+        \hline
+        n\_triple & 43559 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul knowledge graph del dataset LFM1b\_artist\_20U50I\_75strat}
+    \label{tab:dataset_info}
+\end{table}
+
+\noindent I nomi delle relazioni presenti nel knowledge graph sono i seguenti:
+\begin{itemize}
+    \item music.recording.artist
+    \item music.recording.releases
+    \item music.recording.producer
+    \item music.recording.engineer
+    \item music.recording.featured\_artists
+\end{itemize}
+
+
+
+\subsubsection{Dataset 50\%}
+
+Descrizione del dataset
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        \textbf{Feature} & \textbf{Descrizione} \\
+        \hline
+        n\_users & 19841 \\
+        \hline
+        n\_items & 33653 \\
+        \hline
+        n\_inter & 440620 \\
+        \hline
+        sparsity &  0.9993401019218887 \\
+        \hline
+        avg\_inter\_user & 22.20755002268031 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul dataset LFM1b\_artist\_20U50I\_50strat}
+    \label{tab:dataset_info}
+\end{table}
+
+
+\noindent Descrizione del knowledge graph
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        n\_ent\_head & 12522 \\
+        \hline
+        n\_ent\_tail & 29509 \\
+        \hline
+        n\_rel & 5 \\
+        \hline
+        n\_triple & 38491 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul knowledge graph del dataset LFM1b\_artist\_20U50I\_50strat}
+    \label{tab:dataset_info}
+\end{table}
+
+\noindent I nomi delle relazioni presenti nel knowledge graph sono i seguenti:
+\begin{itemize}
+    \item music.recording.artist
+    \item music.recording.releases
+    \item music.recording.producer
+    \item music.recording.engineer
+    \item music.recording.featured\_artists
+\end{itemize}
+
+
+
+\subsubsection{Dataset 25\%}
+
+Descrizione del dataset
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        \textbf{Feature} & \textbf{Descrizione} \\
+        \hline
+        n\_users & 19841 \\
+        \hline
+        n\_items & 24878 \\
+        \hline
+        n\_inter & 218457 \\
+        \hline
+        sparsity & 0.9995574249320202 \\
+        \hline
+        avg\_inter\_user & 11.01038254120256 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul dataset LFM1b\_artist\_20U50I\_25strat}
+    \label{tab:dataset_info}
+\end{table}
+
+
+\noindent Descrizione del knowledge graph
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        n\_ent\_head & 9444 \\
+        \hline
+        n\_ent\_tail & 23463 \\
+        \hline
+        n\_rel & 5 \\
+        \hline
+        n\_triple & 29822 \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul knowledge graph del dataset LFM1b\_artist\_20U50I\_25strat}
+    \label{tab:dataset_info}
+\end{table}
+
+\noindent I nomi delle relazioni presenti nel knowledge graph sono i seguenti:
+\begin{itemize}
+    \item music.recording.artist
+    \item music.recording.releases
+    \item music.recording.producer
+    \item music.recording.engineer
+    \item music.recording.featured\_artists
+\end{itemize}

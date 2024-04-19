@@ -1,0 +1,263 @@
+\begin{thebibliography}{10}
+
+\bibitem{CFKG}
+Qingyao Ai, Vahid Azizi, Xu~Chen, and Yongfeng Zhang.
+\newblock Learning heterogeneous knowledge base embeddings for explainable
+  recommendation.
+\newblock {\em Algorithms}, 11(9), 2018.
+
+\bibitem{ItemKNN}
+Fabio Aiolli.
+\newblock Efficient top-n recommendation for very large scale binary rated
+  datasets.
+\newblock In {\em Proceedings of the 7th ACM Conference on Recommender
+  Systems}, RecSys '13, page 273–280, New York, NY, USA, 2013. Association
+  for Computing Machinery.
+
+\bibitem{NNCF}
+Ting Bai, Ji-Rong Wen, Jun Zhang, and Wayne~Xin Zhao.
+\newblock A neural collaborative filtering model with interaction-based
+  neighborhood.
+\newblock In {\em Proceedings of the 2017 ACM on Conference on Information and
+  Knowledge Management}, CIKM '17, page 1979–1982, New York, NY, USA, 2017.
+  Association for Computing Machinery.
+
+\bibitem{KTUP}
+Yixin Cao, Xiang Wang, Xiangnan He, Zikun Hu, and Tat-Seng Chua.
+\newblock Unifying knowledge graph learning and recommendation: Towards a
+  better understanding of user preferences.
+\newblock In {\em The World Wide Web Conference}, WWW '19, page 151–161, New
+  York, NY, USA, 2019. Association for Computing Machinery.
+
+\bibitem{ENMF}
+Chong Chen, Min Zhang, Yongfeng Zhang, Yiqun Liu, and Shaoping Ma.
+\newblock Efficient neural matrix factorization without sampling for
+  recommendation.
+\newblock {\em ACM Trans. Inf. Syst.}, 38(2), jan 2020.
+
+\bibitem{LightGCN}
+Xiangnan He, Kuan Deng, Xiang Wang, Yan Li, YongDong Zhang, and Meng Wang.
+\newblock Lightgcn: Simplifying and powering graph convolution network for
+  recommendation.
+\newblock In {\em Proceedings of the 43rd International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR '20, page
+  639–648, New York, NY, USA, 2020. Association for Computing Machinery.
+
+\bibitem{ConvNCF}
+Xiangnan He, Xiaoyu Du, Xiang Wang, Feng Tian, Jinhui Tang, and Tat-Seng Chua.
+\newblock Outer product-based neural collaborative filtering.
+\newblock {\em arXiv preprint arXiv:1808.03912}, 2018.
+
+\bibitem{NAIS}
+Xiangnan He, Zhankui He, Jingkuan Song, Zhenguang Liu, Yu-Gang Jiang, and
+  Tat-Seng Chua.
+\newblock Nais: Neural attentive item similarity model for recommendation.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering},
+  30(12):2354–2366, December 2018.
+
+\bibitem{NeuMF}
+Xiangnan He, Lizi Liao, Hanwang Zhang, Liqiang Nie, Xia Hu, and Tat-Seng Chua.
+\newblock Neural collaborative filtering.
+\newblock In {\em Proceedings of the 26th International Conference on World
+  Wide Web}, WWW '17, page 173–182, Republic and Canton of Geneva, CHE, 2017.
+  International World Wide Web Conferences Steering Committee.
+
+\bibitem{FISM}
+Santosh Kabbur, Xia Ning, and George Karypis.
+\newblock Fism: factored item similarity models for top-n recommender systems.
+\newblock In {\em Proceedings of the 19th ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, KDD '13, page 659–667, New York,
+  NY, USA, 2013. Association for Computing Machinery.
+
+\bibitem{MultiDAE}
+Dawen Liang, Rahul~G. Krishnan, Matthew~D. Hoffman, and Tony Jebara.
+\newblock Variational autoencoders for collaborative filtering.
+\newblock In {\em Proceedings of the 2018 World Wide Web Conference}, WWW '18,
+  pages 689--698, Republic and Canton of Geneva, CHE, 2018. International World
+  Wide Web Conferences Steering Committee.
+
+\bibitem{MultiVAE}
+Dawen Liang, Rahul~G. Krishnan, Matthew~D. Hoffman, and Tony Jebara.
+\newblock Variational autoencoders for collaborative filtering.
+\newblock In {\em Proceedings of the 2018 World Wide Web Conference}, WWW '18,
+  page 689–698, Republic and Canton of Geneva, CHE, 2018. International World
+  Wide Web Conferences Steering Committee.
+
+\bibitem{NCL}
+Zihan Lin, Changxin Tian, Yupeng Hou, and Wayne~Xin Zhao.
+\newblock Improving graph collaborative filtering with neighborhood-enriched
+  contrastive learning.
+\newblock In {\em Proceedings of the ACM Web Conference 2022}, WWW ’22. ACM,
+  April 2022.
+
+\bibitem{MacridVAE}
+Jianxin Ma, Chang Zhou, Peng Cui, Hongxia Yang, and Wenwu Zhu.
+\newblock {\em Learning disentangled representations for recommendation}.
+\newblock Curran Associates Inc., Red Hook, NY, USA, 2019.
+
+\bibitem{SimpleX}
+Kelong Mao, Jieming Zhu, Jinpeng Wang, Quanyu Dai, Zhenhua Dong, Xi~Xiao, and
+  Xiuqiang He.
+\newblock Simplex: A simple and strong baseline for collaborative filtering.
+\newblock In {\em Proceedings of the 30th ACM International Conference on
+  Information \& Knowledge Management}, CIKM '21, page 1243–1252, New York,
+  NY, USA, 2021. Association for Computing Machinery.
+
+\bibitem{SLIMElastic}
+Xia Ning and George Karypis.
+\newblock Slim: Sparse linear methods for top-n recommender systems.
+\newblock In {\em 2011 IEEE 11th International Conference on Data Mining},
+  pages 497--506, 2011.
+
+\bibitem{BPR}
+Steffen Rendle, Christoph Freudenthaler, Zeno Gantner, and Lars Schmidt-Thieme.
+\newblock Bpr: Bayesian personalized ranking from implicit feedback.
+\newblock In {\em Proceedings of the Twenty-Fifth Conference on Uncertainty in
+  Artificial Intelligence}, UAI '09, page 452–461, Arlington, Virginia, USA,
+  2009. AUAI Press.
+
+\bibitem{RecVAE}
+Ilya Shenbin, Anton Alekseev, Elena Tutubalina, Valentin Malykh, and Sergey~I.
+  Nikolenko.
+\newblock Recvae: A new variational autoencoder for top-n recommendations with
+  implicit feedback.
+\newblock In {\em Proceedings of the 13th International Conference on Web
+  Search and Data Mining}, WSDM '20, page 528–536, New York, NY, USA, 2020.
+  Association for Computing Machinery.
+
+\bibitem{spillo2023towards}
+Giuseppe Spillo, Allegra De~Filippo, Cataldo Musto, Michela Milano, and
+  Giovanni Semeraro.
+\newblock Towards sustainability-aware recommender systems: analyzing the
+  trade-off between algorithms performance and carbon footprint.
+\newblock In {\em Proceedings of the 17th ACM Conference on Recommender
+  Systems}, pages 856--862, 2023.
+
+\bibitem{EASE}
+Harald Steck.
+\newblock Embarrassingly shallow autoencoders for sparse data.
+\newblock In {\em The World Wide Web Conference}, WWW '19, page 3251–3257,
+  New York, NY, USA, 2019. Association for Computing Machinery.
+
+\bibitem{ADMMSLIM}
+Harald Steck, Maria Dimakopoulou, Nickolai Riabov, and Tony Jebara.
+\newblock Admm slim: Sparse recommendations for many users.
+\newblock In {\em Proceedings of the 13th International Conference on Web
+  Search and Data Mining}, WSDM '20, page 555–563, New York, NY, USA, 2020.
+  Association for Computing Machinery.
+
+\bibitem{LINE}
+Jian Tang, Meng Qu, Mingzhe Wang, Ming Zhang, Jun Yan, and Qiaozhu Mei.
+\newblock Line: Large-scale information network embedding.
+\newblock In {\em Proceedings of the 24th International Conference on World
+  Wide Web}, WWW '15, page 1067–1077, Republic and Canton of Geneva, CHE,
+  2015. International World Wide Web Conferences Steering Committee.
+
+\bibitem{GCMC}
+Rianne van~den Berg, Thomas~N. Kipf, and Max Welling.
+\newblock Graph convolutional matrix completion, 2017.
+
+\bibitem{RippleNet}
+Hongwei Wang, Fuzheng Zhang, Jialin Wang, Miao Zhao, Wenjie Li, Xing Xie, and
+  Minyi Guo.
+\newblock Ripplenet: Propagating user preferences on the knowledge graph for
+  recommender systems.
+\newblock In {\em Proceedings of the 27th ACM International Conference on
+  Information and Knowledge Management}, CIKM '18, page 417–426, New York,
+  NY, USA, 2018. Association for Computing Machinery.
+
+\bibitem{KGNNLS}
+Hongwei Wang, Fuzheng Zhang, Mengdi Zhang, Jure Leskovec, Miao Zhao, Wenjie Li,
+  and Zhongyuan Wang.
+\newblock Knowledge-aware graph neural networks with label smoothness
+  regularization for recommender systems, 2019.
+
+\bibitem{MKR}
+Hongwei Wang, Fuzheng Zhang, Miao Zhao, Wenjie Li, Xing Xie, and Minyi Guo.
+\newblock Multi-task feature learning for knowledge graph enhanced
+  recommendation, 2019.
+
+\bibitem{KGCN}
+Hongwei Wang, Miao Zhao, Xing Xie, Wenjie Li, and Minyi Guo.
+\newblock Knowledge graph convolutional networks for recommender systems.
+\newblock In {\em The World Wide Web Conference}, WWW '19, page 3307–3313,
+  New York, NY, USA, 2019. Association for Computing Machinery.
+
+\bibitem{DiffRec}
+Wenjie Wang, Yiyan Xu, Fuli Feng, Xinyu Lin, Xiangnan He, and Tat-Seng Chua.
+\newblock Diffusion recommender model.
+\newblock In {\em Proceedings of the 46th International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR '23, page
+  832–841, New York, NY, USA, 2023. Association for Computing Machinery.
+
+\bibitem{LDiffRec}
+Wenjie Wang, Yiyan Xu, Fuli Feng, Xinyu Lin, Xiangnan He, and Tat-Seng Chua.
+\newblock Diffusion recommender model.
+\newblock In {\em Proceedings of the 46th International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR '23, page
+  832–841, New York, NY, USA, 2023. Association for Computing Machinery.
+
+\bibitem{NGCF}
+Xiang Wang, Xiangnan He, Meng Wang, Fuli Feng, and Tat-Seng Chua.
+\newblock Neural graph collaborative filtering.
+\newblock In {\em Proceedings of the 42nd International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR'19, page 165–174,
+  New York, NY, USA, 2019. Association for Computing Machinery.
+
+\bibitem{KGIN}
+Xiang Wang, Tinglin Huang, Dingxian Wang, Yancheng Yuan, Zhenguang Liu,
+  Xiangnan He, and Tat-Seng Chua.
+\newblock Learning intents behind interactions with knowledge graph for
+  recommendation.
+\newblock In {\em Proceedings of the Web Conference 2021}, WWW '21, page
+  878–887, New York, NY, USA, 2021. Association for Computing Machinery.
+
+\bibitem{DGCF}
+Xiang Wang, Hongye Jin, An~Zhang, Xiangnan He, Tong Xu, and Tat-Seng Chua.
+\newblock Disentangled graph collaborative filtering.
+\newblock In {\em Proceedings of the 43rd International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR '20, page
+  1001–1010, New York, NY, USA, 2020. Association for Computing Machinery.
+
+\bibitem{NCEPLRec}
+Ga~Wu, Maksims Volkovs, Chee~Loong Soon, Scott Sanner, and Himanshu Rai.
+\newblock Noise contrastive estimation for one-class collaborative filtering.
+\newblock In {\em Proceedings of the 42nd International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR'19, page 135–144,
+  New York, NY, USA, 2019. Association for Computing Machinery.
+
+\bibitem{SGL}
+Jiancan Wu, Xiang Wang, Fuli Feng, Xiangnan He, Liang Chen, Jianxun Lian, and
+  Xing Xie.
+\newblock Self-supervised graph learning for recommendation.
+\newblock In {\em Proceedings of the 44th International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, SIGIR ’21. ACM, July
+  2021.
+
+\bibitem{CDAE}
+Yao Wu, Christopher DuBois, Alice~X. Zheng, and Martin Ester.
+\newblock Collaborative denoising auto-encoders for top-n recommender systems.
+\newblock In {\em Proceedings of the Ninth ACM International Conference on Web
+  Search and Data Mining}, WSDM '16, page 153–162, New York, NY, USA, 2016.
+  Association for Computing Machinery.
+
+\bibitem{DMF}
+Hong-Jian Xue, Xinyu Dai, Jianbing Zhang, Shujian Huang, and Jiajun Chen.
+\newblock Deep matrix factorization models for recommender systems.
+\newblock In {\em IJCAI}, volume~17, pages 3203--3209. Melbourne, Australia,
+  2017.
+
+\bibitem{CKE}
+Fuzheng Zhang, Nicholas~Jing Yuan, Defu Lian, Xing Xie, and Wei-Ying Ma.
+\newblock Collaborative knowledge base embedding for recommender systems.
+\newblock In {\em Proceedings of the 22nd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, KDD '16, page 353–362, New York,
+  NY, USA, 2016. Association for Computing Machinery.
+
+\bibitem{SpectralCF}
+Lei Zheng, Chun-Ta Lu, Fei Jiang, Jiawei Zhang, and Philip~S Yu.
+\newblock Spectral collaborative filtering.
+\newblock In {\em Proceedings of the 12th ACM conference on recommender
+  systems}, pages 311--319, 2018.
+
+\end{thebibliography}

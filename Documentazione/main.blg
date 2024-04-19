@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Database file #1: bibliography.bib
+Warning--empty chapter and pages in MacridVAE
+You've used 38 entries,
+            2118 wiz_defined-function locations,
+            748 strings with 12221 characters,
+and the built_in function-call counts, 19876 in all, are:
+= -- 2082
+> -- 1042
+< -- 29
++ -- 411
+- -- 372
+* -- 1198
+:= -- 2877
+add.period$ -- 138
+call.type$ -- 38
+change.case$ -- 299
+chr.to.int$ -- 0
+cite$ -- 39
+duplicate$ -- 1003
+empty$ -- 1278
+format.name$ -- 372
+if$ -- 4582
+int.to.chr$ -- 0
+int.to.str$ -- 38
+missing$ -- 36
+newline$ -- 190
+num.names$ -- 76
+pop$ -- 350
+preamble$ -- 1
+purify$ -- 262
+quote$ -- 0
+skip$ -- 969
+stack$ -- 0
+substring$ -- 822
+swap$ -- 553
+text.length$ -- 29
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 150
+warning$ -- 1
+while$ -- 113
+width$ -- 40
+write$ -- 486
+(There was 1 warning)

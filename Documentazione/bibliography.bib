@@ -1,0 +1,600 @@
+@inproceedings{spillo2023towards,
+  title={Towards sustainability-aware recommender systems: analyzing the trade-off between algorithms performance and carbon footprint},
+  author={Spillo, Giuseppe and De Filippo, Allegra and Musto, Cataldo and Milano, Michela and Semeraro, Giovanni},
+  booktitle={Proceedings of the 17th ACM Conference on Recommender Systems},
+  pages={856--862},
+  year={2023}
+}
+
+@inproceedings{BPR,
+author = {Rendle, Steffen and Freudenthaler, Christoph and Gantner, Zeno and Schmidt-Thieme, Lars},
+title = {BPR: Bayesian personalized ranking from implicit feedback},
+year = {2009},
+isbn = {9780974903958},
+publisher = {AUAI Press},
+address = {Arlington, Virginia, USA},
+abstract = {Item recommendation is the task of predicting a personalized ranking on a set of items (e.g. websites, movies, products). In this paper, we investigate the most common scenario with implicit feedback (e.g. clicks, purchases). There are many methods for item recommendation from implicit feedback like matrix factorization (MF) or adaptive k-nearest-neighbor (kNN). Even though these methods are designed for the item prediction task of personalized ranking, none of them is directly optimized for ranking. In this paper we present a generic optimization criterion BPR-Opt for personalized ranking that is the maximum posterior estimator derived from a Bayesian analysis of the problem. We also provide a generic learning algorithm for optimizing models with respect to BPR-Opt. The learning method is based on stochastic gradient descent with bootstrap sampling. We show how to apply our method to two state-of-the-art recommender models: matrix factorization and adaptive kNN. Our experiments indicate that for the task of personalized ranking our optimization method outperforms the standard learning techniques for MF and kNN. The results show the importance of optimizing models for the right criterion.},
+booktitle = {Proceedings of the Twenty-Fifth Conference on Uncertainty in Artificial Intelligence},
+pages = {452–461},
+numpages = {10},
+location = {Montreal, Quebec, Canada},
+series = {UAI '09}
+}
+
+@inproceedings{CDAE,
+author = {Wu, Yao and DuBois, Christopher and Zheng, Alice X. and Ester, Martin},
+title = {Collaborative Denoising Auto-Encoders for Top-N Recommender Systems},
+year = {2016},
+isbn = {9781450337168},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2835776.2835837},
+doi = {10.1145/2835776.2835837},
+abstract = {Most real-world recommender services measure their performance based on the top-N results shown to the end users. Thus, advances in top-N recommendation have far-ranging consequences in practical applications. In this paper, we present a novel method, called Collaborative Denoising Auto-Encoder (CDAE), for top-N recommendation that utilizes the idea of Denoising Auto-Encoders. We demonstrate that the proposed model is a generalization of several well-known collaborative filtering models but with more flexible components. Thorough experiments are conducted to understand the performance of CDAE under various component settings. Furthermore, experimental results on several public datasets demonstrate that CDAE consistently outperforms state-of-the-art top-N recommendation methods on a variety of common evaluation metrics.},
+booktitle = {Proceedings of the Ninth ACM International Conference on Web Search and Data Mining},
+pages = {153–162},
+numpages = {10},
+keywords = {collaborative filtering, denoising auto- encoders, recommender systems},
+location = {San Francisco, California, USA},
+series = {WSDM '16}
+}
+
+
+
+@Article{CFKG,
+AUTHOR = {Ai, Qingyao and Azizi, Vahid and Chen, Xu and Zhang, Yongfeng},
+TITLE = {Learning Heterogeneous Knowledge Base Embeddings for Explainable Recommendation},
+JOURNAL = {Algorithms},
+VOLUME = {11},
+YEAR = {2018},
+NUMBER = {9},
+ARTICLE-NUMBER = {137},
+URL = {https://www.mdpi.com/1999-4893/11/9/137},
+ISSN = {1999-4893},
+ABSTRACT = {Providing model-generated explanations in recommender systems is important to user experience. State-of-the-art recommendation algorithms—especially the collaborative filtering (CF)- based approaches with shallow or deep models—usually work with various unstructured information sources for recommendation, such as textual reviews, visual images, and various implicit or explicit feedbacks. Though structured knowledge bases were considered in content-based approaches, they have been largely ignored recently due to the availability of vast amounts of data and the learning power of many complex models. However, structured knowledge bases exhibit unique advantages in personalized recommendation systems. When the explicit knowledge about users and items is considered for recommendation, the system could provide highly customized recommendations based on users’ historical behaviors and the knowledge is helpful for providing informed explanations regarding the recommended items. A great challenge for using knowledge bases for recommendation is how to integrate large-scale structured and unstructured data, while taking advantage of collaborative filtering for highly accurate performance. Recent achievements in knowledge-base embedding (KBE) sheds light on this problem, which makes it possible to learn user and item representations while preserving the structure of their relationship with external knowledge for explanation. In this work, we propose to explain knowledge-base embeddings for explainable recommendation. Specifically, we propose a knowledge-base representation learning framework to embed heterogeneous entities for recommendation, and based on the embedded knowledge base, a soft matching algorithm is proposed to generate personalized explanations for the recommended items. Experimental results on real-world e-commerce datasets verified the superior recommendation performance and the explainability power of our approach compared with state-of-the-art baselines.},
+DOI = {10.3390/a11090137}
+}
+
+@inproceedings{CKE,
+author = {Zhang, Fuzheng and Yuan, Nicholas Jing and Lian, Defu and Xie, Xing and Ma, Wei-Ying},
+title = {Collaborative Knowledge Base Embedding for Recommender Systems},
+year = {2016},
+isbn = {9781450342322},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2939672.2939673},
+doi = {10.1145/2939672.2939673},
+abstract = {Among different recommendation techniques, collaborative filtering usually suffer from limited performance due to the sparsity of user-item interactions. To address the issues, auxiliary information is usually used to boost the performance. Due to the rapid collection of information on the web, the knowledge base provides heterogeneous information including both structured and unstructured data with different semantics, which can be consumed by various applications. In this paper, we investigate how to leverage the heterogeneous information in a knowledge base to improve the quality of recommender systems. First, by exploiting the knowledge base, we design three components to extract items' semantic representations from structural content, textual content and visual content, respectively. To be specific, we adopt a heterogeneous network embedding method, termed as TransR, to extract items' structural representations by considering the heterogeneity of both nodes and relationships. We apply stacked denoising auto-encoders and stacked convolutional auto-encoders, which are two types of deep learning based embedding techniques, to extract items' textual representations and visual representations, respectively. Finally, we propose our final integrated framework, which is termed as Collaborative Knowledge Base Embedding (CKE), to jointly learn the latent representations in collaborative filtering as well as items' semantic representations from the knowledge base. To evaluate the performance of each embedding component as well as the whole system, we conduct extensive experiments with two real-world datasets from different scenarios. The results reveal that our approaches outperform several widely adopted state-of-the-art recommendation methods.},
+booktitle = {Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+pages = {353–362},
+numpages = {10},
+keywords = {collaborative joint learning, knowledge base embedding, recommender systems},
+location = {San Francisco, California, USA},
+series = {KDD '16}
+}
+
+@inproceedings{DGCF,
+author = {Wang, Xiang and Jin, Hongye and Zhang, An and He, Xiangnan and Xu, Tong and Chua, Tat-Seng},
+title = {Disentangled Graph Collaborative Filtering},
+year = {2020},
+isbn = {9781450380164},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3397271.3401137},
+doi = {10.1145/3397271.3401137},
+abstract = {Learning informative representations of users and items from the interaction data is of crucial importance to collaborative filtering (CF). Present embedding functions exploit user-item relationships to enrich the representations, evolving from a single user-item instance to the holistic interaction graph. Nevertheless, they largely model the relationships in a uniform manner, while neglecting the diversity of user intents on adopting the items, which could be to pass time, for interest, or shopping for others like families. Such uniform approach to model user interests easily results in suboptimal representations, failing to model diverse relationships and disentangle user intents in representations.In this work, we pay special attention to user-item relationships at the finer granularity of user intents. We hence devise a new model, Disentangled Graph Collaborative Filtering (DGCF), to disentangle these factors and yield disentangled representations. Specifically, by modeling a distribution over intents for each user-item interaction, we iteratively refine the intent-aware interaction graphs and representations. Meanwhile, we encourage independence of different intents. This leads to disentangled representations, effectively distilling information pertinent to each intent. We conduct extensive experiments on three benchmark datasets, and DGCF achieves significant improvements over several state-of-the-art models like NGCF, DisenGCN, and MacridVAE. Further analyses offer insights into the advantages of DGCF on the disentanglement of user intents and interpretability of representations. Our codes are available in https://github.com/ xiangwang1223/disentangled_graph_collaborative_filtering.},
+booktitle = {Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {1001–1010},
+numpages = {10},
+keywords = {collaborative filtering, disentangled representation learning, explainable recommendation, graph neural networks},
+location = {Virtual Event, China},
+series = {SIGIR '20}
+}
+
+
+
+@inproceedings{DMF,
+  title={Deep matrix factorization models for recommender systems.},
+  author={Xue, Hong-Jian and Dai, Xinyu and Zhang, Jianbing and Huang, Shujian and Chen, Jiajun},
+  booktitle={IJCAI},
+  volume={17},
+  pages={3203--3209},
+  year={2017},
+  organization={Melbourne, Australia}
+}
+
+
+
+@inproceedings{DiffRec,
+author = {Wang, Wenjie and Xu, Yiyan and Feng, Fuli and Lin, Xinyu and He, Xiangnan and Chua, Tat-Seng},
+title = {Diffusion Recommender Model},
+year = {2023},
+isbn = {9781450394086},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3539618.3591663},
+doi = {10.1145/3539618.3591663},
+abstract = {Generative models such as Generative Adversarial Networks (GANs) and Variational Auto-Encoders (VAEs) are widely utilized to model the generative process of user interactions. However, they suffer from intrinsic limitations such as the instability of GANs and the restricted representation ability of VAEs. Such limitations hinder the accurate modeling of the complex user interaction generation procedure, such as noisy interactions caused by various interference factors. In light of the impressive advantages of Diffusion Models (DMs) over traditional generative models in image synthesis, we propose a novel Diffusion Recommender Model (named DiffRec) to learn the generative process in a denoising manner. To retain personalized information in user interactions, DiffRec reduces the added noises and avoids corrupting users' interactions into pure noises like in image synthesis. In addition, we extend traditional DMs to tackle the unique challenges in recommendation: high resource costs for large-scale item prediction and temporal shifts of user preference. To this end, we propose two extensions of DiffRec: L-DiffRec clusters items for dimension compression and conducts the diffusion processes in the latent space; and T-DiffRec reweights user interactions based on the interaction timestamps to encode temporal information. We conduct extensive experiments on three datasets under multiple settings (e.g., clean training, noisy training, and temporal training). The empirical results validate the superiority of DiffRec with two extensions over competitive baselines.},
+booktitle = {Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {832–841},
+numpages = {10},
+keywords = {latent and temporal diffusion recommender models, generative recommender model, diffusion model},
+location = {, Taipei, Taiwan, },
+series = {SIGIR '23}
+}
+
+
+@article{ENMF,
+author = {Chen, Chong and Zhang, Min and Zhang, Yongfeng and Liu, Yiqun and Ma, Shaoping},
+title = {Efficient Neural Matrix Factorization without Sampling for Recommendation},
+year = {2020},
+issue_date = {April 2020},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {38},
+number = {2},
+issn = {1046-8188},
+url = {https://doi.org/10.1145/3373807},
+doi = {10.1145/3373807},
+abstract = {Recommendation systems play a vital role to keep users engaged with personalized contents in modern online platforms. Recently, deep learning has revolutionized many research fields and there is a surge of interest in applying it for recommendation. However, existing studies have largely focused on exploring complex deep-learning architectures for recommendation task, while typically applying the negative sampling strategy for model learning. Despite effectiveness, we argue that these methods suffer from two important limitations: (1) the methods with complex network structures have a substantial number of parameters, and require expensive computations even with a sampling-based learning strategy; (2) the negative sampling strategy is not robust, making sampling-based methods difficult to achieve the optimal performance in practical applications.In this work, we propose to learn neural recommendation models from the whole training data without sampling. However, such a non-sampling strategy poses strong challenges to learning efficiency. To address this, we derive three new optimization methods through rigorous mathematical reasoning, which can efficiently learn model parameters from the whole data (including all missing data) with a rather low time complexity. Moreover, based on a simple Neural Matrix Factorization architecture, we present a general framework named ENMF, short for Efficient Neural Matrix Factorization. Extensive experiments on three real-world public datasets indicate that the proposed ENMF framework consistently and significantly outperforms the state-of-the-art methods on the Top-K recommendation task. Remarkably, ENMF also shows significant advantages in training efficiency, which makes it more applicable to real-world large-scale systems.},
+journal = {ACM Trans. Inf. Syst.},
+month = {jan},
+articleno = {14},
+numpages = {28},
+keywords = {recommendation system, neural networks, implicit feedback, efficient learning, Matrix factorization}
+}
+
+
+
+@inproceedings{FISM,
+author = {Kabbur, Santosh and Ning, Xia and Karypis, George},
+title = {FISM: factored item similarity models for top-N recommender systems},
+year = {2013},
+isbn = {9781450321747},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2487575.2487589},
+doi = {10.1145/2487575.2487589},
+abstract = {The effectiveness of existing top-N recommendation methods decreases as the sparsity of the datasets increases. To alleviate this problem, we present an item-based method for generating top-N recommendations that learns the item-item similarity matrix as the product of two low dimensional latent factor matrices. These matrices are learned using a structural equation modeling approach, wherein the value being estimated is not used for its own estimation. A comprehensive set of experiments on multiple datasets at three different sparsity levels indicate that the proposed methods can handle sparse datasets effectively and outperforms other state-of-the-art top-N recommendation methods. The experimental results also show that the relative performance gains compared to competing methods increase as the data gets sparser.},
+booktitle = {Proceedings of the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+pages = {659–667},
+numpages = {9},
+keywords = {item similarity, recommender systems, sparse data, topn},
+location = {Chicago, Illinois, USA},
+series = {KDD '13}
+}
+
+@misc{GCMC,
+      title={Graph Convolutional Matrix Completion}, 
+      author={Rianne van den Berg and Thomas N. Kipf and Max Welling},
+      year={2017},
+      eprint={1706.02263},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+@inproceedings{ItemKNN,
+author = {Aiolli, Fabio},
+title = {Efficient top-n recommendation for very large scale binary rated datasets},
+year = {2013},
+isbn = {9781450324090},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2507157.2507189},
+doi = {10.1145/2507157.2507189},
+abstract = {We present a simple and scalable algorithm for top-N recommendation able to deal with very large datasets and (binary rated) implicit feedback. We focus on memory-based collaborative filtering algorithms similar to the well known neighboor based technique for explicit feedback. The major difference, that makes the algorithm particularly scalable, is that it uses positive feedback only and no explicit computation of the complete (user-by-user or item-by-item) similarity matrix needs to be performed.The study of the proposed algorithm has been conducted on data from the Million Songs Dataset (MSD) challenge whose task was to suggest a set of songs (out of more than 380k available songs) to more than 100k users given half of the user listening history and complete listening history of other 1 million people.In particular, we investigate on the entire recommendation pipeline, starting from the definition of suitable similarity and scoring functions and suggestions on how to aggregate multiple ranking strategies to define the overall recommendation. The technique we are proposing extends and improves the one that already won the MSD challenge last year.},
+booktitle = {Proceedings of the 7th ACM Conference on Recommender Systems},
+pages = {273–280},
+numpages = {8},
+keywords = {top-n recommendation, million song dataset challenge, implicit feedback, collaborative filtering},
+location = {Hong Kong, China},
+series = {RecSys '13}
+}
+
+@inproceedings{KGCN,
+author = {Wang, Hongwei and Zhao, Miao and Xie, Xing and Li, Wenjie and Guo, Minyi},
+title = {Knowledge Graph Convolutional Networks for Recommender Systems},
+year = {2019},
+isbn = {9781450366748},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3308558.3313417},
+doi = {10.1145/3308558.3313417},
+abstract = {To alleviate sparsity and cold start problem of collaborative filtering based recommender systems, researchers and engineers usually collect attributes of users and items, and design delicate algorithms to exploit these additional information. In general, the attributes are not isolated but connected with each other, which forms a knowledge graph (KG). In this paper, we propose Knowledge Graph Convolutional Networks (KGCN), an end-to-end framework that captures inter-item relatedness effectively by mining their associated attributes on the KG. To automatically discover both high-order structure information and semantic information of the KG, we sample from the neighbors for each entity in the KG as their receptive field, then combine neighborhood information with bias when calculating the representation of a given entity. The receptive field can be extended to multiple hops away to model high-order proximity information and capture users' potential long-distance interests. Moreover, we implement the proposed KGCN in a minibatch fashion, which enables our model to operate on large datasets and KGs. We apply the proposed model to three datasets about movie, book, and music recommendation, and experiment results demonstrate that our approach outperforms strong recommender baselines.},
+booktitle = {The World Wide Web Conference},
+pages = {3307–3313},
+numpages = {7},
+keywords = {Recommender systems, Knowledge graph, Graph convolutional networks},
+location = {San Francisco, CA, USA},
+series = {WWW '19}
+}
+
+
+@inproceedings{KGIN,
+author = {Wang, Xiang and Huang, Tinglin and Wang, Dingxian and Yuan, Yancheng and Liu, Zhenguang and He, Xiangnan and Chua, Tat-Seng},
+title = {Learning Intents behind Interactions with Knowledge Graph for Recommendation},
+year = {2021},
+isbn = {9781450383127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3442381.3450133},
+doi = {10.1145/3442381.3450133},
+abstract = {Knowledge graph (KG) plays an increasingly important role in recommender systems. A recent technical trend is to develop end-to-end models founded on graph neural networks (GNNs). However, existing GNN-based models are coarse-grained in relational modeling, failing to (1) identify user-item relation at a fine-grained level of intents, and (2) exploit relation dependencies to preserve the semantics of long-range connectivity. In this study, we explore intents behind a user-item interaction by using auxiliary item knowledge, and propose a new model, Knowledge Graph-based Intent Network (KGIN). Technically, we model each intent as an attentive combination of KG relations, encouraging the independence of different intents for better model capability and interpretability. Furthermore, we devise a new information aggregation scheme for GNN, which recursively integrates the relation sequences of long-range connectivity (i.e., relational paths). This scheme allows us to distill useful information about user intents and encode them into the representations of users and items. Experimental results on three benchmark datasets show that, KGIN achieves significant improvements over the state-of-the-art methods like KGAT [41], KGNN-LS [38], and CKAN [47]. Further analyses show that KGIN offers interpretable explanations for predictions by identifying influential intents and relational paths. The implementations are available at https://github.com/huangtinglin/Knowledge_Graph_based_Intent_Network.},
+booktitle = {Proceedings of the Web Conference 2021},
+pages = {878–887},
+numpages = {10},
+keywords = {Graph Neural Networks, Knowledge Graph, Recommendation},
+location = {Ljubljana, Slovenia},
+series = {WWW '21}
+}
+
+
+@misc{KGNNLS,
+      title={Knowledge-aware Graph Neural Networks with Label Smoothness Regularization for Recommender Systems}, 
+      author={Hongwei Wang and Fuzheng Zhang and Mengdi Zhang and Jure Leskovec and Miao Zhao and Wenjie Li and Zhongyuan Wang},
+      year={2019},
+      eprint={1905.04413},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+
+@inproceedings{KTUP,
+author = {Cao, Yixin and Wang, Xiang and He, Xiangnan and Hu, Zikun and Chua, Tat-Seng},
+title = {Unifying Knowledge Graph Learning and Recommendation: Towards a Better Understanding of User Preferences},
+year = {2019},
+isbn = {9781450366748},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3308558.3313705},
+doi = {10.1145/3308558.3313705},
+abstract = {Incorporating knowledge graph (KG) into recommender system is promising in improving the recommendation accuracy and explainability. However, existing methods largely assume that a KG is complete and simply transfer the ”knowledge” in KG at the shallow level of entity raw data or embeddings. This may lead to suboptimal performance, since a practical KG can hardly be complete, and it is common that a KG has missing facts, relations, and entities. Thus, we argue that it is crucial to consider the incomplete nature of KG when incorporating it into recommender system. In this paper, we jointly learn the model of recommendation and knowledge graph completion. Distinct from previous KG-based recommendation methods, we transfer the relation information in KG, so as to understand the reasons that a user likes an item. As an example, if a user has watched several movies directed by (relation) the same person (entity), we can infer that the director relation plays a critical role when the user makes the decision, thus help to understand the user's preference at a finer granularity. Technically, we contribute a new translation-based recommendation model, which specially accounts for various preferences in translating a user to an item, and then jointly train it with a KG completion model by combining several transfer schemes. Extensive experiments on two benchmark datasets show that our method outperforms state-of-the-art KG-based recommendation methods. Further analysis verifies the positive effect of joint training on both tasks of recommendation and KG completion, and the advantage of our model in understanding user preference. We publish our project at https://github.com/TaoMiner/joint-kg-recommender.},
+booktitle = {The World Wide Web Conference},
+pages = {151–161},
+numpages = {11},
+keywords = {Embedding, Item Recommendation, Joint Model, Knowledge Graph},
+location = {San Francisco, CA, USA},
+series = {WWW '19}
+}
+
+@inproceedings{LDiffRec,
+author = {Wang, Wenjie and Xu, Yiyan and Feng, Fuli and Lin, Xinyu and He, Xiangnan and Chua, Tat-Seng},
+title = {Diffusion Recommender Model},
+year = {2023},
+isbn = {9781450394086},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3539618.3591663},
+doi = {10.1145/3539618.3591663},
+abstract = {Generative models such as Generative Adversarial Networks (GANs) and Variational Auto-Encoders (VAEs) are widely utilized to model the generative process of user interactions. However, they suffer from intrinsic limitations such as the instability of GANs and the restricted representation ability of VAEs. Such limitations hinder the accurate modeling of the complex user interaction generation procedure, such as noisy interactions caused by various interference factors. In light of the impressive advantages of Diffusion Models (DMs) over traditional generative models in image synthesis, we propose a novel Diffusion Recommender Model (named DiffRec) to learn the generative process in a denoising manner. To retain personalized information in user interactions, DiffRec reduces the added noises and avoids corrupting users' interactions into pure noises like in image synthesis. In addition, we extend traditional DMs to tackle the unique challenges in recommendation: high resource costs for large-scale item prediction and temporal shifts of user preference. To this end, we propose two extensions of DiffRec: L-DiffRec clusters items for dimension compression and conducts the diffusion processes in the latent space; and T-DiffRec reweights user interactions based on the interaction timestamps to encode temporal information. We conduct extensive experiments on three datasets under multiple settings (e.g., clean training, noisy training, and temporal training). The empirical results validate the superiority of DiffRec with two extensions over competitive baselines.},
+booktitle = {Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {832–841},
+numpages = {10},
+keywords = {diffusion model, generative recommender model, latent and temporal diffusion recommender models},
+location = {, Taipei, Taiwan, },
+series = {SIGIR '23}
+}
+
+
+@inproceedings{LINE,
+author = {Tang, Jian and Qu, Meng and Wang, Mingzhe and Zhang, Ming and Yan, Jun and Mei, Qiaozhu},
+title = {LINE: Large-scale Information Network Embedding},
+year = {2015},
+isbn = {9781450334693},
+publisher = {International World Wide Web Conferences Steering Committee},
+address = {Republic and Canton of Geneva, CHE},
+url = {https://doi.org/10.1145/2736277.2741093},
+doi = {10.1145/2736277.2741093},
+abstract = {This paper studies the problem of embedding very large information networks into low-dimensional vector spaces, which is useful in many tasks such as visualization, node classification, and link prediction. Most existing graph embedding methods do not scale for real world information networks which usually contain millions of nodes. In this paper, we propose a novel network embedding method called the ``LINE,'' which is suitable for arbitrary types of information networks: undirected, directed, and/or weighted. The method optimizes a carefully designed objective function that preserves both the local and global network structures. An edge-sampling algorithm is proposed that addresses the limitation of the classical stochastic gradient descent and improves both the effectiveness and the efficiency of the inference. Empirical experiments prove the effectiveness of the LINE on a variety of real-world information networks, including language networks, social networks, and citation networks. The algorithm is very efficient, which is able to learn the embedding of a network with millions of vertices and billions of edges in a few hours on a typical single machine. The source code of the LINE is available onlinefootnote{url{https://github.com/tangjianpku/LINE}}.},
+booktitle = {Proceedings of the 24th International Conference on World Wide Web},
+pages = {1067–1077},
+numpages = {11},
+keywords = {dimension reduction, feature learning, information network embedding, scalability},
+location = {Florence, Italy},
+series = {WWW '15}
+}
+
+
+
+
+@inproceedings{LightGCN,
+author = {He, Xiangnan and Deng, Kuan and Wang, Xiang and Li, Yan and Zhang, YongDong and Wang, Meng},
+title = {LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation},
+year = {2020},
+isbn = {9781450380164},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3397271.3401063},
+doi = {10.1145/3397271.3401063},
+abstract = {Graph Convolution Network (GCN) has become new state-of-the-art for collaborative filtering. Nevertheless, the reasons of its effectiveness for recommendation are not well understood. Existing work that adapts GCN to recommendation lacks thorough ablation analyses on GCN, which is originally designed for graph classification tasks and equipped with many neural network operations. However, we empirically find that the two most common designs in GCNs -- feature transformation and nonlinear activation -- contribute little to the performance of collaborative filtering. Even worse, including them adds to the difficulty of training and degrades recommendation performance.In this work, we aim to simplify the design of GCN to make it more concise and appropriate for recommendation. We propose a new model named LightGCN, including only the most essential component in GCN -- neighborhood aggregation -- for collaborative filtering. Specifically, LightGCN learns user and item embeddings by linearly propagating them on the user-item interaction graph, and uses the weighted sum of the embeddings learned at all layers as the final embedding. Such simple, linear, and neat model is much easier to implement and train, exhibiting substantial improvements (about 16.0\% relative improvement on average) over Neural Graph Collaborative Filtering (NGCF) -- a state-of-the-art GCN-based recommender model -- under exactly the same experimental setting. Further analyses are provided towards the rationality of the simple LightGCN from both analytical and empirical perspectives.},
+booktitle = {Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {639–648},
+numpages = {10},
+keywords = {recommendation, graph neural network, embedding propagation, collaborative filtering},
+location = {Virtual Event, China},
+series = {SIGIR '20}
+}
+
+
+@misc{MKR,
+      title={Multi-Task Feature Learning for Knowledge Graph Enhanced Recommendation}, 
+      author={Hongwei Wang and Fuzheng Zhang and Miao Zhao and Wenjie Li and Xing Xie and Minyi Guo},
+      year={2019},
+      eprint={1901.08907},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR}
+}
+
+
+@inbook{MacridVAE,
+author = {Ma, Jianxin and Zhou, Chang and Cui, Peng and Yang, Hongxia and Zhu, Wenwu},
+title = {Learning disentangled representations for recommendation},
+year = {2019},
+publisher = {Curran Associates Inc.},
+address = {Red Hook, NY, USA},
+abstract = {User behavior data in recommender systems are driven by the complex interactions of many latent factors behind the users' decision making processes. The factors are highly entangled, and may range from high-level ones that govern user intentions, to low-level ones that characterize a user's preference when executing an intention. Learning representations that uncover and disentangle these latent factors can bring enhanced robustness, interpretability, and controllability. However, learning such disentangled representations from user behavior is challenging, and remains largely neglected by the existing literature. In this paper, we present the MACRo-mIcro Disentangled Variational Auto-Encoder (MacridVAE) for learning disentangled representations from user behavior. Our approach achieves macro disentanglement by inferring the high-level concepts associated with user intentions (e.g., to buy a shirt or a cellphone), while capturing the preference of a user regarding the different concepts separately. A micro-disentanglement regularizer, stemming from an information-theoretic interpretation of VAEs, then forces each dimension of the representations to independently reflect an isolated low-level factor (e.g., the size or the color of a shirt). Empirical results show that our approach can achieve substantial improvement over the state-of-the-art baselines. We further demonstrate that the learned representations are interpretable and controllable, which can potentially lead to a new paradigm for recommendation where users are given fine-grained control over targeted aspects of the recommendation lists.},
+booktitle = {Proceedings of the 33rd International Conference on Neural Information Processing Systems},
+articleno = {513},
+numpages = {12}
+}
+
+
+
+@inproceedings{MultiDAE,
+author = {Liang, Dawen and Krishnan, Rahul G. and Hoffman, Matthew D. and Jebara, Tony},
+title = {Variational Autoencoders for Collaborative Filtering},
+year = {2018},
+isbn = {9781450356398},
+publisher = {International World Wide Web Conferences Steering Committee},
+address = {Republic and Canton of Geneva, CHE},
+url = {https://doi.org/10.1145/3178876.3186150},
+doi = {10.1145/3178876.3186150},
+abstract = {We extend variational autoencoders (VAEs) to collaborative filtering for implicit feedback. This non-linear probabilistic model enables us to go beyond the limited modeling capacity of linear factor models which still largely dominate collaborative filtering research.We introduce a generative model with multinomial likelihood and use Bayesian inference for parameter estimation. Despite widespread use in language modeling and economics, the multinomial likelihood receives less attention in the recommender systems literature. We introduce a different regularization parameter for the learning objective, which proves to be crucial for achieving competitive performance. Remarkably, there is an efficient way to tune the parameter using annealing. The resulting model and learning algorithm has information-theoretic connections to maximum entropy discrimination and the information bottleneck principle. Empirically, we show that the proposed approach significantly outperforms several state-of-the-art baselines, including two recently-proposed neural network approaches, on several real-world datasets. We also provide extended experiments comparing the multinomial likelihood with other commonly used likelihood functions in the latent factor collaborative filtering literature and show favorable results. Finally, we identify the pros and cons of employing a principled Bayesian inference approach and characterize settings where it provides the most significant improvements.},
+booktitle = {Proceedings of the 2018 World Wide Web Conference},
+pages = {689-698},
+numpages = {10},
+keywords = {variational autoencoder, recommender systems, implicit feedback, collaborative filtering, bayesian models},
+location = {Lyon, France},
+series = {WWW '18}
+}
+@inproceedings{MultiVAE,
+author = {Liang, Dawen and Krishnan, Rahul G. and Hoffman, Matthew D. and Jebara, Tony},
+title = {Variational Autoencoders for Collaborative Filtering},
+year = {2018},
+isbn = {9781450356398},
+publisher = {International World Wide Web Conferences Steering Committee},
+address = {Republic and Canton of Geneva, CHE},
+url = {https://doi.org/10.1145/3178876.3186150},
+doi = {10.1145/3178876.3186150},
+abstract = {We extend variational autoencoders (VAEs) to collaborative filtering for implicit feedback. This non-linear probabilistic model enables us to go beyond the limited modeling capacity of linear factor models which still largely dominate collaborative filtering research.We introduce a generative model with multinomial likelihood and use Bayesian inference for parameter estimation. Despite widespread use in language modeling and economics, the multinomial likelihood receives less attention in the recommender systems literature. We introduce a different regularization parameter for the learning objective, which proves to be crucial for achieving competitive performance. Remarkably, there is an efficient way to tune the parameter using annealing. The resulting model and learning algorithm has information-theoretic connections to maximum entropy discrimination and the information bottleneck principle. Empirically, we show that the proposed approach significantly outperforms several state-of-the-art baselines, including two recently-proposed neural network approaches, on several real-world datasets. We also provide extended experiments comparing the multinomial likelihood with other commonly used likelihood functions in the latent factor collaborative filtering literature and show favorable results. Finally, we identify the pros and cons of employing a principled Bayesian inference approach and characterize settings where it provides the most significant improvements.},
+booktitle = {Proceedings of the 2018 World Wide Web Conference},
+pages = {689–698},
+numpages = {10},
+keywords = {bayesian models, collaborative filtering, implicit feedback, recommender systems, variational autoencoder},
+location = {Lyon, France},
+series = {WWW '18}
+}
+
+
+@inproceedings{NCEPLRec,
+author = {Wu, Ga and Volkovs, Maksims and Soon, Chee Loong and Sanner, Scott and Rai, Himanshu},
+title = {Noise Contrastive Estimation for One-Class Collaborative Filtering},
+year = {2019},
+isbn = {9781450361729},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3331184.3331201},
+doi = {10.1145/3331184.3331201},
+abstract = {Previous highly scalable One-Class Collaborative Filtering (OC-CF) methods such as Projected Linear Recommendation (PLRec) have advocated using fast randomized SVD to embed items into a latent space, followed by linear regression methods to learn personalized recommendation models per user. However, naive SVD embedding methods often exhibit a strong popularity bias that prevents them from accurately embedding less popular items, which is exacerbated by the extreme sparsity of implicit feedback matrices in the OC-CF setting. To address this deficiency, we leverage insights from Noise Contrastive Estimation (NCE) to derive a closed-form, efficiently computable "depopularized" embedding. We show that NCE item embeddings combined with a personalized user model from PLRec produces superior recommendations that adequately account for popularity bias. Further analysis of the popularity distribution of recommended items demonstrates that NCE-PLRec uniformly distributes recommendations over the popularity spectrum while other methods exhibit distinct biases towards specific popularity subranges. Empirically, NCE-PLRec produces highly competitive performance with run-times an order of magnitude faster than existing state-of-the-art approaches for OC-CF.},
+booktitle = {Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {135–144},
+numpages = {10},
+keywords = {noise contrastive estimation, one-class collaborative filtering},
+location = {Paris, France},
+series = {SIGIR'19}
+}
+
+@inproceedings{NCL, series={WWW ’22},
+   title={Improving Graph Collaborative Filtering with Neighborhood-enriched Contrastive Learning},
+   url={http://dx.doi.org/10.1145/3485447.3512104},
+   DOI={10.1145/3485447.3512104},
+   booktitle={Proceedings of the ACM Web Conference 2022},
+   publisher={ACM},
+   author={Lin, Zihan and Tian, Changxin and Hou, Yupeng and Zhao, Wayne Xin},
+   year={2022},
+   month=apr, collection={WWW ’22} 
+}
+
+@inproceedings{NGCF,
+author = {Wang, Xiang and He, Xiangnan and Wang, Meng and Feng, Fuli and Chua, Tat-Seng},
+title = {Neural Graph Collaborative Filtering},
+year = {2019},
+isbn = {9781450361729},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3331184.3331267},
+doi = {10.1145/3331184.3331267},
+abstract = {Learning vector representations (aka. embeddings) of users and items lies at the core of modern recommender systems. Ranging from early matrix factorization to recently emerged deep learning based methods, existing efforts typically obtain a user's (or an item's) embedding by mapping from pre-existing features that describe the user (or the item), such as ID and attributes. We argue that an inherent drawback of such methods is that, the collaborative signal, which is latent in user-item interactions, is not encoded in the embedding process. As such, the resultant embeddings may not be sufficient to capture the collaborative filtering effect.In this work, we propose to integrate the user-item interactions - more specifically the bipartite graph structure - into the embedding process. We develop a new recommendation framework Neural Graph Collaborative Filtering (NGCF), which exploits the user-item graph structure by propagating embeddings on it. This leads to the expressive modeling of high-order connectivity in user-item graph, effectively injecting the collaborative signal into the embedding process in an explicit manner. We conduct extensive experiments on three public benchmarks, demonstrating significant improvements over several state-of-the-art models like HOP-Rec [39] and Collaborative Memory Network [5]. Further analysis verifies the importance of embedding propagation for learning better user and item representations, justifying the rationality and effectiveness of NGCF. Codes are available at https://github.com/xiangwang1223/neural_graph_collaborative_filtering.},
+booktitle = {Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {165–174},
+numpages = {10},
+keywords = {recommendation, high-order connectivity, graph neural network, embedding propagation, collaborative filtering},
+location = {Paris, France},
+series = {SIGIR'19}
+}
+
+@inproceedings{NeuMF,
+author = {He, Xiangnan and Liao, Lizi and Zhang, Hanwang and Nie, Liqiang and Hu, Xia and Chua, Tat-Seng},
+title = {Neural Collaborative Filtering},
+year = {2017},
+isbn = {9781450349130},
+publisher = {International World Wide Web Conferences Steering Committee},
+address = {Republic and Canton of Geneva, CHE},
+url = {https://doi.org/10.1145/3038912.3052569},
+doi = {10.1145/3038912.3052569},
+abstract = {In recent years, deep neural networks have yielded immense success on speech recognition, computer vision and natural language processing. However, the exploration of deep neural networks on recommender systems has received relatively less scrutiny. In this work, we strive to develop techniques based on neural networks to tackle the key problem in recommendation --- collaborative filtering --- on the basis of implicit feedback.Although some recent work has employed deep learning for recommendation, they primarily used it to model auxiliary information, such as textual descriptions of items and acoustic features of musics. When it comes to model the key factor in collaborative filtering --- the interaction between user and item features, they still resorted to matrix factorization and applied an inner product on the latent features of users and items.By replacing the inner product with a neural architecture that can learn an arbitrary function from data, we present a general framework named NCF, short for Neural network-based Collaborative Filtering. NCF is generic and can express and generalize matrix factorization under its framework. To supercharge NCF modelling with non-linearities, we propose to leverage a multi-layer perceptron to learn the user-item interaction function. Extensive experiments on two real-world datasets show significant improvements of our proposed NCF framework over the state-of-the-art methods. Empirical evidence shows that using deeper layers of neural networks offers better recommendation performance.},
+booktitle = {Proceedings of the 26th International Conference on World Wide Web},
+pages = {173–182},
+numpages = {10},
+keywords = {neural networks, matrix factorization, implicit feedback, deep learning, collaborative filtering},
+location = {Perth, Australia},
+series = {WWW '17}
+}
+
+
+@inproceedings{RecVAE,
+author = {Shenbin, Ilya and Alekseev, Anton and Tutubalina, Elena and Malykh, Valentin and Nikolenko, Sergey I.},
+title = {RecVAE: A New Variational Autoencoder for Top-N Recommendations with Implicit Feedback},
+year = {2020},
+isbn = {9781450368223},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3336191.3371831},
+doi = {10.1145/3336191.3371831},
+abstract = {Recent research has shown the advantages of using autoencoders based on deep neural networks for collaborative filtering. In particular, the recently proposed Mult-VAE model, which used the multinomial likelihood variational autoencoders, has shown excellent results for top-N recommendations. In this work, we propose the Recommender VAE (RecVAE) model that originates from our research on regularization techniques for variational autoencoders. RecVAE introduces several novel ideas to improve Mult-VAE, including a novel composite prior distribution for the latent codes, a new approach to setting the beta hyperparameter for the beta-VAE framework, and a new approach to training based on alternating updates. In experimental evaluation, we show that RecVAE significantly outperforms previously proposed autoencoder-based models, including Mult-VAE and RaCT, across classical collaborative filtering datasets, and present a detailed ablation study to assess our new developments. Code and models are available at https://github.com/ilya-shenbin/RecVAE.},
+booktitle = {Proceedings of the 13th International Conference on Web Search and Data Mining},
+pages = {528–536},
+numpages = {9},
+keywords = {variational autoencoders, deep learning, collaborative filtering},
+location = {Houston, TX, USA},
+series = {WSDM '20}
+}
+
+@inproceedings{RippleNet,
+author = {Wang, Hongwei and Zhang, Fuzheng and Wang, Jialin and Zhao, Miao and Li, Wenjie and Xie, Xing and Guo, Minyi},
+title = {RippleNet: Propagating User Preferences on the Knowledge Graph for Recommender Systems},
+year = {2018},
+isbn = {9781450360142},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3269206.3271739},
+doi = {10.1145/3269206.3271739},
+abstract = {To address the sparsity and cold start problem of collaborative filtering, researchers usually make use of side information, such as social networks or item attributes, to improve recommendation performance. This paper considers the knowledge graph as the source of side information. To address the limitations of existing embedding-based and path-based methods for knowledge-graph-aware recommendation, we propose RippleNet, an end-to-end framework that naturally incorporates the knowledge graph into recommender systems. Similar to actual ripples propagating on the water, RippleNet stimulates the propagation of user preferences over the set of knowledge entities by automatically and iteratively extending a user's potential interests along links in the knowledge graph. The multiple "ripples" activated by a user's historically clicked items are thus superposed to form the preference distribution of the user with respect to a candidate item, which could be used for predicting the final clicking probability. Through extensive experiments on real-world datasets, we demonstrate that RippleNet achieves substantial gains in a variety of scenarios, including movie, book and news recommendation, over several state-of-the-art baselines.},
+booktitle = {Proceedings of the 27th ACM International Conference on Information and Knowledge Management},
+pages = {417–426},
+numpages = {10},
+keywords = {recommender systems, preference propagation, knowledge graph},
+location = {Torino, Italy},
+series = {CIKM '18}
+}
+
+@inproceedings{SGL, series={SIGIR ’21},
+   title={Self-supervised Graph Learning for Recommendation},
+   url={http://dx.doi.org/10.1145/3404835.3462862},
+   DOI={10.1145/3404835.3462862},
+   booktitle={Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+   publisher={ACM},
+   author={Wu, Jiancan and Wang, Xiang and Feng, Fuli and He, Xiangnan and Chen, Liang and Lian, Jianxun and Xie, Xing},
+   year={2021},
+   month=jul, collection={SIGIR ’21} }
+
+
+@INPROCEEDINGS{SLIMElastic,
+  author={Ning, Xia and Karypis, George},
+  booktitle={2011 IEEE 11th International Conference on Data Mining}, 
+  title={SLIM: Sparse Linear Methods for Top-N Recommender Systems}, 
+  year={2011},
+  volume={},
+  number={},
+  pages={497-506},
+  keywords={Mathematical model;Sparse matrices;Equations;Optimization;Vectors;Recommender systems;Measurement;Top-N Recommender Systems;Sparse Linear Methods;l1-norm Regularization},
+  doi={10.1109/ICDM.2011.134}}
+@inproceedings{SimpleX,
+author = {Mao, Kelong and Zhu, Jieming and Wang, Jinpeng and Dai, Quanyu and Dong, Zhenhua and Xiao, Xi and He, Xiuqiang},
+title = {SimpleX: A Simple and Strong Baseline for Collaborative Filtering},
+year = {2021},
+isbn = {9781450384469},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3459637.3482297},
+doi = {10.1145/3459637.3482297},
+abstract = {Collaborative filtering (CF) is a widely studied research topic in recommender systems. The learning of a CF model generally depends on three major components, namely interaction encoder, loss function, and negative sampling. While many existing studies focus on the design of more powerful interaction encoders, the impacts of loss functions and negative sampling ratios have not yet been well explored. In this work, we show that the choice of loss function as well as negative sampling ratio is equivalently important. More specifically, we propose the cosine contrastive loss (CCL) and further incorporate it to a simple unified CF model, dubbed SimpleX. Extensive experiments have been conducted on 10 benchmark datasets and compared with 28 existing CF models in total. Surprisingly, the results show that, under our CCL loss and a large negative sampling ratio, SimpleX can surpass most sophisticated state-of-the-art models by a large margin (e.g., max 48.5\% improvement in NDCG@20 over LightGCN). We believe that SimpleX could not only serve as a simple strong baseline to foster future research on CF, but also shed light on the potential research direction towards improving loss function and negative sampling.},
+booktitle = {Proceedings of the 30th ACM International Conference on Information \& Knowledge Management},
+pages = {1243–1252},
+numpages = {10},
+keywords = {collaborative filtering, contrastive loss, graph neural networks, recommender systems},
+location = {Virtual Event, Queensland, Australia},
+series = {CIKM '21}
+}
+
+
+@inproceedings{SpectralCF,
+  title={Spectral collaborative filtering},
+  author={Zheng, Lei and Lu, Chun-Ta and Jiang, Fei and Zhang, Jiawei and Yu, Philip S},
+  booktitle={Proceedings of the 12th ACM conference on recommender systems},
+  pages={311--319},
+  year={2018}
+}
+
+
+@inproceedings{EASE,
+author = {Steck, Harald},
+title = {Embarrassingly Shallow Autoencoders for Sparse Data},
+year = {2019},
+isbn = {9781450366748},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3308558.3313710},
+doi = {10.1145/3308558.3313710},
+abstract = {Combining simple elements from the literature, we define a linear model that is geared toward sparse data, in particular implicit feedback data for recommender systems. We show that its training objective has a closed-form solution, and discuss the resulting conceptual insights. Surprisingly, this simple model achieves better ranking accuracy than various state-of-the-art collaborative-filtering approaches, including deep non-linear models, on most of the publicly available data-sets used in our experiments.},
+booktitle = {The World Wide Web Conference},
+pages = {3251–3257},
+numpages = {7},
+keywords = {Autoencoder, Closed-Form Solution, Collaborative Filtering, Linear Regression, Neighborhood Approach, Recommender System},
+location = {San Francisco, CA, USA},
+series = {WWW '19}
+}
+
+@article{NAIS,
+   title={NAIS: Neural Attentive Item Similarity Model for Recommendation},
+   volume={30},
+   ISSN={2326-3865},
+   url={http://dx.doi.org/10.1109/TKDE.2018.2831682},
+   DOI={10.1109/tkde.2018.2831682},
+   number={12},
+   journal={IEEE Transactions on Knowledge and Data Engineering},
+   publisher={Institute of Electrical and Electronics Engineers (IEEE)},
+   author={He, Xiangnan and He, Zhankui and Song, Jingkuan and Liu, Zhenguang and Jiang, Yu-Gang and Chua, Tat-Seng},
+   year={2018},
+   month=dec, pages={2354–2366} }
+
+@inproceedings{ADMMSLIM,
+author = {Steck, Harald and Dimakopoulou, Maria and Riabov, Nickolai and Jebara, Tony},
+title = {ADMM SLIM: Sparse Recommendations for Many Users},
+year = {2020},
+isbn = {9781450368223},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3336191.3371774},
+doi = {10.1145/3336191.3371774},
+abstract = {The Sparse Linear Method (SLIM) is a well-established approach for top-N recommendations. This article proposes several improvements that are enabled by the Alternating Directions Method of Multipliers (ADMM), a well-known optimization method with many application areas. First, we show that optimizing the original SLIM-objective by ADMM results in an approach where the training time is independent of the number of users in the training data, and hence trivially scales to large numbers of users. Second, the flexibility of ADMM allows us to switch on and off the various constraints and regularization terms in the original SLIM-objective, in order to empirically assess their contributions to ranking accuracy on given data. Third, we also propose two extensions to the original SLIM training-objective in order to improve recommendation accuracy further without increasing the computational cost. In our experiments on three well-known data-sets, we first compare to the original SLIM-implementation and find that not only ADMM reduces training time considerably, but also achieves an improvement in recommendation accuracy due to better optimization. We then compare to various state-of-the-art approaches and observe up to 25\% improvement in recommendation accuracy in our experiments. Finally, we evaluate the importance of sparsity and the non-negativity constraint in the original SLIM-objective with sub-sampling experiments that simulate scenarios of cold-starting and large catalog sizes compared to relatively small user base, which often occur in practice.},
+booktitle = {Proceedings of the 13th International Conference on Web Search and Data Mining},
+pages = {555–563},
+numpages = {9},
+keywords = {sparse linear model, recommender systems, personalization},
+location = {Houston, TX, USA},
+series = {WSDM '20}
+}@article{ConvNCF,
+  title={Outer product-based neural collaborative filtering},
+  author={He, Xiangnan and Du, Xiaoyu and Wang, Xiang and Tian, Feng and Tang, Jinhui and Chua, Tat-Seng},
+  journal={arXiv preprint arXiv:1808.03912},
+  year={2018}
+}
+
+@inproceedings{NNCF,
+author = {Bai, Ting and Wen, Ji-Rong and Zhang, Jun and Zhao, Wayne Xin},
+title = {A Neural Collaborative Filtering Model with Interaction-based Neighborhood},
+year = {2017},
+isbn = {9781450349185},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3132847.3133083},
+doi = {10.1145/3132847.3133083},
+abstract = {Recently, deep neural networks have been widely applied to recommender systems. A representative work is to utilize deep learning for modeling complex user-item interactions. However, similar to traditional latent factor models by factorizing user-item interactions, they tend to be ineffective to capture localized information. Localized information, such as neighborhood, is important to recommender systems in complementing the user-item interaction data. Based on this consideration, we propose a novel Neighborhood-based Neural Collaborative Filtering model (NNCF). To the best of our knowledge, it is the first time that the neighborhood information is integrated into the neural collaborative filtering methods. Extensive experiments on three real-world datasets demonstrate the effectiveness of our model for the implicit recommendation task.},
+booktitle = {Proceedings of the 2017 ACM on Conference on Information and Knowledge Management},
+pages = {1979–1982},
+numpages = {4},
+keywords = {recommender systems, neighborhood information, deep neural network},
+location = {Singapore, Singapore},
+series = {CIKM '17}
+}
