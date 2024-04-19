@@ -1,0 +1,389 @@
+Wed 03 Apr 2024 12:55:29 INFO  ['src/default_tracker.py', '--dataset=LFM-1b_artist_20U50I', '--model=DMF']
+Wed 03 Apr 2024 12:55:29 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/DMF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+inter_matrix_type = 01
+user_embedding_size = 64
+item_embedding_size = 64
+user_hidden_size_list = [64, 64]
+item_hidden_size_list = [64, 64]
+embedding_size = 10
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Wed 03 Apr 2024 12:55:33 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Wed 03 Apr 2024 12:55:36 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Wed 03 Apr 2024 12:55:36 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Wed 03 Apr 2024 12:55:36 WARNING  Max value of item's history interaction records has reached 30.54127608104022% of the total.
+Wed 03 Apr 2024 12:55:40 INFO  DMF(
+  (user_linear): Linear(in_features=42458, out_features=64, bias=False)
+  (item_linear): Linear(in_features=19842, out_features=64, bias=False)
+  (user_fc_layers): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.0, inplace=False)
+      (1): Linear(in_features=64, out_features=64, bias=True)
+      (2): ReLU()
+      (3): Dropout(p=0.0, inplace=False)
+      (4): Linear(in_features=64, out_features=64, bias=True)
+      (5): ReLU()
+    )
+  )
+  (item_fc_layers): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.0, inplace=False)
+      (1): Linear(in_features=64, out_features=64, bias=True)
+      (2): ReLU()
+      (3): Dropout(p=0.0, inplace=False)
+      (4): Linear(in_features=64, out_features=64, bias=True)
+      (5): ReLU()
+    )
+  )
+  (sigmoid): Sigmoid()
+  (bce_loss): BCEWithLogitsLoss()
+)
+Trainable parameters: 4003840
+Wed 03 Apr 2024 12:55:48 INFO  FLOPs: 4003584.0
+Wed 03 Apr 2024 12:56:41 INFO  epoch 0 training [time: 13.96s, train loss: 361.6169]
+Wed 03 Apr 2024 12:57:12 INFO  epoch 0 evaluating [time: 30.53s, valid_score: 0.107500]
+Wed 03 Apr 2024 12:57:12 INFO  valid result: 
+recall@10 : 0.0791    mrr@10 : 0.1075    ndcg@10 : 0.063    hit@10 : 0.2454    precision@10 : 0.0316
+Wed 03 Apr 2024 12:57:13 INFO  Saving current: saved/LFM-1b_artist_20U50I/DMF/DMF-Apr-03-2024_12-55-49.pth
+Wed 03 Apr 2024 12:57:25 INFO  epoch 1 training [time: 11.86s, train loss: 354.9473]
+Wed 03 Apr 2024 12:57:54 INFO  epoch 1 evaluating [time: 29.10s, valid_score: 0.104100]
+Wed 03 Apr 2024 12:57:54 INFO  valid result: 
+recall@10 : 0.0901    mrr@10 : 0.1041    ndcg@10 : 0.0663    hit@10 : 0.2587    precision@10 : 0.0334
+Wed 03 Apr 2024 12:58:06 INFO  epoch 2 training [time: 12.09s, train loss: 348.0457]
+Wed 03 Apr 2024 12:58:35 INFO  epoch 2 evaluating [time: 29.11s, valid_score: 0.116400]
+Wed 03 Apr 2024 12:58:35 INFO  valid result: 
+recall@10 : 0.0995    mrr@10 : 0.1164    ndcg@10 : 0.0735    hit@10 : 0.2765    precision@10 : 0.0353
+Wed 03 Apr 2024 12:58:36 INFO  Saving current: saved/LFM-1b_artist_20U50I/DMF/DMF-Apr-03-2024_12-55-49.pth
+Wed 03 Apr 2024 12:58:48 INFO  epoch 3 training [time: 11.87s, train loss: 342.5818]
+Wed 03 Apr 2024 12:59:17 INFO  epoch 3 evaluating [time: 29.07s, valid_score: 0.086100]
+Wed 03 Apr 2024 12:59:17 INFO  valid result: 
+recall@10 : 0.077    mrr@10 : 0.0861    ndcg@10 : 0.0551    hit@10 : 0.2255    precision@10 : 0.0274
+Wed 03 Apr 2024 12:59:29 INFO  epoch 4 training [time: 12.00s, train loss: 339.4390]
+Wed 03 Apr 2024 12:59:58 INFO  epoch 4 evaluating [time: 29.04s, valid_score: 0.122600]
+Wed 03 Apr 2024 12:59:58 INFO  valid result: 
+recall@10 : 0.1109    mrr@10 : 0.1226    ndcg@10 : 0.0801    hit@10 : 0.3047    precision@10 : 0.0396
+Wed 03 Apr 2024 12:59:59 INFO  Saving current: saved/LFM-1b_artist_20U50I/DMF/DMF-Apr-03-2024_12-55-49.pth
+Wed 03 Apr 2024 13:00:11 INFO  epoch 5 training [time: 11.86s, train loss: 336.0064]
+Wed 03 Apr 2024 13:00:40 INFO  epoch 5 evaluating [time: 29.26s, valid_score: 0.104400]
+Wed 03 Apr 2024 13:00:40 INFO  valid result: 
+recall@10 : 0.1007    mrr@10 : 0.1044    ndcg@10 : 0.0706    hit@10 : 0.2738    precision@10 : 0.0342
+Wed 03 Apr 2024 13:00:52 INFO  epoch 6 training [time: 12.10s, train loss: 333.6498]
+Wed 03 Apr 2024 13:01:21 INFO  epoch 6 evaluating [time: 29.16s, valid_score: 0.109500]
+Wed 03 Apr 2024 13:01:21 INFO  valid result: 
+recall@10 : 0.1063    mrr@10 : 0.1095    ndcg@10 : 0.0748    hit@10 : 0.2816    precision@10 : 0.0358
+Wed 03 Apr 2024 13:01:33 INFO  epoch 7 training [time: 12.17s, train loss: 331.5794]
+Wed 03 Apr 2024 13:02:03 INFO  epoch 7 evaluating [time: 29.40s, valid_score: 0.120000]
+Wed 03 Apr 2024 13:02:03 INFO  valid result: 
+recall@10 : 0.115    mrr@10 : 0.12    ndcg@10 : 0.0808    hit@10 : 0.3041    precision@10 : 0.0387
+Wed 03 Apr 2024 13:02:15 INFO  epoch 8 training [time: 11.97s, train loss: 330.2334]
+Wed 03 Apr 2024 13:02:44 INFO  epoch 8 evaluating [time: 29.33s, valid_score: 0.111600]
+Wed 03 Apr 2024 13:02:44 INFO  valid result: 
+recall@10 : 0.1111    mrr@10 : 0.1116    ndcg@10 : 0.0773    hit@10 : 0.2925    precision@10 : 0.037
+Wed 03 Apr 2024 13:02:56 INFO  epoch 9 training [time: 12.11s, train loss: 328.9564]
+Wed 03 Apr 2024 13:03:26 INFO  epoch 9 evaluating [time: 29.35s, valid_score: 0.123500]
+Wed 03 Apr 2024 13:03:26 INFO  valid result: 
+recall@10 : 0.1105    mrr@10 : 0.1235    ndcg@10 : 0.0806    hit@10 : 0.2991    precision@10 : 0.0386
+Wed 03 Apr 2024 13:03:26 INFO  Saving current: saved/LFM-1b_artist_20U50I/DMF/DMF-Apr-03-2024_12-55-49.pth
+Wed 03 Apr 2024 13:03:38 INFO  epoch 10 training [time: 11.89s, train loss: 328.2809]
+Wed 03 Apr 2024 13:04:09 INFO  epoch 10 evaluating [time: 31.04s, valid_score: 0.120100]
+Wed 03 Apr 2024 13:04:09 INFO  valid result: 
+recall@10 : 0.1173    mrr@10 : 0.1201    ndcg@10 : 0.0827    hit@10 : 0.3038    precision@10 : 0.0391
+Wed 03 Apr 2024 13:04:22 INFO  epoch 11 training [time: 12.31s, train loss: 327.0332]
+Wed 03 Apr 2024 13:05:03 INFO  epoch 11 evaluating [time: 41.67s, valid_score: 0.110100]
+Wed 03 Apr 2024 13:05:03 INFO  valid result: 
+recall@10 : 0.1073    mrr@10 : 0.1101    ndcg@10 : 0.0757    hit@10 : 0.2836    precision@10 : 0.0353
+Wed 03 Apr 2024 13:05:16 INFO  epoch 12 training [time: 12.26s, train loss: 326.3679]
+Wed 03 Apr 2024 13:05:46 INFO  epoch 12 evaluating [time: 30.93s, valid_score: 0.129900]
+Wed 03 Apr 2024 13:05:46 INFO  valid result: 
+recall@10 : 0.1223    mrr@10 : 0.1299    ndcg@10 : 0.0876    hit@10 : 0.3169    precision@10 : 0.041
+Wed 03 Apr 2024 13:05:47 INFO  Saving current: saved/LFM-1b_artist_20U50I/DMF/DMF-Apr-03-2024_12-55-49.pth
+Wed 03 Apr 2024 13:05:59 INFO  epoch 13 training [time: 11.99s, train loss: 325.6288]
+Wed 03 Apr 2024 13:06:31 INFO  epoch 13 evaluating [time: 32.23s, valid_score: 0.138900]
+Wed 03 Apr 2024 13:06:31 INFO  valid result: 
+recall@10 : 0.1281    mrr@10 : 0.1389    ndcg@10 : 0.0931    hit@10 : 0.3303    precision@10 : 0.0431
+Wed 03 Apr 2024 13:06:32 INFO  Saving current: saved/LFM-1b_artist_20U50I/DMF/DMF-Apr-03-2024_12-55-49.pth
+Wed 03 Apr 2024 13:06:44 INFO  epoch 14 training [time: 12.00s, train loss: 324.8541]
+Wed 03 Apr 2024 13:07:19 INFO  epoch 14 evaluating [time: 34.41s, valid_score: 0.144100]
+Wed 03 Apr 2024 13:07:19 INFO  valid result: 
+recall@10 : 0.1334    mrr@10 : 0.1441    ndcg@10 : 0.0965    hit@10 : 0.3442    precision@10 : 0.0453
+Wed 03 Apr 2024 13:07:19 INFO  Saving current: saved/LFM-1b_artist_20U50I/DMF/DMF-Apr-03-2024_12-55-49.pth
+Wed 03 Apr 2024 13:07:31 INFO  epoch 15 training [time: 12.00s, train loss: 324.3875]
+Wed 03 Apr 2024 13:08:05 INFO  epoch 15 evaluating [time: 33.52s, valid_score: 0.123100]
+Wed 03 Apr 2024 13:08:05 INFO  valid result: 
+recall@10 : 0.1163    mrr@10 : 0.1231    ndcg@10 : 0.0827    hit@10 : 0.3056    precision@10 : 0.0391
+Wed 03 Apr 2024 13:08:17 INFO  epoch 16 training [time: 12.13s, train loss: 323.8762]
+Wed 03 Apr 2024 13:08:51 INFO  epoch 16 evaluating [time: 33.97s, valid_score: 0.126000]
+Wed 03 Apr 2024 13:08:51 INFO  valid result: 
+recall@10 : 0.1227    mrr@10 : 0.126    ndcg@10 : 0.0862    hit@10 : 0.3228    precision@10 : 0.0422
+Wed 03 Apr 2024 13:09:03 INFO  epoch 17 training [time: 12.11s, train loss: 323.5498]
+Wed 03 Apr 2024 13:09:38 INFO  epoch 17 evaluating [time: 34.38s, valid_score: 0.135500]
+Wed 03 Apr 2024 13:09:38 INFO  valid result: 
+recall@10 : 0.1262    mrr@10 : 0.1355    ndcg@10 : 0.0907    hit@10 : 0.3306    precision@10 : 0.0429
+Wed 03 Apr 2024 13:09:50 INFO  epoch 18 training [time: 12.07s, train loss: 323.0792]
+Wed 03 Apr 2024 13:10:23 INFO  epoch 18 evaluating [time: 33.24s, valid_score: 0.130400]
+Wed 03 Apr 2024 13:10:23 INFO  valid result: 
+recall@10 : 0.1213    mrr@10 : 0.1304    ndcg@10 : 0.0879    hit@10 : 0.3197    precision@10 : 0.0417
+Wed 03 Apr 2024 13:10:35 INFO  epoch 19 training [time: 12.14s, train loss: 322.7136]
+Wed 03 Apr 2024 13:11:05 INFO  epoch 19 evaluating [time: 30.22s, valid_score: 0.127900]
+Wed 03 Apr 2024 13:11:05 INFO  valid result: 
+recall@10 : 0.1243    mrr@10 : 0.1279    ndcg@10 : 0.0879    hit@10 : 0.3213    precision@10 : 0.0416
+Wed 03 Apr 2024 13:11:17 INFO  epoch 20 training [time: 12.01s, train loss: 322.1156]
+Wed 03 Apr 2024 13:11:48 INFO  epoch 20 evaluating [time: 30.70s, valid_score: 0.106100]
+Wed 03 Apr 2024 13:11:48 INFO  valid result: 
+recall@10 : 0.1109    mrr@10 : 0.1061    ndcg@10 : 0.0744    hit@10 : 0.2856    precision@10 : 0.0354
+Wed 03 Apr 2024 13:12:00 INFO  epoch 21 training [time: 12.06s, train loss: 322.0286]
+Wed 03 Apr 2024 13:12:32 INFO  epoch 21 evaluating [time: 31.87s, valid_score: 0.132200]
+Wed 03 Apr 2024 13:12:32 INFO  valid result: 
+recall@10 : 0.1258    mrr@10 : 0.1322    ndcg@10 : 0.0885    hit@10 : 0.3309    precision@10 : 0.0431
+Wed 03 Apr 2024 13:12:44 INFO  epoch 22 training [time: 12.18s, train loss: 321.3407]
+Wed 03 Apr 2024 13:13:15 INFO  epoch 22 evaluating [time: 31.05s, valid_score: 0.115600]
+Wed 03 Apr 2024 13:13:15 INFO  valid result: 
+recall@10 : 0.1185    mrr@10 : 0.1156    ndcg@10 : 0.0811    hit@10 : 0.3002    precision@10 : 0.0376
+Wed 03 Apr 2024 13:13:27 INFO  epoch 23 training [time: 12.00s, train loss: 321.2162]
+Wed 03 Apr 2024 13:13:59 INFO  epoch 23 evaluating [time: 31.99s, valid_score: 0.129600]
+Wed 03 Apr 2024 13:13:59 INFO  valid result: 
+recall@10 : 0.1247    mrr@10 : 0.1296    ndcg@10 : 0.0882    hit@10 : 0.3229    precision@10 : 0.0419
+Wed 03 Apr 2024 13:14:11 INFO  epoch 24 training [time: 12.21s, train loss: 321.0838]
+Wed 03 Apr 2024 13:14:43 INFO  epoch 24 evaluating [time: 31.31s, valid_score: 0.126600]
+Wed 03 Apr 2024 13:14:43 INFO  valid result: 
+recall@10 : 0.1279    mrr@10 : 0.1266    ndcg@10 : 0.0886    hit@10 : 0.3249    precision@10 : 0.0418
+Wed 03 Apr 2024 13:14:55 INFO  epoch 25 training [time: 11.98s, train loss: 320.9009]
+Wed 03 Apr 2024 13:15:24 INFO  epoch 25 evaluating [time: 29.40s, valid_score: 0.121300]
+Wed 03 Apr 2024 13:15:24 INFO  valid result: 
+recall@10 : 0.1229    mrr@10 : 0.1213    ndcg@10 : 0.0851    hit@10 : 0.3148    precision@10 : 0.0404
+Wed 03 Apr 2024 13:15:24 INFO  Finished training, best eval result in epoch 14
+Wed 03 Apr 2024 13:15:26 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/DMF/DMF-Apr-03-2024_12-55-49.pth
+Wed 03 Apr 2024 13:15:56 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     6.00 %     |
++-------------+----------------+
+| GPU         | 6.16 G/14.58 G |
++-------------+----------------+
+| Memory      | 1.37 G/27.41 G |
++-------------+----------------+
+Wed 03 Apr 2024 13:15:56 INFO  best valid : OrderedDict([('recall@10', 0.1334), ('mrr@10', 0.1441), ('ndcg@10', 0.0965), ('hit@10', 0.3442), ('precision@10', 0.0453)])
+Wed 03 Apr 2024 13:15:56 INFO  test result: OrderedDict([('recall@10', 0.1381), ('mrr@10', 0.1538), ('ndcg@10', 0.1015), ('hit@10', 0.3446), ('precision@10', 0.0468)])
+Wed 03 Apr 2024 13:15:58 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/DMF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+inter_matrix_type = 01
+user_embedding_size = 64
+item_embedding_size = 64
+user_hidden_size_list = [64, 64]
+item_hidden_size_list = [64, 64]
+embedding_size = 10
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Wed 03 Apr 2024 13:16:01 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Wed 03 Apr 2024 13:16:04 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Wed 03 Apr 2024 13:16:04 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Wed 03 Apr 2024 13:16:04 WARNING  Max value of item's history interaction records has reached 30.54127608104022% of the total.
+Wed 03 Apr 2024 13:16:08 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/DMF/DMF-Mar-28-2024_15-36-31.pth

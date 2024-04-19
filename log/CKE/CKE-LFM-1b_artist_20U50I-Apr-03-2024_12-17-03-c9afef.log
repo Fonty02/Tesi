@@ -1,0 +1,580 @@
+Wed 03 Apr 2024 12:17:03 INFO  ['src/default_tracker.py', '--dataset=LFM-1b_artist_20U50I', '--model=CKE']
+Wed 03 Apr 2024 12:17:03 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/CKE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'kg': ['head_id', 'relation_id', 'tail_id'], 'link': ['item_id', 'entity_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+kg_embedding_size = 64
+reg_weights = [0.01, 0.01]
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.KNOWLEDGE
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Wed 03 Apr 2024 12:17:11 INFO  LFM-1b_artist_20U50I
+The number of users: 19426
+Average actions of users: 19.186718146718146
+The number of items: 15510
+Average actions of items: 24.03133664323941
+The number of inters: 372702
+The sparsity of the dataset: 99.87630089964973%
+Remain Fields: ['entity_id', 'user_id', 'item_id', 'head_id', 'relation_id', 'tail_id']
+The number of entities: 50666
+The number of relations: 7
+The number of triples: 46827
+The number of items that have been linked to KG: 15509
+Wed 03 Apr 2024 12:17:13 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Wed 03 Apr 2024 12:17:13 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Wed 03 Apr 2024 12:17:13 INFO  CKE(
+  (user_embedding): Embedding(19426, 64)
+  (item_embedding): Embedding(15510, 64)
+  (entity_embedding): Embedding(50666, 64)
+  (relation_embedding): Embedding(7, 64)
+  (trans_w): Embedding(7, 4096)
+  (rec_loss): BPRLoss()
+  (kg_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 5507648
+Wed 03 Apr 2024 12:17:22 INFO  FLOPs: 192.0
+Wed 03 Apr 2024 12:18:08 INFO  epoch 0 training [time: 8.80s, train_loss1: 101.8022, train_loss2: 37.3890, train_loss3: 0.1469]
+Wed 03 Apr 2024 12:18:31 INFO  epoch 0 evaluating [time: 23.18s, valid_score: 0.106800]
+Wed 03 Apr 2024 12:18:31 INFO  valid result: 
+recall@10 : 0.161    mrr@10 : 0.1068    ndcg@10 : 0.0994    hit@10 : 0.2507    precision@10 : 0.0292
+Wed 03 Apr 2024 12:18:33 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:18:38 INFO  epoch 1 training [time: 4.93s, train_loss1: 71.7971, train_loss2: 16.8325, train_loss3: 0.2037]
+Wed 03 Apr 2024 12:19:00 INFO  epoch 1 evaluating [time: 22.11s, valid_score: 0.106600]
+Wed 03 Apr 2024 12:19:00 INFO  valid result: 
+recall@10 : 0.1665    mrr@10 : 0.1066    ndcg@10 : 0.1011    hit@10 : 0.2544    precision@10 : 0.0291
+Wed 03 Apr 2024 12:19:05 INFO  epoch 2 training [time: 4.96s, train_loss1: 39.1187, train_loss2: 15.2730, train_loss3: 0.2605]
+Wed 03 Apr 2024 12:19:27 INFO  epoch 2 evaluating [time: 22.10s, valid_score: 0.102600]
+Wed 03 Apr 2024 12:19:27 INFO  valid result: 
+recall@10 : 0.1671    mrr@10 : 0.1026    ndcg@10 : 0.0995    hit@10 : 0.2549    precision@10 : 0.0292
+Wed 03 Apr 2024 12:19:32 INFO  epoch 3 training [time: 5.00s, train_loss1: 31.1842, train_loss2: 14.3329, train_loss3: 0.2853]
+Wed 03 Apr 2024 12:19:54 INFO  epoch 3 evaluating [time: 22.17s, valid_score: 0.106600]
+Wed 03 Apr 2024 12:19:54 INFO  valid result: 
+recall@10 : 0.1698    mrr@10 : 0.1066    ndcg@10 : 0.1023    hit@10 : 0.2583    precision@10 : 0.0295
+Wed 03 Apr 2024 12:19:59 INFO  epoch 4 training [time: 4.92s, train_loss1: 28.4776, train_loss2: 13.7376, train_loss3: 0.2986]
+Wed 03 Apr 2024 12:20:21 INFO  epoch 4 evaluating [time: 22.16s, valid_score: 0.107300]
+Wed 03 Apr 2024 12:20:21 INFO  valid result: 
+recall@10 : 0.1757    mrr@10 : 0.1073    ndcg@10 : 0.1037    hit@10 : 0.2641    precision@10 : 0.0302
+Wed 03 Apr 2024 12:20:22 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:20:27 INFO  epoch 5 training [time: 4.99s, train_loss1: 27.3219, train_loss2: 13.3649, train_loss3: 0.3068]
+Wed 03 Apr 2024 12:20:49 INFO  epoch 5 evaluating [time: 22.30s, valid_score: 0.108100]
+Wed 03 Apr 2024 12:20:49 INFO  valid result: 
+recall@10 : 0.1768    mrr@10 : 0.1081    ndcg@10 : 0.1045    hit@10 : 0.2658    precision@10 : 0.0303
+Wed 03 Apr 2024 12:20:50 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:20:55 INFO  epoch 6 training [time: 5.10s, train_loss1: 26.2006, train_loss2: 13.0579, train_loss3: 0.3123]
+Wed 03 Apr 2024 12:21:17 INFO  epoch 6 evaluating [time: 22.24s, valid_score: 0.110300]
+Wed 03 Apr 2024 12:21:17 INFO  valid result: 
+recall@10 : 0.1784    mrr@10 : 0.1103    ndcg@10 : 0.1056    hit@10 : 0.2675    precision@10 : 0.0306
+Wed 03 Apr 2024 12:21:18 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:21:23 INFO  epoch 7 training [time: 4.95s, train_loss1: 25.4640, train_loss2: 12.8781, train_loss3: 0.3166]
+Wed 03 Apr 2024 12:21:46 INFO  epoch 7 evaluating [time: 22.17s, valid_score: 0.111000]
+Wed 03 Apr 2024 12:21:46 INFO  valid result: 
+recall@10 : 0.181    mrr@10 : 0.111    ndcg@10 : 0.1072    hit@10 : 0.2713    precision@10 : 0.0312
+Wed 03 Apr 2024 12:21:46 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:21:51 INFO  epoch 8 training [time: 4.94s, train_loss1: 24.8483, train_loss2: 12.7631, train_loss3: 0.3199]
+Wed 03 Apr 2024 12:22:13 INFO  epoch 8 evaluating [time: 22.06s, valid_score: 0.110000]
+Wed 03 Apr 2024 12:22:13 INFO  valid result: 
+recall@10 : 0.1834    mrr@10 : 0.11    ndcg@10 : 0.1071    hit@10 : 0.2758    precision@10 : 0.0316
+Wed 03 Apr 2024 12:22:18 INFO  epoch 9 training [time: 4.95s, train_loss1: 24.2021, train_loss2: 12.6679, train_loss3: 0.3227]
+Wed 03 Apr 2024 12:22:40 INFO  epoch 9 evaluating [time: 21.98s, valid_score: 0.112200]
+Wed 03 Apr 2024 12:22:40 INFO  valid result: 
+recall@10 : 0.1859    mrr@10 : 0.1122    ndcg@10 : 0.1092    hit@10 : 0.2779    precision@10 : 0.032
+Wed 03 Apr 2024 12:22:41 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:22:46 INFO  epoch 10 training [time: 4.90s, train_loss1: 23.5412, train_loss2: 12.5549, train_loss3: 0.3248]
+Wed 03 Apr 2024 12:23:08 INFO  epoch 10 evaluating [time: 22.03s, valid_score: 0.112800]
+Wed 03 Apr 2024 12:23:08 INFO  valid result: 
+recall@10 : 0.1811    mrr@10 : 0.1128    ndcg@10 : 0.1086    hit@10 : 0.2736    precision@10 : 0.0317
+Wed 03 Apr 2024 12:23:09 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:23:14 INFO  epoch 11 training [time: 4.97s, train_loss1: 22.8396, train_loss2: 12.5436, train_loss3: 0.3273]
+Wed 03 Apr 2024 12:23:36 INFO  epoch 11 evaluating [time: 22.13s, valid_score: 0.112600]
+Wed 03 Apr 2024 12:23:36 INFO  valid result: 
+recall@10 : 0.1833    mrr@10 : 0.1126    ndcg@10 : 0.1088    hit@10 : 0.2766    precision@10 : 0.0319
+Wed 03 Apr 2024 12:23:41 INFO  epoch 12 training [time: 4.96s, train_loss1: 22.4913, train_loss2: 12.4420, train_loss3: 0.3296]
+Wed 03 Apr 2024 12:24:03 INFO  epoch 12 evaluating [time: 21.83s, valid_score: 0.114700]
+Wed 03 Apr 2024 12:24:03 INFO  valid result: 
+recall@10 : 0.1817    mrr@10 : 0.1147    ndcg@10 : 0.1094    hit@10 : 0.275    precision@10 : 0.0318
+Wed 03 Apr 2024 12:24:04 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:24:09 INFO  epoch 13 training [time: 4.92s, train_loss1: 21.6538, train_loss2: 12.3634, train_loss3: 0.3314]
+Wed 03 Apr 2024 12:24:31 INFO  epoch 13 evaluating [time: 21.92s, valid_score: 0.117400]
+Wed 03 Apr 2024 12:24:31 INFO  valid result: 
+recall@10 : 0.1869    mrr@10 : 0.1174    ndcg@10 : 0.1116    hit@10 : 0.2813    precision@10 : 0.0327
+Wed 03 Apr 2024 12:24:31 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:24:36 INFO  epoch 14 training [time: 4.92s, train_loss1: 20.8981, train_loss2: 12.3231, train_loss3: 0.3336]
+Wed 03 Apr 2024 12:24:58 INFO  epoch 14 evaluating [time: 21.88s, valid_score: 0.116600]
+Wed 03 Apr 2024 12:24:58 INFO  valid result: 
+recall@10 : 0.1859    mrr@10 : 0.1166    ndcg@10 : 0.1112    hit@10 : 0.2817    precision@10 : 0.0329
+Wed 03 Apr 2024 12:25:03 INFO  epoch 15 training [time: 5.19s, train_loss1: 20.3127, train_loss2: 12.3350, train_loss3: 0.3356]
+Wed 03 Apr 2024 12:25:25 INFO  epoch 15 evaluating [time: 21.86s, valid_score: 0.119200]
+Wed 03 Apr 2024 12:25:25 INFO  valid result: 
+recall@10 : 0.1892    mrr@10 : 0.1192    ndcg@10 : 0.1136    hit@10 : 0.2866    precision@10 : 0.0336
+Wed 03 Apr 2024 12:25:26 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:25:31 INFO  epoch 16 training [time: 4.97s, train_loss1: 19.4717, train_loss2: 12.2327, train_loss3: 0.3376]
+Wed 03 Apr 2024 12:25:53 INFO  epoch 16 evaluating [time: 21.84s, valid_score: 0.117900]
+Wed 03 Apr 2024 12:25:53 INFO  valid result: 
+recall@10 : 0.1917    mrr@10 : 0.1179    ndcg@10 : 0.1138    hit@10 : 0.2898    precision@10 : 0.034
+Wed 03 Apr 2024 12:25:58 INFO  epoch 17 training [time: 5.00s, train_loss1: 18.8406, train_loss2: 12.2386, train_loss3: 0.3400]
+Wed 03 Apr 2024 12:26:20 INFO  epoch 17 evaluating [time: 21.80s, valid_score: 0.118700]
+Wed 03 Apr 2024 12:26:20 INFO  valid result: 
+recall@10 : 0.1933    mrr@10 : 0.1187    ndcg@10 : 0.1138    hit@10 : 0.2914    precision@10 : 0.034
+Wed 03 Apr 2024 12:26:25 INFO  epoch 18 training [time: 4.93s, train_loss1: 18.0786, train_loss2: 12.2270, train_loss3: 0.3423]
+Wed 03 Apr 2024 12:26:46 INFO  epoch 18 evaluating [time: 21.74s, valid_score: 0.117700]
+Wed 03 Apr 2024 12:26:46 INFO  valid result: 
+recall@10 : 0.1961    mrr@10 : 0.1177    ndcg@10 : 0.114    hit@10 : 0.2948    precision@10 : 0.0345
+Wed 03 Apr 2024 12:26:51 INFO  epoch 19 training [time: 4.97s, train_loss1: 17.3295, train_loss2: 12.1860, train_loss3: 0.3446]
+Wed 03 Apr 2024 12:27:13 INFO  epoch 19 evaluating [time: 21.86s, valid_score: 0.121900]
+Wed 03 Apr 2024 12:27:13 INFO  valid result: 
+recall@10 : 0.1977    mrr@10 : 0.1219    ndcg@10 : 0.1169    hit@10 : 0.2981    precision@10 : 0.0348
+Wed 03 Apr 2024 12:27:14 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:27:19 INFO  epoch 20 training [time: 4.99s, train_loss1: 16.7168, train_loss2: 12.1713, train_loss3: 0.3470]
+Wed 03 Apr 2024 12:27:41 INFO  epoch 20 evaluating [time: 21.84s, valid_score: 0.124800]
+Wed 03 Apr 2024 12:27:41 INFO  valid result: 
+recall@10 : 0.1958    mrr@10 : 0.1248    ndcg@10 : 0.1185    hit@10 : 0.2961    precision@10 : 0.0349
+Wed 03 Apr 2024 12:27:42 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:27:47 INFO  epoch 21 training [time: 5.00s, train_loss1: 16.2303, train_loss2: 12.1313, train_loss3: 0.3492]
+Wed 03 Apr 2024 12:28:09 INFO  epoch 21 evaluating [time: 21.88s, valid_score: 0.126600]
+Wed 03 Apr 2024 12:28:09 INFO  valid result: 
+recall@10 : 0.2014    mrr@10 : 0.1266    ndcg@10 : 0.1211    hit@10 : 0.3024    precision@10 : 0.0355
+Wed 03 Apr 2024 12:28:10 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:28:15 INFO  epoch 22 training [time: 5.02s, train_loss1: 15.3394, train_loss2: 12.0973, train_loss3: 0.3518]
+Wed 03 Apr 2024 12:28:36 INFO  epoch 22 evaluating [time: 21.71s, valid_score: 0.128000]
+Wed 03 Apr 2024 12:28:36 INFO  valid result: 
+recall@10 : 0.2032    mrr@10 : 0.128    ndcg@10 : 0.1225    hit@10 : 0.3028    precision@10 : 0.0356
+Wed 03 Apr 2024 12:28:37 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:28:43 INFO  epoch 23 training [time: 5.53s, train_loss1: 14.7961, train_loss2: 12.0663, train_loss3: 0.3548]
+Wed 03 Apr 2024 12:29:05 INFO  epoch 23 evaluating [time: 22.02s, valid_score: 0.127100]
+Wed 03 Apr 2024 12:29:05 INFO  valid result: 
+recall@10 : 0.2033    mrr@10 : 0.1271    ndcg@10 : 0.1216    hit@10 : 0.3051    precision@10 : 0.036
+Wed 03 Apr 2024 12:29:10 INFO  epoch 24 training [time: 4.97s, train_loss1: 14.0714, train_loss2: 12.0380, train_loss3: 0.3573]
+Wed 03 Apr 2024 12:29:32 INFO  epoch 24 evaluating [time: 21.87s, valid_score: 0.127500]
+Wed 03 Apr 2024 12:29:32 INFO  valid result: 
+recall@10 : 0.2016    mrr@10 : 0.1275    ndcg@10 : 0.1216    hit@10 : 0.3047    precision@10 : 0.036
+Wed 03 Apr 2024 12:29:37 INFO  epoch 25 training [time: 4.94s, train_loss1: 13.4729, train_loss2: 12.0235, train_loss3: 0.3599]
+Wed 03 Apr 2024 12:29:58 INFO  epoch 25 evaluating [time: 21.67s, valid_score: 0.130300]
+Wed 03 Apr 2024 12:29:58 INFO  valid result: 
+recall@10 : 0.2037    mrr@10 : 0.1303    ndcg@10 : 0.1234    hit@10 : 0.3075    precision@10 : 0.0362
+Wed 03 Apr 2024 12:29:59 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:30:04 INFO  epoch 26 training [time: 4.92s, train_loss1: 12.8861, train_loss2: 11.9628, train_loss3: 0.3627]
+Wed 03 Apr 2024 12:30:26 INFO  epoch 26 evaluating [time: 21.74s, valid_score: 0.130700]
+Wed 03 Apr 2024 12:30:26 INFO  valid result: 
+recall@10 : 0.2058    mrr@10 : 0.1307    ndcg@10 : 0.1239    hit@10 : 0.3103    precision@10 : 0.0365
+Wed 03 Apr 2024 12:30:27 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:30:32 INFO  epoch 27 training [time: 4.87s, train_loss1: 12.3412, train_loss2: 12.0052, train_loss3: 0.3654]
+Wed 03 Apr 2024 12:30:53 INFO  epoch 27 evaluating [time: 21.70s, valid_score: 0.134300]
+Wed 03 Apr 2024 12:30:53 INFO  valid result: 
+recall@10 : 0.204    mrr@10 : 0.1343    ndcg@10 : 0.1261    hit@10 : 0.3097    precision@10 : 0.0365
+Wed 03 Apr 2024 12:30:54 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:30:59 INFO  epoch 28 training [time: 5.01s, train_loss1: 11.7808, train_loss2: 11.9551, train_loss3: 0.3682]
+Wed 03 Apr 2024 12:31:21 INFO  epoch 28 evaluating [time: 21.62s, valid_score: 0.132300]
+Wed 03 Apr 2024 12:31:21 INFO  valid result: 
+recall@10 : 0.2006    mrr@10 : 0.1323    ndcg@10 : 0.1237    hit@10 : 0.3063    precision@10 : 0.0362
+Wed 03 Apr 2024 12:31:26 INFO  epoch 29 training [time: 5.03s, train_loss1: 11.2597, train_loss2: 11.8959, train_loss3: 0.3708]
+Wed 03 Apr 2024 12:31:48 INFO  epoch 29 evaluating [time: 21.64s, valid_score: 0.129300]
+Wed 03 Apr 2024 12:31:48 INFO  valid result: 
+recall@10 : 0.2039    mrr@10 : 0.1293    ndcg@10 : 0.1226    hit@10 : 0.3101    precision@10 : 0.0366
+Wed 03 Apr 2024 12:31:53 INFO  epoch 30 training [time: 4.93s, train_loss1: 10.7229, train_loss2: 11.9363, train_loss3: 0.3734]
+Wed 03 Apr 2024 12:32:14 INFO  epoch 30 evaluating [time: 21.69s, valid_score: 0.131800]
+Wed 03 Apr 2024 12:32:14 INFO  valid result: 
+recall@10 : 0.2076    mrr@10 : 0.1318    ndcg@10 : 0.1253    hit@10 : 0.315    precision@10 : 0.0373
+Wed 03 Apr 2024 12:32:20 INFO  epoch 31 training [time: 5.50s, train_loss1: 10.3127, train_loss2: 11.9233, train_loss3: 0.3763]
+Wed 03 Apr 2024 12:32:42 INFO  epoch 31 evaluating [time: 21.61s, valid_score: 0.134700]
+Wed 03 Apr 2024 12:32:42 INFO  valid result: 
+recall@10 : 0.209    mrr@10 : 0.1347    ndcg@10 : 0.127    hit@10 : 0.3162    precision@10 : 0.0374
+Wed 03 Apr 2024 12:32:42 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:32:47 INFO  epoch 32 training [time: 4.88s, train_loss1: 9.7543, train_loss2: 11.9466, train_loss3: 0.3792]
+Wed 03 Apr 2024 12:33:09 INFO  epoch 32 evaluating [time: 21.44s, valid_score: 0.136900]
+Wed 03 Apr 2024 12:33:09 INFO  valid result: 
+recall@10 : 0.2111    mrr@10 : 0.1369    ndcg@10 : 0.1286    hit@10 : 0.3193    precision@10 : 0.0377
+Wed 03 Apr 2024 12:33:10 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:33:15 INFO  epoch 33 training [time: 5.02s, train_loss1: 9.4962, train_loss2: 11.9110, train_loss3: 0.3814]
+Wed 03 Apr 2024 12:33:36 INFO  epoch 33 evaluating [time: 21.41s, valid_score: 0.139800]
+Wed 03 Apr 2024 12:33:36 INFO  valid result: 
+recall@10 : 0.2122    mrr@10 : 0.1398    ndcg@10 : 0.1307    hit@10 : 0.3205    precision@10 : 0.0379
+Wed 03 Apr 2024 12:33:37 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:33:43 INFO  epoch 34 training [time: 5.42s, train_loss1: 8.9669, train_loss2: 11.8571, train_loss3: 0.3839]
+Wed 03 Apr 2024 12:34:04 INFO  epoch 34 evaluating [time: 21.58s, valid_score: 0.139000]
+Wed 03 Apr 2024 12:34:04 INFO  valid result: 
+recall@10 : 0.213    mrr@10 : 0.139    ndcg@10 : 0.1297    hit@10 : 0.323    precision@10 : 0.0382
+Wed 03 Apr 2024 12:34:09 INFO  epoch 35 training [time: 4.82s, train_loss1: 8.7163, train_loss2: 11.8891, train_loss3: 0.3865]
+Wed 03 Apr 2024 12:34:30 INFO  epoch 35 evaluating [time: 21.33s, valid_score: 0.139100]
+Wed 03 Apr 2024 12:34:30 INFO  valid result: 
+recall@10 : 0.2147    mrr@10 : 0.1391    ndcg@10 : 0.1306    hit@10 : 0.3243    precision@10 : 0.0384
+Wed 03 Apr 2024 12:34:35 INFO  epoch 36 training [time: 4.88s, train_loss1: 8.1185, train_loss2: 11.8352, train_loss3: 0.3892]
+Wed 03 Apr 2024 12:34:57 INFO  epoch 36 evaluating [time: 21.33s, valid_score: 0.138900]
+Wed 03 Apr 2024 12:34:57 INFO  valid result: 
+recall@10 : 0.2162    mrr@10 : 0.1389    ndcg@10 : 0.1311    hit@10 : 0.3267    precision@10 : 0.0387
+Wed 03 Apr 2024 12:35:01 INFO  epoch 37 training [time: 4.81s, train_loss1: 7.9513, train_loss2: 11.8282, train_loss3: 0.3916]
+Wed 03 Apr 2024 12:35:23 INFO  epoch 37 evaluating [time: 21.34s, valid_score: 0.139900]
+Wed 03 Apr 2024 12:35:23 INFO  valid result: 
+recall@10 : 0.2156    mrr@10 : 0.1399    ndcg@10 : 0.1317    hit@10 : 0.326    precision@10 : 0.0387
+Wed 03 Apr 2024 12:35:24 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:35:29 INFO  epoch 38 training [time: 4.89s, train_loss1: 7.4987, train_loss2: 11.8412, train_loss3: 0.3938]
+Wed 03 Apr 2024 12:35:50 INFO  epoch 38 evaluating [time: 21.31s, valid_score: 0.141600]
+Wed 03 Apr 2024 12:35:50 INFO  valid result: 
+recall@10 : 0.2178    mrr@10 : 0.1416    ndcg@10 : 0.1331    hit@10 : 0.3291    precision@10 : 0.0391
+Wed 03 Apr 2024 12:35:51 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:35:56 INFO  epoch 39 training [time: 4.97s, train_loss1: 7.3305, train_loss2: 11.8372, train_loss3: 0.3964]
+Wed 03 Apr 2024 12:36:18 INFO  epoch 39 evaluating [time: 21.40s, valid_score: 0.143100]
+Wed 03 Apr 2024 12:36:18 INFO  valid result: 
+recall@10 : 0.2182    mrr@10 : 0.1431    ndcg@10 : 0.1339    hit@10 : 0.3292    precision@10 : 0.039
+Wed 03 Apr 2024 12:36:18 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:36:23 INFO  epoch 40 training [time: 4.98s, train_loss1: 6.9016, train_loss2: 11.7973, train_loss3: 0.3988]
+Wed 03 Apr 2024 12:36:45 INFO  epoch 40 evaluating [time: 21.33s, valid_score: 0.143900]
+Wed 03 Apr 2024 12:36:45 INFO  valid result: 
+recall@10 : 0.2189    mrr@10 : 0.1439    ndcg@10 : 0.1346    hit@10 : 0.3304    precision@10 : 0.0392
+Wed 03 Apr 2024 12:36:46 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:36:51 INFO  epoch 41 training [time: 4.84s, train_loss1: 6.7069, train_loss2: 11.8470, train_loss3: 0.4010]
+Wed 03 Apr 2024 12:37:12 INFO  epoch 41 evaluating [time: 21.31s, valid_score: 0.144800]
+Wed 03 Apr 2024 12:37:12 INFO  valid result: 
+recall@10 : 0.2195    mrr@10 : 0.1448    ndcg@10 : 0.1356    hit@10 : 0.3307    precision@10 : 0.0393
+Wed 03 Apr 2024 12:37:13 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:37:18 INFO  epoch 42 training [time: 4.87s, train_loss1: 6.5014, train_loss2: 11.7789, train_loss3: 0.4032]
+Wed 03 Apr 2024 12:37:39 INFO  epoch 42 evaluating [time: 21.36s, valid_score: 0.145000]
+Wed 03 Apr 2024 12:37:39 INFO  valid result: 
+recall@10 : 0.2176    mrr@10 : 0.145    ndcg@10 : 0.1353    hit@10 : 0.3287    precision@10 : 0.0392
+Wed 03 Apr 2024 12:37:40 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:37:45 INFO  epoch 43 training [time: 4.80s, train_loss1: 6.1909, train_loss2: 11.7992, train_loss3: 0.4055]
+Wed 03 Apr 2024 12:38:06 INFO  epoch 43 evaluating [time: 21.39s, valid_score: 0.143400]
+Wed 03 Apr 2024 12:38:06 INFO  valid result: 
+recall@10 : 0.2202    mrr@10 : 0.1434    ndcg@10 : 0.1343    hit@10 : 0.3321    precision@10 : 0.0395
+Wed 03 Apr 2024 12:38:11 INFO  epoch 44 training [time: 4.80s, train_loss1: 5.9349, train_loss2: 11.7774, train_loss3: 0.4079]
+Wed 03 Apr 2024 12:38:32 INFO  epoch 44 evaluating [time: 21.20s, valid_score: 0.141400]
+Wed 03 Apr 2024 12:38:32 INFO  valid result: 
+recall@10 : 0.2214    mrr@10 : 0.1414    ndcg@10 : 0.1336    hit@10 : 0.3321    precision@10 : 0.0396
+Wed 03 Apr 2024 12:38:37 INFO  epoch 45 training [time: 4.88s, train_loss1: 5.7785, train_loss2: 11.7426, train_loss3: 0.4100]
+Wed 03 Apr 2024 12:38:59 INFO  epoch 45 evaluating [time: 21.41s, valid_score: 0.142100]
+Wed 03 Apr 2024 12:38:59 INFO  valid result: 
+recall@10 : 0.2204    mrr@10 : 0.1421    ndcg@10 : 0.1336    hit@10 : 0.3313    precision@10 : 0.0394
+Wed 03 Apr 2024 12:39:03 INFO  epoch 46 training [time: 4.78s, train_loss1: 5.4889, train_loss2: 11.7513, train_loss3: 0.4123]
+Wed 03 Apr 2024 12:39:25 INFO  epoch 46 evaluating [time: 21.39s, valid_score: 0.149100]
+Wed 03 Apr 2024 12:39:25 INFO  valid result: 
+recall@10 : 0.222    mrr@10 : 0.1491    ndcg@10 : 0.1382    hit@10 : 0.3344    precision@10 : 0.0399
+Wed 03 Apr 2024 12:39:26 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:39:30 INFO  epoch 47 training [time: 4.77s, train_loss1: 5.2932, train_loss2: 11.7509, train_loss3: 0.4145]
+Wed 03 Apr 2024 12:39:52 INFO  epoch 47 evaluating [time: 21.45s, valid_score: 0.150900]
+Wed 03 Apr 2024 12:39:52 INFO  valid result: 
+recall@10 : 0.2232    mrr@10 : 0.1509    ndcg@10 : 0.1398    hit@10 : 0.3359    precision@10 : 0.0399
+Wed 03 Apr 2024 12:39:53 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:39:58 INFO  epoch 48 training [time: 4.78s, train_loss1: 5.1482, train_loss2: 11.7044, train_loss3: 0.4167]
+Wed 03 Apr 2024 12:40:19 INFO  epoch 48 evaluating [time: 21.40s, valid_score: 0.150800]
+Wed 03 Apr 2024 12:40:19 INFO  valid result: 
+recall@10 : 0.2223    mrr@10 : 0.1508    ndcg@10 : 0.1396    hit@10 : 0.3356    precision@10 : 0.0399
+Wed 03 Apr 2024 12:40:24 INFO  epoch 49 training [time: 4.86s, train_loss1: 4.9176, train_loss2: 11.7280, train_loss3: 0.4187]
+Wed 03 Apr 2024 12:40:45 INFO  epoch 49 evaluating [time: 21.37s, valid_score: 0.149600]
+Wed 03 Apr 2024 12:40:45 INFO  valid result: 
+recall@10 : 0.2214    mrr@10 : 0.1496    ndcg@10 : 0.1388    hit@10 : 0.3336    precision@10 : 0.0397
+Wed 03 Apr 2024 12:40:50 INFO  epoch 50 training [time: 4.92s, train_loss1: 4.7721, train_loss2: 11.7045, train_loss3: 0.4204]
+Wed 03 Apr 2024 12:41:11 INFO  epoch 50 evaluating [time: 21.33s, valid_score: 0.150900]
+Wed 03 Apr 2024 12:41:11 INFO  valid result: 
+recall@10 : 0.2236    mrr@10 : 0.1509    ndcg@10 : 0.1403    hit@10 : 0.3368    precision@10 : 0.0401
+Wed 03 Apr 2024 12:41:12 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:41:17 INFO  epoch 51 training [time: 4.93s, train_loss1: 4.6314, train_loss2: 11.7036, train_loss3: 0.4226]
+Wed 03 Apr 2024 12:41:39 INFO  epoch 51 evaluating [time: 21.29s, valid_score: 0.150300]
+Wed 03 Apr 2024 12:41:39 INFO  valid result: 
+recall@10 : 0.2254    mrr@10 : 0.1503    ndcg@10 : 0.1403    hit@10 : 0.3393    precision@10 : 0.0403
+Wed 03 Apr 2024 12:41:43 INFO  epoch 52 training [time: 4.81s, train_loss1: 4.5306, train_loss2: 11.6870, train_loss3: 0.4246]
+Wed 03 Apr 2024 12:42:05 INFO  epoch 52 evaluating [time: 21.31s, valid_score: 0.152600]
+Wed 03 Apr 2024 12:42:05 INFO  valid result: 
+recall@10 : 0.2261    mrr@10 : 0.1526    ndcg@10 : 0.1418    hit@10 : 0.3406    precision@10 : 0.0405
+Wed 03 Apr 2024 12:42:06 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:42:11 INFO  epoch 53 training [time: 4.86s, train_loss1: 4.4026, train_loss2: 11.6706, train_loss3: 0.4263]
+Wed 03 Apr 2024 12:42:32 INFO  epoch 53 evaluating [time: 21.38s, valid_score: 0.154000]
+Wed 03 Apr 2024 12:42:32 INFO  valid result: 
+recall@10 : 0.2257    mrr@10 : 0.154    ndcg@10 : 0.1431    hit@10 : 0.34    precision@10 : 0.0405
+Wed 03 Apr 2024 12:42:33 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:42:38 INFO  epoch 54 training [time: 4.97s, train_loss1: 4.1845, train_loss2: 11.6899, train_loss3: 0.4282]
+Wed 03 Apr 2024 12:42:59 INFO  epoch 54 evaluating [time: 21.35s, valid_score: 0.152200]
+Wed 03 Apr 2024 12:42:59 INFO  valid result: 
+recall@10 : 0.2262    mrr@10 : 0.1522    ndcg@10 : 0.1423    hit@10 : 0.3399    precision@10 : 0.0405
+Wed 03 Apr 2024 12:43:04 INFO  epoch 55 training [time: 4.86s, train_loss1: 4.0142, train_loss2: 11.6888, train_loss3: 0.4306]
+Wed 03 Apr 2024 12:43:26 INFO  epoch 55 evaluating [time: 21.36s, valid_score: 0.153900]
+Wed 03 Apr 2024 12:43:26 INFO  valid result: 
+recall@10 : 0.2293    mrr@10 : 0.1539    ndcg@10 : 0.144    hit@10 : 0.3425    precision@10 : 0.0408
+Wed 03 Apr 2024 12:43:30 INFO  epoch 56 training [time: 4.87s, train_loss1: 3.9166, train_loss2: 11.6501, train_loss3: 0.4325]
+Wed 03 Apr 2024 12:43:52 INFO  epoch 56 evaluating [time: 21.39s, valid_score: 0.154000]
+Wed 03 Apr 2024 12:43:52 INFO  valid result: 
+recall@10 : 0.2293    mrr@10 : 0.154    ndcg@10 : 0.1437    hit@10 : 0.343    precision@10 : 0.0407
+Wed 03 Apr 2024 12:43:53 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:43:58 INFO  epoch 57 training [time: 4.83s, train_loss1: 3.8344, train_loss2: 11.6733, train_loss3: 0.4342]
+Wed 03 Apr 2024 12:44:19 INFO  epoch 57 evaluating [time: 21.43s, valid_score: 0.155800]
+Wed 03 Apr 2024 12:44:19 INFO  valid result: 
+recall@10 : 0.2319    mrr@10 : 0.1558    ndcg@10 : 0.1456    hit@10 : 0.346    precision@10 : 0.041
+Wed 03 Apr 2024 12:44:20 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:44:25 INFO  epoch 58 training [time: 4.97s, train_loss1: 3.7728, train_loss2: 11.6474, train_loss3: 0.4359]
+Wed 03 Apr 2024 12:44:46 INFO  epoch 58 evaluating [time: 21.47s, valid_score: 0.152100]
+Wed 03 Apr 2024 12:44:46 INFO  valid result: 
+recall@10 : 0.2315    mrr@10 : 0.1521    ndcg@10 : 0.143    hit@10 : 0.3452    precision@10 : 0.0409
+Wed 03 Apr 2024 12:44:51 INFO  epoch 59 training [time: 4.86s, train_loss1: 3.6186, train_loss2: 11.6446, train_loss3: 0.4377]
+Wed 03 Apr 2024 12:45:13 INFO  epoch 59 evaluating [time: 21.50s, valid_score: 0.157500]
+Wed 03 Apr 2024 12:45:13 INFO  valid result: 
+recall@10 : 0.2335    mrr@10 : 0.1575    ndcg@10 : 0.1474    hit@10 : 0.3471    precision@10 : 0.0413
+Wed 03 Apr 2024 12:45:14 INFO  Saving current: saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:45:19 INFO  epoch 60 training [time: 4.95s, train_loss1: 3.4708, train_loss2: 11.6217, train_loss3: 0.4397]
+Wed 03 Apr 2024 12:45:40 INFO  epoch 60 evaluating [time: 21.32s, valid_score: 0.155000]
+Wed 03 Apr 2024 12:45:40 INFO  valid result: 
+recall@10 : 0.2333    mrr@10 : 0.155    ndcg@10 : 0.1456    hit@10 : 0.3466    precision@10 : 0.0414
+Wed 03 Apr 2024 12:45:45 INFO  epoch 61 training [time: 4.88s, train_loss1: 3.4260, train_loss2: 11.6336, train_loss3: 0.4412]
+Wed 03 Apr 2024 12:46:06 INFO  epoch 61 evaluating [time: 21.47s, valid_score: 0.157100]
+Wed 03 Apr 2024 12:46:06 INFO  valid result: 
+recall@10 : 0.2343    mrr@10 : 0.1571    ndcg@10 : 0.1475    hit@10 : 0.3475    precision@10 : 0.0413
+Wed 03 Apr 2024 12:46:11 INFO  epoch 62 training [time: 4.90s, train_loss1: 3.4519, train_loss2: 11.5974, train_loss3: 0.4428]
+Wed 03 Apr 2024 12:46:32 INFO  epoch 62 evaluating [time: 21.29s, valid_score: 0.154500]
+Wed 03 Apr 2024 12:46:32 INFO  valid result: 
+recall@10 : 0.2351    mrr@10 : 0.1545    ndcg@10 : 0.146    hit@10 : 0.349    precision@10 : 0.0414
+Wed 03 Apr 2024 12:46:37 INFO  epoch 63 training [time: 4.83s, train_loss1: 3.2835, train_loss2: 11.6303, train_loss3: 0.4445]
+Wed 03 Apr 2024 12:46:59 INFO  epoch 63 evaluating [time: 21.40s, valid_score: 0.154900]
+Wed 03 Apr 2024 12:46:59 INFO  valid result: 
+recall@10 : 0.2322    mrr@10 : 0.1549    ndcg@10 : 0.1453    hit@10 : 0.347    precision@10 : 0.0411
+Wed 03 Apr 2024 12:47:04 INFO  epoch 64 training [time: 4.86s, train_loss1: 3.2328, train_loss2: 11.5834, train_loss3: 0.4461]
+Wed 03 Apr 2024 12:47:25 INFO  epoch 64 evaluating [time: 21.27s, valid_score: 0.156300]
+Wed 03 Apr 2024 12:47:25 INFO  valid result: 
+recall@10 : 0.2339    mrr@10 : 0.1563    ndcg@10 : 0.1468    hit@10 : 0.3485    precision@10 : 0.0413
+Wed 03 Apr 2024 12:47:30 INFO  epoch 65 training [time: 4.89s, train_loss1: 3.0615, train_loss2: 11.5784, train_loss3: 0.4479]
+Wed 03 Apr 2024 12:47:51 INFO  epoch 65 evaluating [time: 21.39s, valid_score: 0.154800]
+Wed 03 Apr 2024 12:47:51 INFO  valid result: 
+recall@10 : 0.2345    mrr@10 : 0.1548    ndcg@10 : 0.1462    hit@10 : 0.3484    precision@10 : 0.0414
+Wed 03 Apr 2024 12:47:56 INFO  epoch 66 training [time: 4.86s, train_loss1: 3.1271, train_loss2: 11.5862, train_loss3: 0.4494]
+Wed 03 Apr 2024 12:48:17 INFO  epoch 66 evaluating [time: 21.33s, valid_score: 0.154900]
+Wed 03 Apr 2024 12:48:17 INFO  valid result: 
+recall@10 : 0.2348    mrr@10 : 0.1549    ndcg@10 : 0.1459    hit@10 : 0.35    precision@10 : 0.0414
+Wed 03 Apr 2024 12:48:22 INFO  epoch 67 training [time: 4.88s, train_loss1: 2.9477, train_loss2: 11.5791, train_loss3: 0.4510]
+Wed 03 Apr 2024 12:48:44 INFO  epoch 67 evaluating [time: 21.37s, valid_score: 0.156200]
+Wed 03 Apr 2024 12:48:44 INFO  valid result: 
+recall@10 : 0.2343    mrr@10 : 0.1562    ndcg@10 : 0.1467    hit@10 : 0.3493    precision@10 : 0.0415
+Wed 03 Apr 2024 12:48:48 INFO  epoch 68 training [time: 4.82s, train_loss1: 2.9095, train_loss2: 11.6105, train_loss3: 0.4527]
+Wed 03 Apr 2024 12:49:10 INFO  epoch 68 evaluating [time: 21.38s, valid_score: 0.156200]
+Wed 03 Apr 2024 12:49:10 INFO  valid result: 
+recall@10 : 0.2379    mrr@10 : 0.1562    ndcg@10 : 0.1475    hit@10 : 0.3527    precision@10 : 0.0418
+Wed 03 Apr 2024 12:49:15 INFO  epoch 69 training [time: 4.81s, train_loss1: 2.8545, train_loss2: 11.5646, train_loss3: 0.4541]
+Wed 03 Apr 2024 12:49:36 INFO  epoch 69 evaluating [time: 21.37s, valid_score: 0.156400]
+Wed 03 Apr 2024 12:49:36 INFO  valid result: 
+recall@10 : 0.2385    mrr@10 : 0.1564    ndcg@10 : 0.1481    hit@10 : 0.3521    precision@10 : 0.0419
+Wed 03 Apr 2024 12:49:41 INFO  epoch 70 training [time: 4.86s, train_loss1: 2.8097, train_loss2: 11.5003, train_loss3: 0.4555]
+Wed 03 Apr 2024 12:50:02 INFO  epoch 70 evaluating [time: 21.49s, valid_score: 0.154500]
+Wed 03 Apr 2024 12:50:02 INFO  valid result: 
+recall@10 : 0.2382    mrr@10 : 0.1545    ndcg@10 : 0.1468    hit@10 : 0.3532    precision@10 : 0.0418
+Wed 03 Apr 2024 12:50:02 INFO  Finished training, best eval result in epoch 59
+Wed 03 Apr 2024 12:50:04 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/CKE/CKE-Apr-03-2024_12-17-22.pth
+Wed 03 Apr 2024 12:50:28 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     6.30 %     |
++-------------+----------------+
+| GPU         | 0.24 G/14.58 G |
++-------------+----------------+
+| Memory      | 1.66 G/27.41 G |
++-------------+----------------+
+Wed 03 Apr 2024 12:50:28 INFO  best valid : OrderedDict([('recall@10', 0.2335), ('mrr@10', 0.1575), ('ndcg@10', 0.1474), ('hit@10', 0.3471), ('precision@10', 0.0413)])
+Wed 03 Apr 2024 12:50:28 INFO  test result: OrderedDict([('recall@10', 0.2322), ('mrr@10', 0.1558), ('ndcg@10', 0.1461), ('hit@10', 0.3399), ('precision@10', 0.0412)])
+Wed 03 Apr 2024 12:50:29 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/CKE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'kg': ['head_id', 'relation_id', 'tail_id'], 'link': ['item_id', 'entity_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+kg_embedding_size = 64
+reg_weights = [0.01, 0.01]
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.KNOWLEDGE
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Wed 03 Apr 2024 12:50:37 INFO  LFM-1b_artist_20U50I
+The number of users: 19426
+Average actions of users: 19.186718146718146
+The number of items: 15510
+Average actions of items: 24.03133664323941
+The number of inters: 372702
+The sparsity of the dataset: 99.87630089964973%
+Remain Fields: ['entity_id', 'user_id', 'item_id', 'head_id', 'relation_id', 'tail_id']
+The number of entities: 50666
+The number of relations: 7
+The number of triples: 46827
+The number of items that have been linked to KG: 15509
+Wed 03 Apr 2024 12:50:39 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Wed 03 Apr 2024 12:50:39 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Wed 03 Apr 2024 12:50:40 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/CKE/CKE-Mar-28-2024_14-55-58.pth

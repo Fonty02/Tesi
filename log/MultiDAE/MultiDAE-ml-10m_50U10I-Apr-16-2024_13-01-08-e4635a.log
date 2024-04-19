@@ -1,0 +1,267 @@
+Tue 16 Apr 2024 13:01:08 INFO  ['src/default_tracker.py', '--dataset=ml-10m_50U10I', '--model=MultiDAE']
+Tue 16 Apr 2024 13:01:08 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/ml-10m_50U10I
+checkpoint_dir = saved/ml-10m_50U10I/MultiDAE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+mlp_hidden_size = [600]
+latent_dimension = 64
+dropout_prob = 0.5
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Tue 16 Apr 2024 13:01:29 INFO  ml-10m_50U10I
+The number of users: 50001
+Average actions of users: 141.07548
+The number of items: 10001
+Average actions of items: 705.3774
+The number of inters: 7053774
+The sparsity of the dataset: 98.5894144730844%
+Remain Fields: ['user_id', 'item_id']
+Tue 16 Apr 2024 13:01:48 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Tue 16 Apr 2024 13:01:48 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Tue 16 Apr 2024 13:01:50 WARNING  Max value of user's history interaction records has reached 56.7943205679432% of the total.
+Tue 16 Apr 2024 13:02:00 INFO  MultiDAE(
+  (encoder): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.0, inplace=False)
+      (1): Linear(in_features=10001, out_features=600, bias=True)
+      (2): Tanh()
+      (3): Dropout(p=0.0, inplace=False)
+      (4): Linear(in_features=600, out_features=64, bias=True)
+      (5): Tanh()
+    )
+  )
+  (decoder): Sequential(
+    (0): Linear(in_features=64, out_features=600, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=600, out_features=10001, bias=True)
+  )
+)
+Trainable parameters: 12089265
+Tue 16 Apr 2024 13:02:08 INFO  FLOPs: 12078000.0
+Tue 16 Apr 2024 13:02:52 INFO  epoch 0 training [time: 3.57s, train loss: 23608.7154]
+Tue 16 Apr 2024 13:05:45 INFO  epoch 0 evaluating [time: 172.72s, valid_score: 0.217000]
+Tue 16 Apr 2024 13:05:45 INFO  valid result: 
+recall@10 : 0.0915    mrr@10 : 0.217    ndcg@10 : 0.113    hit@10 : 0.4582    map@10 : 0.0564    precision@10 : 0.0818    gauc : 0.9122    itemcoverage@10 : 0.0082    averagepopularity@10 : 16628.8337    giniindex@10 : 0.9982    shannonentropy@10 : 0.0385    tailpercentage@10 : 0.0
+Tue 16 Apr 2024 13:05:46 INFO  Saving current: saved/ml-10m_50U10I/MultiDAE/MultiDAE-Apr-16-2024_13-02-09.pth
+Tue 16 Apr 2024 13:05:47 INFO  Loading model structure and parameters from saved/ml-10m_50U10I/MultiDAE/MultiDAE-Apr-16-2024_13-02-09.pth
+Tue 16 Apr 2024 13:08:51 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     5.30 %     |
++-------------+----------------+
+| GPU         | 6.47 G/15.57 G |
++-------------+----------------+
+| Memory      | 2.64 G/27.41 G |
++-------------+----------------+
+Tue 16 Apr 2024 13:08:51 INFO  best valid : OrderedDict([('recall@10', 0.0915), ('mrr@10', 0.217), ('ndcg@10', 0.113), ('hit@10', 0.4582), ('map@10', 0.0564), ('precision@10', 0.0818), ('gauc', 0.9122), ('itemcoverage@10', 0.0082), ('averagepopularity@10', 16628.8337), ('giniindex@10', 0.9982), ('shannonentropy@10', 0.0385), ('tailpercentage@10', 0.0)])
+Tue 16 Apr 2024 13:08:51 INFO  test result: OrderedDict([('recall@10', 0.0985), ('mrr@10', 0.2463), ('ndcg@10', 0.1299), ('hit@10', 0.4724), ('map@10', 0.0695), ('precision@10', 0.0928), ('gauc', 0.9141), ('itemcoverage@10', 0.013), ('averagepopularity@10', 16343.9348), ('giniindex@10', 0.9979), ('shannonentropy@10', 0.0254), ('tailpercentage@10', 0.0)])
+Tue 16 Apr 2024 13:08:54 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/ml-10m_50U10I
+checkpoint_dir = saved/ml-10m_50U10I/MultiDAE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+mlp_hidden_size = [600]
+latent_dimension = 64
+dropout_prob = 0.5
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Tue 16 Apr 2024 13:09:14 INFO  ml-10m_50U10I
+The number of users: 50001
+Average actions of users: 141.07548
+The number of items: 10001
+Average actions of items: 705.3774
+The number of inters: 7053774
+The sparsity of the dataset: 98.5894144730844%
+Remain Fields: ['user_id', 'item_id']
+Tue 16 Apr 2024 13:09:35 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Tue 16 Apr 2024 13:09:35 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Tue 16 Apr 2024 13:09:37 WARNING  Max value of user's history interaction records has reached 56.7943205679432% of the total.
+Tue 16 Apr 2024 13:09:49 INFO  Loading model structure and parameters from saved/ml-10m_50U10I/MultiDAE/MultiDAE-Apr-16-2024_13-02-09.pth

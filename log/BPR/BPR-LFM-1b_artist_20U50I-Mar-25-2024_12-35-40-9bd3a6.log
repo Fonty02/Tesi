@@ -1,0 +1,2105 @@
+Mon 25 Mar 2024 12:35:40 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 12:35:40 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:35:44 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:35:46 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:35:46 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:35:47 INFO  BPR(
+  (user_embedding): Embedding(19842, 64)
+  (item_embedding): Embedding(42458, 64)
+  (loss): BPRLoss()
+)
+Trainable parameters: 3987200
+Mon 25 Mar 2024 12:35:56 INFO  FLOPs: 128.0
+Mon 25 Mar 2024 12:36:39 INFO  epoch 0 training [time: 4.54s, train loss: 117.8947]
+Mon 25 Mar 2024 12:37:41 INFO  epoch 0 evaluating [time: 62.78s, valid_score: 0.119600]
+Mon 25 Mar 2024 12:37:41 INFO  valid result: 
+recall@10 : 0.0912    mrr@10 : 0.1196    ndcg@10 : 0.0722    hit@10 : 0.2663    map@10 : 0.0399    precision@10 : 0.0359    gauc : 0.9051    itemcoverage@10 : 0.0402    averagepopularity@10 : 3839.3884    giniindex@10 : 0.9993    shannonentropy@10 : 0.0018    tailpercentage@10 : 0.0012
+Mon 25 Mar 2024 12:37:42 INFO  Saving current: saved/LFM-1b_artist_20U50I/BPR/BPR-Mar-25-2024_12-35-56.pth
+Mon 25 Mar 2024 12:37:43 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/BPR-Mar-25-2024_12-35-56.pth
+Mon 25 Mar 2024 12:38:45 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     8.50 %     |
++-------------+----------------+
+| GPU         | 0.16 G/15.57 G |
++-------------+----------------+
+| Memory      | 1.39 G/27.41 G |
++-------------+----------------+
+Mon 25 Mar 2024 12:38:45 INFO  best valid : OrderedDict([('recall@10', 0.0912), ('mrr@10', 0.1196), ('ndcg@10', 0.0722), ('hit@10', 0.2663), ('map@10', 0.0399), ('precision@10', 0.0359), ('gauc', 0.9051), ('itemcoverage@10', 0.0402), ('averagepopularity@10', 3839.3884), ('giniindex@10', 0.9993), ('shannonentropy@10', 0.0018), ('tailpercentage@10', 0.0012)])
+Mon 25 Mar 2024 12:38:45 INFO  test result: OrderedDict([('recall@10', 0.0957), ('mrr@10', 0.1321), ('ndcg@10', 0.078), ('hit@10', 0.2738), ('map@10', 0.0442), ('precision@10', 0.0377), ('gauc', 0.9048), ('itemcoverage@10', 0.0502), ('averagepopularity@10', 3777.9228), ('giniindex@10', 0.999), ('shannonentropy@10', 0.0015), ('tailpercentage@10', 0.0016)])
+Mon 25 Mar 2024 12:38:47 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:38:50 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:38:53 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:38:53 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:38:54 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/BPR-Mar-25-2024_12-35-56.pth
+Mon 25 Mar 2024 12:39:43 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 12:39:43 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+inter_matrix_type = 01
+user_embedding_size = 64
+item_embedding_size = 64
+user_hidden_size_list = [64, 64]
+item_hidden_size_list = [64, 64]
+embedding_size = 10
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:39:46 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:39:49 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:39:49 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:39:49 WARNING  Max value of item's history interaction records has reached 30.349763128716862% of the total.
+Mon 25 Mar 2024 12:39:52 INFO  DMF(
+  (user_linear): Linear(in_features=42458, out_features=64, bias=False)
+  (item_linear): Linear(in_features=19842, out_features=64, bias=False)
+  (user_fc_layers): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.0, inplace=False)
+      (1): Linear(in_features=64, out_features=64, bias=True)
+      (2): ReLU()
+      (3): Dropout(p=0.0, inplace=False)
+      (4): Linear(in_features=64, out_features=64, bias=True)
+      (5): ReLU()
+    )
+  )
+  (item_fc_layers): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.0, inplace=False)
+      (1): Linear(in_features=64, out_features=64, bias=True)
+      (2): ReLU()
+      (3): Dropout(p=0.0, inplace=False)
+      (4): Linear(in_features=64, out_features=64, bias=True)
+      (5): ReLU()
+    )
+  )
+  (sigmoid): Sigmoid()
+  (bce_loss): BCEWithLogitsLoss()
+)
+Trainable parameters: 4003840
+Mon 25 Mar 2024 12:39:53 INFO  FLOPs: 4003584.0
+Mon 25 Mar 2024 12:40:04 INFO  epoch 0 training [time: 11.20s, train loss: 182.6917]
+Mon 25 Mar 2024 12:41:16 INFO  epoch 0 evaluating [time: 72.23s, valid_score: 0.108800]
+Mon 25 Mar 2024 12:41:16 INFO  valid result: 
+recall@10 : 0.085    mrr@10 : 0.1088    ndcg@10 : 0.0658    hit@10 : 0.2478    map@10 : 0.0365    precision@10 : 0.0315    gauc : 0.8994    itemcoverage@10 : 0.0011    averagepopularity@10 : 3597.4929    giniindex@10 : 0.9997    shannonentropy@10 : 0.0613    tailpercentage@10 : 0.0
+Mon 25 Mar 2024 12:41:18 INFO  Saving current: saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/DMF-Mar-25-2024_12-39-53.pth
+Mon 25 Mar 2024 12:41:18 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/DMF-Mar-25-2024_12-39-53.pth
+Mon 25 Mar 2024 12:42:30 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     9.50 %     |
++-------------+----------------+
+| GPU         | 6.24 G/15.57 G |
++-------------+----------------+
+| Memory      | 1.55 G/27.41 G |
++-------------+----------------+
+Mon 25 Mar 2024 12:42:30 INFO  best valid : OrderedDict([('recall@10', 0.085), ('mrr@10', 0.1088), ('ndcg@10', 0.0658), ('hit@10', 0.2478), ('map@10', 0.0365), ('precision@10', 0.0315), ('gauc', 0.8994), ('itemcoverage@10', 0.0011), ('averagepopularity@10', 3597.4929), ('giniindex@10', 0.9997), ('shannonentropy@10', 0.0613), ('tailpercentage@10', 0.0)])
+Mon 25 Mar 2024 12:42:30 INFO  test result: OrderedDict([('recall@10', 0.0907), ('mrr@10', 0.1181), ('ndcg@10', 0.0708), ('hit@10', 0.2578), ('map@10', 0.0398), ('precision@10', 0.0333), ('gauc', 0.8994), ('itemcoverage@10', 0.0013), ('averagepopularity@10', 3565.3906), ('giniindex@10', 0.9997), ('shannonentropy@10', 0.0521), ('tailpercentage@10', 0.0)])
+Mon 25 Mar 2024 12:42:31 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+inter_matrix_type = 01
+user_embedding_size = 64
+item_embedding_size = 64
+user_hidden_size_list = [64, 64]
+item_hidden_size_list = [64, 64]
+embedding_size = 10
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:42:35 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:42:38 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:42:38 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:42:38 WARNING  Max value of item's history interaction records has reached 30.349763128716862% of the total.
+Mon 25 Mar 2024 12:42:42 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/DMF-Mar-25-2024_12-39-53.pth
+Mon 25 Mar 2024 12:43:37 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 12:43:37 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+dropout_prob = 0.7
+reg_weight = 0.0
+negative_weight = 0.5
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:43:40 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:43:43 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:43:43 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:43:44 INFO  ENMF(
+  (user_embedding): Embedding(19842, 64, padding_idx=0)
+  (item_embedding): Embedding(42458, 64, padding_idx=0)
+  (H_i): Linear(in_features=64, out_features=1, bias=False)
+  (dropout): Dropout(p=0.7, inplace=False)
+)
+Trainable parameters: 3987264
+Mon 25 Mar 2024 12:43:44 INFO  FLOPs: 192.0
+Mon 25 Mar 2024 12:43:46 INFO  epoch 0 training [time: 1.34s, train loss: -44.8239]
+Mon 25 Mar 2024 12:44:58 INFO  epoch 0 evaluating [time: 72.22s, valid_score: 0.001800]
+Mon 25 Mar 2024 12:44:58 INFO  valid result: 
+recall@10 : 0.0012    mrr@10 : 0.0018    ndcg@10 : 0.001    hit@10 : 0.0055    map@10 : 0.0005    precision@10 : 0.0006    gauc : 0.501    itemcoverage@10 : 0.2761    averagepopularity@10 : 83.0976    giniindex@10 : 0.9153    shannonentropy@10 : 0.0007    tailpercentage@10 : 0.0043
+Mon 25 Mar 2024 12:44:59 INFO  Saving current: saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/ENMF-Mar-25-2024_12-43-44.pth
+Mon 25 Mar 2024 12:44:59 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/ENMF-Mar-25-2024_12-43-44.pth
+Mon 25 Mar 2024 12:46:15 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     5.20 %     |
++-------------+----------------+
+| GPU         | 6.24 G/15.57 G |
++-------------+----------------+
+| Memory      | 1.61 G/27.41 G |
++-------------+----------------+
+Mon 25 Mar 2024 12:46:15 INFO  best valid : OrderedDict([('recall@10', 0.0012), ('mrr@10', 0.0018), ('ndcg@10', 0.001), ('hit@10', 0.0055), ('map@10', 0.0005), ('precision@10', 0.0006), ('gauc', 0.501), ('itemcoverage@10', 0.2761), ('averagepopularity@10', 83.0976), ('giniindex@10', 0.9153), ('shannonentropy@10', 0.0007), ('tailpercentage@10', 0.0043)])
+Mon 25 Mar 2024 12:46:15 INFO  test result: OrderedDict([('recall@10', 0.0011), ('mrr@10', 0.0014), ('ndcg@10', 0.0008), ('hit@10', 0.0049), ('map@10', 0.0004), ('precision@10', 0.0005), ('gauc', 0.4998), ('itemcoverage@10', 0.2776), ('averagepopularity@10', 82.4952), ('giniindex@10', 0.9152), ('shannonentropy@10', 0.0007), ('tailpercentage@10', 0.0043)])
+Mon 25 Mar 2024 12:46:17 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+dropout_prob = 0.7
+reg_weight = 0.0
+negative_weight = 0.5
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:46:20 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:46:23 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:46:23 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:46:25 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/ENMF-Mar-25-2024_12-43-44.pth
+Mon 25 Mar 2024 12:47:14 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 12:47:14 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+split_to = 0
+reg_weights = [0.01, 0.01]
+alpha = 0.0
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:47:18 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:47:20 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:47:20 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:47:22 WARNING  Pay Attetion!! the `split_to` is set to 0. If you catch a OMM error in this case, you need to increase it 
+			until the error disappears. For example, you can append it in the command line such as `--split_to=5`
+Mon 25 Mar 2024 12:47:22 INFO  FISM(
+  (item_src_embedding): Embedding(42458, 64, padding_idx=0)
+  (item_dst_embedding): Embedding(42458, 64, padding_idx=0)
+  (bceloss): BCEWithLogitsLoss()
+)
+Trainable parameters: 5496924
+Mon 25 Mar 2024 12:47:22 INFO  FLOPs: 50304.0
+Mon 25 Mar 2024 12:47:41 INFO  epoch 0 training [time: 19.12s, train loss: 260.7499]
+Mon 25 Mar 2024 12:50:23 INFO  epoch 0 evaluating [time: 161.43s, valid_score: 0.091000]
+Mon 25 Mar 2024 12:50:23 INFO  valid result: 
+recall@10 : 0.0835    mrr@10 : 0.091    ndcg@10 : 0.0588    hit@10 : 0.2499    map@10 : 0.0289    precision@10 : 0.0328    gauc : 0.9074    itemcoverage@10 : 0.0011    averagepopularity@10 : 3623.5334    giniindex@10 : 0.9997    shannonentropy@10 : 0.0604    tailpercentage@10 : 0.0
+Mon 25 Mar 2024 12:50:24 INFO  Saving current: saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/FISM-Mar-25-2024_12-47-22.pth
+Mon 25 Mar 2024 12:50:24 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/FISM-Mar-25-2024_12-47-22.pth
+Mon 25 Mar 2024 12:53:10 INFO  The running environment of this training is as follows:
++-------------+-----------------+
+| Environment |      Usage      |
++=============+=================+
+| CPU         |     5.70 %      |
++-------------+-----------------+
+| GPU         | 15.09 G/15.57 G |
++-------------+-----------------+
+| Memory      | 1.67 G/27.41 G  |
++-------------+-----------------+
+Mon 25 Mar 2024 12:53:10 INFO  best valid : OrderedDict([('recall@10', 0.0835), ('mrr@10', 0.091), ('ndcg@10', 0.0588), ('hit@10', 0.2499), ('map@10', 0.0289), ('precision@10', 0.0328), ('gauc', 0.9074), ('itemcoverage@10', 0.0011), ('averagepopularity@10', 3623.5334), ('giniindex@10', 0.9997), ('shannonentropy@10', 0.0604), ('tailpercentage@10', 0.0)])
+Mon 25 Mar 2024 12:53:10 INFO  test result: OrderedDict([('recall@10', 0.091), ('mrr@10', 0.0965), ('ndcg@10', 0.0633), ('hit@10', 0.2626), ('map@10', 0.0314), ('precision@10', 0.0349), ('gauc', 0.9079), ('itemcoverage@10', 0.0012), ('averagepopularity@10', 3592.8671), ('giniindex@10', 0.9997), ('shannonentropy@10', 0.0545), ('tailpercentage@10', 0.0)])
+Mon 25 Mar 2024 12:53:11 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+split_to = 0
+reg_weights = [0.01, 0.01]
+alpha = 0.0
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:53:15 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:53:17 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:53:17 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:53:18 WARNING  Pay Attetion!! the `split_to` is set to 0. If you catch a OMM error in this case, you need to increase it 
+			until the error disappears. For example, you can append it in the command line such as `--split_to=5`
+Mon 25 Mar 2024 12:53:20 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/FISM-Mar-25-2024_12-47-22.pth
+Mon 25 Mar 2024 12:55:10 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 12:55:10 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+beta = 1.0
+rank = 450
+reg_weight = 100.0
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 12:55:14 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 12:55:17 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 12:55:17 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 12:55:45 INFO  NCEPLRec()
+Trainable parameters: 1
+Mon 25 Mar 2024 12:55:45 INFO  FLOPs: 0.0
+Mon 25 Mar 2024 12:55:48 INFO  epoch 0 training [time: 2.51s, train loss: 0.0000]
+Mon 25 Mar 2024 12:58:53 INFO  epoch 0 evaluating [time: 184.52s, valid_score: 0.206700]
+Mon 25 Mar 2024 12:58:53 INFO  valid result: 
+recall@10 : 0.1892    mrr@10 : 0.2067    ndcg@10 : 0.1429    hit@10 : 0.4289    map@10 : 0.0899    precision@10 : 0.056    gauc : 0.7769    itemcoverage@10 : 0.0515    averagepopularity@10 : 1180.2534    giniindex@10 : 0.9861    shannonentropy@10 : 0.003    tailpercentage@10 : 0.0
+Mon 25 Mar 2024 12:58:53 INFO  Saving current: saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/NCEPLRec-Mar-25-2024_12-55-45.pth
+Mon 25 Mar 2024 12:58:53 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/NCEPLRec-Mar-25-2024_12-55-45.pth
+Mon 25 Mar 2024 13:01:56 INFO  The running environment of this training is as follows:
++-------------+-----------------+
+| Environment |      Usage      |
++=============+=================+
+| CPU         |     6.00 %      |
++-------------+-----------------+
+| GPU         | 15.09 G/15.57 G |
++-------------+-----------------+
+| Memory      | 1.86 G/27.41 G  |
++-------------+-----------------+
+Mon 25 Mar 2024 13:01:56 INFO  best valid : OrderedDict([('recall@10', 0.1892), ('mrr@10', 0.2067), ('ndcg@10', 0.1429), ('hit@10', 0.4289), ('map@10', 0.0899), ('precision@10', 0.056), ('gauc', 0.7769), ('itemcoverage@10', 0.0515), ('averagepopularity@10', 1180.2534), ('giniindex@10', 0.9861), ('shannonentropy@10', 0.003), ('tailpercentage@10', 0.0)])
+Mon 25 Mar 2024 13:01:56 INFO  test result: OrderedDict([('recall@10', 0.1962), ('mrr@10', 0.2256), ('ndcg@10', 0.1529), ('hit@10', 0.4389), ('map@10', 0.098), ('precision@10', 0.0589), ('gauc', 0.7769), ('itemcoverage@10', 0.0528), ('averagepopularity@10', 1158.395), ('giniindex@10', 0.9858), ('shannonentropy@10', 0.0029), ('tailpercentage@10', 0.0)])
+Mon 25 Mar 2024 13:01:57 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+beta = 1.0
+rank = 450
+reg_weight = 100.0
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 13:02:00 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 13:02:03 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 13:02:03 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 13:02:32 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/NCEPLRec-Mar-25-2024_12-55-45.pth
+Mon 25 Mar 2024 13:03:33 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 13:03:33 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+alpha = 0.2
+l1_ratio = 0.02
+positive_only = True
+hide_item = True
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.TRADITIONAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 13:03:36 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 13:03:39 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 13:03:39 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 15:04:12 INFO  SLIMElastic()
+Trainable parameters: 1
+Mon 25 Mar 2024 15:04:13 INFO  FLOPs: 0.0
+Mon 25 Mar 2024 15:04:19 INFO  epoch 0 training [time: 5.58s, train loss: 0.0000]
+Mon 25 Mar 2024 15:04:23 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 15:04:23 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+loss_type = BCE
+hid_activation = relu
+out_activation = sigmoid
+corruption_ratio = 0.5
+embedding_size = 64
+reg_weight_1 = 0.0
+reg_weight_2 = 0.01
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 15:04:26 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 15:04:29 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 15:04:29 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 15:04:30 INFO  CDAE(
+  (h_act): ReLU()
+  (o_act): Sigmoid()
+  (dropout): Dropout(p=0.5, inplace=False)
+  (h_user): Embedding(19842, 64)
+  (h_item): Linear(in_features=42458, out_features=64, bias=True)
+  (out_layer): Linear(in_features=64, out_features=42458, bias=True)
+)
+Trainable parameters: 6747034
+Mon 25 Mar 2024 15:04:31 INFO  FLOPs: 5434688.0
+Mon 25 Mar 2024 15:04:32 INFO  epoch 0 training [time: 0.82s, train loss: 579843312.0000]
+Mon 25 Mar 2024 15:15:00 INFO  epoch 0 evaluating [time: 628.35s, valid_score: 0.000500]
+Mon 25 Mar 2024 15:15:00 INFO  valid result: 
+recall@10 : 0.0002    mrr@10 : 0.0005    ndcg@10 : 0.0002    hit@10 : 0.0011    map@10 : 0.0001    precision@10 : 0.0001    gauc : 0.5002    itemcoverage@10 : 0.0445    averagepopularity@10 : 19.6258    giniindex@10 : 0.9979    shannonentropy@10 : 0.0022    tailpercentage@10 : 0.0898
+Mon 25 Mar 2024 15:15:02 INFO  Saving current: saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/CDAE-Mar-25-2024_15-04-31.pth
+Mon 25 Mar 2024 15:15:02 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/CDAE-Mar-25-2024_15-04-31.pth
+Mon 25 Mar 2024 15:25:42 INFO  The running environment of this training is as follows:
++-------------+-----------------+
+| Environment |      Usage      |
++=============+=================+
+| CPU         |     8.90 %      |
++-------------+-----------------+
+| GPU         | 15.09 G/15.57 G |
++-------------+-----------------+
+| Memory      | 1.91 G/27.41 G  |
++-------------+-----------------+
+Mon 25 Mar 2024 15:25:42 INFO  best valid : OrderedDict([('recall@10', 0.0002), ('mrr@10', 0.0005), ('ndcg@10', 0.0002), ('hit@10', 0.0011), ('map@10', 0.0001), ('precision@10', 0.0001), ('gauc', 0.5002), ('itemcoverage@10', 0.0445), ('averagepopularity@10', 19.6258), ('giniindex@10', 0.9979), ('shannonentropy@10', 0.0022), ('tailpercentage@10', 0.0898)])
+Mon 25 Mar 2024 15:25:42 INFO  test result: OrderedDict([('recall@10', 0.0001), ('mrr@10', 0.0005), ('ndcg@10', 0.0002), ('hit@10', 0.0012), ('map@10', 0.0001), ('precision@10', 0.0001), ('gauc', 0.498), ('itemcoverage@10', 0.049), ('averagepopularity@10', 19.634), ('giniindex@10', 0.9976), ('shannonentropy@10', 0.0021), ('tailpercentage@10', 0.0902)])
+Mon 25 Mar 2024 15:25:44 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+loss_type = BCE
+hid_activation = relu
+out_activation = sigmoid
+corruption_ratio = 0.5
+embedding_size = 64
+reg_weight_1 = 0.0
+reg_weight_2 = 0.01
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 15:25:48 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 15:25:51 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 15:25:51 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 15:25:54 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/CDAE-Mar-25-2024_15-04-31.pth
+Mon 25 Mar 2024 15:26:50 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 15:26:50 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/LFM-1b_artist_20U50I/ConvNCF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+cnn_channels = [1, 32, 32, 32, 32]
+cnn_kernels = [4, 4, 2, 2]
+cnn_strides = [4, 4, 2, 2]
+dropout_prob = 0.2
+reg_weights = [0.1, 0.1]
+train_method = no_pretrain
+pre_model_path = 
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 15:26:53 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 15:26:56 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 15:26:56 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 15:26:56 INFO  ConvNCF(
+  (user_embedding): Embedding(19842, 64)
+  (item_embedding): Embedding(42458, 64)
+  (cnn_layers): CNNLayers(
+    (cnn_layers): Sequential(
+      (0): Conv2d(1, 32, kernel_size=(4, 4), stride=(4, 4))
+      (1): ReLU()
+      (2): Conv2d(32, 32, kernel_size=(4, 4), stride=(4, 4))
+      (3): ReLU()
+      (4): Conv2d(32, 32, kernel_size=(2, 2), stride=(2, 2))
+      (5): ReLU()
+      (6): Conv2d(32, 32, kernel_size=(2, 2), stride=(2, 2))
+      (7): ReLU()
+    )
+  )
+  (predict_layers): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.2, inplace=False)
+      (1): Linear(in_features=32, out_features=1, bias=True)
+    )
+  )
+  (loss): ConvNCFBPRLoss()
+)
+Trainable parameters: 4012449
+Mon 25 Mar 2024 15:26:58 INFO  FLOPs: 413856.0
+Mon 25 Mar 2024 15:27:38 INFO  epoch 0 training [time: 39.50s, train loss: 441688.4233]
+Mon 25 Mar 2024 16:42:09 INFO  epoch 0 evaluating [time: 4470.18s, valid_score: 0.061600]
+Mon 25 Mar 2024 16:42:09 INFO  valid result: 
+recall@10 : 0.0432    mrr@10 : 0.0616    ndcg@10 : 0.0349    hit@10 : 0.1407    map@10 : 0.0198    precision@10 : 0.0156    gauc : 0.835    itemcoverage@10 : 0.0028    averagepopularity@10 : 2021.7853    giniindex@10 : 0.9995    shannonentropy@10 : 0.0285    tailpercentage@10 : 0.0
+Mon 25 Mar 2024 16:42:10 INFO  Saving current: saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/LFM-1b_artist_20U50I/ConvNCF/ConvNCF-Mar-25-2024_15-26-59.pth
+Mon 25 Mar 2024 16:42:10 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/LFM-1b_artist_20U50I/ConvNCF/ConvNCF-Mar-25-2024_15-26-59.pth
+Mon 25 Mar 2024 17:58:32 INFO  The running environment of this training is as follows:
++-------------+-----------------+
+| Environment |      Usage      |
++=============+=================+
+| CPU         |     11.30 %     |
++-------------+-----------------+
+| GPU         | 15.09 G/15.57 G |
++-------------+-----------------+
+| Memory      | 2.16 G/27.41 G  |
++-------------+-----------------+
+Mon 25 Mar 2024 17:58:32 INFO  best valid : OrderedDict([('recall@10', 0.0432), ('mrr@10', 0.0616), ('ndcg@10', 0.0349), ('hit@10', 0.1407), ('map@10', 0.0198), ('precision@10', 0.0156), ('gauc', 0.835), ('itemcoverage@10', 0.0028), ('averagepopularity@10', 2021.7853), ('giniindex@10', 0.9995), ('shannonentropy@10', 0.0285), ('tailpercentage@10', 0.0)])
+Mon 25 Mar 2024 17:58:32 INFO  test result: OrderedDict([('recall@10', 0.0474), ('mrr@10', 0.0653), ('ndcg@10', 0.0379), ('hit@10', 0.1486), ('map@10', 0.0218), ('precision@10', 0.0164), ('gauc', 0.8362), ('itemcoverage@10', 0.0029), ('averagepopularity@10', 1987.3498), ('giniindex@10', 0.9995), ('shannonentropy@10', 0.0277), ('tailpercentage@10', 0.0)])
+Mon 25 Mar 2024 17:58:34 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/LFM-1b_artist_20U50I/ConvNCF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+cnn_channels = [1, 32, 32, 32, 32]
+cnn_kernels = [4, 4, 2, 2]
+cnn_strides = [4, 4, 2, 2]
+dropout_prob = 0.2
+reg_weights = [0.1, 0.1]
+train_method = no_pretrain
+pre_model_path = 
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 17:58:38 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 17:58:40 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 17:58:40 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 17:58:42 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/LFM-1b_artist_20U50I/ConvNCF/ConvNCF-Mar-25-2024_15-26-59.pth
+Mon 25 Mar 2024 18:14:45 INFO  ['src/default_tracker.py']
+Mon 25 Mar 2024 18:14:45 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I
+checkpoint_dir = saved/LFM-1b_artist_20U50I/BPR/LFM-1b_artist_20U50I/DMF/LFM-1b_artist_20U50I/ENMF/LFM-1b_artist_20U50I/FISM/LFM-1b_artist_20U50I/NCEPLRec/LFM-1b_artist_20U50I/SLIMElastic/LFM-1b_artist_20U50I/CDAE/LFM-1b_artist_20U50I/ConvNCF/LFM-1b_artist_20U50I/DiffRec
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 1
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 1024
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+noise_schedule = linear
+noise_scale = 0.001
+noise_min = 0.0005
+noise_max = 0.005
+sampling_noise = False
+sampling_steps = 0
+reweight = True
+mean_type = x0
+steps = 5
+history_num_per_term = 10
+beta_fixed = True
+dims_dnn = [300]
+embedding_size = 10
+mlp_act_func = tanh
+time-aware = False
+w_max = 1
+w_min = 0.1
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.LISTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 25 Mar 2024 18:14:49 INFO  LFM-1b_artist_20U50I
+The number of users: 19842
+Average actions of users: 45.371301849705155
+The number of items: 42458
+Average actions of items: 21.202911180724026
+The number of inters: 900212
+The sparsity of the dataset: 99.89314377686127%
+Remain Fields: ['user_id', 'item_id']
+Mon 25 Mar 2024 18:14:51 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Mon 25 Mar 2024 18:14:51 INFO  [Evaluation]: eval_batch_size = [1024] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 25 Mar 2024 18:14:53 INFO  DiffRec(
+  (mlp): DNN(
+    (emb_layer): Linear(in_features=10, out_features=10, bias=True)
+    (mlp_layers): MLPLayers(
+      (mlp_layers): Sequential(
+        (0): Dropout(p=0, inplace=False)
+        (1): Linear(in_features=42468, out_features=300, bias=True)
+        (2): Tanh()
+        (3): Dropout(p=0, inplace=False)
+        (4): Linear(in_features=300, out_features=42458, bias=True)
+      )
+    )
+    (drop): Dropout(p=0.5, inplace=False)
+  )
+)
+Trainable parameters: 25520668
+Mon 25 Mar 2024 18:14:54 INFO  FLOPs: 127389500.0
+Mon 25 Mar 2024 18:15:05 INFO  epoch 0 training [time: 10.51s, train loss: 51.2044]

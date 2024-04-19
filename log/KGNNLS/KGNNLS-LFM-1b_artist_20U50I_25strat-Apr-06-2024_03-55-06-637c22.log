@@ -1,0 +1,360 @@
+Sat 06 Apr 2024 03:55:06 INFO  ['src/default_tracker.py', '--dataset=LFM-1b_artist_20U50I_25strat', '--model=KGNNLS']
+Sat 06 Apr 2024 03:55:06 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I_25strat
+checkpoint_dir = saved/LFM-1b_artist_20U50I_25strat/KGNNLS
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'kg': ['head_id', 'relation_id', 'tail_id'], 'link': ['item_id', 'entity_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_iter = 1
+aggregator = sum
+reg_weight = 1e-07
+neighbor_sample_size = 4
+ls_weight = 0.5
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.KNOWLEDGE
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Sat 06 Apr 2024 03:55:11 INFO  LFM-1b_artist_20U50I_25strat
+The number of users: 17111
+Average actions of users: 5.287258912916423
+The number of items: 9445
+Average actions of items: 9.579097839898347
+The number of inters: 90465
+The sparsity of the dataset: 99.9440238230253%
+Remain Fields: ['entity_id', 'user_id', 'item_id', 'head_id', 'relation_id', 'tail_id']
+The number of entities: 32908
+The number of relations: 7
+The number of triples: 29822
+The number of items that have been linked to KG: 9444
+Sat 06 Apr 2024 03:55:12 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Sat 06 Apr 2024 03:55:12 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Sat 06 Apr 2024 03:55:14 INFO  KGNNLS(
+  (user_embedding): Embedding(17111, 64)
+  (entity_embedding): Embedding(32908, 64)
+  (relation_embedding): Embedding(8, 64)
+  (softmax): Softmax(dim=-1)
+  (linear_layers): ModuleList(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+  )
+  (ReLU): ReLU()
+  (Tanh): Tanh()
+  (bce_loss): BCEWithLogitsLoss()
+  (l2_loss): EmbLoss()
+)
+Trainable parameters: 3205888
+Sat 06 Apr 2024 03:55:20 INFO  FLOPs: 4747.0
+Sat 06 Apr 2024 03:55:56 INFO  epoch 0 training [time: 5.01s, train loss: 33.3022]
+Sat 06 Apr 2024 03:56:51 INFO  epoch 0 evaluating [time: 55.61s, valid_score: 0.000800]
+Sat 06 Apr 2024 03:56:51 INFO  valid result: 
+recall@10 : 0.0033    mrr@10 : 0.0008    ndcg@10 : 0.0014    hit@10 : 0.0033    precision@10 : 0.0003
+Sat 06 Apr 2024 03:56:52 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 03:56:53 INFO  epoch 1 training [time: 1.27s, train loss: 33.2621]
+Sat 06 Apr 2024 03:57:48 INFO  epoch 1 evaluating [time: 54.88s, valid_score: 0.027400]
+Sat 06 Apr 2024 03:57:48 INFO  valid result: 
+recall@10 : 0.0742    mrr@10 : 0.0274    ndcg@10 : 0.0377    hit@10 : 0.0776    precision@10 : 0.0078
+Sat 06 Apr 2024 03:57:49 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 03:57:50 INFO  epoch 2 training [time: 1.24s, train loss: 32.4714]
+Sat 06 Apr 2024 03:58:45 INFO  epoch 2 evaluating [time: 55.14s, valid_score: 0.035100]
+Sat 06 Apr 2024 03:58:45 INFO  valid result: 
+recall@10 : 0.1068    mrr@10 : 0.0351    ndcg@10 : 0.051    hit@10 : 0.1102    precision@10 : 0.0111
+Sat 06 Apr 2024 03:58:45 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 03:58:47 INFO  epoch 3 training [time: 1.30s, train loss: 28.2296]
+Sat 06 Apr 2024 03:59:43 INFO  epoch 3 evaluating [time: 56.47s, valid_score: 0.037700]
+Sat 06 Apr 2024 03:59:43 INFO  valid result: 
+recall@10 : 0.1158    mrr@10 : 0.0377    ndcg@10 : 0.055    hit@10 : 0.1197    precision@10 : 0.012
+Sat 06 Apr 2024 03:59:44 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 03:59:45 INFO  epoch 4 training [time: 1.28s, train loss: 25.0450]
+Sat 06 Apr 2024 04:00:40 INFO  epoch 4 evaluating [time: 55.35s, valid_score: 0.038700]
+Sat 06 Apr 2024 04:00:40 INFO  valid result: 
+recall@10 : 0.1204    mrr@10 : 0.0387    ndcg@10 : 0.0569    hit@10 : 0.124    precision@10 : 0.0124
+Sat 06 Apr 2024 04:00:41 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 04:00:43 INFO  epoch 5 training [time: 1.38s, train loss: 24.1361]
+Sat 06 Apr 2024 04:01:38 INFO  epoch 5 evaluating [time: 55.51s, valid_score: 0.041200]
+Sat 06 Apr 2024 04:01:38 INFO  valid result: 
+recall@10 : 0.1204    mrr@10 : 0.0412    ndcg@10 : 0.0588    hit@10 : 0.1242    precision@10 : 0.0125
+Sat 06 Apr 2024 04:01:39 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 04:01:40 INFO  epoch 6 training [time: 1.31s, train loss: 23.7760]
+Sat 06 Apr 2024 04:02:35 INFO  epoch 6 evaluating [time: 55.48s, valid_score: 0.041200]
+Sat 06 Apr 2024 04:02:35 INFO  valid result: 
+recall@10 : 0.123    mrr@10 : 0.0412    ndcg@10 : 0.0595    hit@10 : 0.1267    precision@10 : 0.0127
+Sat 06 Apr 2024 04:02:36 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 04:02:37 INFO  epoch 7 training [time: 1.34s, train loss: 23.4139]
+Sat 06 Apr 2024 04:03:33 INFO  epoch 7 evaluating [time: 55.41s, valid_score: 0.041700]
+Sat 06 Apr 2024 04:03:33 INFO  valid result: 
+recall@10 : 0.128    mrr@10 : 0.0417    ndcg@10 : 0.061    hit@10 : 0.1315    precision@10 : 0.0132
+Sat 06 Apr 2024 04:03:33 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 04:03:35 INFO  epoch 8 training [time: 1.30s, train loss: 23.2496]
+Sat 06 Apr 2024 04:04:30 INFO  epoch 8 evaluating [time: 55.33s, valid_score: 0.041900]
+Sat 06 Apr 2024 04:04:30 INFO  valid result: 
+recall@10 : 0.129    mrr@10 : 0.0419    ndcg@10 : 0.0613    hit@10 : 0.1327    precision@10 : 0.0133
+Sat 06 Apr 2024 04:04:30 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 04:04:32 INFO  epoch 9 training [time: 1.37s, train loss: 23.1215]
+Sat 06 Apr 2024 04:05:57 INFO  epoch 9 evaluating [time: 85.75s, valid_score: 0.041600]
+Sat 06 Apr 2024 04:05:57 INFO  valid result: 
+recall@10 : 0.1294    mrr@10 : 0.0416    ndcg@10 : 0.0611    hit@10 : 0.1333    precision@10 : 0.0133
+Sat 06 Apr 2024 04:05:59 INFO  epoch 10 training [time: 1.44s, train loss: 23.0402]
+Sat 06 Apr 2024 04:06:54 INFO  epoch 10 evaluating [time: 55.43s, valid_score: 0.041600]
+Sat 06 Apr 2024 04:06:54 INFO  valid result: 
+recall@10 : 0.1276    mrr@10 : 0.0416    ndcg@10 : 0.0607    hit@10 : 0.1314    precision@10 : 0.0132
+Sat 06 Apr 2024 04:06:56 INFO  epoch 11 training [time: 1.61s, train loss: 22.9050]
+Sat 06 Apr 2024 04:07:51 INFO  epoch 11 evaluating [time: 55.40s, valid_score: 0.041600]
+Sat 06 Apr 2024 04:07:51 INFO  valid result: 
+recall@10 : 0.125    mrr@10 : 0.0416    ndcg@10 : 0.0601    hit@10 : 0.1286    precision@10 : 0.0129
+Sat 06 Apr 2024 04:07:53 INFO  epoch 12 training [time: 1.43s, train loss: 22.8799]
+Sat 06 Apr 2024 04:08:48 INFO  epoch 12 evaluating [time: 55.39s, valid_score: 0.040000]
+Sat 06 Apr 2024 04:08:48 INFO  valid result: 
+recall@10 : 0.1206    mrr@10 : 0.04    ndcg@10 : 0.0579    hit@10 : 0.1243    precision@10 : 0.0125
+Sat 06 Apr 2024 04:08:50 INFO  epoch 13 training [time: 1.43s, train loss: 22.7788]
+Sat 06 Apr 2024 04:09:45 INFO  epoch 13 evaluating [time: 55.34s, valid_score: 0.039800]
+Sat 06 Apr 2024 04:09:45 INFO  valid result: 
+recall@10 : 0.1195    mrr@10 : 0.0398    ndcg@10 : 0.0575    hit@10 : 0.1231    precision@10 : 0.0123
+Sat 06 Apr 2024 04:09:46 INFO  epoch 14 training [time: 1.45s, train loss: 22.5990]
+Sat 06 Apr 2024 04:10:42 INFO  epoch 14 evaluating [time: 55.36s, valid_score: 0.039300]
+Sat 06 Apr 2024 04:10:42 INFO  valid result: 
+recall@10 : 0.1194    mrr@10 : 0.0393    ndcg@10 : 0.0571    hit@10 : 0.1228    precision@10 : 0.0123
+Sat 06 Apr 2024 04:10:43 INFO  epoch 15 training [time: 1.42s, train loss: 22.4701]
+Sat 06 Apr 2024 04:11:39 INFO  epoch 15 evaluating [time: 55.34s, valid_score: 0.038000]
+Sat 06 Apr 2024 04:11:39 INFO  valid result: 
+recall@10 : 0.1191    mrr@10 : 0.038    ndcg@10 : 0.0561    hit@10 : 0.1225    precision@10 : 0.0123
+Sat 06 Apr 2024 04:11:40 INFO  epoch 16 training [time: 1.40s, train loss: 22.3108]
+Sat 06 Apr 2024 04:12:35 INFO  epoch 16 evaluating [time: 55.35s, valid_score: 0.038000]
+Sat 06 Apr 2024 04:12:35 INFO  valid result: 
+recall@10 : 0.1163    mrr@10 : 0.038    ndcg@10 : 0.0555    hit@10 : 0.1196    precision@10 : 0.012
+Sat 06 Apr 2024 04:12:37 INFO  epoch 17 training [time: 1.41s, train loss: 22.1240]
+Sat 06 Apr 2024 04:13:32 INFO  epoch 17 evaluating [time: 55.34s, valid_score: 0.037200]
+Sat 06 Apr 2024 04:13:32 INFO  valid result: 
+recall@10 : 0.1158    mrr@10 : 0.0372    ndcg@10 : 0.0548    hit@10 : 0.1191    precision@10 : 0.0119
+Sat 06 Apr 2024 04:13:33 INFO  epoch 18 training [time: 1.44s, train loss: 21.9630]
+Sat 06 Apr 2024 04:14:29 INFO  epoch 18 evaluating [time: 55.23s, valid_score: 0.036200]
+Sat 06 Apr 2024 04:14:29 INFO  valid result: 
+recall@10 : 0.1153    mrr@10 : 0.0362    ndcg@10 : 0.0539    hit@10 : 0.1184    precision@10 : 0.0118
+Sat 06 Apr 2024 04:14:30 INFO  epoch 19 training [time: 1.46s, train loss: 21.8380]
+Sat 06 Apr 2024 04:15:25 INFO  epoch 19 evaluating [time: 55.33s, valid_score: 0.036500]
+Sat 06 Apr 2024 04:15:25 INFO  valid result: 
+recall@10 : 0.1141    mrr@10 : 0.0365    ndcg@10 : 0.0539    hit@10 : 0.1174    precision@10 : 0.0117
+Sat 06 Apr 2024 04:15:25 INFO  Finished training, best eval result in epoch 8
+Sat 06 Apr 2024 04:15:27 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth
+Sat 06 Apr 2024 04:16:38 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     1.00 %     |
++-------------+----------------+
+| GPU         | 0.17 G/14.58 G |
++-------------+----------------+
+| Memory      | 1.73 G/27.41 G |
++-------------+----------------+
+Sat 06 Apr 2024 04:16:38 INFO  best valid : OrderedDict([('recall@10', 0.129), ('mrr@10', 0.0419), ('ndcg@10', 0.0613), ('hit@10', 0.1327), ('precision@10', 0.0133)])
+Sat 06 Apr 2024 04:16:38 INFO  test result: OrderedDict([('recall@10', 0.1299), ('mrr@10', 0.0423), ('ndcg@10', 0.0621), ('hit@10', 0.1327), ('precision@10', 0.0133)])
+Sat 06 Apr 2024 04:16:39 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I_25strat
+checkpoint_dir = saved/LFM-1b_artist_20U50I_25strat/KGNNLS
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'kg': ['head_id', 'relation_id', 'tail_id'], 'link': ['item_id', 'entity_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_iter = 1
+aggregator = sum
+reg_weight = 1e-07
+neighbor_sample_size = 4
+ls_weight = 0.5
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.KNOWLEDGE
+encoding = utf-8
+device = cuda
+my_log_file = /mnt/batch/tasks/shared/LS_root/mounts/clusters/fontanagpu/code/sustainability-of-recsys/log/carbon_default.log
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Sat 06 Apr 2024 04:16:44 INFO  LFM-1b_artist_20U50I_25strat
+The number of users: 17111
+Average actions of users: 5.287258912916423
+The number of items: 9445
+Average actions of items: 9.579097839898347
+The number of inters: 90465
+The sparsity of the dataset: 99.9440238230253%
+Remain Fields: ['entity_id', 'user_id', 'item_id', 'head_id', 'relation_id', 'tail_id']
+The number of entities: 32908
+The number of relations: 7
+The number of triples: 29822
+The number of items that have been linked to KG: 9444
+Sat 06 Apr 2024 04:16:45 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Sat 06 Apr 2024 04:16:45 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Sat 06 Apr 2024 04:16:47 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I_25strat/KGNNLS/KGNNLS-Apr-06-2024_03-55-21.pth

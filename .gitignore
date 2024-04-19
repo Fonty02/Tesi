@@ -47,8 +47,7 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
-*.log
+
 
 # Sphinx documentation
 docs/_build/
@@ -92,8 +91,6 @@ target/
 !carbon-intensity-electricity.csv
 *.pth
 *.tsv
-log_tensorboard/*
-!log_tensorboard/.gitignore
 saved/*
 !saved/.gitignore
 go_online.sh
