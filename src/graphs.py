@@ -1,7 +1,7 @@
 import os
 
 import matplotlib.scale
-BASE_PATH ='/'.join(os.getcwd().split('/')[:-1])+ '/sustainability-of-recsys'
+BASE_PATH ='/'.join(os.getcwd().split('/')[:-1])+ '/Tesi'
 from config.global_config import get_global_config
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,8 +10,8 @@ import numpy as np
 _config = get_global_config()
 RESULT_PATH = os.path.join(BASE_PATH, _config.get('RESULT_PATH_SHARED'))
 
-models = ['BPR', 'CFKG', 'CKE', 'DMF', 'ItemKNN', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'RippleNet', 'DGCF']
-datasets = ['LFM-1b_artist_20U50I', 'LFM-1b_artist_20U50I_75strat', 'LFM-1b_artist_20U50I_50strat', 'LFM-1b_artist_20U50I_25strat']
+models = ['ItemKNN','BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN']
+datasets = ['ml-10m_50U10I']
 metrics_list = ['recall@10', 'ndcg@10','averagepopularity@10', 'giniindex@10']
 
 def plot_emission():
@@ -65,7 +65,7 @@ def plot_metrics():
                 plt.close()
                 del metrics_result, metrics
 
-
+plot_emission()
 plot_metrics()
 
 
