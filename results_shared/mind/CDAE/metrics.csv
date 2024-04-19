@@ -1,0 +1,3 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.341,0.3516,0.2573,0.6049,0.1719,0.0985,0.9602,0.0163,8837.738,0.9954,0.0453,0.0,4fe7f926-251e-4e6f-83f4-b7da04a1ff01,MIND_CDAE_DEFAULT_PARAM_1702737882
+0.3412,0.3516,0.2576,0.6055,0.1721,0.0987,0.9602,0.0163,8832.1097,0.9954,0.0453,0.0,f4cf0814-b900-45ae-b38f-4a9f36fd6401,MIND_CDAE_DEFAULT_PARAM_1703859208

@@ -1,0 +1,2 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.6982,0.7528,0.6486,0.9219,0.5533,0.2146,0.962,0.0806,5613.5043,0.9812,0.0133,0.0,8ca9bb87-616b-4353-8394-90a7c901ee25,MIND_SLIMELASTIC_DEFAULT_PARAM_1703844909

@@ -1,0 +1,2 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.62,0.6236,0.5298,0.8737,0.4224,0.1855,0.9866,0.1271,5074.3099,0.975,0.0088,0.0,9d2086cb-1c08-4412-886a-c40023203c66,MIND_NAIS_DEFAULT_PARAM_1702808441

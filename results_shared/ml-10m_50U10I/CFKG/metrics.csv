@@ -1,0 +1,2 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.1875,0.3812,0.2329,0.6694,0.1394,0.1659,0.9608,0.3701,8460.6512,0.9565,0.0017,0.0,dc5540db-ce63-4faf-acde-6438e0b94705,ML-10M_50U10I_CFKG_DEFAULT_PARAM_1713289330

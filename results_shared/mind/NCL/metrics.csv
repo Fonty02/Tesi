@@ -1,0 +1,2 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.5412,0.5746,0.4687,0.8067,0.3743,0.1436,0.9775,0.0424,5937.7572,0.9877,0.0227,0.0001,31249cc8-1573-45bd-b660-bd0d7dfdc2b2,MIND_NCL_DEFAULT_PARAM_1702833880

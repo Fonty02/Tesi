@@ -1,0 +1,2 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.1742,0.106,0.1021,0.2595,0.0664,0.0299,0.9162,0.0126,2983.2923,0.9989,0.0155,0.0001,b7a6d78f-e423-449b-a778-e46d63f47f1d,LFM-1B_ARTIST_20U50I_KGNNLS_DEFAULT_PARAM_1712157140

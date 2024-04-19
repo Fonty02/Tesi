@@ -1,0 +1,3 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.144,0.4006,0.2261,0.7118,0.1289,0.1809,0.9237,0.4357,1043.8374,0.8805,0.0039,0.0,4fc0f2ea-3797-478e-aefa-fbcb3a6fff35,MOVIELENS_1M_NEUMF_DEFAULT_PARAM_1702219178
+0.1456,0.4015,0.2271,0.7161,0.1293,0.1816,0.9235,0.4421,1060.4641,0.8821,0.0039,0.0,fec45781-1cea-4731-8a36-148c73ac10cc,MOVIELENS_1M_NEUMF_DEFAULT_PARAM_1703161477

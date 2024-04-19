@@ -1,0 +1,2 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.2324,0.4564,0.289,0.7349,0.1833,0.2,0.9646,0.401,7708.2176,0.9454,0.0016,0.0,b9ae14d0-97a4-4f61-95b8-ae4f423cfcdd,ML-10M_50U10I_LIGHTGCN_DEFAULT_PARAM_1713371945

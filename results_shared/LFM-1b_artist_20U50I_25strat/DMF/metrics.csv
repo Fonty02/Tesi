@@ -1,0 +1,2 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.0693,0.0281,0.0356,0.0816,0.0238,0.0083,0.8674,0.0007,862.4478,0.9996,0.1365,0.0,f3301cbd-c572-4593-9f35-a4ed011a40c1,LFM-1B_ARTIST_20U50I_25STRAT_DMF_DEFAULT_PARAM_1712372738

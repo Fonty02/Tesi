@@ -1,0 +1,2 @@
+recall@10,mrr@10,ndcg@10,hit@10,map@10,precision@10,gauc,itemcoverage@10,averagepopularity@10,giniindex@10,shannonentropy@10,tailpercentage@10,run_id,project_name
+0.1791,0.3591,0.2143,0.6508,0.1245,0.1493,0.9324,0.1543,9939.8111,0.9787,0.0036,0.0,b0ded6e5-6bea-4b24-8ade-6175381fbf18,ML-10M_50U10I_DMF_DEFAULT_PARAM_1713306097
