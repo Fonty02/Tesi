@@ -46,10 +46,10 @@ def get_device():
 	"""
 	device = 'cpu'
 	# Macos GPU
-	if torch.backends.mps.is_available():
-		device = 'mps'
+	#if torch.backends.mps.is_available():
+	#	device = 'mps'
 	# Cuda GPU
-	elif torch.cuda.is_available():
+	if torch.cuda.is_available():
 		device = 'cuda'
 	return device
 
