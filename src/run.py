@@ -6,7 +6,7 @@ import time
 
 
 models = ['ItemKNN','BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN']
-datasets = ['ml-10m_50U10I']
+datasets = ['ml-100k']
 
 
 

@@ -108,6 +108,7 @@ class KnowledgeBasedDataLoader:
         self.dataset = self.general_dataloader._dataset
         self.state = None
         self._dataset = dataset
+        self.dataset = dataset
         self.kg_iter, self.gen_iter = None, None
 
     def update_config(self, config):
