@@ -1,0 +1,150 @@
+Tue 30 Apr 2024 10:31:59 INFO  ['src/default_tracker2.py', '--dataset=ml-100k', '--model=BPR', '--max_emission=0.0001']
+Tue 30 Apr 2024 10:31:59 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /home/fontana/Tesi/recsost_env/lib/python3.8/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = saved/ml-100k/BPR
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission = 0.0001
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Tue 30 Apr 2024 10:32:00 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Tue 30 Apr 2024 10:32:00 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Tue 30 Apr 2024 10:32:00 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Tue 30 Apr 2024 10:32:03 INFO  BPR(
+  (user_embedding): Embedding(944, 64)
+  (item_embedding): Embedding(1683, 64)
+  (loss): BPRLoss()
+)
+Trainable parameters: 168128
+Tue 30 Apr 2024 10:32:03 INFO  FLOPs: 128.0
+Tue 30 Apr 2024 10:32:08 INFO  epoch 0 training [time: 0.28s, train loss: 27.7240]
+Tue 30 Apr 2024 10:32:09 INFO  epoch 0 evaluating [time: 1.16s, valid_score: 0.025700]
+Tue 30 Apr 2024 10:32:09 INFO  valid result: 
+recall@10 : 0.0085    mrr@10 : 0.0257    ndcg@10 : 0.0108    hit@10 : 0.0838    map@10 : 0.004    precision@10 : 0.0091    gauc : 0.5052    itemcoverage@10 : 0.9412    averagepopularity@10 : 45.0514    giniindex@10 : 0.407    shannonentropy@10 : 0.0045    tailpercentage@10 : 0.093
+Tue 30 Apr 2024 10:32:09 INFO  Saving current: saved/ml-100k/BPR/BPR-Apr-30-2024_10-32-03.pth
+Tue 30 Apr 2024 10:32:09 INFO  epoch 1 training [time: 0.28s, train loss: 27.6345]
+Tue 30 Apr 2024 10:32:10 INFO  epoch 1 evaluating [time: 1.16s, valid_score: 0.055600]
+Tue 30 Apr 2024 10:32:10 INFO  valid result: 
+recall@10 : 0.0164    mrr@10 : 0.0556    ndcg@10 : 0.0217    hit@10 : 0.1485    map@10 : 0.008    precision@10 : 0.0178    gauc : 0.5831    itemcoverage@10 : 0.915    averagepopularity@10 : 80.2193    giniindex@10 : 0.487    shannonentropy@10 : 0.0046    tailpercentage@10 : 0.0579
+Tue 30 Apr 2024 10:32:10 INFO  Saving current: saved/ml-100k/BPR/BPR-Apr-30-2024_10-32-03.pth
+Tue 30 Apr 2024 10:32:11 INFO  epoch 2 training [time: 0.28s, train loss: 27.3318]
+Tue 30 Apr 2024 10:32:12 INFO  epoch 2 evaluating [time: 1.19s, valid_score: 0.160300]
+Tue 30 Apr 2024 10:32:12 INFO  valid result: 
+recall@10 : 0.0523    mrr@10 : 0.1603    ndcg@10 : 0.0738    hit@10 : 0.3627    map@10 : 0.0323    precision@10 : 0.0606    gauc : 0.7845    itemcoverage@10 : 0.5395    averagepopularity@10 : 203.4173    giniindex@10 : 0.8675    shannonentropy@10 : 0.0061    tailpercentage@10 : 0.0059
+Tue 30 Apr 2024 10:32:12 INFO  Saving current: saved/ml-100k/BPR/BPR-Apr-30-2024_10-32-03.pth
+Tue 30 Apr 2024 10:32:12 INFO  epoch 3 training [time: 0.29s, train loss: 26.0469]
+Tue 30 Apr 2024 10:32:13 INFO  epoch 3 evaluating [time: 1.16s, valid_score: 0.228500]
+Tue 30 Apr 2024 10:32:13 INFO  valid result: 
+recall@10 : 0.0904    mrr@10 : 0.2285    ndcg@10 : 0.1155    hit@10 : 0.4963    map@10 : 0.0543    precision@10 : 0.0908    gauc : 0.8434    itemcoverage@10 : 0.1604    averagepopularity@10 : 285.9612    giniindex@10 : 0.9712    shannonentropy@10 : 0.0154    tailpercentage@10 : 0.0001
+Tue 30 Apr 2024 10:32:13 INFO  Saving current: saved/ml-100k/BPR/BPR-Apr-30-2024_10-32-03.pth
+Tue 30 Apr 2024 10:32:14 INFO  epoch 4 training [time: 0.27s, train loss: 22.7424]
+Tue 30 Apr 2024 10:32:15 INFO  epoch 4 evaluating [time: 1.25s, valid_score: 0.252500]
+Tue 30 Apr 2024 10:32:15 INFO  valid result: 
+recall@10 : 0.1017    mrr@10 : 0.2525    ndcg@10 : 0.129    hit@10 : 0.527    map@10 : 0.0625    precision@10 : 0.0978    gauc : 0.8486    itemcoverage@10 : 0.0725    averagepopularity@10 : 315.9464    giniindex@10 : 0.983    shannonentropy@10 : 0.0299    tailpercentage@10 : 0.0
+Tue 30 Apr 2024 10:32:15 INFO  Saving current: saved/ml-100k/BPR/BPR-Apr-30-2024_10-32-03.pth
+Tue 30 Apr 2024 10:32:15 INFO  epoch 5 training [time: 0.28s, train loss: 18.4891]
+Tue 30 Apr 2024 10:32:16 INFO  epoch 5 evaluating [time: 1.17s, valid_score: 0.268200]
+Tue 30 Apr 2024 10:32:16 INFO  valid result: 
+recall@10 : 0.1169    mrr@10 : 0.2682    ndcg@10 : 0.139    hit@10 : 0.5567    map@10 : 0.0675    precision@10 : 0.1019    gauc : 0.85    itemcoverage@10 : 0.0523    averagepopularity@10 : 333.7741    giniindex@10 : 0.9855    shannonentropy@10 : 0.0395    tailpercentage@10 : 0.0
+Tue 30 Apr 2024 10:32:16 INFO  Saving current: saved/ml-100k/BPR/BPR-Apr-30-2024_10-32-03.pth

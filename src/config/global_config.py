@@ -74,6 +74,7 @@ CONFIG = {
 	'DATASET_PATH':			'data/',
 	'RESULT_PATH':			'results/',
 	'RESULT_PATH_SHARED':	'results_shared/',
+	'RESULT_PATH_SHARED2':	'results_shared2/',
 	'EMISSIONS_FILE':		'/emissions.csv',
 	'METRICS_FILE':			'/metrics.csv',
 	'PARAMS_FILE':			'/params.csv',

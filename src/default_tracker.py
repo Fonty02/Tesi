@@ -94,7 +94,6 @@ def process(dataset, model):
 		full_params['project_name'] = proj_name
 		write_dict_to_csv(results_path + METRICS_FILE, metrics)
 		write_dict_to_csv(results_path + PARAMS_FILE, full_params)
-		#delete all variables created in try block
 		del config_rec, model_rec, train_data, test_data, trainer, metrics, full_params
 		gc.collect()
 		torch.cuda.empty_cache()

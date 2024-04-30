@@ -19,7 +19,7 @@ DEFAULT_PARAMS = {
 	'shuffle': True,
 
 	# Training Setting
-	'epochs': 1,
+	'epochs': 200,
 	'train_batch_size': 2048,
 	'learner': 'adam', # ['adam', 'sgd', 'adagrad', 'rmsprop', 'sparse_adam']
 	'learning_rate': .001,
