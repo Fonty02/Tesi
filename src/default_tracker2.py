@@ -25,7 +25,7 @@ CHECKPOINT_DIR = config_dict.get('checkpoint_dir')
 BASE_PATH = '/'.join(os.getcwd().split('/'))
 print(BASE_PATH)
 LOG_FILE = os.path.join(BASE_PATH, config.get('LOG_FILE_DEFAULT'))
-RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED2'))
+RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED'))
 if platform == 'win32':
 	BASE_PATH = BASE_PATH.replace('/', '\\')
 	LOG_FILE = LOG_FILE.replace('/', '\\')
@@ -36,7 +36,7 @@ PARAMS_FILE = config.get('PARAMS_FILE')
 ts = calendar.timegm(time.gmtime())
 
 
-def process(dataset, model,max_emission):
+def process(dataset, model,max_emission_step):
 	set_param('checkpoint_dir', CHECKPOINT_DIR)
 	# Create directory structure is not already exists
 	_saved = copy.deepcopy(config_dict.get('checkpoint_dir'))
@@ -71,13 +71,13 @@ def process(dataset, model,max_emission):
 				model=model,
 				dataset=dataset,
 				config_dict=config_dict,
-				max_emission=max_emission,
+				max_emission_step=max_emission_step,
 			)
 
 	emissions_file=pd.read_csv(emissions_file_path)
 	#print number of rows
 	print(len(emissions_file))
-	emissions_file.drop(emissions_file.index[-1],inplace=True)
+	emissions_file.drop(emissions_file.index[0],inplace=True)
 	if existing_emissions_file is not None:
 		emissions_file=pd.concat([existing_emissions_file,emissions_file],ignore_index=True)
 	emissions_file.to_csv(emissions_file_path,index=False)
@@ -95,7 +95,6 @@ def process(dataset, model,max_emission):
 	metrics = dict(metrics)
 	config = Config(config_dict=config_dict, config_file_list=None)
 	full_params = dict(config._get_final_config_dict())
-	#TAKE THE LAST VALUE IN EMISSIOON_FILE for the column run_id and put it in metrics['run_id']
 	metrics['run_id'] = emissions_file.iloc[-1]['run_id']
 	metrics['project_name'] = proj_name
 	full_params['run_id']=emissions_file.iloc[-1]['run_id']
@@ -135,7 +134,7 @@ if __name__ == "__main__":
 		if 'DATASET' in keys and 'MODEL' in keys:
 			dataset = values[keys.index('DATASET')]
 			model = values[keys.index('MODEL')]
-			max_emission = float(values[keys.index('MAX_EMISSION')])
+			max_emission_step = float(values[keys.index('MAX_EMISSION_STEP')])
 			'''if dataset not in DATASETS:
 				print('WARNING: invalid DATASET value!')
 				print('Valid: ', DATASETS)
@@ -143,7 +142,7 @@ if __name__ == "__main__":
 				print('WARNING: invalid MODEL value!')
 				print('Valid: ', MODELS)
 			else:'''
-			process(dataset, model,max_emission)
+			process(dataset, model,max_emission_step)
 		else:
 			print('WARNING: required arguments are missing!')
 			if 'DATASET' not in keys:

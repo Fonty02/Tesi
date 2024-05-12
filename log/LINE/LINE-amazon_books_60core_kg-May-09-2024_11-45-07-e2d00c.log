@@ -1,0 +1,293 @@
+Thu 09 May 2024 11:45:07 INFO  ['src/default_tracker2.py', '--dataset=amazon_books_60core_kg', '--model=LINE', '--max_emission_step=6']
+Thu 09 May 2024 11:45:07 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/amazon_books_60core_kg
+checkpoint_dir = saved/amazon_books_60core_kg/LINE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+order = 2
+second_order_loss_weight = 1.0
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda:1
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission_step = 6
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 May 2024 11:45:13 INFO  amazon_books_60core_kg
+The number of users: 22156
+Average actions of users: 66.16434213495825
+The number of items: 54459
+Average actions of items: 26.917459326453415
+The number of inters: 1465871
+The sparsity of the dataset: 99.87851162187994%
+Remain Fields: ['user_id', 'item_id']
+Thu 09 May 2024 11:45:18 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Thu 09 May 2024 11:45:18 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 May 2024 11:45:23 INFO  LINE(
+  (user_embedding): Embedding(22156, 64)
+  (item_embedding): Embedding(54459, 64)
+  (user_context_embedding): Embedding(22156, 64)
+  (item_context_embedding): Embedding(54459, 64)
+  (loss_fct): NegSamplingLoss()
+)
+Trainable parameters: 9806720
+Thu 09 May 2024 11:45:29 INFO  FLOPs: 128.0
+Thu 09 May 2024 11:45:41 INFO  epoch 0 training [time: 6.25s, train loss: 1586.8304]
+Thu 09 May 2024 11:47:23 INFO  epoch 0 evaluating [time: 102.35s, valid_score: 0.024300]
+Thu 09 May 2024 11:47:23 INFO  valid result: 
+recall@10 : 0.0096    mrr@10 : 0.0243    ndcg@10 : 0.0103    hit@10 : 0.067    map@10 : 0.004    precision@10 : 0.0079    gauc : 0.8403    itemcoverage@10 : 0.0429    averagepopularity@10 : 264.3388    giniindex@10 : 0.9974    shannonentropy@10 : 0.0021    tailpercentage@10 : 0.0003
+Thu 09 May 2024 11:47:23 INFO  Saving current: saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 11:47:30 INFO  epoch 1 training [time: 6.16s, train loss: 1351.6510]
+Thu 09 May 2024 11:49:11 INFO  epoch 1 evaluating [time: 101.57s, valid_score: 0.028800]
+Thu 09 May 2024 11:49:11 INFO  valid result: 
+recall@10 : 0.0127    mrr@10 : 0.0288    ndcg@10 : 0.0129    hit@10 : 0.0813    map@10 : 0.0052    precision@10 : 0.0094    gauc : 0.8766    itemcoverage@10 : 0.0241    averagepopularity@10 : 199.3054    giniindex@10 : 0.9968    shannonentropy@10 : 0.0041    tailpercentage@10 : 0.0
+Thu 09 May 2024 11:49:12 INFO  Saving current: saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 11:49:18 INFO  epoch 2 training [time: 6.15s, train loss: 1227.8471]
+Thu 09 May 2024 11:51:00 INFO  epoch 2 evaluating [time: 101.57s, valid_score: 0.030200]
+Thu 09 May 2024 11:51:00 INFO  valid result: 
+recall@10 : 0.0138    mrr@10 : 0.0302    ndcg@10 : 0.0137    hit@10 : 0.0866    map@10 : 0.0055    precision@10 : 0.0099    gauc : 0.8947    itemcoverage@10 : 0.0342    averagepopularity@10 : 139.0935    giniindex@10 : 0.9942    shannonentropy@10 : 0.0032    tailpercentage@10 : 0.0
+Thu 09 May 2024 11:51:01 INFO  Saving current: saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 11:51:07 INFO  epoch 3 training [time: 6.17s, train loss: 1170.2027]
+Thu 09 May 2024 11:52:49 INFO  epoch 3 evaluating [time: 101.71s, valid_score: 0.034900]
+Thu 09 May 2024 11:52:49 INFO  valid result: 
+recall@10 : 0.0157    mrr@10 : 0.0349    ndcg@10 : 0.0156    hit@10 : 0.0936    map@10 : 0.0065    precision@10 : 0.0108    gauc : 0.9054    itemcoverage@10 : 0.0448    averagepopularity@10 : 122.1295    giniindex@10 : 0.9918    shannonentropy@10 : 0.0026    tailpercentage@10 : 0.0
+Thu 09 May 2024 11:52:49 INFO  Saving current: saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 11:52:56 INFO  epoch 4 training [time: 6.30s, train loss: 1132.9885]
+Thu 09 May 2024 11:54:37 INFO  epoch 4 evaluating [time: 101.37s, valid_score: 0.035700]
+Thu 09 May 2024 11:54:37 INFO  valid result: 
+recall@10 : 0.0174    mrr@10 : 0.0357    ndcg@10 : 0.0165    hit@10 : 0.0994    map@10 : 0.007    precision@10 : 0.0115    gauc : 0.9125    itemcoverage@10 : 0.0556    averagepopularity@10 : 117.7828    giniindex@10 : 0.9891    shannonentropy@10 : 0.0022    tailpercentage@10 : 0.0
+Thu 09 May 2024 11:54:38 INFO  Saving current: saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 11:54:44 INFO  epoch 5 training [time: 6.34s, train loss: 1103.0572]
+Thu 09 May 2024 11:56:26 INFO  epoch 5 evaluating [time: 101.18s, valid_score: 0.037800]
+Thu 09 May 2024 11:56:26 INFO  valid result: 
+recall@10 : 0.0187    mrr@10 : 0.0378    ndcg@10 : 0.0177    hit@10 : 0.1046    map@10 : 0.0075    precision@10 : 0.0122    gauc : 0.9174    itemcoverage@10 : 0.0699    averagepopularity@10 : 110.0016    giniindex@10 : 0.986    shannonentropy@10 : 0.0018    tailpercentage@10 : 0.0
+Thu 09 May 2024 11:56:27 INFO  Saving current: saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 11:56:33 INFO  epoch 6 training [time: 6.25s, train loss: 1077.2460]
+Thu 09 May 2024 11:58:14 INFO  epoch 6 evaluating [time: 101.55s, valid_score: 0.038800]
+Thu 09 May 2024 11:58:14 INFO  valid result: 
+recall@10 : 0.0189    mrr@10 : 0.0388    ndcg@10 : 0.018    hit@10 : 0.1068    map@10 : 0.0077    precision@10 : 0.0124    gauc : 0.9209    itemcoverage@10 : 0.0813    averagepopularity@10 : 105.9395    giniindex@10 : 0.9832    shannonentropy@10 : 0.0016    tailpercentage@10 : 0.0002
+Thu 09 May 2024 11:58:15 INFO  Saving current: saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 11:58:22 INFO  epoch 7 training [time: 6.23s, train loss: 1046.6018]
+Thu 09 May 2024 12:00:03 INFO  epoch 7 evaluating [time: 101.79s, valid_score: 0.039700]
+Thu 09 May 2024 12:00:03 INFO  valid result: 
+recall@10 : 0.0205    mrr@10 : 0.0397    ndcg@10 : 0.0189    hit@10 : 0.1111    map@10 : 0.008    precision@10 : 0.0129    gauc : 0.9235    itemcoverage@10 : 0.0929    averagepopularity@10 : 102.1219    giniindex@10 : 0.9808    shannonentropy@10 : 0.0014    tailpercentage@10 : 0.0051
+Thu 09 May 2024 12:00:04 INFO  Saving current: saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 12:00:04 INFO  Finished training, max emissions step reached
+Thu 09 May 2024 12:00:04 INFO  Loading model structure and parameters from saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth
+Thu 09 May 2024 12:01:48 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    12.50 %     |
++-------------+----------------+
+| GPU         | 0.29 G/11.93 G |
++-------------+----------------+
+| Memory      | 2.69 G/31.23 G |
++-------------+----------------+
+Thu 09 May 2024 12:01:48 INFO  best valid : OrderedDict([('recall@10', 0.0205), ('mrr@10', 0.0397), ('ndcg@10', 0.0189), ('hit@10', 0.1111), ('map@10', 0.008), ('precision@10', 0.0129), ('gauc', 0.9235), ('itemcoverage@10', 0.0929), ('averagepopularity@10', 102.1219), ('giniindex@10', 0.9808), ('shannonentropy@10', 0.0014), ('tailpercentage@10', 0.0051)])
+Thu 09 May 2024 12:01:48 INFO  test result: OrderedDict([('recall@10', 0.0192), ('mrr@10', 0.0412), ('ndcg@10', 0.0189), ('hit@10', 0.1106), ('map@10', 0.0081), ('precision@10', 0.013), ('gauc', 0.9229), ('itemcoverage@10', 0.0932), ('averagepopularity@10', 100.9865), ('giniindex@10', 0.9807), ('shannonentropy@10', 0.0014), ('tailpercentage@10', 0.0056)])
+Thu 09 May 2024 12:01:48 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/amazon_books_60core_kg
+checkpoint_dir = saved/amazon_books_60core_kg/LINE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+order = 2
+second_order_loss_weight = 1.0
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda:1
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission_step = 6
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 May 2024 12:01:55 INFO  amazon_books_60core_kg
+The number of users: 22156
+Average actions of users: 66.16434213495825
+The number of items: 54459
+Average actions of items: 26.917459326453415
+The number of inters: 1465871
+The sparsity of the dataset: 99.87851162187994%
+Remain Fields: ['user_id', 'item_id']
+Thu 09 May 2024 12:02:01 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Thu 09 May 2024 12:02:01 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 May 2024 12:02:02 INFO  Loading model structure and parameters from saved/amazon_books_60core_kg/LINE/LINE-May-09-2024_11-45-29.pth

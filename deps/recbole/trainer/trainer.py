@@ -32,6 +32,8 @@ from codecarbon import EmissionsTracker
 import inspect
 from recbole.data.interaction import Interaction
 from recbole.data.dataloader import FullSortEvalDataLoader
+import matplotlib.pyplot as plt
+import matplotlib
 from recbole.evaluator import Evaluator, Collector
 from recbole.utils import (
     ensure_dir,
@@ -126,6 +128,9 @@ class Trainer(AbstractTrainer):
         self.test_batch_size = config["eval_batch_size"]
         self.gpu_available = torch.cuda.is_available() and config["use_gpu"]
         self.device = config["device"]
+        
+        self.device=torch.device('cuda:1')
+
         self.checkpoint_dir = config["checkpoint_dir"]
         self.enable_amp = config["enable_amp"]
         self.enable_scaler = torch.cuda.is_available() and config["enable_scaler"]
@@ -405,7 +410,7 @@ class Trainer(AbstractTrainer):
     def fit(
         self,
         train_data,
-        max_emission: float,
+        max_emission_step: int,
         emission_file_path,
         proj_name,
         valid_data=None,
@@ -418,7 +423,7 @@ class Trainer(AbstractTrainer):
 
         Args:
             train_data (DataLoader): the train data
-            max_emissions (float): maximum emissions allowed
+            max_emission_step (float): maximum emissions step allowed
             emission_file_path (str): path to the emissions file
             project_name (str): name of the project
             valid_data (DataLoader, optional): the valid data, default: None.
@@ -433,9 +438,6 @@ class Trainer(AbstractTrainer):
              (float, dict): best valid score and best valid result. If valid_data is None, it returns (-1, None)
         """
 
-        
-        print(max_emission)
-       
 
         if saved and self.start_epoch >= self.epochs:
             self._save_checkpoint(-1, verbose=verbose)
@@ -444,7 +446,19 @@ class Trainer(AbstractTrainer):
         if self.config["train_neg_sample_args"].get("dynamic", False):
             train_data.get_model(self.model)
         valid_step = 0
-        emissions=0
+        emission_step=0
+        last_emissions=0
+        last_rapport=0
+        self.best_valid_score=0
+        #emissions_list=[0]
+        #score_list=[0]
+        #rapport_list=[0]
+    
+
+
+
+        print("\n\n\n\n",max_emission_step,"\n\n\n\n")
+
         with EmissionsTracker(tracking_mode='process', on_csv_write='append',output_file=emission_file_path,project_name=proj_name) as tracker:
             for epoch_idx in range(self.start_epoch, self.epochs):
                 tracker.start()
@@ -479,17 +493,28 @@ class Trainer(AbstractTrainer):
                     valid_score, valid_result = self._valid_epoch(
                         valid_data, show_progress=show_progress
                     )
-
+                    tracker.stop()
+                    emissions_csv=pd.read_csv(emission_file_path)
+                    total_emissions=emissions_csv['emissions'].iloc[-1]
                     (
                         self.best_valid_score,
                         self.cur_step,
                         stop_flag,
                         update_flag,
+                        emission_flag,
+                        emission_step,
+                        last_emissions,
+                        last_rapport,
                     ) = early_stopping(
                         valid_score,
                         self.best_valid_score,
                         self.cur_step,
                         max_step=self.stopping_step,
+                        emission_step=emission_step,
+                        max_emission_step=max_emission_step,
+                        total_emissions=total_emissions,
+                        last_emissions=last_emissions,
+                        last_rapport=last_rapport,
                         bigger=self.valid_metric_bigger,
                     )
                     valid_end_time = time()
@@ -511,33 +536,23 @@ class Trainer(AbstractTrainer):
                     self.wandblogger.log_metrics(
                         {**valid_result, "valid_step": valid_step}, head="valid"
                     )
-                tracker.stop()
-                emissions_csv=pd.read_csv(emission_file_path)
-                emissions=emissions_csv['emissions'].sum()
-                emission_flag=False
-                if emissions>max_emission:
-                    emission_flag=True
                 
                 if update_flag:
                     if saved:
                         self._save_checkpoint(epoch_idx, verbose=verbose)
                     self.best_valid_result = valid_result
+                    #emissions_list.append(last_emissions)
+                    #score_list.append( self.best_valid_score)
+                    #rapport_list.append(last_rapport)
+
+
 
                 if callback_fn:
                     callback_fn(epoch_idx, valid_score)
 
                 if stop_flag or emission_flag:
                     emissions_csv=pd.read_csv(emission_file_path)
-                    new_row = emissions_csv.iloc[0].copy()
-                    new_row['emissions'] = emissions_csv['emissions'].sum()
-                    new_row['emissions_rate'] = emissions_csv['emissions_rate'].mean()
-                    new_row['cpu_power'] = emissions_csv['cpu_power'].sum()
-                    new_row['gpu_power'] = emissions_csv['gpu_power'].sum()
-                    new_row['ram_power'] = emissions_csv['ram_power'].sum()
-                    new_row['cpu_energy'] = emissions_csv['cpu_energy'].sum()
-                    new_row['gpu_energy'] = emissions_csv['gpu_energy'].sum()
-                    new_row['ram_energy'] = emissions_csv['ram_energy'].sum()
-                    new_row['energy_consumed'] = emissions_csv['energy_consumed'].sum()
+                    new_row = emissions_csv.iloc[-1].copy()
                     emissions_csv.drop(emissions_csv.index, inplace=True)
                     emissions_csv.loc[0] = new_row
                     emissions_csv.to_csv(emission_file_path, index=False)
@@ -549,15 +564,25 @@ class Trainer(AbstractTrainer):
                     if verbose:
                         self.logger.info(stop_output)
                     break
+
+
+
                 if emission_flag:
-                    stop_output = "Finished training, emissions exceeded"
+                    stop_output = "Finished training, max emissions step reached"
                     if verbose:
                         self.logger.info(stop_output)
                     break
 
                 valid_step += 1
+        
+        '''plt.plot(emissions_list, score_list, 'o', color='red', markersize=2)  # Imposta markersize a 3 per rendere i punti più piccoli
+        for i, txt in enumerate(rapport_list):
+            plt.annotate(txt, (emissions_list[i], score_list[i]), textcoords="offset points", xytext=(0,8), ha='center', fontsize=4)
+        plt.plot(emissions_list, score_list, color='blue', linestyle='-', linewidth=0.5)  # Unisce i punti con una linea grigia
+        plt.title('Emissions vs Score')
+        plt.savefig('score.png')
+        plt.show()'''
 
-        self._add_hparam_to_tensorboard(self.best_valid_score)
         return self.best_valid_score, self.best_valid_result
 
     def _full_sort_batch_eval(self, batched_data):

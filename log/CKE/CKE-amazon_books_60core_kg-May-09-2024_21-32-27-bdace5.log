@@ -1,0 +1,690 @@
+Thu 09 May 2024 21:32:27 INFO  ['src/default_tracker2.py', '--dataset=amazon_books_60core_kg', '--model=CKE', '--max_emission_step=-1']
+Thu 09 May 2024 21:32:27 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/amazon_books_60core_kg
+checkpoint_dir = saved/amazon_books_60core_kg/CKE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'kg': ['head_id', 'relation_id', 'tail_id'], 'link': ['item_id', 'entity_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+kg_embedding_size = 64
+reg_weights = [0.01, 0.01]
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.KNOWLEDGE
+encoding = utf-8
+device = cuda:1
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission_step = -1
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 May 2024 21:32:35 INFO  amazon_books_60core_kg
+The number of users: 20201
+Average actions of users: 17.4280198019802
+The number of items: 10879
+Average actions of items: 32.36311822026108
+The number of inters: 352046
+The sparsity of the dataset: 99.83980920055674%
+Remain Fields: ['entity_id', 'user_id', 'item_id', 'rating', 'head_id', 'tail_id', 'relation_id']
+The number of entities: 26316
+The number of relations: 18
+The number of triples: 96476
+The number of items that have been linked to KG: 10878
+Thu 09 May 2024 21:32:37 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Thu 09 May 2024 21:32:37 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 May 2024 21:32:40 INFO  CKE(
+  (user_embedding): Embedding(20201, 64)
+  (item_embedding): Embedding(10879, 64)
+  (entity_embedding): Embedding(26316, 64)
+  (relation_embedding): Embedding(18, 64)
+  (trans_w): Embedding(18, 4096)
+  (rec_loss): BPRLoss()
+  (kg_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 3748224
+Thu 09 May 2024 21:32:40 INFO  FLOPs: 192.0
+Thu 09 May 2024 21:32:51 INFO  epoch 0 training [time: 5.47s, train_loss1: 96.2939, train_loss2: 36.5231, train_loss3: 0.1397]
+Thu 09 May 2024 21:33:46 INFO  epoch 0 evaluating [time: 54.61s, valid_score: 0.014800]
+Thu 09 May 2024 21:33:46 INFO  valid result: 
+recall@10 : 0.0231    mrr@10 : 0.0148    ndcg@10 : 0.0135    hit@10 : 0.0403    map@10 : 0.0084    precision@10 : 0.0044    gauc : 0.6794    itemcoverage@10 : 0.8891    averagepopularity@10 : 120.3171    giniindex@10 : 0.7397    shannonentropy@10 : 0.0008    tailpercentage@10 : 0.0454
+Thu 09 May 2024 21:33:46 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:33:51 INFO  epoch 1 training [time: 5.56s, train_loss1: 93.1375, train_loss2: 14.0661, train_loss3: 0.1547]
+Thu 09 May 2024 21:34:46 INFO  epoch 1 evaluating [time: 54.22s, valid_score: 0.024100]
+Thu 09 May 2024 21:34:46 INFO  valid result: 
+recall@10 : 0.0375    mrr@10 : 0.0241    ndcg@10 : 0.0222    hit@10 : 0.0649    map@10 : 0.014    precision@10 : 0.0071    gauc : 0.8079    itemcoverage@10 : 0.3411    averagepopularity@10 : 263.1137    giniindex@10 : 0.9787    shannonentropy@10 : 0.0013    tailpercentage@10 : 0.0052
+Thu 09 May 2024 21:34:46 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:34:51 INFO  epoch 2 training [time: 5.42s, train_loss1: 78.7686, train_loss2: 11.5976, train_loss3: 0.1898]
+Thu 09 May 2024 21:35:46 INFO  epoch 2 evaluating [time: 54.55s, valid_score: 0.026100]
+Thu 09 May 2024 21:35:46 INFO  valid result: 
+recall@10 : 0.0426    mrr@10 : 0.0261    ndcg@10 : 0.0247    hit@10 : 0.0725    map@10 : 0.0154    precision@10 : 0.0079    gauc : 0.8297    itemcoverage@10 : 0.1974    averagepopularity@10 : 269.1452    giniindex@10 : 0.9882    shannonentropy@10 : 0.0022    tailpercentage@10 : 0.0041
+Thu 09 May 2024 21:35:46 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:35:52 INFO  epoch 3 training [time: 5.52s, train_loss1: 62.4064, train_loss2: 10.4115, train_loss3: 0.2221]
+Thu 09 May 2024 21:36:46 INFO  epoch 3 evaluating [time: 54.65s, valid_score: 0.027900]
+Thu 09 May 2024 21:36:46 INFO  valid result: 
+recall@10 : 0.0455    mrr@10 : 0.0279    ndcg@10 : 0.0265    hit@10 : 0.0773    map@10 : 0.0166    precision@10 : 0.0084    gauc : 0.8429    itemcoverage@10 : 0.1469    averagepopularity@10 : 261.2245    giniindex@10 : 0.9893    shannonentropy@10 : 0.003    tailpercentage@10 : 0.0024
+Thu 09 May 2024 21:36:47 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:36:52 INFO  epoch 4 training [time: 5.50s, train_loss1: 51.6037, train_loss2: 9.6222, train_loss3: 0.2445]
+Thu 09 May 2024 21:37:47 INFO  epoch 4 evaluating [time: 54.32s, valid_score: 0.030000]
+Thu 09 May 2024 21:37:47 INFO  valid result: 
+recall@10 : 0.049    mrr@10 : 0.03    ndcg@10 : 0.0287    hit@10 : 0.0821    map@10 : 0.0182    precision@10 : 0.009    gauc : 0.8536    itemcoverage@10 : 0.1298    averagepopularity@10 : 252.3772    giniindex@10 : 0.989    shannonentropy@10 : 0.0035    tailpercentage@10 : 0.0013
+Thu 09 May 2024 21:37:47 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:37:52 INFO  epoch 5 training [time: 5.46s, train_loss1: 44.5692, train_loss2: 9.1434, train_loss3: 0.2605]
+Thu 09 May 2024 21:38:47 INFO  epoch 5 evaluating [time: 54.51s, valid_score: 0.031200]
+Thu 09 May 2024 21:38:47 INFO  valid result: 
+recall@10 : 0.0524    mrr@10 : 0.0312    ndcg@10 : 0.0301    hit@10 : 0.0881    map@10 : 0.0187    precision@10 : 0.0096    gauc : 0.8619    itemcoverage@10 : 0.1235    averagepopularity@10 : 242.425    giniindex@10 : 0.9881    shannonentropy@10 : 0.0038    tailpercentage@10 : 0.0003
+Thu 09 May 2024 21:38:47 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:38:53 INFO  epoch 6 training [time: 5.44s, train_loss1: 39.7139, train_loss2: 8.7396, train_loss3: 0.2726]
+Thu 09 May 2024 21:39:47 INFO  epoch 6 evaluating [time: 54.61s, valid_score: 0.032100]
+Thu 09 May 2024 21:39:47 INFO  valid result: 
+recall@10 : 0.0534    mrr@10 : 0.0321    ndcg@10 : 0.031    hit@10 : 0.0894    map@10 : 0.0195    precision@10 : 0.0098    gauc : 0.8686    itemcoverage@10 : 0.1241    averagepopularity@10 : 231.9609    giniindex@10 : 0.9868    shannonentropy@10 : 0.0038    tailpercentage@10 : 0.0002
+Thu 09 May 2024 21:39:47 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:39:53 INFO  epoch 7 training [time: 5.49s, train_loss1: 35.9398, train_loss2: 8.3816, train_loss3: 0.2824]
+Thu 09 May 2024 21:40:48 INFO  epoch 7 evaluating [time: 54.65s, valid_score: 0.034300]
+Thu 09 May 2024 21:40:48 INFO  valid result: 
+recall@10 : 0.0573    mrr@10 : 0.0343    ndcg@10 : 0.0331    hit@10 : 0.0944    map@10 : 0.0209    precision@10 : 0.0104    gauc : 0.8743    itemcoverage@10 : 0.1312    averagepopularity@10 : 227.0758    giniindex@10 : 0.9856    shannonentropy@10 : 0.0037    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:40:48 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:40:53 INFO  epoch 8 training [time: 5.40s, train_loss1: 32.9024, train_loss2: 8.2233, train_loss3: 0.2908]
+Thu 09 May 2024 21:41:48 INFO  epoch 8 evaluating [time: 54.65s, valid_score: 0.034900]
+Thu 09 May 2024 21:41:48 INFO  valid result: 
+recall@10 : 0.0595    mrr@10 : 0.0349    ndcg@10 : 0.0342    hit@10 : 0.0978    map@10 : 0.0215    precision@10 : 0.0107    gauc : 0.8789    itemcoverage@10 : 0.1329    averagepopularity@10 : 220.1395    giniindex@10 : 0.9844    shannonentropy@10 : 0.0037    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:41:48 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:41:54 INFO  epoch 9 training [time: 5.57s, train_loss1: 30.4043, train_loss2: 8.0510, train_loss3: 0.2981]
+Thu 09 May 2024 21:42:48 INFO  epoch 9 evaluating [time: 54.05s, valid_score: 0.035700]
+Thu 09 May 2024 21:42:48 INFO  valid result: 
+recall@10 : 0.06    mrr@10 : 0.0357    ndcg@10 : 0.0346    hit@10 : 0.0989    map@10 : 0.0218    precision@10 : 0.0108    gauc : 0.8827    itemcoverage@10 : 0.142    averagepopularity@10 : 213.0101    giniindex@10 : 0.9828    shannonentropy@10 : 0.0035    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:42:48 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:42:54 INFO  epoch 10 training [time: 5.48s, train_loss1: 28.3250, train_loss2: 7.8711, train_loss3: 0.3046]
+Thu 09 May 2024 21:43:48 INFO  epoch 10 evaluating [time: 54.68s, valid_score: 0.036100]
+Thu 09 May 2024 21:43:48 INFO  valid result: 
+recall@10 : 0.0613    mrr@10 : 0.0361    ndcg@10 : 0.0353    hit@10 : 0.1014    map@10 : 0.0223    precision@10 : 0.0111    gauc : 0.886    itemcoverage@10 : 0.1485    averagepopularity@10 : 209.6067    giniindex@10 : 0.9811    shannonentropy@10 : 0.0034    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:43:49 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:43:54 INFO  epoch 11 training [time: 5.57s, train_loss1: 26.4068, train_loss2: 7.7620, train_loss3: 0.3104]
+Thu 09 May 2024 21:44:49 INFO  epoch 11 evaluating [time: 54.52s, valid_score: 0.037600]
+Thu 09 May 2024 21:44:49 INFO  valid result: 
+recall@10 : 0.0642    mrr@10 : 0.0376    ndcg@10 : 0.037    hit@10 : 0.1053    map@10 : 0.0235    precision@10 : 0.0116    gauc : 0.8888    itemcoverage@10 : 0.1559    averagepopularity@10 : 205.7648    giniindex@10 : 0.9798    shannonentropy@10 : 0.0033    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:44:49 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:44:55 INFO  epoch 12 training [time: 5.72s, train_loss1: 25.0669, train_loss2: 7.6365, train_loss3: 0.3158]
+Thu 09 May 2024 21:45:50 INFO  epoch 12 evaluating [time: 55.04s, valid_score: 0.038500]
+Thu 09 May 2024 21:45:50 INFO  valid result: 
+recall@10 : 0.0655    mrr@10 : 0.0385    ndcg@10 : 0.0377    hit@10 : 0.106    map@10 : 0.024    precision@10 : 0.0116    gauc : 0.8912    itemcoverage@10 : 0.1625    averagepopularity@10 : 201.4039    giniindex@10 : 0.9782    shannonentropy@10 : 0.0032    tailpercentage@10 : 0.0
+Thu 09 May 2024 21:45:50 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:45:56 INFO  epoch 13 training [time: 5.55s, train_loss1: 23.5385, train_loss2: 7.5264, train_loss3: 0.3208]
+Thu 09 May 2024 21:46:50 INFO  epoch 13 evaluating [time: 54.23s, valid_score: 0.038800]
+Thu 09 May 2024 21:46:50 INFO  valid result: 
+recall@10 : 0.0667    mrr@10 : 0.0388    ndcg@10 : 0.0379    hit@10 : 0.1085    map@10 : 0.0238    precision@10 : 0.0118    gauc : 0.8932    itemcoverage@10 : 0.1747    averagepopularity@10 : 197.3491    giniindex@10 : 0.9764    shannonentropy@10 : 0.003    tailpercentage@10 : 0.0
+Thu 09 May 2024 21:46:50 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:46:56 INFO  epoch 14 training [time: 5.63s, train_loss1: 22.2961, train_loss2: 7.4754, train_loss3: 0.3254]
+Thu 09 May 2024 21:47:50 INFO  epoch 14 evaluating [time: 54.57s, valid_score: 0.039600]
+Thu 09 May 2024 21:47:50 INFO  valid result: 
+recall@10 : 0.0677    mrr@10 : 0.0396    ndcg@10 : 0.0389    hit@10 : 0.1099    map@10 : 0.0247    precision@10 : 0.012    gauc : 0.8951    itemcoverage@10 : 0.1817    averagepopularity@10 : 192.9073    giniindex@10 : 0.9746    shannonentropy@10 : 0.0029    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:47:51 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:47:56 INFO  epoch 15 training [time: 5.63s, train_loss1: 21.2931, train_loss2: 7.3967, train_loss3: 0.3298]
+Thu 09 May 2024 21:48:51 INFO  epoch 15 evaluating [time: 54.70s, valid_score: 0.041100]
+Thu 09 May 2024 21:48:51 INFO  valid result: 
+recall@10 : 0.0689    mrr@10 : 0.0411    ndcg@10 : 0.0399    hit@10 : 0.1117    map@10 : 0.0255    precision@10 : 0.0122    gauc : 0.8967    itemcoverage@10 : 0.1943    averagepopularity@10 : 189.8636    giniindex@10 : 0.9723    shannonentropy@10 : 0.0028    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:48:51 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:48:57 INFO  epoch 16 training [time: 5.48s, train_loss1: 20.2568, train_loss2: 7.3611, train_loss3: 0.3339]
+Thu 09 May 2024 21:49:52 INFO  epoch 16 evaluating [time: 54.67s, valid_score: 0.041900]
+Thu 09 May 2024 21:49:52 INFO  valid result: 
+recall@10 : 0.0686    mrr@10 : 0.0419    ndcg@10 : 0.0403    hit@10 : 0.1109    map@10 : 0.026    precision@10 : 0.0122    gauc : 0.8981    itemcoverage@10 : 0.2036    averagepopularity@10 : 186.2277    giniindex@10 : 0.9708    shannonentropy@10 : 0.0027    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:49:52 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:49:57 INFO  epoch 17 training [time: 5.51s, train_loss1: 19.0845, train_loss2: 7.2497, train_loss3: 0.3380]
+Thu 09 May 2024 21:50:52 INFO  epoch 17 evaluating [time: 54.29s, valid_score: 0.042000]
+Thu 09 May 2024 21:50:52 INFO  valid result: 
+recall@10 : 0.0693    mrr@10 : 0.042    ndcg@10 : 0.0406    hit@10 : 0.1116    map@10 : 0.0261    precision@10 : 0.0123    gauc : 0.8994    itemcoverage@10 : 0.2138    averagepopularity@10 : 183.0538    giniindex@10 : 0.9685    shannonentropy@10 : 0.0026    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:50:52 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:50:58 INFO  epoch 18 training [time: 5.60s, train_loss1: 18.4184, train_loss2: 7.2380, train_loss3: 0.3419]
+Thu 09 May 2024 21:51:52 INFO  epoch 18 evaluating [time: 54.63s, valid_score: 0.042000]
+Thu 09 May 2024 21:51:52 INFO  valid result: 
+recall@10 : 0.0696    mrr@10 : 0.042    ndcg@10 : 0.0405    hit@10 : 0.1121    map@10 : 0.0259    precision@10 : 0.0123    gauc : 0.9004    itemcoverage@10 : 0.2254    averagepopularity@10 : 178.7324    giniindex@10 : 0.9662    shannonentropy@10 : 0.0025    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:51:53 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:51:58 INFO  epoch 19 training [time: 5.67s, train_loss1: 17.4384, train_loss2: 7.2028, train_loss3: 0.3454]
+Thu 09 May 2024 21:52:53 INFO  epoch 19 evaluating [time: 54.42s, valid_score: 0.043000]
+Thu 09 May 2024 21:52:53 INFO  valid result: 
+recall@10 : 0.0723    mrr@10 : 0.043    ndcg@10 : 0.0418    hit@10 : 0.1162    map@10 : 0.0266    precision@10 : 0.0127    gauc : 0.9015    itemcoverage@10 : 0.237    averagepopularity@10 : 175.5695    giniindex@10 : 0.9642    shannonentropy@10 : 0.0024    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:52:53 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:52:58 INFO  epoch 20 training [time: 4.96s, train_loss1: 16.7656, train_loss2: 7.1619, train_loss3: 0.3490]
+Thu 09 May 2024 21:53:53 INFO  epoch 20 evaluating [time: 54.65s, valid_score: 0.043900]
+Thu 09 May 2024 21:53:53 INFO  valid result: 
+recall@10 : 0.0729    mrr@10 : 0.0439    ndcg@10 : 0.0424    hit@10 : 0.1171    map@10 : 0.0272    precision@10 : 0.0129    gauc : 0.9024    itemcoverage@10 : 0.2497    averagepopularity@10 : 176.1135    giniindex@10 : 0.9631    shannonentropy@10 : 0.0023    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:53:53 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:53:58 INFO  epoch 21 training [time: 5.40s, train_loss1: 16.1349, train_loss2: 7.0823, train_loss3: 0.3525]
+Thu 09 May 2024 21:54:53 INFO  epoch 21 evaluating [time: 54.19s, valid_score: 0.044100]
+Thu 09 May 2024 21:54:53 INFO  valid result: 
+recall@10 : 0.0743    mrr@10 : 0.0441    ndcg@10 : 0.0428    hit@10 : 0.1203    map@10 : 0.0272    precision@10 : 0.0132    gauc : 0.9032    itemcoverage@10 : 0.2623    averagepopularity@10 : 173.2002    giniindex@10 : 0.9598    shannonentropy@10 : 0.0022    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:54:53 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:54:58 INFO  epoch 22 training [time: 5.31s, train_loss1: 15.2835, train_loss2: 7.0626, train_loss3: 0.3558]
+Thu 09 May 2024 21:55:53 INFO  epoch 22 evaluating [time: 54.43s, valid_score: 0.044400]
+Thu 09 May 2024 21:55:53 INFO  valid result: 
+recall@10 : 0.0746    mrr@10 : 0.0444    ndcg@10 : 0.0429    hit@10 : 0.121    map@10 : 0.0271    precision@10 : 0.0132    gauc : 0.9039    itemcoverage@10 : 0.274    averagepopularity@10 : 169.0832    giniindex@10 : 0.958    shannonentropy@10 : 0.0021    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:55:53 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:55:59 INFO  epoch 23 training [time: 5.65s, train_loss1: 14.7510, train_loss2: 7.0169, train_loss3: 0.3590]
+Thu 09 May 2024 21:56:53 INFO  epoch 23 evaluating [time: 53.93s, valid_score: 0.045300]
+Thu 09 May 2024 21:56:53 INFO  valid result: 
+recall@10 : 0.0767    mrr@10 : 0.0453    ndcg@10 : 0.0442    hit@10 : 0.1233    map@10 : 0.0281    precision@10 : 0.0135    gauc : 0.9047    itemcoverage@10 : 0.2838    averagepopularity@10 : 169.1757    giniindex@10 : 0.9558    shannonentropy@10 : 0.002    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:56:53 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:56:58 INFO  epoch 24 training [time: 5.49s, train_loss1: 14.3164, train_loss2: 6.9838, train_loss3: 0.3621]
+Thu 09 May 2024 21:57:53 INFO  epoch 24 evaluating [time: 54.21s, valid_score: 0.046400]
+Thu 09 May 2024 21:57:53 INFO  valid result: 
+recall@10 : 0.0763    mrr@10 : 0.0464    ndcg@10 : 0.0445    hit@10 : 0.1239    map@10 : 0.0283    precision@10 : 0.0137    gauc : 0.9053    itemcoverage@10 : 0.2934    averagepopularity@10 : 167.5946    giniindex@10 : 0.9538    shannonentropy@10 : 0.002    tailpercentage@10 : 0.0002
+Thu 09 May 2024 21:57:53 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:57:58 INFO  epoch 25 training [time: 5.53s, train_loss1: 13.5453, train_loss2: 6.9831, train_loss3: 0.3653]
+Thu 09 May 2024 21:58:53 INFO  epoch 25 evaluating [time: 54.80s, valid_score: 0.045800]
+Thu 09 May 2024 21:58:53 INFO  valid result: 
+recall@10 : 0.0767    mrr@10 : 0.0458    ndcg@10 : 0.0442    hit@10 : 0.1242    map@10 : 0.0279    precision@10 : 0.0136    gauc : 0.9058    itemcoverage@10 : 0.303    averagepopularity@10 : 166.9176    giniindex@10 : 0.9515    shannonentropy@10 : 0.0019    tailpercentage@10 : 0.0001
+Thu 09 May 2024 21:58:59 INFO  epoch 26 training [time: 5.62s, train_loss1: 13.1326, train_loss2: 6.9866, train_loss3: 0.3682]
+Thu 09 May 2024 21:59:53 INFO  epoch 26 evaluating [time: 54.36s, valid_score: 0.046800]
+Thu 09 May 2024 21:59:53 INFO  valid result: 
+recall@10 : 0.079    mrr@10 : 0.0468    ndcg@10 : 0.0452    hit@10 : 0.1265    map@10 : 0.0285    precision@10 : 0.0139    gauc : 0.9063    itemcoverage@10 : 0.3164    averagepopularity@10 : 166.3804    giniindex@10 : 0.9484    shannonentropy@10 : 0.0019    tailpercentage@10 : 0.0002
+Thu 09 May 2024 21:59:54 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 21:59:59 INFO  epoch 27 training [time: 5.56s, train_loss1: 12.6565, train_loss2: 6.9434, train_loss3: 0.3711]
+Thu 09 May 2024 22:00:53 INFO  epoch 27 evaluating [time: 54.00s, valid_score: 0.047600]
+Thu 09 May 2024 22:00:53 INFO  valid result: 
+recall@10 : 0.0789    mrr@10 : 0.0476    ndcg@10 : 0.0458    hit@10 : 0.1271    map@10 : 0.0292    precision@10 : 0.014    gauc : 0.9068    itemcoverage@10 : 0.3269    averagepopularity@10 : 167.437    giniindex@10 : 0.9468    shannonentropy@10 : 0.0018    tailpercentage@10 : 0.0002
+Thu 09 May 2024 22:00:53 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:00:59 INFO  epoch 28 training [time: 5.58s, train_loss1: 12.0888, train_loss2: 6.9147, train_loss3: 0.3739]
+Thu 09 May 2024 22:01:54 INFO  epoch 28 evaluating [time: 54.94s, valid_score: 0.047500]
+Thu 09 May 2024 22:01:54 INFO  valid result: 
+recall@10 : 0.0783    mrr@10 : 0.0475    ndcg@10 : 0.0454    hit@10 : 0.1265    map@10 : 0.0288    precision@10 : 0.014    gauc : 0.9074    itemcoverage@10 : 0.3362    averagepopularity@10 : 162.5245    giniindex@10 : 0.9452    shannonentropy@10 : 0.0018    tailpercentage@10 : 0.0002
+Thu 09 May 2024 22:01:59 INFO  epoch 29 training [time: 5.27s, train_loss1: 11.6606, train_loss2: 6.8970, train_loss3: 0.3767]
+Thu 09 May 2024 22:02:53 INFO  epoch 29 evaluating [time: 54.24s, valid_score: 0.048900]
+Thu 09 May 2024 22:02:53 INFO  valid result: 
+recall@10 : 0.0797    mrr@10 : 0.0489    ndcg@10 : 0.0467    hit@10 : 0.1283    map@10 : 0.0299    precision@10 : 0.0142    gauc : 0.9077    itemcoverage@10 : 0.3467    averagepopularity@10 : 160.914    giniindex@10 : 0.9429    shannonentropy@10 : 0.0017    tailpercentage@10 : 0.0002
+Thu 09 May 2024 22:02:54 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:02:59 INFO  epoch 30 training [time: 5.69s, train_loss1: 11.4044, train_loss2: 6.8759, train_loss3: 0.3794]
+Thu 09 May 2024 22:03:54 INFO  epoch 30 evaluating [time: 54.61s, valid_score: 0.049600]
+Thu 09 May 2024 22:03:54 INFO  valid result: 
+recall@10 : 0.0803    mrr@10 : 0.0496    ndcg@10 : 0.0473    hit@10 : 0.1279    map@10 : 0.0306    precision@10 : 0.0142    gauc : 0.9081    itemcoverage@10 : 0.3585    averagepopularity@10 : 160.7238    giniindex@10 : 0.9406    shannonentropy@10 : 0.0017    tailpercentage@10 : 0.0002
+Thu 09 May 2024 22:03:54 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:04:00 INFO  epoch 31 training [time: 5.50s, train_loss1: 10.9380, train_loss2: 6.8744, train_loss3: 0.3821]
+Thu 09 May 2024 22:04:54 INFO  epoch 31 evaluating [time: 54.09s, valid_score: 0.050500]
+Thu 09 May 2024 22:04:54 INFO  valid result: 
+recall@10 : 0.0811    mrr@10 : 0.0505    ndcg@10 : 0.0479    hit@10 : 0.1305    map@10 : 0.0309    precision@10 : 0.0144    gauc : 0.9085    itemcoverage@10 : 0.3689    averagepopularity@10 : 158.3062    giniindex@10 : 0.9382    shannonentropy@10 : 0.0016    tailpercentage@10 : 0.0002
+Thu 09 May 2024 22:04:54 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:05:00 INFO  epoch 32 training [time: 5.55s, train_loss1: 10.5370, train_loss2: 6.8977, train_loss3: 0.3847]
+Thu 09 May 2024 22:05:54 INFO  epoch 32 evaluating [time: 54.47s, valid_score: 0.050600]
+Thu 09 May 2024 22:05:54 INFO  valid result: 
+recall@10 : 0.0826    mrr@10 : 0.0506    ndcg@10 : 0.0482    hit@10 : 0.1319    map@10 : 0.0309    precision@10 : 0.0146    gauc : 0.9089    itemcoverage@10 : 0.3776    averagepopularity@10 : 157.9664    giniindex@10 : 0.9359    shannonentropy@10 : 0.0016    tailpercentage@10 : 0.0002
+Thu 09 May 2024 22:05:55 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:06:00 INFO  epoch 33 training [time: 5.53s, train_loss1: 10.1217, train_loss2: 6.8338, train_loss3: 0.3873]
+Thu 09 May 2024 22:06:54 INFO  epoch 33 evaluating [time: 54.41s, valid_score: 0.051000]
+Thu 09 May 2024 22:06:54 INFO  valid result: 
+recall@10 : 0.083    mrr@10 : 0.051    ndcg@10 : 0.0488    hit@10 : 0.132    map@10 : 0.0316    precision@10 : 0.0146    gauc : 0.9092    itemcoverage@10 : 0.3869    averagepopularity@10 : 154.358    giniindex@10 : 0.9329    shannonentropy@10 : 0.0016    tailpercentage@10 : 0.0002
+Thu 09 May 2024 22:06:55 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:07:00 INFO  epoch 34 training [time: 5.65s, train_loss1: 9.8091, train_loss2: 6.8142, train_loss3: 0.3899]
+Thu 09 May 2024 22:07:55 INFO  epoch 34 evaluating [time: 54.41s, valid_score: 0.049300]
+Thu 09 May 2024 22:07:55 INFO  valid result: 
+recall@10 : 0.0819    mrr@10 : 0.0493    ndcg@10 : 0.0474    hit@10 : 0.1311    map@10 : 0.0302    precision@10 : 0.0145    gauc : 0.9095    itemcoverage@10 : 0.3944    averagepopularity@10 : 152.5302    giniindex@10 : 0.9306    shannonentropy@10 : 0.0016    tailpercentage@10 : 0.0003
+Thu 09 May 2024 22:08:00 INFO  epoch 35 training [time: 5.52s, train_loss1: 9.4890, train_loss2: 6.8074, train_loss3: 0.3923]
+Thu 09 May 2024 22:08:55 INFO  epoch 35 evaluating [time: 54.40s, valid_score: 0.050200]
+Thu 09 May 2024 22:08:55 INFO  valid result: 
+recall@10 : 0.0846    mrr@10 : 0.0502    ndcg@10 : 0.0487    hit@10 : 0.1344    map@10 : 0.031    precision@10 : 0.0149    gauc : 0.9097    itemcoverage@10 : 0.4078    averagepopularity@10 : 152.9185    giniindex@10 : 0.928    shannonentropy@10 : 0.0015    tailpercentage@10 : 0.0003
+Thu 09 May 2024 22:09:00 INFO  epoch 36 training [time: 5.49s, train_loss1: 9.1951, train_loss2: 6.7471, train_loss3: 0.3947]
+Thu 09 May 2024 22:09:55 INFO  epoch 36 evaluating [time: 54.72s, valid_score: 0.050400]
+Thu 09 May 2024 22:09:55 INFO  valid result: 
+recall@10 : 0.0851    mrr@10 : 0.0504    ndcg@10 : 0.0489    hit@10 : 0.1344    map@10 : 0.0311    precision@10 : 0.0149    gauc : 0.9099    itemcoverage@10 : 0.4142    averagepopularity@10 : 151.3212    giniindex@10 : 0.9254    shannonentropy@10 : 0.0015    tailpercentage@10 : 0.0004
+Thu 09 May 2024 22:10:01 INFO  epoch 37 training [time: 5.62s, train_loss1: 8.8740, train_loss2: 6.7992, train_loss3: 0.3972]
+Thu 09 May 2024 22:10:55 INFO  epoch 37 evaluating [time: 54.62s, valid_score: 0.051200]
+Thu 09 May 2024 22:10:55 INFO  valid result: 
+recall@10 : 0.0843    mrr@10 : 0.0512    ndcg@10 : 0.0493    hit@10 : 0.1339    map@10 : 0.0318    precision@10 : 0.0149    gauc : 0.9102    itemcoverage@10 : 0.4249    averagepopularity@10 : 149.9069    giniindex@10 : 0.9229    shannonentropy@10 : 0.0015    tailpercentage@10 : 0.0004
+Thu 09 May 2024 22:10:56 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:11:01 INFO  epoch 38 training [time: 5.45s, train_loss1: 8.6280, train_loss2: 6.7569, train_loss3: 0.3995]
+Thu 09 May 2024 22:11:55 INFO  epoch 38 evaluating [time: 54.40s, valid_score: 0.050700]
+Thu 09 May 2024 22:11:55 INFO  valid result: 
+recall@10 : 0.0847    mrr@10 : 0.0507    ndcg@10 : 0.049    hit@10 : 0.1339    map@10 : 0.0313    precision@10 : 0.0149    gauc : 0.9104    itemcoverage@10 : 0.4334    averagepopularity@10 : 148.0561    giniindex@10 : 0.9198    shannonentropy@10 : 0.0014    tailpercentage@10 : 0.0004
+Thu 09 May 2024 22:12:01 INFO  epoch 39 training [time: 5.55s, train_loss1: 8.3399, train_loss2: 6.7873, train_loss3: 0.4018]
+Thu 09 May 2024 22:12:56 INFO  epoch 39 evaluating [time: 54.61s, valid_score: 0.052600]
+Thu 09 May 2024 22:12:56 INFO  valid result: 
+recall@10 : 0.0867    mrr@10 : 0.0526    ndcg@10 : 0.0505    hit@10 : 0.1369    map@10 : 0.0325    precision@10 : 0.0151    gauc : 0.9106    itemcoverage@10 : 0.4425    averagepopularity@10 : 148.8249    giniindex@10 : 0.917    shannonentropy@10 : 0.0014    tailpercentage@10 : 0.0004
+Thu 09 May 2024 22:12:56 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:13:02 INFO  epoch 40 training [time: 5.73s, train_loss1: 8.0402, train_loss2: 6.7648, train_loss3: 0.4040]
+Thu 09 May 2024 22:13:56 INFO  epoch 40 evaluating [time: 54.40s, valid_score: 0.051900]
+Thu 09 May 2024 22:13:56 INFO  valid result: 
+recall@10 : 0.0859    mrr@10 : 0.0519    ndcg@10 : 0.0501    hit@10 : 0.1362    map@10 : 0.0321    precision@10 : 0.0151    gauc : 0.9108    itemcoverage@10 : 0.4531    averagepopularity@10 : 148.3486    giniindex@10 : 0.9143    shannonentropy@10 : 0.0014    tailpercentage@10 : 0.0005
+Thu 09 May 2024 22:14:01 INFO  epoch 41 training [time: 5.54s, train_loss1: 7.8496, train_loss2: 6.7373, train_loss3: 0.4063]
+Thu 09 May 2024 22:14:56 INFO  epoch 41 evaluating [time: 54.81s, valid_score: 0.052300]
+Thu 09 May 2024 22:14:56 INFO  valid result: 
+recall@10 : 0.0872    mrr@10 : 0.0523    ndcg@10 : 0.0507    hit@10 : 0.1371    map@10 : 0.0327    precision@10 : 0.0152    gauc : 0.9109    itemcoverage@10 : 0.4602    averagepopularity@10 : 146.8679    giniindex@10 : 0.9124    shannonentropy@10 : 0.0014    tailpercentage@10 : 0.0006
+Thu 09 May 2024 22:15:02 INFO  epoch 42 training [time: 5.75s, train_loss1: 7.6152, train_loss2: 6.7468, train_loss3: 0.4085]
+Thu 09 May 2024 22:15:57 INFO  epoch 42 evaluating [time: 54.59s, valid_score: 0.052200]
+Thu 09 May 2024 22:15:57 INFO  valid result: 
+recall@10 : 0.0873    mrr@10 : 0.0522    ndcg@10 : 0.0509    hit@10 : 0.1376    map@10 : 0.0329    precision@10 : 0.0152    gauc : 0.911    itemcoverage@10 : 0.467    averagepopularity@10 : 146.4614    giniindex@10 : 0.9101    shannonentropy@10 : 0.0014    tailpercentage@10 : 0.0006
+Thu 09 May 2024 22:16:02 INFO  epoch 43 training [time: 5.51s, train_loss1: 7.3639, train_loss2: 6.7332, train_loss3: 0.4106]
+Thu 09 May 2024 22:16:57 INFO  epoch 43 evaluating [time: 54.71s, valid_score: 0.051700]
+Thu 09 May 2024 22:16:57 INFO  valid result: 
+recall@10 : 0.0866    mrr@10 : 0.0517    ndcg@10 : 0.0504    hit@10 : 0.1361    map@10 : 0.0325    precision@10 : 0.0151    gauc : 0.9112    itemcoverage@10 : 0.4711    averagepopularity@10 : 144.8515    giniindex@10 : 0.9079    shannonentropy@10 : 0.0014    tailpercentage@10 : 0.0005
+Thu 09 May 2024 22:17:02 INFO  epoch 44 training [time: 5.56s, train_loss1: 7.2307, train_loss2: 6.7073, train_loss3: 0.4128]
+Thu 09 May 2024 22:17:57 INFO  epoch 44 evaluating [time: 54.72s, valid_score: 0.052500]
+Thu 09 May 2024 22:17:57 INFO  valid result: 
+recall@10 : 0.0867    mrr@10 : 0.0525    ndcg@10 : 0.0509    hit@10 : 0.1374    map@10 : 0.0331    precision@10 : 0.0152    gauc : 0.9112    itemcoverage@10 : 0.4807    averagepopularity@10 : 145.4899    giniindex@10 : 0.9056    shannonentropy@10 : 0.0013    tailpercentage@10 : 0.0005
+Thu 09 May 2024 22:18:03 INFO  epoch 45 training [time: 5.45s, train_loss1: 6.9728, train_loss2: 6.7802, train_loss3: 0.4149]
+Thu 09 May 2024 22:18:57 INFO  epoch 45 evaluating [time: 54.65s, valid_score: 0.053000]
+Thu 09 May 2024 22:18:57 INFO  valid result: 
+recall@10 : 0.0876    mrr@10 : 0.053    ndcg@10 : 0.0515    hit@10 : 0.1378    map@10 : 0.0336    precision@10 : 0.0153    gauc : 0.9113    itemcoverage@10 : 0.4911    averagepopularity@10 : 145.0488    giniindex@10 : 0.9028    shannonentropy@10 : 0.0013    tailpercentage@10 : 0.0006
+Thu 09 May 2024 22:18:58 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:19:03 INFO  epoch 46 training [time: 5.64s, train_loss1: 6.8009, train_loss2: 6.6826, train_loss3: 0.4170]
+Thu 09 May 2024 22:19:58 INFO  epoch 46 evaluating [time: 54.81s, valid_score: 0.052400]
+Thu 09 May 2024 22:19:58 INFO  valid result: 
+recall@10 : 0.0881    mrr@10 : 0.0524    ndcg@10 : 0.0513    hit@10 : 0.1395    map@10 : 0.0331    precision@10 : 0.0155    gauc : 0.9114    itemcoverage@10 : 0.4999    averagepopularity@10 : 142.5832    giniindex@10 : 0.9008    shannonentropy@10 : 0.0013    tailpercentage@10 : 0.0006
+Thu 09 May 2024 22:20:03 INFO  epoch 47 training [time: 5.42s, train_loss1: 6.5282, train_loss2: 6.7450, train_loss3: 0.4190]
+Thu 09 May 2024 22:20:58 INFO  epoch 47 evaluating [time: 54.83s, valid_score: 0.052900]
+Thu 09 May 2024 22:20:58 INFO  valid result: 
+recall@10 : 0.0881    mrr@10 : 0.0529    ndcg@10 : 0.0515    hit@10 : 0.1391    map@10 : 0.0333    precision@10 : 0.0155    gauc : 0.9114    itemcoverage@10 : 0.5089    averagepopularity@10 : 141.9321    giniindex@10 : 0.8979    shannonentropy@10 : 0.0013    tailpercentage@10 : 0.0006
+Thu 09 May 2024 22:21:04 INFO  epoch 48 training [time: 5.69s, train_loss1: 6.4587, train_loss2: 6.7107, train_loss3: 0.4210]
+Thu 09 May 2024 22:21:59 INFO  epoch 48 evaluating [time: 54.77s, valid_score: 0.053200]
+Thu 09 May 2024 22:21:59 INFO  valid result: 
+recall@10 : 0.0894    mrr@10 : 0.0532    ndcg@10 : 0.0519    hit@10 : 0.1403    map@10 : 0.0334    precision@10 : 0.0156    gauc : 0.9115    itemcoverage@10 : 0.5148    averagepopularity@10 : 140.769    giniindex@10 : 0.8959    shannonentropy@10 : 0.0013    tailpercentage@10 : 0.0007
+Thu 09 May 2024 22:21:59 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:22:05 INFO  epoch 49 training [time: 5.52s, train_loss1: 6.3341, train_loss2: 6.6355, train_loss3: 0.4230]
+Thu 09 May 2024 22:22:59 INFO  epoch 49 evaluating [time: 54.86s, valid_score: 0.053600]
+Thu 09 May 2024 22:22:59 INFO  valid result: 
+recall@10 : 0.0906    mrr@10 : 0.0536    ndcg@10 : 0.0524    hit@10 : 0.1417    map@10 : 0.0337    precision@10 : 0.0159    gauc : 0.9116    itemcoverage@10 : 0.525    averagepopularity@10 : 139.2934    giniindex@10 : 0.8935    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.0007
+Thu 09 May 2024 22:23:00 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:23:05 INFO  epoch 50 training [time: 5.51s, train_loss1: 6.0558, train_loss2: 6.6828, train_loss3: 0.4248]
+Thu 09 May 2024 22:24:00 INFO  epoch 50 evaluating [time: 54.98s, valid_score: 0.054400]
+Thu 09 May 2024 22:24:00 INFO  valid result: 
+recall@10 : 0.0913    mrr@10 : 0.0544    ndcg@10 : 0.0531    hit@10 : 0.142    map@10 : 0.0343    precision@10 : 0.0159    gauc : 0.9116    itemcoverage@10 : 0.5311    averagepopularity@10 : 138.387    giniindex@10 : 0.8921    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.0008
+Thu 09 May 2024 22:24:01 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:24:06 INFO  epoch 51 training [time: 5.49s, train_loss1: 5.9091, train_loss2: 6.6324, train_loss3: 0.4268]
+Thu 09 May 2024 22:25:01 INFO  epoch 51 evaluating [time: 54.54s, valid_score: 0.055400]
+Thu 09 May 2024 22:25:01 INFO  valid result: 
+recall@10 : 0.0919    mrr@10 : 0.0554    ndcg@10 : 0.0539    hit@10 : 0.144    map@10 : 0.035    precision@10 : 0.0161    gauc : 0.9116    itemcoverage@10 : 0.5388    averagepopularity@10 : 138.1281    giniindex@10 : 0.889    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.0009
+Thu 09 May 2024 22:25:01 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:25:07 INFO  epoch 52 training [time: 5.62s, train_loss1: 5.8051, train_loss2: 6.6034, train_loss3: 0.4287]
+Thu 09 May 2024 22:26:02 INFO  epoch 52 evaluating [time: 55.08s, valid_score: 0.055400]
+Thu 09 May 2024 22:26:02 INFO  valid result: 
+recall@10 : 0.0915    mrr@10 : 0.0554    ndcg@10 : 0.0537    hit@10 : 0.1431    map@10 : 0.035    precision@10 : 0.016    gauc : 0.9116    itemcoverage@10 : 0.5444    averagepopularity@10 : 137.0288    giniindex@10 : 0.8868    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.001
+Thu 09 May 2024 22:26:02 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:26:08 INFO  epoch 53 training [time: 5.70s, train_loss1: 5.7031, train_loss2: 6.5853, train_loss3: 0.4306]
+Thu 09 May 2024 22:27:02 INFO  epoch 53 evaluating [time: 54.73s, valid_score: 0.055300]
+Thu 09 May 2024 22:27:02 INFO  valid result: 
+recall@10 : 0.0927    mrr@10 : 0.0553    ndcg@10 : 0.054    hit@10 : 0.1455    map@10 : 0.0349    precision@10 : 0.0162    gauc : 0.9115    itemcoverage@10 : 0.5492    averagepopularity@10 : 136.9137    giniindex@10 : 0.8842    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.001
+Thu 09 May 2024 22:27:08 INFO  epoch 54 training [time: 5.56s, train_loss1: 5.4812, train_loss2: 6.5527, train_loss3: 0.4324]
+Thu 09 May 2024 22:28:03 INFO  epoch 54 evaluating [time: 54.75s, valid_score: 0.056200]
+Thu 09 May 2024 22:28:03 INFO  valid result: 
+recall@10 : 0.0927    mrr@10 : 0.0562    ndcg@10 : 0.0548    hit@10 : 0.1453    map@10 : 0.0359    precision@10 : 0.0161    gauc : 0.9115    itemcoverage@10 : 0.5576    averagepopularity@10 : 134.343    giniindex@10 : 0.8827    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.001
+Thu 09 May 2024 22:28:03 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:28:09 INFO  epoch 55 training [time: 5.55s, train_loss1: 5.4311, train_loss2: 6.5938, train_loss3: 0.4341]
+Thu 09 May 2024 22:29:03 INFO  epoch 55 evaluating [time: 54.92s, valid_score: 0.055400]
+Thu 09 May 2024 22:29:04 INFO  valid result: 
+recall@10 : 0.092    mrr@10 : 0.0554    ndcg@10 : 0.054    hit@10 : 0.1428    map@10 : 0.0352    precision@10 : 0.016    gauc : 0.9115    itemcoverage@10 : 0.563    averagepopularity@10 : 134.3284    giniindex@10 : 0.8792    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.001
+Thu 09 May 2024 22:29:09 INFO  epoch 56 training [time: 5.46s, train_loss1: 5.2232, train_loss2: 6.6668, train_loss3: 0.4359]
+Thu 09 May 2024 22:30:04 INFO  epoch 56 evaluating [time: 54.69s, valid_score: 0.055900]
+Thu 09 May 2024 22:30:04 INFO  valid result: 
+recall@10 : 0.0912    mrr@10 : 0.0559    ndcg@10 : 0.0541    hit@10 : 0.1416    map@10 : 0.0355    precision@10 : 0.0159    gauc : 0.9115    itemcoverage@10 : 0.5698    averagepopularity@10 : 131.2513    giniindex@10 : 0.8755    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.001
+Thu 09 May 2024 22:30:09 INFO  epoch 57 training [time: 5.44s, train_loss1: 5.0558, train_loss2: 6.5684, train_loss3: 0.4377]
+Thu 09 May 2024 22:31:04 INFO  epoch 57 evaluating [time: 54.88s, valid_score: 0.055400]
+Thu 09 May 2024 22:31:04 INFO  valid result: 
+recall@10 : 0.0921    mrr@10 : 0.0554    ndcg@10 : 0.0541    hit@10 : 0.143    map@10 : 0.0353    precision@10 : 0.016    gauc : 0.9115    itemcoverage@10 : 0.5716    averagepopularity@10 : 131.9604    giniindex@10 : 0.8758    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:31:09 INFO  epoch 58 training [time: 5.50s, train_loss1: 4.9711, train_loss2: 6.5530, train_loss3: 0.4394]
+Thu 09 May 2024 22:32:04 INFO  epoch 58 evaluating [time: 54.87s, valid_score: 0.056100]
+Thu 09 May 2024 22:32:04 INFO  valid result: 
+recall@10 : 0.0923    mrr@10 : 0.0561    ndcg@10 : 0.0543    hit@10 : 0.1442    map@10 : 0.0354    precision@10 : 0.0161    gauc : 0.9115    itemcoverage@10 : 0.5755    averagepopularity@10 : 132.1841    giniindex@10 : 0.8742    shannonentropy@10 : 0.0012    tailpercentage@10 : 0.0012
+Thu 09 May 2024 22:32:10 INFO  epoch 59 training [time: 5.79s, train_loss1: 4.8555, train_loss2: 6.5493, train_loss3: 0.4412]
+Thu 09 May 2024 22:33:05 INFO  epoch 59 evaluating [time: 55.03s, valid_score: 0.056700]
+Thu 09 May 2024 22:33:05 INFO  valid result: 
+recall@10 : 0.0927    mrr@10 : 0.0567    ndcg@10 : 0.055    hit@10 : 0.1445    map@10 : 0.0361    precision@10 : 0.0161    gauc : 0.9115    itemcoverage@10 : 0.583    averagepopularity@10 : 131.8758    giniindex@10 : 0.8734    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:33:05 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:33:11 INFO  epoch 60 training [time: 5.35s, train_loss1: 4.7607, train_loss2: 6.5769, train_loss3: 0.4429]
+Thu 09 May 2024 22:34:06 INFO  epoch 60 evaluating [time: 54.92s, valid_score: 0.057000]
+Thu 09 May 2024 22:34:06 INFO  valid result: 
+recall@10 : 0.094    mrr@10 : 0.057    ndcg@10 : 0.0555    hit@10 : 0.1462    map@10 : 0.0363    precision@10 : 0.0163    gauc : 0.9115    itemcoverage@10 : 0.5878    averagepopularity@10 : 131.1949    giniindex@10 : 0.8702    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:34:06 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:34:12 INFO  epoch 61 training [time: 5.65s, train_loss1: 4.6537, train_loss2: 6.5862, train_loss3: 0.4445]
+Thu 09 May 2024 22:35:07 INFO  epoch 61 evaluating [time: 54.96s, valid_score: 0.056500]
+Thu 09 May 2024 22:35:07 INFO  valid result: 
+recall@10 : 0.0931    mrr@10 : 0.0565    ndcg@10 : 0.0548    hit@10 : 0.1457    map@10 : 0.0357    precision@10 : 0.0162    gauc : 0.9114    itemcoverage@10 : 0.595    averagepopularity@10 : 130.5782    giniindex@10 : 0.8683    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:35:12 INFO  epoch 62 training [time: 5.58s, train_loss1: 4.5880, train_loss2: 6.5590, train_loss3: 0.4462]
+Thu 09 May 2024 22:36:07 INFO  epoch 62 evaluating [time: 55.15s, valid_score: 0.056300]
+Thu 09 May 2024 22:36:07 INFO  valid result: 
+recall@10 : 0.0939    mrr@10 : 0.0563    ndcg@10 : 0.055    hit@10 : 0.1461    map@10 : 0.0357    precision@10 : 0.0164    gauc : 0.9114    itemcoverage@10 : 0.6007    averagepopularity@10 : 131.6895    giniindex@10 : 0.8666    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:36:13 INFO  epoch 63 training [time: 5.82s, train_loss1: 4.4745, train_loss2: 6.5670, train_loss3: 0.4478]
+Thu 09 May 2024 22:37:08 INFO  epoch 63 evaluating [time: 54.94s, valid_score: 0.058300]
+Thu 09 May 2024 22:37:08 INFO  valid result: 
+recall@10 : 0.0945    mrr@10 : 0.0583    ndcg@10 : 0.0563    hit@10 : 0.1469    map@10 : 0.0371    precision@10 : 0.0164    gauc : 0.9114    itemcoverage@10 : 0.6039    averagepopularity@10 : 131.8471    giniindex@10 : 0.8641    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:37:09 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:37:14 INFO  epoch 64 training [time: 5.52s, train_loss1: 4.4132, train_loss2: 6.5492, train_loss3: 0.4494]
+Thu 09 May 2024 22:38:09 INFO  epoch 64 evaluating [time: 54.96s, valid_score: 0.057500]
+Thu 09 May 2024 22:38:09 INFO  valid result: 
+recall@10 : 0.0949    mrr@10 : 0.0575    ndcg@10 : 0.0558    hit@10 : 0.1476    map@10 : 0.0364    precision@10 : 0.0164    gauc : 0.9113    itemcoverage@10 : 0.6107    averagepopularity@10 : 130.1974    giniindex@10 : 0.8625    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:38:15 INFO  epoch 65 training [time: 5.60s, train_loss1: 4.2833, train_loss2: 6.5647, train_loss3: 0.4510]
+Thu 09 May 2024 22:39:09 INFO  epoch 65 evaluating [time: 54.66s, valid_score: 0.058200]
+Thu 09 May 2024 22:39:09 INFO  valid result: 
+recall@10 : 0.0952    mrr@10 : 0.0582    ndcg@10 : 0.0565    hit@10 : 0.1483    map@10 : 0.0371    precision@10 : 0.0164    gauc : 0.9112    itemcoverage@10 : 0.6129    averagepopularity@10 : 129.0887    giniindex@10 : 0.8601    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:39:14 INFO  epoch 66 training [time: 4.93s, train_loss1: 4.1398, train_loss2: 6.5031, train_loss3: 0.4526]
+Thu 09 May 2024 22:40:09 INFO  epoch 66 evaluating [time: 55.04s, valid_score: 0.057900]
+Thu 09 May 2024 22:40:09 INFO  valid result: 
+recall@10 : 0.0943    mrr@10 : 0.0579    ndcg@10 : 0.0558    hit@10 : 0.1473    map@10 : 0.0366    precision@10 : 0.0162    gauc : 0.9111    itemcoverage@10 : 0.6184    averagepopularity@10 : 127.6829    giniindex@10 : 0.8593    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:40:14 INFO  epoch 67 training [time: 4.74s, train_loss1: 4.1045, train_loss2: 6.5292, train_loss3: 0.4541]
+Thu 09 May 2024 22:41:09 INFO  epoch 67 evaluating [time: 54.66s, valid_score: 0.058100]
+Thu 09 May 2024 22:41:09 INFO  valid result: 
+recall@10 : 0.0959    mrr@10 : 0.0581    ndcg@10 : 0.0564    hit@10 : 0.1496    map@10 : 0.0368    precision@10 : 0.0166    gauc : 0.9111    itemcoverage@10 : 0.6207    averagepopularity@10 : 126.5805    giniindex@10 : 0.8577    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0011
+Thu 09 May 2024 22:41:14 INFO  epoch 68 training [time: 4.94s, train_loss1: 4.0187, train_loss2: 6.5329, train_loss3: 0.4556]
+Thu 09 May 2024 22:42:08 INFO  epoch 68 evaluating [time: 54.84s, valid_score: 0.059000]
+Thu 09 May 2024 22:42:08 INFO  valid result: 
+recall@10 : 0.0956    mrr@10 : 0.059    ndcg@10 : 0.057    hit@10 : 0.1497    map@10 : 0.0377    precision@10 : 0.0166    gauc : 0.9109    itemcoverage@10 : 0.6254    averagepopularity@10 : 127.2324    giniindex@10 : 0.8571    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0013
+Thu 09 May 2024 22:42:09 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:42:14 INFO  epoch 69 training [time: 5.44s, train_loss1: 3.9381, train_loss2: 6.5027, train_loss3: 0.4570]
+Thu 09 May 2024 22:43:09 INFO  epoch 69 evaluating [time: 54.98s, valid_score: 0.058700]
+Thu 09 May 2024 22:43:09 INFO  valid result: 
+recall@10 : 0.0949    mrr@10 : 0.0587    ndcg@10 : 0.0565    hit@10 : 0.1481    map@10 : 0.0372    precision@10 : 0.0165    gauc : 0.9109    itemcoverage@10 : 0.6258    averagepopularity@10 : 127.3113    giniindex@10 : 0.8552    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0012
+Thu 09 May 2024 22:43:14 INFO  epoch 70 training [time: 5.17s, train_loss1: 3.8521, train_loss2: 6.5006, train_loss3: 0.4585]
+Thu 09 May 2024 22:44:09 INFO  epoch 70 evaluating [time: 55.07s, valid_score: 0.059300]
+Thu 09 May 2024 22:44:09 INFO  valid result: 
+recall@10 : 0.0973    mrr@10 : 0.0593    ndcg@10 : 0.0576    hit@10 : 0.1503    map@10 : 0.0379    precision@10 : 0.0168    gauc : 0.9109    itemcoverage@10 : 0.6308    averagepopularity@10 : 125.726    giniindex@10 : 0.854    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0012
+Thu 09 May 2024 22:44:10 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:44:15 INFO  epoch 71 training [time: 5.66s, train_loss1: 3.8637, train_loss2: 6.4844, train_loss3: 0.4600]
+Thu 09 May 2024 22:45:10 INFO  epoch 71 evaluating [time: 54.76s, valid_score: 0.058800]
+Thu 09 May 2024 22:45:10 INFO  valid result: 
+recall@10 : 0.0955    mrr@10 : 0.0588    ndcg@10 : 0.0569    hit@10 : 0.1484    map@10 : 0.0375    precision@10 : 0.0165    gauc : 0.9108    itemcoverage@10 : 0.6354    averagepopularity@10 : 125.0389    giniindex@10 : 0.8507    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0013
+Thu 09 May 2024 22:45:16 INFO  epoch 72 training [time: 5.41s, train_loss1: 3.7093, train_loss2: 6.5149, train_loss3: 0.4614]
+Thu 09 May 2024 22:46:10 INFO  epoch 72 evaluating [time: 54.72s, valid_score: 0.058300]
+Thu 09 May 2024 22:46:10 INFO  valid result: 
+recall@10 : 0.0959    mrr@10 : 0.0583    ndcg@10 : 0.0567    hit@10 : 0.1486    map@10 : 0.0371    precision@10 : 0.0166    gauc : 0.9108    itemcoverage@10 : 0.6408    averagepopularity@10 : 123.4997    giniindex@10 : 0.848    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0014
+Thu 09 May 2024 22:46:16 INFO  epoch 73 training [time: 5.70s, train_loss1: 3.6989, train_loss2: 6.4639, train_loss3: 0.4627]
+Thu 09 May 2024 22:47:11 INFO  epoch 73 evaluating [time: 54.67s, valid_score: 0.057400]
+Thu 09 May 2024 22:47:11 INFO  valid result: 
+recall@10 : 0.0957    mrr@10 : 0.0574    ndcg@10 : 0.0561    hit@10 : 0.1486    map@10 : 0.0366    precision@10 : 0.0165    gauc : 0.9107    itemcoverage@10 : 0.645    averagepopularity@10 : 121.4646    giniindex@10 : 0.8466    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0014
+Thu 09 May 2024 22:47:16 INFO  epoch 74 training [time: 5.62s, train_loss1: 3.5877, train_loss2: 6.4970, train_loss3: 0.4641]
+Thu 09 May 2024 22:48:11 INFO  epoch 74 evaluating [time: 55.02s, valid_score: 0.057200]
+Thu 09 May 2024 22:48:11 INFO  valid result: 
+recall@10 : 0.0945    mrr@10 : 0.0572    ndcg@10 : 0.0556    hit@10 : 0.1478    map@10 : 0.0362    precision@10 : 0.0165    gauc : 0.9106    itemcoverage@10 : 0.6505    averagepopularity@10 : 122.5465    giniindex@10 : 0.8461    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0015
+Thu 09 May 2024 22:48:17 INFO  epoch 75 training [time: 5.62s, train_loss1: 3.5596, train_loss2: 6.5028, train_loss3: 0.4655]
+Thu 09 May 2024 22:49:11 INFO  epoch 75 evaluating [time: 54.36s, valid_score: 0.058200]
+Thu 09 May 2024 22:49:11 INFO  valid result: 
+recall@10 : 0.097    mrr@10 : 0.0582    ndcg@10 : 0.0568    hit@10 : 0.1503    map@10 : 0.0371    precision@10 : 0.0166    gauc : 0.9105    itemcoverage@10 : 0.6561    averagepopularity@10 : 121.5466    giniindex@10 : 0.8429    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0016
+Thu 09 May 2024 22:49:17 INFO  epoch 76 training [time: 5.49s, train_loss1: 3.4921, train_loss2: 6.4547, train_loss3: 0.4668]
+Thu 09 May 2024 22:50:12 INFO  epoch 76 evaluating [time: 55.05s, valid_score: 0.059200]
+Thu 09 May 2024 22:50:12 INFO  valid result: 
+recall@10 : 0.097    mrr@10 : 0.0592    ndcg@10 : 0.0576    hit@10 : 0.1515    map@10 : 0.038    precision@10 : 0.0168    gauc : 0.9104    itemcoverage@10 : 0.6588    averagepopularity@10 : 121.5779    giniindex@10 : 0.8401    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0016
+Thu 09 May 2024 22:50:17 INFO  epoch 77 training [time: 5.45s, train_loss1: 3.4085, train_loss2: 6.4758, train_loss3: 0.4682]
+Thu 09 May 2024 22:51:12 INFO  epoch 77 evaluating [time: 54.64s, valid_score: 0.059100]
+Thu 09 May 2024 22:51:12 INFO  valid result: 
+recall@10 : 0.0979    mrr@10 : 0.0591    ndcg@10 : 0.0575    hit@10 : 0.1528    map@10 : 0.0375    precision@10 : 0.0169    gauc : 0.9104    itemcoverage@10 : 0.6608    averagepopularity@10 : 120.5262    giniindex@10 : 0.8386    shannonentropy@10 : 0.0011    tailpercentage@10 : 0.0016
+Thu 09 May 2024 22:51:18 INFO  epoch 78 training [time: 5.60s, train_loss1: 3.3627, train_loss2: 6.4739, train_loss3: 0.4695]
+Thu 09 May 2024 22:52:12 INFO  epoch 78 evaluating [time: 54.69s, valid_score: 0.059700]
+Thu 09 May 2024 22:52:12 INFO  valid result: 
+recall@10 : 0.0989    mrr@10 : 0.0597    ndcg@10 : 0.0583    hit@10 : 0.1535    map@10 : 0.0382    precision@10 : 0.017    gauc : 0.9103    itemcoverage@10 : 0.6625    averagepopularity@10 : 121.2661    giniindex@10 : 0.8373    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0016
+Thu 09 May 2024 22:52:13 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:52:18 INFO  epoch 79 training [time: 5.49s, train_loss1: 3.3115, train_loss2: 6.4904, train_loss3: 0.4708]
+Thu 09 May 2024 22:53:13 INFO  epoch 79 evaluating [time: 54.88s, valid_score: 0.060200]
+Thu 09 May 2024 22:53:13 INFO  valid result: 
+recall@10 : 0.1001    mrr@10 : 0.0602    ndcg@10 : 0.059    hit@10 : 0.155    map@10 : 0.0388    precision@10 : 0.0173    gauc : 0.9103    itemcoverage@10 : 0.6643    averagepopularity@10 : 121.1084    giniindex@10 : 0.8361    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0015
+Thu 09 May 2024 22:53:13 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:53:19 INFO  epoch 80 training [time: 5.64s, train_loss1: 3.2342, train_loss2: 6.4681, train_loss3: 0.4721]
+Thu 09 May 2024 22:54:14 INFO  epoch 80 evaluating [time: 54.66s, valid_score: 0.060300]
+Thu 09 May 2024 22:54:14 INFO  valid result: 
+recall@10 : 0.0999    mrr@10 : 0.0603    ndcg@10 : 0.0591    hit@10 : 0.1545    map@10 : 0.039    precision@10 : 0.0172    gauc : 0.9102    itemcoverage@10 : 0.6671    averagepopularity@10 : 121.1606    giniindex@10 : 0.8354    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0016
+Thu 09 May 2024 22:54:14 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:54:19 INFO  epoch 81 training [time: 5.41s, train_loss1: 3.1777, train_loss2: 6.4406, train_loss3: 0.4735]
+Thu 09 May 2024 22:55:14 INFO  epoch 81 evaluating [time: 54.86s, valid_score: 0.060000]
+Thu 09 May 2024 22:55:14 INFO  valid result: 
+recall@10 : 0.1003    mrr@10 : 0.06    ndcg@10 : 0.059    hit@10 : 0.1547    map@10 : 0.0388    precision@10 : 0.0172    gauc : 0.9101    itemcoverage@10 : 0.6746    averagepopularity@10 : 120.0139    giniindex@10 : 0.8329    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0015
+Thu 09 May 2024 22:55:20 INFO  epoch 82 training [time: 5.52s, train_loss1: 3.1459, train_loss2: 6.4189, train_loss3: 0.4747]
+Thu 09 May 2024 22:56:14 INFO  epoch 82 evaluating [time: 54.59s, valid_score: 0.061100]
+Thu 09 May 2024 22:56:14 INFO  valid result: 
+recall@10 : 0.101    mrr@10 : 0.0611    ndcg@10 : 0.06    hit@10 : 0.1547    map@10 : 0.0399    precision@10 : 0.0173    gauc : 0.9099    itemcoverage@10 : 0.6752    averagepopularity@10 : 119.7928    giniindex@10 : 0.832    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0016
+Thu 09 May 2024 22:56:15 INFO  Saving current: saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 22:56:20 INFO  epoch 83 training [time: 5.61s, train_loss1: 3.1104, train_loss2: 6.4431, train_loss3: 0.4759]
+Thu 09 May 2024 22:57:15 INFO  epoch 83 evaluating [time: 54.98s, valid_score: 0.059900]
+Thu 09 May 2024 22:57:15 INFO  valid result: 
+recall@10 : 0.0996    mrr@10 : 0.0599    ndcg@10 : 0.0593    hit@10 : 0.1527    map@10 : 0.0395    precision@10 : 0.0171    gauc : 0.9099    itemcoverage@10 : 0.6755    averagepopularity@10 : 119.2699    giniindex@10 : 0.8321    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0015
+Thu 09 May 2024 22:57:21 INFO  epoch 84 training [time: 5.50s, train_loss1: 3.1172, train_loss2: 6.4255, train_loss3: 0.4772]
+Thu 09 May 2024 22:58:15 INFO  epoch 84 evaluating [time: 54.55s, valid_score: 0.058500]
+Thu 09 May 2024 22:58:15 INFO  valid result: 
+recall@10 : 0.1    mrr@10 : 0.0585    ndcg@10 : 0.0582    hit@10 : 0.1541    map@10 : 0.0379    precision@10 : 0.0173    gauc : 0.9098    itemcoverage@10 : 0.6805    averagepopularity@10 : 119.6766    giniindex@10 : 0.8295    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0016
+Thu 09 May 2024 22:58:21 INFO  epoch 85 training [time: 5.62s, train_loss1: 2.9630, train_loss2: 6.3985, train_loss3: 0.4784]
+Thu 09 May 2024 22:59:16 INFO  epoch 85 evaluating [time: 54.87s, valid_score: 0.059700]
+Thu 09 May 2024 22:59:16 INFO  valid result: 
+recall@10 : 0.1001    mrr@10 : 0.0597    ndcg@10 : 0.059    hit@10 : 0.1541    map@10 : 0.0389    precision@10 : 0.0172    gauc : 0.9097    itemcoverage@10 : 0.6819    averagepopularity@10 : 120.0031    giniindex@10 : 0.8288    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0015
+Thu 09 May 2024 22:59:21 INFO  epoch 86 training [time: 5.63s, train_loss1: 2.9380, train_loss2: 6.3931, train_loss3: 0.4796]
+Thu 09 May 2024 23:00:16 INFO  epoch 86 evaluating [time: 54.69s, valid_score: 0.059100]
+Thu 09 May 2024 23:00:16 INFO  valid result: 
+recall@10 : 0.1    mrr@10 : 0.0591    ndcg@10 : 0.0585    hit@10 : 0.1544    map@10 : 0.0383    precision@10 : 0.0172    gauc : 0.9096    itemcoverage@10 : 0.6831    averagepopularity@10 : 121.056    giniindex@10 : 0.8282    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0017
+Thu 09 May 2024 23:00:21 INFO  epoch 87 training [time: 4.90s, train_loss1: 2.9161, train_loss2: 6.4679, train_loss3: 0.4808]
+Thu 09 May 2024 23:01:16 INFO  epoch 87 evaluating [time: 54.98s, valid_score: 0.059600]
+Thu 09 May 2024 23:01:16 INFO  valid result: 
+recall@10 : 0.1005    mrr@10 : 0.0596    ndcg@10 : 0.0591    hit@10 : 0.1543    map@10 : 0.0389    precision@10 : 0.0172    gauc : 0.9095    itemcoverage@10 : 0.6876    averagepopularity@10 : 119.888    giniindex@10 : 0.8268    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0017
+Thu 09 May 2024 23:01:21 INFO  epoch 88 training [time: 5.59s, train_loss1: 2.8655, train_loss2: 6.3864, train_loss3: 0.4819]
+Thu 09 May 2024 23:02:16 INFO  epoch 88 evaluating [time: 54.70s, valid_score: 0.059800]
+Thu 09 May 2024 23:02:16 INFO  valid result: 
+recall@10 : 0.1008    mrr@10 : 0.0598    ndcg@10 : 0.0591    hit@10 : 0.1552    map@10 : 0.0387    precision@10 : 0.0173    gauc : 0.9094    itemcoverage@10 : 0.6907    averagepopularity@10 : 119.9666    giniindex@10 : 0.8254    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0017
+Thu 09 May 2024 23:02:22 INFO  epoch 89 training [time: 5.53s, train_loss1: 2.8265, train_loss2: 6.4073, train_loss3: 0.4831]
+Thu 09 May 2024 23:03:16 INFO  epoch 89 evaluating [time: 54.29s, valid_score: 0.059400]
+Thu 09 May 2024 23:03:16 INFO  valid result: 
+recall@10 : 0.1001    mrr@10 : 0.0594    ndcg@10 : 0.0586    hit@10 : 0.1545    map@10 : 0.0383    precision@10 : 0.0172    gauc : 0.9093    itemcoverage@10 : 0.693    averagepopularity@10 : 118.7101    giniindex@10 : 0.8236    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0018
+Thu 09 May 2024 23:03:21 INFO  epoch 90 training [time: 5.11s, train_loss1: 2.7599, train_loss2: 6.3978, train_loss3: 0.4843]
+Thu 09 May 2024 23:04:16 INFO  epoch 90 evaluating [time: 54.98s, valid_score: 0.059300]
+Thu 09 May 2024 23:04:16 INFO  valid result: 
+recall@10 : 0.1001    mrr@10 : 0.0593    ndcg@10 : 0.0588    hit@10 : 0.1546    map@10 : 0.0385    precision@10 : 0.0173    gauc : 0.9092    itemcoverage@10 : 0.6956    averagepopularity@10 : 118.5651    giniindex@10 : 0.8225    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0018
+Thu 09 May 2024 23:04:22 INFO  epoch 91 training [time: 5.53s, train_loss1: 2.7838, train_loss2: 6.3910, train_loss3: 0.4854]
+Thu 09 May 2024 23:05:16 INFO  epoch 91 evaluating [time: 54.92s, valid_score: 0.059100]
+Thu 09 May 2024 23:05:16 INFO  valid result: 
+recall@10 : 0.1005    mrr@10 : 0.0591    ndcg@10 : 0.0585    hit@10 : 0.1549    map@10 : 0.0381    precision@10 : 0.0173    gauc : 0.9091    itemcoverage@10 : 0.7005    averagepopularity@10 : 118.2406    giniindex@10 : 0.8208    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0018
+Thu 09 May 2024 23:05:22 INFO  epoch 92 training [time: 5.52s, train_loss1: 2.7633, train_loss2: 6.3708, train_loss3: 0.4866]
+Thu 09 May 2024 23:06:17 INFO  epoch 92 evaluating [time: 54.68s, valid_score: 0.059500]
+Thu 09 May 2024 23:06:17 INFO  valid result: 
+recall@10 : 0.0998    mrr@10 : 0.0595    ndcg@10 : 0.0589    hit@10 : 0.1535    map@10 : 0.0388    precision@10 : 0.0172    gauc : 0.9089    itemcoverage@10 : 0.7031    averagepopularity@10 : 115.6248    giniindex@10 : 0.8185    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0017
+Thu 09 May 2024 23:06:22 INFO  epoch 93 training [time: 5.52s, train_loss1: 2.6723, train_loss2: 6.3995, train_loss3: 0.4876]
+Thu 09 May 2024 23:07:17 INFO  epoch 93 evaluating [time: 54.56s, valid_score: 0.059600]
+Thu 09 May 2024 23:07:17 INFO  valid result: 
+recall@10 : 0.1005    mrr@10 : 0.0596    ndcg@10 : 0.059    hit@10 : 0.1542    map@10 : 0.0387    precision@10 : 0.0172    gauc : 0.9088    itemcoverage@10 : 0.7035    averagepopularity@10 : 115.6156    giniindex@10 : 0.818    shannonentropy@10 : 0.001    tailpercentage@10 : 0.0018
+Thu 09 May 2024 23:07:17 INFO  Finished training, best eval result in epoch 82
+Thu 09 May 2024 23:07:17 INFO  Loading model structure and parameters from saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth
+Thu 09 May 2024 23:08:16 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    12.80 %     |
++-------------+----------------+
+| GPU         | 0.21 G/11.93 G |
++-------------+----------------+
+| Memory      | 2.24 G/31.23 G |
++-------------+----------------+
+Thu 09 May 2024 23:08:16 INFO  best valid : OrderedDict([('recall@10', 0.101), ('mrr@10', 0.0611), ('ndcg@10', 0.06), ('hit@10', 0.1547), ('map@10', 0.0399), ('precision@10', 0.0173), ('gauc', 0.9099), ('itemcoverage@10', 0.6752), ('averagepopularity@10', 119.7928), ('giniindex@10', 0.832), ('shannonentropy@10', 0.001), ('tailpercentage@10', 0.0016)])
+Thu 09 May 2024 23:08:16 INFO  test result: OrderedDict([('recall@10', 0.0977), ('mrr@10', 0.0599), ('ndcg@10', 0.0585), ('hit@10', 0.1485), ('map@10', 0.0392), ('precision@10', 0.0168), ('gauc', 0.9044), ('itemcoverage@10', 0.6897), ('averagepopularity@10', 117.927), ('giniindex@10', 0.8287), ('shannonentropy@10', 0.001), ('tailpercentage@10', 0.0021)])
+Thu 09 May 2024 23:08:16 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/amazon_books_60core_kg
+checkpoint_dir = saved/amazon_books_60core_kg/CKE
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'kg': ['head_id', 'relation_id', 'tail_id'], 'link': ['item_id', 'entity_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+kg_embedding_size = 64
+reg_weights = [0.01, 0.01]
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.KNOWLEDGE
+encoding = utf-8
+device = cuda:1
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission_step = -1
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 May 2024 23:08:25 INFO  amazon_books_60core_kg
+The number of users: 20201
+Average actions of users: 17.4280198019802
+The number of items: 10879
+Average actions of items: 32.36311822026108
+The number of inters: 352046
+The sparsity of the dataset: 99.83980920055674%
+Remain Fields: ['entity_id', 'user_id', 'item_id', 'rating', 'head_id', 'tail_id', 'relation_id']
+The number of entities: 26316
+The number of relations: 18
+The number of triples: 96476
+The number of items that have been linked to KG: 10878
+Thu 09 May 2024 23:08:27 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Thu 09 May 2024 23:08:27 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 May 2024 23:08:27 INFO  Loading model structure and parameters from saved/amazon_books_60core_kg/CKE/CKE-May-09-2024_21-32-41.pth

@@ -36,6 +36,13 @@ from recbole.utils import (
 )
 
 
+
+
+import torch
+
+
+
+
 def run(
     model,
     dataset,
@@ -101,7 +108,7 @@ def run_recbole(
     config_dict=None,
     saved=True,
     queue=None,
-    max_emission=1e-5,
+    max_emission_step=-1,
 
     
 ):
@@ -115,7 +122,7 @@ def run_recbole(
         config_dict (dict, optional): Parameters dictionary used to modify experiment parameters. Defaults to ``None``.
         saved (bool, optional): Whether to save the model. Defaults to ``True``.
         queue (torch.multiprocessing.Queue, optional): The queue used to pass the result to the main process. Defaults to ``None``.
-        max_emission (float, optional): The maximum emission value. Defaults to ``1e-5``.
+        max_emission_step (float, optional): The maximum emission step. Defaults to ``-1``.
     """
     # configurations initialization
     config = Config(
@@ -124,6 +131,7 @@ def run_recbole(
         config_file_list=config_file_list,
         config_dict=config_dict,
     )
+    config["device"]=torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
     init_seed(config["seed"], config["reproducibility"])
     # logger initialization
     init_logger(config)
@@ -143,6 +151,7 @@ def run_recbole(
     model = get_model(config["model"])(config, train_data._dataset).to(config["device"])
     logger.info(model)
 
+
     transform = construct_transform(config)
     flops = get_flops(model, dataset, config["device"], logger, transform)
     logger.info(set_color("FLOPs", "blue") + f": {flops}")
@@ -152,7 +161,7 @@ def run_recbole(
 
     # model training
     best_valid_score, best_valid_result = trainer.fit(
-        train_data,max_emission,emission_file_path,proj_name,valid_data, saved=saved, show_progress=config["show_progress"]
+        train_data,max_emission_step,emission_file_path,proj_name,valid_data, saved=saved, show_progress=config["show_progress"]
     )
 
     # model evaluation

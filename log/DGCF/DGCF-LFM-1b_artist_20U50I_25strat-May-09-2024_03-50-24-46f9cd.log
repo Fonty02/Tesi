@@ -1,0 +1,713 @@
+Thu 09 May 2024 03:50:24 INFO  ['src/default_tracker2.py', '--dataset=LFM-1b_artist_20U50I_25strat', '--model=DGCF', '--max_emission_step=-1']
+Thu 09 May 2024 03:50:24 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I_25strat
+checkpoint_dir = saved/LFM-1b_artist_20U50I_25strat/DGCF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_factors = 4
+n_iterations = 2
+n_layers = 1
+reg_weight = 0.001
+cor_weight = 0.01
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda:1
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission_step = -1
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 May 2024 03:50:25 INFO  LFM-1b_artist_20U50I_25strat
+The number of users: 19842
+Average actions of users: 11.01038254120256
+The number of items: 24879
+Average actions of items: 8.781131923788086
+The number of inters: 218457
+The sparsity of the dataset: 99.95574650251882%
+Remain Fields: ['user_id', 'item_id']
+Thu 09 May 2024 03:50:27 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Thu 09 May 2024 03:50:27 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 May 2024 03:50:30 INFO  DGCF(
+  (user_embedding): Embedding(19842, 64)
+  (item_embedding): Embedding(24879, 64)
+  (softmax): Softmax(dim=1)
+  (mf_loss): BPRLoss()
+  (reg_loss): EmbLoss()
+)
+Trainable parameters: 2862144
+Thu 09 May 2024 03:50:30 INFO  FLOPs: 7609492.0
+Thu 09 May 2024 03:50:57 INFO  epoch 0 training [time: 21.30s, train loss: 58.1130]
+Thu 09 May 2024 03:51:49 INFO  epoch 0 evaluating [time: 52.74s, valid_score: 0.033900]
+Thu 09 May 2024 03:51:49 INFO  valid result: 
+recall@10 : 0.0785    mrr@10 : 0.0339    ndcg@10 : 0.0412    hit@10 : 0.0958    map@10 : 0.0276    precision@10 : 0.0097    gauc : 0.8573    itemcoverage@10 : 0.0288    averagepopularity@10 : 906.9377    giniindex@10 : 0.9993    shannonentropy@10 : 0.0038    tailpercentage@10 : 0.0022
+Thu 09 May 2024 03:51:49 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 03:52:11 INFO  epoch 1 training [time: 21.18s, train loss: 44.7258]
+Thu 09 May 2024 03:53:04 INFO  epoch 1 evaluating [time: 52.97s, valid_score: 0.033800]
+Thu 09 May 2024 03:53:04 INFO  valid result: 
+recall@10 : 0.0783    mrr@10 : 0.0338    ndcg@10 : 0.0411    hit@10 : 0.0955    map@10 : 0.0275    precision@10 : 0.0097    gauc : 0.8586    itemcoverage@10 : 0.0116    averagepopularity@10 : 905.309    giniindex@10 : 0.9995    shannonentropy@10 : 0.0092    tailpercentage@10 : 0.0019
+Thu 09 May 2024 03:53:25 INFO  epoch 2 training [time: 21.15s, train loss: 30.3122]
+Thu 09 May 2024 03:54:18 INFO  epoch 2 evaluating [time: 52.90s, valid_score: 0.033800]
+Thu 09 May 2024 03:54:18 INFO  valid result: 
+recall@10 : 0.0779    mrr@10 : 0.0338    ndcg@10 : 0.041    hit@10 : 0.0951    map@10 : 0.0275    precision@10 : 0.0096    gauc : 0.8602    itemcoverage@10 : 0.0094    averagepopularity@10 : 907.1398    giniindex@10 : 0.9995    shannonentropy@10 : 0.0114    tailpercentage@10 : 0.0002
+Thu 09 May 2024 03:54:39 INFO  epoch 3 training [time: 21.31s, train loss: 25.2683]
+Thu 09 May 2024 03:55:32 INFO  epoch 3 evaluating [time: 53.04s, valid_score: 0.033900]
+Thu 09 May 2024 03:55:32 INFO  valid result: 
+recall@10 : 0.0784    mrr@10 : 0.0339    ndcg@10 : 0.0411    hit@10 : 0.0957    map@10 : 0.0275    precision@10 : 0.0097    gauc : 0.8608    itemcoverage@10 : 0.0093    averagepopularity@10 : 910.0623    giniindex@10 : 0.9995    shannonentropy@10 : 0.0114    tailpercentage@10 : 0.0002
+Thu 09 May 2024 03:55:32 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 03:55:53 INFO  epoch 4 training [time: 21.17s, train loss: 23.1001]
+Thu 09 May 2024 03:56:46 INFO  epoch 4 evaluating [time: 52.89s, valid_score: 0.033800]
+Thu 09 May 2024 03:56:46 INFO  valid result: 
+recall@10 : 0.0781    mrr@10 : 0.0338    ndcg@10 : 0.041    hit@10 : 0.0955    map@10 : 0.0275    precision@10 : 0.0097    gauc : 0.8614    itemcoverage@10 : 0.0094    averagepopularity@10 : 908.7454    giniindex@10 : 0.9995    shannonentropy@10 : 0.0113    tailpercentage@10 : 0.0001
+Thu 09 May 2024 03:57:08 INFO  epoch 5 training [time: 21.37s, train loss: 22.1036]
+Thu 09 May 2024 03:58:01 INFO  epoch 5 evaluating [time: 52.98s, valid_score: 0.033800]
+Thu 09 May 2024 03:58:01 INFO  valid result: 
+recall@10 : 0.0781    mrr@10 : 0.0338    ndcg@10 : 0.041    hit@10 : 0.0954    map@10 : 0.0275    precision@10 : 0.0097    gauc : 0.8616    itemcoverage@10 : 0.0096    averagepopularity@10 : 908.7656    giniindex@10 : 0.9995    shannonentropy@10 : 0.0111    tailpercentage@10 : 0.0001
+Thu 09 May 2024 03:58:22 INFO  epoch 6 training [time: 21.20s, train loss: 21.3590]
+Thu 09 May 2024 03:59:15 INFO  epoch 6 evaluating [time: 52.61s, valid_score: 0.033800]
+Thu 09 May 2024 03:59:15 INFO  valid result: 
+recall@10 : 0.0778    mrr@10 : 0.0338    ndcg@10 : 0.0409    hit@10 : 0.0952    map@10 : 0.0274    precision@10 : 0.0097    gauc : 0.8621    itemcoverage@10 : 0.0097    averagepopularity@10 : 909.1526    giniindex@10 : 0.9995    shannonentropy@10 : 0.011    tailpercentage@10 : 0.0001
+Thu 09 May 2024 03:59:36 INFO  epoch 7 training [time: 21.20s, train loss: 20.9734]
+Thu 09 May 2024 04:00:29 INFO  epoch 7 evaluating [time: 52.99s, valid_score: 0.033800]
+Thu 09 May 2024 04:00:29 INFO  valid result: 
+recall@10 : 0.0777    mrr@10 : 0.0338    ndcg@10 : 0.041    hit@10 : 0.095    map@10 : 0.0275    precision@10 : 0.0096    gauc : 0.8626    itemcoverage@10 : 0.0099    averagepopularity@10 : 909.2214    giniindex@10 : 0.9995    shannonentropy@10 : 0.0108    tailpercentage@10 : 0.0
+Thu 09 May 2024 04:00:50 INFO  epoch 8 training [time: 21.38s, train loss: 20.1624]
+Thu 09 May 2024 04:01:43 INFO  epoch 8 evaluating [time: 52.98s, valid_score: 0.033900]
+Thu 09 May 2024 04:01:43 INFO  valid result: 
+recall@10 : 0.0783    mrr@10 : 0.0339    ndcg@10 : 0.0411    hit@10 : 0.0955    map@10 : 0.0275    precision@10 : 0.0097    gauc : 0.8628    itemcoverage@10 : 0.0097    averagepopularity@10 : 911.1236    giniindex@10 : 0.9995    shannonentropy@10 : 0.011    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:01:43 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:02:05 INFO  epoch 9 training [time: 21.35s, train loss: 19.6975]
+Thu 09 May 2024 04:02:58 INFO  epoch 9 evaluating [time: 52.93s, valid_score: 0.033900]
+Thu 09 May 2024 04:02:58 INFO  valid result: 
+recall@10 : 0.0784    mrr@10 : 0.0339    ndcg@10 : 0.0411    hit@10 : 0.0959    map@10 : 0.0276    precision@10 : 0.0097    gauc : 0.8633    itemcoverage@10 : 0.0103    averagepopularity@10 : 910.9124    giniindex@10 : 0.9995    shannonentropy@10 : 0.0104    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:02:58 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:03:19 INFO  epoch 10 training [time: 21.24s, train loss: 19.2516]
+Thu 09 May 2024 04:04:12 INFO  epoch 10 evaluating [time: 52.74s, valid_score: 0.034000]
+Thu 09 May 2024 04:04:12 INFO  valid result: 
+recall@10 : 0.0784    mrr@10 : 0.034    ndcg@10 : 0.0412    hit@10 : 0.0959    map@10 : 0.0276    precision@10 : 0.0097    gauc : 0.8636    itemcoverage@10 : 0.0114    averagepopularity@10 : 911.1193    giniindex@10 : 0.9995    shannonentropy@10 : 0.0094    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:04:12 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:04:34 INFO  epoch 11 training [time: 21.27s, train loss: 18.9435]
+Thu 09 May 2024 04:05:26 INFO  epoch 11 evaluating [time: 52.79s, valid_score: 0.034000]
+Thu 09 May 2024 04:05:26 INFO  valid result: 
+recall@10 : 0.079    mrr@10 : 0.034    ndcg@10 : 0.0413    hit@10 : 0.0965    map@10 : 0.0276    precision@10 : 0.0098    gauc : 0.8637    itemcoverage@10 : 0.0114    averagepopularity@10 : 909.8785    giniindex@10 : 0.9995    shannonentropy@10 : 0.0095    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:05:27 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:05:48 INFO  epoch 12 training [time: 21.39s, train loss: 18.3921]
+Thu 09 May 2024 04:06:41 INFO  epoch 12 evaluating [time: 52.68s, valid_score: 0.034000]
+Thu 09 May 2024 04:06:41 INFO  valid result: 
+recall@10 : 0.0781    mrr@10 : 0.034    ndcg@10 : 0.0411    hit@10 : 0.0954    map@10 : 0.0276    precision@10 : 0.0097    gauc : 0.8639    itemcoverage@10 : 0.0114    averagepopularity@10 : 905.6873    giniindex@10 : 0.9995    shannonentropy@10 : 0.0095    tailpercentage@10 : 0.0002
+Thu 09 May 2024 04:06:41 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:07:03 INFO  epoch 13 training [time: 21.34s, train loss: 17.9725]
+Thu 09 May 2024 04:07:55 INFO  epoch 13 evaluating [time: 52.74s, valid_score: 0.033800]
+Thu 09 May 2024 04:07:55 INFO  valid result: 
+recall@10 : 0.0778    mrr@10 : 0.0338    ndcg@10 : 0.041    hit@10 : 0.095    map@10 : 0.0275    precision@10 : 0.0096    gauc : 0.8641    itemcoverage@10 : 0.0121    averagepopularity@10 : 901.0988    giniindex@10 : 0.9994    shannonentropy@10 : 0.009    tailpercentage@10 : 0.0
+Thu 09 May 2024 04:08:16 INFO  epoch 14 training [time: 21.19s, train loss: 17.5246]
+Thu 09 May 2024 04:09:09 INFO  epoch 14 evaluating [time: 52.80s, valid_score: 0.033900]
+Thu 09 May 2024 04:09:09 INFO  valid result: 
+recall@10 : 0.0783    mrr@10 : 0.0339    ndcg@10 : 0.0411    hit@10 : 0.0955    map@10 : 0.0276    precision@10 : 0.0097    gauc : 0.8643    itemcoverage@10 : 0.0131    averagepopularity@10 : 900.2482    giniindex@10 : 0.9994    shannonentropy@10 : 0.0084    tailpercentage@10 : 0.0
+Thu 09 May 2024 04:09:30 INFO  epoch 15 training [time: 21.22s, train loss: 16.9864]
+Thu 09 May 2024 04:10:23 INFO  epoch 15 evaluating [time: 52.71s, valid_score: 0.033900]
+Thu 09 May 2024 04:10:23 INFO  valid result: 
+recall@10 : 0.0786    mrr@10 : 0.0339    ndcg@10 : 0.0412    hit@10 : 0.0959    map@10 : 0.0276    precision@10 : 0.0097    gauc : 0.8646    itemcoverage@10 : 0.0133    averagepopularity@10 : 894.1138    giniindex@10 : 0.9994    shannonentropy@10 : 0.0083    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:10:44 INFO  epoch 16 training [time: 21.11s, train loss: 16.5274]
+Thu 09 May 2024 04:11:37 INFO  epoch 16 evaluating [time: 53.21s, valid_score: 0.034100]
+Thu 09 May 2024 04:11:37 INFO  valid result: 
+recall@10 : 0.0792    mrr@10 : 0.0341    ndcg@10 : 0.0414    hit@10 : 0.097    map@10 : 0.0277    precision@10 : 0.0098    gauc : 0.8648    itemcoverage@10 : 0.0138    averagepopularity@10 : 896.8081    giniindex@10 : 0.9994    shannonentropy@10 : 0.0081    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:11:38 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:11:59 INFO  epoch 17 training [time: 21.25s, train loss: 16.2050]
+Thu 09 May 2024 04:12:52 INFO  epoch 17 evaluating [time: 52.87s, valid_score: 0.034000]
+Thu 09 May 2024 04:12:52 INFO  valid result: 
+recall@10 : 0.0789    mrr@10 : 0.034    ndcg@10 : 0.0414    hit@10 : 0.097    map@10 : 0.0277    precision@10 : 0.0098    gauc : 0.865    itemcoverage@10 : 0.0148    averagepopularity@10 : 902.3665    giniindex@10 : 0.9994    shannonentropy@10 : 0.0077    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:13:13 INFO  epoch 18 training [time: 21.29s, train loss: 15.7138]
+Thu 09 May 2024 04:14:06 INFO  epoch 18 evaluating [time: 52.89s, valid_score: 0.034200]
+Thu 09 May 2024 04:14:06 INFO  valid result: 
+recall@10 : 0.08    mrr@10 : 0.0342    ndcg@10 : 0.0417    hit@10 : 0.0983    map@10 : 0.0278    precision@10 : 0.0099    gauc : 0.8653    itemcoverage@10 : 0.0155    averagepopularity@10 : 900.7936    giniindex@10 : 0.9994    shannonentropy@10 : 0.0073    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:14:06 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:14:28 INFO  epoch 19 training [time: 21.30s, train loss: 15.3315]
+Thu 09 May 2024 04:15:21 INFO  epoch 19 evaluating [time: 53.04s, valid_score: 0.034200]
+Thu 09 May 2024 04:15:21 INFO  valid result: 
+recall@10 : 0.0793    mrr@10 : 0.0342    ndcg@10 : 0.0416    hit@10 : 0.0976    map@10 : 0.0278    precision@10 : 0.0099    gauc : 0.8656    itemcoverage@10 : 0.0157    averagepopularity@10 : 897.5848    giniindex@10 : 0.9993    shannonentropy@10 : 0.0073    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:15:21 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:15:42 INFO  epoch 20 training [time: 21.16s, train loss: 14.7902]
+Thu 09 May 2024 04:16:35 INFO  epoch 20 evaluating [time: 52.98s, valid_score: 0.034300]
+Thu 09 May 2024 04:16:35 INFO  valid result: 
+recall@10 : 0.0803    mrr@10 : 0.0343    ndcg@10 : 0.0419    hit@10 : 0.0985    map@10 : 0.0279    precision@10 : 0.01    gauc : 0.8659    itemcoverage@10 : 0.0162    averagepopularity@10 : 890.0367    giniindex@10 : 0.9993    shannonentropy@10 : 0.0071    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:16:36 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:16:57 INFO  epoch 21 training [time: 21.23s, train loss: 14.3911]
+Thu 09 May 2024 04:17:50 INFO  epoch 21 evaluating [time: 53.04s, valid_score: 0.034200]
+Thu 09 May 2024 04:17:50 INFO  valid result: 
+recall@10 : 0.0803    mrr@10 : 0.0342    ndcg@10 : 0.0418    hit@10 : 0.0986    map@10 : 0.0279    precision@10 : 0.01    gauc : 0.8661    itemcoverage@10 : 0.0171    averagepopularity@10 : 889.7764    giniindex@10 : 0.9993    shannonentropy@10 : 0.0068    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:18:11 INFO  epoch 22 training [time: 21.16s, train loss: 13.9832]
+Thu 09 May 2024 04:19:04 INFO  epoch 22 evaluating [time: 53.14s, valid_score: 0.034200]
+Thu 09 May 2024 04:19:04 INFO  valid result: 
+recall@10 : 0.0806    mrr@10 : 0.0342    ndcg@10 : 0.0419    hit@10 : 0.0986    map@10 : 0.0279    precision@10 : 0.01    gauc : 0.8664    itemcoverage@10 : 0.0176    averagepopularity@10 : 885.4275    giniindex@10 : 0.9993    shannonentropy@10 : 0.0067    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:19:26 INFO  epoch 23 training [time: 21.36s, train loss: 13.6096]
+Thu 09 May 2024 04:20:19 INFO  epoch 23 evaluating [time: 53.23s, valid_score: 0.034200]
+Thu 09 May 2024 04:20:19 INFO  valid result: 
+recall@10 : 0.0808    mrr@10 : 0.0342    ndcg@10 : 0.042    hit@10 : 0.099    map@10 : 0.0279    precision@10 : 0.01    gauc : 0.8666    itemcoverage@10 : 0.0182    averagepopularity@10 : 882.6765    giniindex@10 : 0.9993    shannonentropy@10 : 0.0065    tailpercentage@10 : 0.0
+Thu 09 May 2024 04:20:40 INFO  epoch 24 training [time: 21.28s, train loss: 13.2957]
+Thu 09 May 2024 04:21:33 INFO  epoch 24 evaluating [time: 53.22s, valid_score: 0.034400]
+Thu 09 May 2024 04:21:33 INFO  valid result: 
+recall@10 : 0.0809    mrr@10 : 0.0344    ndcg@10 : 0.0421    hit@10 : 0.0991    map@10 : 0.028    precision@10 : 0.01    gauc : 0.8669    itemcoverage@10 : 0.0192    averagepopularity@10 : 881.9015    giniindex@10 : 0.9992    shannonentropy@10 : 0.0062    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:21:34 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:21:55 INFO  epoch 25 training [time: 21.23s, train loss: 12.8176]
+Thu 09 May 2024 04:22:48 INFO  epoch 25 evaluating [time: 52.89s, valid_score: 0.034300]
+Thu 09 May 2024 04:22:48 INFO  valid result: 
+recall@10 : 0.0807    mrr@10 : 0.0343    ndcg@10 : 0.042    hit@10 : 0.099    map@10 : 0.028    precision@10 : 0.01    gauc : 0.8671    itemcoverage@10 : 0.0207    averagepopularity@10 : 879.1924    giniindex@10 : 0.9992    shannonentropy@10 : 0.0058    tailpercentage@10 : 0.0003
+Thu 09 May 2024 04:23:09 INFO  epoch 26 training [time: 21.29s, train loss: 12.6530]
+Thu 09 May 2024 04:24:02 INFO  epoch 26 evaluating [time: 53.22s, valid_score: 0.034200]
+Thu 09 May 2024 04:24:02 INFO  valid result: 
+recall@10 : 0.0807    mrr@10 : 0.0342    ndcg@10 : 0.042    hit@10 : 0.0986    map@10 : 0.028    precision@10 : 0.01    gauc : 0.8674    itemcoverage@10 : 0.0215    averagepopularity@10 : 875.1298    giniindex@10 : 0.9992    shannonentropy@10 : 0.0056    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:24:24 INFO  epoch 27 training [time: 21.35s, train loss: 12.1202]
+Thu 09 May 2024 04:25:17 INFO  epoch 27 evaluating [time: 53.00s, valid_score: 0.034700]
+Thu 09 May 2024 04:25:17 INFO  valid result: 
+recall@10 : 0.0814    mrr@10 : 0.0347    ndcg@10 : 0.0424    hit@10 : 0.0998    map@10 : 0.0283    precision@10 : 0.0101    gauc : 0.8677    itemcoverage@10 : 0.0224    averagepopularity@10 : 875.227    giniindex@10 : 0.9992    shannonentropy@10 : 0.0054    tailpercentage@10 : 0.0003
+Thu 09 May 2024 04:25:17 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:25:38 INFO  epoch 28 training [time: 21.20s, train loss: 11.8728]
+Thu 09 May 2024 04:26:31 INFO  epoch 28 evaluating [time: 53.29s, valid_score: 0.034700]
+Thu 09 May 2024 04:26:31 INFO  valid result: 
+recall@10 : 0.0809    mrr@10 : 0.0347    ndcg@10 : 0.0423    hit@10 : 0.0992    map@10 : 0.0283    precision@10 : 0.01    gauc : 0.8679    itemcoverage@10 : 0.0236    averagepopularity@10 : 875.1041    giniindex@10 : 0.9991    shannonentropy@10 : 0.0052    tailpercentage@10 : 0.0
+Thu 09 May 2024 04:26:32 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:26:53 INFO  epoch 29 training [time: 21.38s, train loss: 11.5425]
+Thu 09 May 2024 04:27:46 INFO  epoch 29 evaluating [time: 53.16s, valid_score: 0.034700]
+Thu 09 May 2024 04:27:46 INFO  valid result: 
+recall@10 : 0.0811    mrr@10 : 0.0347    ndcg@10 : 0.0423    hit@10 : 0.0995    map@10 : 0.0282    precision@10 : 0.0101    gauc : 0.8681    itemcoverage@10 : 0.0243    averagepopularity@10 : 873.2862    giniindex@10 : 0.9991    shannonentropy@10 : 0.0051    tailpercentage@10 : 0.0
+Thu 09 May 2024 04:27:47 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:28:08 INFO  epoch 30 training [time: 21.16s, train loss: 11.0905]
+Thu 09 May 2024 04:29:01 INFO  epoch 30 evaluating [time: 53.46s, valid_score: 0.034800]
+Thu 09 May 2024 04:29:01 INFO  valid result: 
+recall@10 : 0.0818    mrr@10 : 0.0348    ndcg@10 : 0.0426    hit@10 : 0.1003    map@10 : 0.0283    precision@10 : 0.0102    gauc : 0.8684    itemcoverage@10 : 0.0255    averagepopularity@10 : 870.4451    giniindex@10 : 0.9991    shannonentropy@10 : 0.0049    tailpercentage@10 : 0.0
+Thu 09 May 2024 04:29:02 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:29:23 INFO  epoch 31 training [time: 21.21s, train loss: 10.7581]
+Thu 09 May 2024 04:30:16 INFO  epoch 31 evaluating [time: 52.93s, valid_score: 0.035100]
+Thu 09 May 2024 04:30:16 INFO  valid result: 
+recall@10 : 0.0821    mrr@10 : 0.0351    ndcg@10 : 0.0428    hit@10 : 0.1006    map@10 : 0.0286    precision@10 : 0.0102    gauc : 0.8686    itemcoverage@10 : 0.0267    averagepopularity@10 : 865.8044    giniindex@10 : 0.999    shannonentropy@10 : 0.0047    tailpercentage@10 : 0.0005
+Thu 09 May 2024 04:30:16 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:30:37 INFO  epoch 32 training [time: 21.23s, train loss: 10.3782]
+Thu 09 May 2024 04:31:30 INFO  epoch 32 evaluating [time: 53.07s, valid_score: 0.035400]
+Thu 09 May 2024 04:31:30 INFO  valid result: 
+recall@10 : 0.0822    mrr@10 : 0.0354    ndcg@10 : 0.043    hit@10 : 0.1007    map@10 : 0.0288    precision@10 : 0.0102    gauc : 0.8689    itemcoverage@10 : 0.0277    averagepopularity@10 : 866.3603    giniindex@10 : 0.999    shannonentropy@10 : 0.0046    tailpercentage@10 : 0.0006
+Thu 09 May 2024 04:31:31 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:31:52 INFO  epoch 33 training [time: 21.33s, train loss: 10.2557]
+Thu 09 May 2024 04:32:45 INFO  epoch 33 evaluating [time: 52.95s, valid_score: 0.035400]
+Thu 09 May 2024 04:32:45 INFO  valid result: 
+recall@10 : 0.0824    mrr@10 : 0.0354    ndcg@10 : 0.0431    hit@10 : 0.1011    map@10 : 0.0289    precision@10 : 0.0102    gauc : 0.8691    itemcoverage@10 : 0.0289    averagepopularity@10 : 863.3323    giniindex@10 : 0.999    shannonentropy@10 : 0.0044    tailpercentage@10 : 0.0004
+Thu 09 May 2024 04:32:45 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:33:07 INFO  epoch 34 training [time: 21.28s, train loss: 9.9796]
+Thu 09 May 2024 04:34:00 INFO  epoch 34 evaluating [time: 52.90s, valid_score: 0.035500]
+Thu 09 May 2024 04:34:00 INFO  valid result: 
+recall@10 : 0.0822    mrr@10 : 0.0355    ndcg@10 : 0.0431    hit@10 : 0.101    map@10 : 0.0289    precision@10 : 0.0102    gauc : 0.8693    itemcoverage@10 : 0.0297    averagepopularity@10 : 858.6245    giniindex@10 : 0.9989    shannonentropy@10 : 0.0043    tailpercentage@10 : 0.0003
+Thu 09 May 2024 04:34:00 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:34:21 INFO  epoch 35 training [time: 21.25s, train loss: 9.5784]
+Thu 09 May 2024 04:35:14 INFO  epoch 35 evaluating [time: 52.63s, valid_score: 0.035900]
+Thu 09 May 2024 04:35:14 INFO  valid result: 
+recall@10 : 0.0832    mrr@10 : 0.0359    ndcg@10 : 0.0436    hit@10 : 0.1021    map@10 : 0.0292    precision@10 : 0.0104    gauc : 0.8694    itemcoverage@10 : 0.0303    averagepopularity@10 : 857.7915    giniindex@10 : 0.9989    shannonentropy@10 : 0.0043    tailpercentage@10 : 0.0002
+Thu 09 May 2024 04:35:14 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:35:35 INFO  epoch 36 training [time: 21.18s, train loss: 9.3194]
+Thu 09 May 2024 04:36:28 INFO  epoch 36 evaluating [time: 53.13s, valid_score: 0.036100]
+Thu 09 May 2024 04:36:28 INFO  valid result: 
+recall@10 : 0.0837    mrr@10 : 0.0361    ndcg@10 : 0.0439    hit@10 : 0.1025    map@10 : 0.0294    precision@10 : 0.0104    gauc : 0.8697    itemcoverage@10 : 0.0313    averagepopularity@10 : 859.1521    giniindex@10 : 0.9989    shannonentropy@10 : 0.0041    tailpercentage@10 : 0.0
+Thu 09 May 2024 04:36:29 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:36:50 INFO  epoch 37 training [time: 21.23s, train loss: 9.0893]
+Thu 09 May 2024 04:37:43 INFO  epoch 37 evaluating [time: 52.90s, valid_score: 0.036200]
+Thu 09 May 2024 04:37:43 INFO  valid result: 
+recall@10 : 0.0843    mrr@10 : 0.0362    ndcg@10 : 0.0441    hit@10 : 0.103    map@10 : 0.0295    precision@10 : 0.0104    gauc : 0.8699    itemcoverage@10 : 0.032    averagepopularity@10 : 858.1502    giniindex@10 : 0.9988    shannonentropy@10 : 0.0041    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:37:43 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:38:04 INFO  epoch 38 training [time: 21.11s, train loss: 8.9346]
+Thu 09 May 2024 04:38:57 INFO  epoch 38 evaluating [time: 53.03s, valid_score: 0.036200]
+Thu 09 May 2024 04:38:57 INFO  valid result: 
+recall@10 : 0.0841    mrr@10 : 0.0362    ndcg@10 : 0.044    hit@10 : 0.1026    map@10 : 0.0295    precision@10 : 0.0104    gauc : 0.8702    itemcoverage@10 : 0.0333    averagepopularity@10 : 855.6752    giniindex@10 : 0.9988    shannonentropy@10 : 0.004    tailpercentage@10 : 0.0001
+Thu 09 May 2024 04:38:58 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:39:19 INFO  epoch 39 training [time: 21.39s, train loss: 8.7333]
+Thu 09 May 2024 04:40:12 INFO  epoch 39 evaluating [time: 53.23s, valid_score: 0.036300]
+Thu 09 May 2024 04:40:12 INFO  valid result: 
+recall@10 : 0.0843    mrr@10 : 0.0363    ndcg@10 : 0.0442    hit@10 : 0.103    map@10 : 0.0296    precision@10 : 0.0104    gauc : 0.8704    itemcoverage@10 : 0.0337    averagepopularity@10 : 854.087    giniindex@10 : 0.9988    shannonentropy@10 : 0.0039    tailpercentage@10 : 0.0003
+Thu 09 May 2024 04:40:13 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:40:34 INFO  epoch 40 training [time: 21.15s, train loss: 8.3768]
+Thu 09 May 2024 04:41:27 INFO  epoch 40 evaluating [time: 53.08s, valid_score: 0.036600]
+Thu 09 May 2024 04:41:27 INFO  valid result: 
+recall@10 : 0.0846    mrr@10 : 0.0366    ndcg@10 : 0.0444    hit@10 : 0.1031    map@10 : 0.0298    precision@10 : 0.0104    gauc : 0.8705    itemcoverage@10 : 0.0344    averagepopularity@10 : 851.8054    giniindex@10 : 0.9987    shannonentropy@10 : 0.0039    tailpercentage@10 : 0.0003
+Thu 09 May 2024 04:41:27 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:41:49 INFO  epoch 41 training [time: 21.38s, train loss: 8.1059]
+Thu 09 May 2024 04:42:42 INFO  epoch 41 evaluating [time: 53.14s, valid_score: 0.036700]
+Thu 09 May 2024 04:42:42 INFO  valid result: 
+recall@10 : 0.0855    mrr@10 : 0.0367    ndcg@10 : 0.0447    hit@10 : 0.1042    map@10 : 0.0299    precision@10 : 0.0106    gauc : 0.8708    itemcoverage@10 : 0.0349    averagepopularity@10 : 848.8214    giniindex@10 : 0.9987    shannonentropy@10 : 0.0039    tailpercentage@10 : 0.0007
+Thu 09 May 2024 04:42:42 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:43:03 INFO  epoch 42 training [time: 21.30s, train loss: 7.9268]
+Thu 09 May 2024 04:43:56 INFO  epoch 42 evaluating [time: 52.92s, valid_score: 0.036700]
+Thu 09 May 2024 04:43:56 INFO  valid result: 
+recall@10 : 0.0848    mrr@10 : 0.0367    ndcg@10 : 0.0446    hit@10 : 0.1034    map@10 : 0.03    precision@10 : 0.0105    gauc : 0.871    itemcoverage@10 : 0.036    averagepopularity@10 : 846.1039    giniindex@10 : 0.9987    shannonentropy@10 : 0.0038    tailpercentage@10 : 0.0008
+Thu 09 May 2024 04:43:57 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:44:18 INFO  epoch 43 training [time: 21.15s, train loss: 7.7989]
+Thu 09 May 2024 04:45:11 INFO  epoch 43 evaluating [time: 52.99s, valid_score: 0.036600]
+Thu 09 May 2024 04:45:11 INFO  valid result: 
+recall@10 : 0.0851    mrr@10 : 0.0366    ndcg@10 : 0.0445    hit@10 : 0.1034    map@10 : 0.0299    precision@10 : 0.0105    gauc : 0.8712    itemcoverage@10 : 0.0368    averagepopularity@10 : 842.4717    giniindex@10 : 0.9986    shannonentropy@10 : 0.0037    tailpercentage@10 : 0.0008
+Thu 09 May 2024 04:45:32 INFO  epoch 44 training [time: 21.37s, train loss: 7.4682]
+Thu 09 May 2024 04:46:25 INFO  epoch 44 evaluating [time: 53.12s, valid_score: 0.036900]
+Thu 09 May 2024 04:46:25 INFO  valid result: 
+recall@10 : 0.0858    mrr@10 : 0.0369    ndcg@10 : 0.0449    hit@10 : 0.1044    map@10 : 0.0302    precision@10 : 0.0106    gauc : 0.8714    itemcoverage@10 : 0.0374    averagepopularity@10 : 839.8896    giniindex@10 : 0.9986    shannonentropy@10 : 0.0037    tailpercentage@10 : 0.0004
+Thu 09 May 2024 04:46:26 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:46:47 INFO  epoch 45 training [time: 21.33s, train loss: 7.4134]
+Thu 09 May 2024 04:47:40 INFO  epoch 45 evaluating [time: 53.10s, valid_score: 0.036800]
+Thu 09 May 2024 04:47:40 INFO  valid result: 
+recall@10 : 0.0855    mrr@10 : 0.0368    ndcg@10 : 0.0449    hit@10 : 0.1043    map@10 : 0.0301    precision@10 : 0.0106    gauc : 0.8716    itemcoverage@10 : 0.0374    averagepopularity@10 : 836.6634    giniindex@10 : 0.9986    shannonentropy@10 : 0.0037    tailpercentage@10 : 0.0007
+Thu 09 May 2024 04:48:02 INFO  epoch 46 training [time: 21.36s, train loss: 7.1694]
+Thu 09 May 2024 04:48:55 INFO  epoch 46 evaluating [time: 53.13s, valid_score: 0.037100]
+Thu 09 May 2024 04:48:55 INFO  valid result: 
+recall@10 : 0.0863    mrr@10 : 0.0371    ndcg@10 : 0.0452    hit@10 : 0.1047    map@10 : 0.0304    precision@10 : 0.0106    gauc : 0.8717    itemcoverage@10 : 0.0383    averagepopularity@10 : 833.6661    giniindex@10 : 0.9985    shannonentropy@10 : 0.0036    tailpercentage@10 : 0.0008
+Thu 09 May 2024 04:48:55 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:49:16 INFO  epoch 47 training [time: 21.24s, train loss: 6.8798]
+Thu 09 May 2024 04:50:09 INFO  epoch 47 evaluating [time: 52.92s, valid_score: 0.036800]
+Thu 09 May 2024 04:50:09 INFO  valid result: 
+recall@10 : 0.0866    mrr@10 : 0.0368    ndcg@10 : 0.0451    hit@10 : 0.1048    map@10 : 0.0301    precision@10 : 0.0106    gauc : 0.8719    itemcoverage@10 : 0.0396    averagepopularity@10 : 831.7437    giniindex@10 : 0.9985    shannonentropy@10 : 0.0035    tailpercentage@10 : 0.0009
+Thu 09 May 2024 04:50:30 INFO  epoch 48 training [time: 21.17s, train loss: 6.7599]
+Thu 09 May 2024 04:51:24 INFO  epoch 48 evaluating [time: 53.24s, valid_score: 0.036800]
+Thu 09 May 2024 04:51:24 INFO  valid result: 
+recall@10 : 0.0865    mrr@10 : 0.0368    ndcg@10 : 0.0451    hit@10 : 0.1053    map@10 : 0.0302    precision@10 : 0.0107    gauc : 0.8721    itemcoverage@10 : 0.0407    averagepopularity@10 : 828.6682    giniindex@10 : 0.9984    shannonentropy@10 : 0.0035    tailpercentage@10 : 0.0004
+Thu 09 May 2024 04:51:45 INFO  epoch 49 training [time: 21.29s, train loss: 6.6435]
+Thu 09 May 2024 04:52:38 INFO  epoch 49 evaluating [time: 53.43s, valid_score: 0.036900]
+Thu 09 May 2024 04:52:38 INFO  valid result: 
+recall@10 : 0.0866    mrr@10 : 0.0369    ndcg@10 : 0.0452    hit@10 : 0.1056    map@10 : 0.0302    precision@10 : 0.0107    gauc : 0.8722    itemcoverage@10 : 0.0409    averagepopularity@10 : 825.7531    giniindex@10 : 0.9984    shannonentropy@10 : 0.0035    tailpercentage@10 : 0.0003
+Thu 09 May 2024 04:53:00 INFO  epoch 50 training [time: 21.33s, train loss: 6.4660]
+Thu 09 May 2024 04:53:53 INFO  epoch 50 evaluating [time: 53.13s, valid_score: 0.037500]
+Thu 09 May 2024 04:53:53 INFO  valid result: 
+recall@10 : 0.0878    mrr@10 : 0.0375    ndcg@10 : 0.0458    hit@10 : 0.1067    map@10 : 0.0307    precision@10 : 0.0108    gauc : 0.8723    itemcoverage@10 : 0.0415    averagepopularity@10 : 822.3312    giniindex@10 : 0.9983    shannonentropy@10 : 0.0034    tailpercentage@10 : 0.0003
+Thu 09 May 2024 04:53:53 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:54:14 INFO  epoch 51 training [time: 21.16s, train loss: 6.2218]
+Thu 09 May 2024 04:55:07 INFO  epoch 51 evaluating [time: 53.11s, valid_score: 0.037400]
+Thu 09 May 2024 04:55:07 INFO  valid result: 
+recall@10 : 0.0873    mrr@10 : 0.0374    ndcg@10 : 0.0456    hit@10 : 0.1065    map@10 : 0.0305    precision@10 : 0.0108    gauc : 0.8724    itemcoverage@10 : 0.0425    averagepopularity@10 : 821.0623    giniindex@10 : 0.9983    shannonentropy@10 : 0.0034    tailpercentage@10 : 0.0002
+Thu 09 May 2024 04:55:29 INFO  epoch 52 training [time: 21.32s, train loss: 6.0897]
+Thu 09 May 2024 04:56:22 INFO  epoch 52 evaluating [time: 53.06s, valid_score: 0.037200]
+Thu 09 May 2024 04:56:22 INFO  valid result: 
+recall@10 : 0.0871    mrr@10 : 0.0372    ndcg@10 : 0.0455    hit@10 : 0.106    map@10 : 0.0305    precision@10 : 0.0107    gauc : 0.8726    itemcoverage@10 : 0.0436    averagepopularity@10 : 818.9571    giniindex@10 : 0.9982    shannonentropy@10 : 0.0033    tailpercentage@10 : 0.0003
+Thu 09 May 2024 04:56:43 INFO  epoch 53 training [time: 21.09s, train loss: 5.9989]
+Thu 09 May 2024 04:57:36 INFO  epoch 53 evaluating [time: 53.25s, valid_score: 0.037300]
+Thu 09 May 2024 04:57:36 INFO  valid result: 
+recall@10 : 0.0877    mrr@10 : 0.0373    ndcg@10 : 0.0456    hit@10 : 0.1067    map@10 : 0.0305    precision@10 : 0.0108    gauc : 0.8726    itemcoverage@10 : 0.0448    averagepopularity@10 : 817.1318    giniindex@10 : 0.9982    shannonentropy@10 : 0.0032    tailpercentage@10 : 0.0002
+Thu 09 May 2024 04:57:57 INFO  epoch 54 training [time: 20.80s, train loss: 5.7886]
+Thu 09 May 2024 04:58:50 INFO  epoch 54 evaluating [time: 53.20s, valid_score: 0.037500]
+Thu 09 May 2024 04:58:50 INFO  valid result: 
+recall@10 : 0.0871    mrr@10 : 0.0375    ndcg@10 : 0.0456    hit@10 : 0.1061    map@10 : 0.0307    precision@10 : 0.0107    gauc : 0.8728    itemcoverage@10 : 0.0464    averagepopularity@10 : 813.6153    giniindex@10 : 0.9981    shannonentropy@10 : 0.0031    tailpercentage@10 : 0.0005
+Thu 09 May 2024 04:58:50 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 04:59:11 INFO  epoch 55 training [time: 20.91s, train loss: 5.6881]
+Thu 09 May 2024 05:00:04 INFO  epoch 55 evaluating [time: 53.12s, valid_score: 0.037600]
+Thu 09 May 2024 05:00:04 INFO  valid result: 
+recall@10 : 0.0876    mrr@10 : 0.0376    ndcg@10 : 0.0459    hit@10 : 0.1065    map@10 : 0.0309    precision@10 : 0.0108    gauc : 0.8729    itemcoverage@10 : 0.047    averagepopularity@10 : 810.4655    giniindex@10 : 0.9981    shannonentropy@10 : 0.0031    tailpercentage@10 : 0.0005
+Thu 09 May 2024 05:00:05 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:00:26 INFO  epoch 56 training [time: 21.23s, train loss: 5.6116]
+Thu 09 May 2024 05:01:19 INFO  epoch 56 evaluating [time: 52.96s, valid_score: 0.037800]
+Thu 09 May 2024 05:01:19 INFO  valid result: 
+recall@10 : 0.0876    mrr@10 : 0.0378    ndcg@10 : 0.0459    hit@10 : 0.1064    map@10 : 0.0309    precision@10 : 0.0107    gauc : 0.8729    itemcoverage@10 : 0.0478    averagepopularity@10 : 807.3214    giniindex@10 : 0.998    shannonentropy@10 : 0.0031    tailpercentage@10 : 0.0005
+Thu 09 May 2024 05:01:19 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:01:41 INFO  epoch 57 training [time: 21.25s, train loss: 5.4105]
+Thu 09 May 2024 05:02:34 INFO  epoch 57 evaluating [time: 53.38s, valid_score: 0.037500]
+Thu 09 May 2024 05:02:34 INFO  valid result: 
+recall@10 : 0.0878    mrr@10 : 0.0375    ndcg@10 : 0.0458    hit@10 : 0.107    map@10 : 0.0307    precision@10 : 0.0108    gauc : 0.873    itemcoverage@10 : 0.0486    averagepopularity@10 : 804.9739    giniindex@10 : 0.998    shannonentropy@10 : 0.003    tailpercentage@10 : 0.0004
+Thu 09 May 2024 05:02:55 INFO  epoch 58 training [time: 21.22s, train loss: 5.2694]
+Thu 09 May 2024 05:03:48 INFO  epoch 58 evaluating [time: 52.93s, valid_score: 0.037800]
+Thu 09 May 2024 05:03:48 INFO  valid result: 
+recall@10 : 0.0882    mrr@10 : 0.0378    ndcg@10 : 0.0461    hit@10 : 0.1073    map@10 : 0.0309    precision@10 : 0.0109    gauc : 0.873    itemcoverage@10 : 0.0498    averagepopularity@10 : 800.6755    giniindex@10 : 0.9979    shannonentropy@10 : 0.003    tailpercentage@10 : 0.0003
+Thu 09 May 2024 05:03:48 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:04:10 INFO  epoch 59 training [time: 21.12s, train loss: 5.1387]
+Thu 09 May 2024 05:05:03 INFO  epoch 59 evaluating [time: 53.03s, valid_score: 0.037700]
+Thu 09 May 2024 05:05:03 INFO  valid result: 
+recall@10 : 0.0881    mrr@10 : 0.0377    ndcg@10 : 0.0461    hit@10 : 0.107    map@10 : 0.031    precision@10 : 0.0108    gauc : 0.8731    itemcoverage@10 : 0.0508    averagepopularity@10 : 798.4935    giniindex@10 : 0.9979    shannonentropy@10 : 0.0029    tailpercentage@10 : 0.0002
+Thu 09 May 2024 05:05:24 INFO  epoch 60 training [time: 21.35s, train loss: 5.0385]
+Thu 09 May 2024 05:06:17 INFO  epoch 60 evaluating [time: 52.69s, valid_score: 0.038200]
+Thu 09 May 2024 05:06:17 INFO  valid result: 
+recall@10 : 0.0882    mrr@10 : 0.0382    ndcg@10 : 0.0464    hit@10 : 0.1077    map@10 : 0.0313    precision@10 : 0.0109    gauc : 0.8732    itemcoverage@10 : 0.0514    averagepopularity@10 : 798.6228    giniindex@10 : 0.9978    shannonentropy@10 : 0.0029    tailpercentage@10 : 0.0002
+Thu 09 May 2024 05:06:17 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:06:38 INFO  epoch 61 training [time: 21.33s, train loss: 4.8851]
+Thu 09 May 2024 05:07:31 INFO  epoch 61 evaluating [time: 53.09s, valid_score: 0.037900]
+Thu 09 May 2024 05:07:31 INFO  valid result: 
+recall@10 : 0.0883    mrr@10 : 0.0379    ndcg@10 : 0.0462    hit@10 : 0.1074    map@10 : 0.0311    precision@10 : 0.0109    gauc : 0.8731    itemcoverage@10 : 0.0521    averagepopularity@10 : 796.4471    giniindex@10 : 0.9978    shannonentropy@10 : 0.0029    tailpercentage@10 : 0.0002
+Thu 09 May 2024 05:07:52 INFO  epoch 62 training [time: 20.94s, train loss: 4.7901]
+Thu 09 May 2024 05:08:45 INFO  epoch 62 evaluating [time: 52.82s, valid_score: 0.037800]
+Thu 09 May 2024 05:08:45 INFO  valid result: 
+recall@10 : 0.0878    mrr@10 : 0.0378    ndcg@10 : 0.0461    hit@10 : 0.107    map@10 : 0.031    precision@10 : 0.0108    gauc : 0.8731    itemcoverage@10 : 0.0539    averagepopularity@10 : 793.4525    giniindex@10 : 0.9977    shannonentropy@10 : 0.0028    tailpercentage@10 : 0.0002
+Thu 09 May 2024 05:09:06 INFO  epoch 63 training [time: 21.26s, train loss: 4.6934]
+Thu 09 May 2024 05:10:00 INFO  epoch 63 evaluating [time: 53.09s, valid_score: 0.037900]
+Thu 09 May 2024 05:10:00 INFO  valid result: 
+recall@10 : 0.0883    mrr@10 : 0.0379    ndcg@10 : 0.0463    hit@10 : 0.1075    map@10 : 0.0312    precision@10 : 0.0109    gauc : 0.8732    itemcoverage@10 : 0.0545    averagepopularity@10 : 791.6089    giniindex@10 : 0.9977    shannonentropy@10 : 0.0028    tailpercentage@10 : 0.0002
+Thu 09 May 2024 05:10:20 INFO  epoch 64 training [time: 20.92s, train loss: 4.6371]
+Thu 09 May 2024 05:11:14 INFO  epoch 64 evaluating [time: 53.04s, valid_score: 0.038100]
+Thu 09 May 2024 05:11:14 INFO  valid result: 
+recall@10 : 0.0892    mrr@10 : 0.0381    ndcg@10 : 0.0466    hit@10 : 0.1085    map@10 : 0.0313    precision@10 : 0.011    gauc : 0.8734    itemcoverage@10 : 0.0553    averagepopularity@10 : 790.927    giniindex@10 : 0.9977    shannonentropy@10 : 0.0027    tailpercentage@10 : 0.0001
+Thu 09 May 2024 05:11:35 INFO  epoch 65 training [time: 20.97s, train loss: 4.4191]
+Thu 09 May 2024 05:12:27 INFO  epoch 65 evaluating [time: 52.84s, valid_score: 0.038200]
+Thu 09 May 2024 05:12:27 INFO  valid result: 
+recall@10 : 0.0887    mrr@10 : 0.0382    ndcg@10 : 0.0466    hit@10 : 0.1082    map@10 : 0.0314    precision@10 : 0.011    gauc : 0.8734    itemcoverage@10 : 0.0564    averagepopularity@10 : 790.002    giniindex@10 : 0.9976    shannonentropy@10 : 0.0027    tailpercentage@10 : 0.0003
+Thu 09 May 2024 05:12:28 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:12:49 INFO  epoch 66 training [time: 21.22s, train loss: 4.3887]
+Thu 09 May 2024 05:13:42 INFO  epoch 66 evaluating [time: 53.07s, valid_score: 0.037900]
+Thu 09 May 2024 05:13:42 INFO  valid result: 
+recall@10 : 0.0884    mrr@10 : 0.0379    ndcg@10 : 0.0463    hit@10 : 0.1079    map@10 : 0.0312    precision@10 : 0.0109    gauc : 0.8734    itemcoverage@10 : 0.0577    averagepopularity@10 : 786.6702    giniindex@10 : 0.9975    shannonentropy@10 : 0.0027    tailpercentage@10 : 0.0004
+Thu 09 May 2024 05:14:03 INFO  epoch 67 training [time: 21.26s, train loss: 4.3253]
+Thu 09 May 2024 05:14:56 INFO  epoch 67 evaluating [time: 53.04s, valid_score: 0.038100]
+Thu 09 May 2024 05:14:56 INFO  valid result: 
+recall@10 : 0.0889    mrr@10 : 0.0381    ndcg@10 : 0.0466    hit@10 : 0.1084    map@10 : 0.0313    precision@10 : 0.011    gauc : 0.8734    itemcoverage@10 : 0.0592    averagepopularity@10 : 783.4402    giniindex@10 : 0.9975    shannonentropy@10 : 0.0026    tailpercentage@10 : 0.0007
+Thu 09 May 2024 05:15:18 INFO  epoch 68 training [time: 21.32s, train loss: 4.1579]
+Thu 09 May 2024 05:16:11 INFO  epoch 68 evaluating [time: 53.11s, valid_score: 0.037900]
+Thu 09 May 2024 05:16:11 INFO  valid result: 
+recall@10 : 0.0893    mrr@10 : 0.0379    ndcg@10 : 0.0465    hit@10 : 0.109    map@10 : 0.0311    precision@10 : 0.011    gauc : 0.8735    itemcoverage@10 : 0.0594    averagepopularity@10 : 781.2802    giniindex@10 : 0.9975    shannonentropy@10 : 0.0026    tailpercentage@10 : 0.0004
+Thu 09 May 2024 05:16:32 INFO  epoch 69 training [time: 20.90s, train loss: 4.0964]
+Thu 09 May 2024 05:17:24 INFO  epoch 69 evaluating [time: 52.82s, valid_score: 0.037900]
+Thu 09 May 2024 05:17:24 INFO  valid result: 
+recall@10 : 0.0888    mrr@10 : 0.0379    ndcg@10 : 0.0464    hit@10 : 0.1086    map@10 : 0.0311    precision@10 : 0.011    gauc : 0.8735    itemcoverage@10 : 0.0599    averagepopularity@10 : 779.5186    giniindex@10 : 0.9974    shannonentropy@10 : 0.0026    tailpercentage@10 : 0.0003
+Thu 09 May 2024 05:17:46 INFO  epoch 70 training [time: 21.25s, train loss: 4.0136]
+Thu 09 May 2024 05:18:38 INFO  epoch 70 evaluating [time: 52.71s, valid_score: 0.038100]
+Thu 09 May 2024 05:18:38 INFO  valid result: 
+recall@10 : 0.089    mrr@10 : 0.0381    ndcg@10 : 0.0466    hit@10 : 0.1088    map@10 : 0.0313    precision@10 : 0.011    gauc : 0.8735    itemcoverage@10 : 0.0614    averagepopularity@10 : 778.4427    giniindex@10 : 0.9974    shannonentropy@10 : 0.0025    tailpercentage@10 : 0.0003
+Thu 09 May 2024 05:19:00 INFO  epoch 71 training [time: 21.28s, train loss: 3.9523]
+Thu 09 May 2024 05:19:53 INFO  epoch 71 evaluating [time: 53.27s, valid_score: 0.038200]
+Thu 09 May 2024 05:19:53 INFO  valid result: 
+recall@10 : 0.0899    mrr@10 : 0.0382    ndcg@10 : 0.0468    hit@10 : 0.1096    map@10 : 0.0313    precision@10 : 0.0111    gauc : 0.8735    itemcoverage@10 : 0.0623    averagepopularity@10 : 776.8712    giniindex@10 : 0.9973    shannonentropy@10 : 0.0025    tailpercentage@10 : 0.0003
+Thu 09 May 2024 05:19:53 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:20:15 INFO  epoch 72 training [time: 21.22s, train loss: 3.7644]
+Thu 09 May 2024 05:21:08 INFO  epoch 72 evaluating [time: 53.15s, valid_score: 0.038400]
+Thu 09 May 2024 05:21:08 INFO  valid result: 
+recall@10 : 0.0902    mrr@10 : 0.0384    ndcg@10 : 0.047    hit@10 : 0.1101    map@10 : 0.0315    precision@10 : 0.0112    gauc : 0.8737    itemcoverage@10 : 0.0626    averagepopularity@10 : 775.8786    giniindex@10 : 0.9973    shannonentropy@10 : 0.0025    tailpercentage@10 : 0.0005
+Thu 09 May 2024 05:21:08 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:21:29 INFO  epoch 73 training [time: 21.23s, train loss: 3.7283]
+Thu 09 May 2024 05:22:22 INFO  epoch 73 evaluating [time: 53.11s, valid_score: 0.038200]
+Thu 09 May 2024 05:22:22 INFO  valid result: 
+recall@10 : 0.0895    mrr@10 : 0.0382    ndcg@10 : 0.0468    hit@10 : 0.1092    map@10 : 0.0313    precision@10 : 0.0111    gauc : 0.8737    itemcoverage@10 : 0.0633    averagepopularity@10 : 773.1649    giniindex@10 : 0.9972    shannonentropy@10 : 0.0025    tailpercentage@10 : 0.0005
+Thu 09 May 2024 05:22:44 INFO  epoch 74 training [time: 21.20s, train loss: 3.6781]
+Thu 09 May 2024 05:23:36 INFO  epoch 74 evaluating [time: 52.87s, valid_score: 0.038400]
+Thu 09 May 2024 05:23:36 INFO  valid result: 
+recall@10 : 0.0895    mrr@10 : 0.0384    ndcg@10 : 0.0469    hit@10 : 0.1094    map@10 : 0.0315    precision@10 : 0.0111    gauc : 0.8738    itemcoverage@10 : 0.0641    averagepopularity@10 : 770.3327    giniindex@10 : 0.9972    shannonentropy@10 : 0.0025    tailpercentage@10 : 0.0005
+Thu 09 May 2024 05:23:37 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:23:58 INFO  epoch 75 training [time: 21.42s, train loss: 3.5794]
+Thu 09 May 2024 05:24:51 INFO  epoch 75 evaluating [time: 52.89s, valid_score: 0.038100]
+Thu 09 May 2024 05:24:51 INFO  valid result: 
+recall@10 : 0.0899    mrr@10 : 0.0381    ndcg@10 : 0.0468    hit@10 : 0.1096    map@10 : 0.0313    precision@10 : 0.0111    gauc : 0.8739    itemcoverage@10 : 0.0654    averagepopularity@10 : 768.4458    giniindex@10 : 0.9971    shannonentropy@10 : 0.0024    tailpercentage@10 : 0.0003
+Thu 09 May 2024 05:25:12 INFO  epoch 76 training [time: 21.30s, train loss: 3.5275]
+Thu 09 May 2024 05:26:06 INFO  epoch 76 evaluating [time: 53.33s, valid_score: 0.037900]
+Thu 09 May 2024 05:26:06 INFO  valid result: 
+recall@10 : 0.0903    mrr@10 : 0.0379    ndcg@10 : 0.0468    hit@10 : 0.1099    map@10 : 0.0312    precision@10 : 0.0112    gauc : 0.8739    itemcoverage@10 : 0.066    averagepopularity@10 : 766.077    giniindex@10 : 0.997    shannonentropy@10 : 0.0024    tailpercentage@10 : 0.0003
+Thu 09 May 2024 05:26:27 INFO  epoch 77 training [time: 20.83s, train loss: 3.4480]
+Thu 09 May 2024 05:27:20 INFO  epoch 77 evaluating [time: 53.15s, valid_score: 0.038100]
+Thu 09 May 2024 05:27:20 INFO  valid result: 
+recall@10 : 0.091    mrr@10 : 0.0381    ndcg@10 : 0.047    hit@10 : 0.1107    map@10 : 0.0312    precision@10 : 0.0112    gauc : 0.8739    itemcoverage@10 : 0.0677    averagepopularity@10 : 764.4943    giniindex@10 : 0.997    shannonentropy@10 : 0.0024    tailpercentage@10 : 0.0003
+Thu 09 May 2024 05:27:41 INFO  epoch 78 training [time: 21.26s, train loss: 3.3891]
+Thu 09 May 2024 05:28:34 INFO  epoch 78 evaluating [time: 52.86s, valid_score: 0.038200]
+Thu 09 May 2024 05:28:34 INFO  valid result: 
+recall@10 : 0.0908    mrr@10 : 0.0382    ndcg@10 : 0.0471    hit@10 : 0.1105    map@10 : 0.0313    precision@10 : 0.0112    gauc : 0.8739    itemcoverage@10 : 0.0684    averagepopularity@10 : 762.2886    giniindex@10 : 0.9969    shannonentropy@10 : 0.0023    tailpercentage@10 : 0.0007
+Thu 09 May 2024 05:28:55 INFO  epoch 79 training [time: 21.29s, train loss: 3.3243]
+Thu 09 May 2024 05:29:48 INFO  epoch 79 evaluating [time: 53.01s, valid_score: 0.038300]
+Thu 09 May 2024 05:29:48 INFO  valid result: 
+recall@10 : 0.0912    mrr@10 : 0.0383    ndcg@10 : 0.0472    hit@10 : 0.1112    map@10 : 0.0314    precision@10 : 0.0113    gauc : 0.8739    itemcoverage@10 : 0.0695    averagepopularity@10 : 760.7344    giniindex@10 : 0.9969    shannonentropy@10 : 0.0023    tailpercentage@10 : 0.0007
+Thu 09 May 2024 05:30:09 INFO  epoch 80 training [time: 21.26s, train loss: 3.1718]
+Thu 09 May 2024 05:31:02 INFO  epoch 80 evaluating [time: 53.08s, valid_score: 0.038400]
+Thu 09 May 2024 05:31:02 INFO  valid result: 
+recall@10 : 0.0919    mrr@10 : 0.0384    ndcg@10 : 0.0475    hit@10 : 0.1114    map@10 : 0.0316    precision@10 : 0.0113    gauc : 0.8739    itemcoverage@10 : 0.0695    averagepopularity@10 : 760.939    giniindex@10 : 0.9969    shannonentropy@10 : 0.0023    tailpercentage@10 : 0.0012
+Thu 09 May 2024 05:31:03 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:31:24 INFO  epoch 81 training [time: 21.19s, train loss: 3.1593]
+Thu 09 May 2024 05:32:17 INFO  epoch 81 evaluating [time: 53.11s, valid_score: 0.038300]
+Thu 09 May 2024 05:32:17 INFO  valid result: 
+recall@10 : 0.0911    mrr@10 : 0.0383    ndcg@10 : 0.0473    hit@10 : 0.1104    map@10 : 0.0316    precision@10 : 0.0112    gauc : 0.874    itemcoverage@10 : 0.0708    averagepopularity@10 : 759.3974    giniindex@10 : 0.9968    shannonentropy@10 : 0.0023    tailpercentage@10 : 0.0012
+Thu 09 May 2024 05:32:38 INFO  epoch 82 training [time: 21.29s, train loss: 3.1264]
+Thu 09 May 2024 05:33:31 INFO  epoch 82 evaluating [time: 52.72s, valid_score: 0.038300]
+Thu 09 May 2024 05:33:31 INFO  valid result: 
+recall@10 : 0.0918    mrr@10 : 0.0383    ndcg@10 : 0.0474    hit@10 : 0.1111    map@10 : 0.0316    precision@10 : 0.0113    gauc : 0.8739    itemcoverage@10 : 0.0727    averagepopularity@10 : 757.2438    giniindex@10 : 0.9967    shannonentropy@10 : 0.0022    tailpercentage@10 : 0.0012
+Thu 09 May 2024 05:33:52 INFO  epoch 83 training [time: 21.10s, train loss: 3.1164]
+Thu 09 May 2024 05:34:45 INFO  epoch 83 evaluating [time: 52.93s, valid_score: 0.038400]
+Thu 09 May 2024 05:34:45 INFO  valid result: 
+recall@10 : 0.0921    mrr@10 : 0.0384    ndcg@10 : 0.0476    hit@10 : 0.1116    map@10 : 0.0317    precision@10 : 0.0113    gauc : 0.8739    itemcoverage@10 : 0.0732    averagepopularity@10 : 756.2753    giniindex@10 : 0.9966    shannonentropy@10 : 0.0022    tailpercentage@10 : 0.0012
+Thu 09 May 2024 05:34:45 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:35:07 INFO  epoch 84 training [time: 21.26s, train loss: 2.9732]
+Thu 09 May 2024 05:36:00 INFO  epoch 84 evaluating [time: 53.07s, valid_score: 0.038600]
+Thu 09 May 2024 05:36:00 INFO  valid result: 
+recall@10 : 0.0918    mrr@10 : 0.0386    ndcg@10 : 0.0476    hit@10 : 0.1108    map@10 : 0.0318    precision@10 : 0.0112    gauc : 0.8739    itemcoverage@10 : 0.0742    averagepopularity@10 : 753.8622    giniindex@10 : 0.9965    shannonentropy@10 : 0.0022    tailpercentage@10 : 0.0012
+Thu 09 May 2024 05:36:00 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:36:21 INFO  epoch 85 training [time: 21.19s, train loss: 3.0063]
+Thu 09 May 2024 05:37:14 INFO  epoch 85 evaluating [time: 53.09s, valid_score: 0.038800]
+Thu 09 May 2024 05:37:14 INFO  valid result: 
+recall@10 : 0.0929    mrr@10 : 0.0388    ndcg@10 : 0.048    hit@10 : 0.1122    map@10 : 0.0321    precision@10 : 0.0114    gauc : 0.8738    itemcoverage@10 : 0.0755    averagepopularity@10 : 749.6954    giniindex@10 : 0.9965    shannonentropy@10 : 0.0022    tailpercentage@10 : 0.001
+Thu 09 May 2024 05:37:15 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:37:36 INFO  epoch 86 training [time: 21.12s, train loss: 2.9368]
+Thu 09 May 2024 05:38:29 INFO  epoch 86 evaluating [time: 53.21s, valid_score: 0.038700]
+Thu 09 May 2024 05:38:29 INFO  valid result: 
+recall@10 : 0.0923    mrr@10 : 0.0387    ndcg@10 : 0.0479    hit@10 : 0.1111    map@10 : 0.0321    precision@10 : 0.0113    gauc : 0.8738    itemcoverage@10 : 0.0772    averagepopularity@10 : 747.673    giniindex@10 : 0.9964    shannonentropy@10 : 0.0021    tailpercentage@10 : 0.001
+Thu 09 May 2024 05:38:50 INFO  epoch 87 training [time: 21.30s, train loss: 2.8422]
+Thu 09 May 2024 05:39:44 INFO  epoch 87 evaluating [time: 53.13s, valid_score: 0.038900]
+Thu 09 May 2024 05:39:44 INFO  valid result: 
+recall@10 : 0.0924    mrr@10 : 0.0389    ndcg@10 : 0.048    hit@10 : 0.1115    map@10 : 0.0322    precision@10 : 0.0113    gauc : 0.8738    itemcoverage@10 : 0.0783    averagepopularity@10 : 748.3401    giniindex@10 : 0.9963    shannonentropy@10 : 0.0021    tailpercentage@10 : 0.0009
+Thu 09 May 2024 05:39:44 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:40:05 INFO  epoch 88 training [time: 21.21s, train loss: 2.8416]
+Thu 09 May 2024 05:40:58 INFO  epoch 88 evaluating [time: 52.77s, valid_score: 0.038700]
+Thu 09 May 2024 05:40:58 INFO  valid result: 
+recall@10 : 0.0922    mrr@10 : 0.0387    ndcg@10 : 0.0477    hit@10 : 0.1112    map@10 : 0.0319    precision@10 : 0.0113    gauc : 0.8738    itemcoverage@10 : 0.079    averagepopularity@10 : 746.0585    giniindex@10 : 0.9963    shannonentropy@10 : 0.0021    tailpercentage@10 : 0.001
+Thu 09 May 2024 05:41:19 INFO  epoch 89 training [time: 20.94s, train loss: 2.7410]
+Thu 09 May 2024 05:42:12 INFO  epoch 89 evaluating [time: 53.22s, valid_score: 0.038700]
+Thu 09 May 2024 05:42:12 INFO  valid result: 
+recall@10 : 0.0923    mrr@10 : 0.0387    ndcg@10 : 0.0478    hit@10 : 0.1117    map@10 : 0.0319    precision@10 : 0.0113    gauc : 0.8738    itemcoverage@10 : 0.0797    averagepopularity@10 : 744.4389    giniindex@10 : 0.9962    shannonentropy@10 : 0.0021    tailpercentage@10 : 0.0009
+Thu 09 May 2024 05:42:33 INFO  epoch 90 training [time: 20.73s, train loss: 2.6758]
+Thu 09 May 2024 05:43:26 INFO  epoch 90 evaluating [time: 52.92s, valid_score: 0.039000]
+Thu 09 May 2024 05:43:26 INFO  valid result: 
+recall@10 : 0.0935    mrr@10 : 0.039    ndcg@10 : 0.0483    hit@10 : 0.113    map@10 : 0.0323    precision@10 : 0.0115    gauc : 0.8738    itemcoverage@10 : 0.0816    averagepopularity@10 : 744.308    giniindex@10 : 0.9961    shannonentropy@10 : 0.002    tailpercentage@10 : 0.0009
+Thu 09 May 2024 05:43:26 INFO  Saving current: saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:43:47 INFO  epoch 91 training [time: 21.30s, train loss: 2.6366]
+Thu 09 May 2024 05:44:40 INFO  epoch 91 evaluating [time: 53.03s, valid_score: 0.038700]
+Thu 09 May 2024 05:44:40 INFO  valid result: 
+recall@10 : 0.0923    mrr@10 : 0.0387    ndcg@10 : 0.0479    hit@10 : 0.1117    map@10 : 0.032    precision@10 : 0.0113    gauc : 0.8738    itemcoverage@10 : 0.0821    averagepopularity@10 : 740.2647    giniindex@10 : 0.996    shannonentropy@10 : 0.002    tailpercentage@10 : 0.0011
+Thu 09 May 2024 05:45:02 INFO  epoch 92 training [time: 21.20s, train loss: 2.6506]
+Thu 09 May 2024 05:45:55 INFO  epoch 92 evaluating [time: 52.98s, valid_score: 0.038500]
+Thu 09 May 2024 05:45:55 INFO  valid result: 
+recall@10 : 0.0923    mrr@10 : 0.0385    ndcg@10 : 0.0478    hit@10 : 0.1117    map@10 : 0.0319    precision@10 : 0.0113    gauc : 0.8737    itemcoverage@10 : 0.0828    averagepopularity@10 : 735.9286    giniindex@10 : 0.996    shannonentropy@10 : 0.002    tailpercentage@10 : 0.001
+Thu 09 May 2024 05:46:16 INFO  epoch 93 training [time: 21.06s, train loss: 2.5032]
+Thu 09 May 2024 05:47:09 INFO  epoch 93 evaluating [time: 53.11s, valid_score: 0.038600]
+Thu 09 May 2024 05:47:09 INFO  valid result: 
+recall@10 : 0.0925    mrr@10 : 0.0386    ndcg@10 : 0.048    hit@10 : 0.1117    map@10 : 0.0321    precision@10 : 0.0113    gauc : 0.8737    itemcoverage@10 : 0.084    averagepopularity@10 : 734.4466    giniindex@10 : 0.9959    shannonentropy@10 : 0.002    tailpercentage@10 : 0.001
+Thu 09 May 2024 05:47:30 INFO  epoch 94 training [time: 21.28s, train loss: 2.4905]
+Thu 09 May 2024 05:48:23 INFO  epoch 94 evaluating [time: 53.36s, valid_score: 0.038500]
+Thu 09 May 2024 05:48:23 INFO  valid result: 
+recall@10 : 0.0921    mrr@10 : 0.0385    ndcg@10 : 0.0477    hit@10 : 0.111    map@10 : 0.0319    precision@10 : 0.0112    gauc : 0.8737    itemcoverage@10 : 0.0852    averagepopularity@10 : 731.6998    giniindex@10 : 0.9958    shannonentropy@10 : 0.002    tailpercentage@10 : 0.001
+Thu 09 May 2024 05:48:45 INFO  epoch 95 training [time: 21.24s, train loss: 2.4708]
+Thu 09 May 2024 05:49:37 INFO  epoch 95 evaluating [time: 52.83s, valid_score: 0.038200]
+Thu 09 May 2024 05:49:37 INFO  valid result: 
+recall@10 : 0.092    mrr@10 : 0.0382    ndcg@10 : 0.0476    hit@10 : 0.1108    map@10 : 0.0318    precision@10 : 0.0112    gauc : 0.8737    itemcoverage@10 : 0.0853    averagepopularity@10 : 727.6435    giniindex@10 : 0.9957    shannonentropy@10 : 0.002    tailpercentage@10 : 0.001
+Thu 09 May 2024 05:49:59 INFO  epoch 96 training [time: 21.24s, train loss: 2.4113]
+Thu 09 May 2024 05:50:52 INFO  epoch 96 evaluating [time: 53.24s, valid_score: 0.038400]
+Thu 09 May 2024 05:50:52 INFO  valid result: 
+recall@10 : 0.0924    mrr@10 : 0.0384    ndcg@10 : 0.0478    hit@10 : 0.1114    map@10 : 0.032    precision@10 : 0.0113    gauc : 0.8736    itemcoverage@10 : 0.0867    averagepopularity@10 : 724.2983    giniindex@10 : 0.9957    shannonentropy@10 : 0.002    tailpercentage@10 : 0.0009
+Thu 09 May 2024 05:51:13 INFO  epoch 97 training [time: 21.25s, train loss: 2.4321]
+Thu 09 May 2024 05:52:06 INFO  epoch 97 evaluating [time: 52.69s, valid_score: 0.037900]
+Thu 09 May 2024 05:52:06 INFO  valid result: 
+recall@10 : 0.0917    mrr@10 : 0.0379    ndcg@10 : 0.0473    hit@10 : 0.1104    map@10 : 0.0316    precision@10 : 0.0112    gauc : 0.8735    itemcoverage@10 : 0.0877    averagepopularity@10 : 720.6782    giniindex@10 : 0.9956    shannonentropy@10 : 0.002    tailpercentage@10 : 0.0008
+Thu 09 May 2024 05:52:27 INFO  epoch 98 training [time: 21.29s, train loss: 2.3443]
+Thu 09 May 2024 05:53:20 INFO  epoch 98 evaluating [time: 52.72s, valid_score: 0.037800]
+Thu 09 May 2024 05:53:20 INFO  valid result: 
+recall@10 : 0.0917    mrr@10 : 0.0378    ndcg@10 : 0.0472    hit@10 : 0.1103    map@10 : 0.0315    precision@10 : 0.0112    gauc : 0.8735    itemcoverage@10 : 0.089    averagepopularity@10 : 721.4267    giniindex@10 : 0.9955    shannonentropy@10 : 0.0019    tailpercentage@10 : 0.0007
+Thu 09 May 2024 05:53:41 INFO  epoch 99 training [time: 21.16s, train loss: 2.3201]
+Thu 09 May 2024 05:54:34 INFO  epoch 99 evaluating [time: 53.02s, valid_score: 0.037900]
+Thu 09 May 2024 05:54:34 INFO  valid result: 
+recall@10 : 0.0916    mrr@10 : 0.0379    ndcg@10 : 0.0473    hit@10 : 0.1104    map@10 : 0.0316    precision@10 : 0.0112    gauc : 0.8735    itemcoverage@10 : 0.0897    averagepopularity@10 : 720.3495    giniindex@10 : 0.9955    shannonentropy@10 : 0.0019    tailpercentage@10 : 0.0008
+Thu 09 May 2024 05:54:55 INFO  epoch 100 training [time: 21.21s, train loss: 2.2485]
+Thu 09 May 2024 05:55:49 INFO  epoch 100 evaluating [time: 53.24s, valid_score: 0.038000]
+Thu 09 May 2024 05:55:49 INFO  valid result: 
+recall@10 : 0.0923    mrr@10 : 0.038    ndcg@10 : 0.0476    hit@10 : 0.1108    map@10 : 0.0317    precision@10 : 0.0113    gauc : 0.8734    itemcoverage@10 : 0.0904    averagepopularity@10 : 717.4122    giniindex@10 : 0.9954    shannonentropy@10 : 0.0019    tailpercentage@10 : 0.0007
+Thu 09 May 2024 05:56:09 INFO  epoch 101 training [time: 20.94s, train loss: 2.2862]
+Thu 09 May 2024 05:57:03 INFO  epoch 101 evaluating [time: 53.15s, valid_score: 0.037800]
+Thu 09 May 2024 05:57:03 INFO  valid result: 
+recall@10 : 0.0923    mrr@10 : 0.0378    ndcg@10 : 0.0475    hit@10 : 0.1112    map@10 : 0.0316    precision@10 : 0.0113    gauc : 0.8734    itemcoverage@10 : 0.0918    averagepopularity@10 : 715.393    giniindex@10 : 0.9953    shannonentropy@10 : 0.0019    tailpercentage@10 : 0.0009
+Thu 09 May 2024 05:57:03 INFO  Finished training, best eval result in epoch 90
+Thu 09 May 2024 05:57:03 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
+Thu 09 May 2024 05:58:03 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    12.60 %     |
++-------------+----------------+
+| GPU         | 1.19 G/11.93 G |
++-------------+----------------+
+| Memory      | 2.20 G/31.23 G |
++-------------+----------------+
+Thu 09 May 2024 05:58:03 INFO  best valid : OrderedDict([('recall@10', 0.0935), ('mrr@10', 0.039), ('ndcg@10', 0.0483), ('hit@10', 0.113), ('map@10', 0.0323), ('precision@10', 0.0115), ('gauc', 0.8738), ('itemcoverage@10', 0.0816), ('averagepopularity@10', 744.308), ('giniindex@10', 0.9961), ('shannonentropy@10', 0.002), ('tailpercentage@10', 0.0009)])
+Thu 09 May 2024 05:58:03 INFO  test result: OrderedDict([('recall@10', 0.0901), ('mrr@10', 0.0363), ('ndcg@10', 0.0464), ('hit@10', 0.106), ('map@10', 0.0312), ('precision@10', 0.0107), ('gauc', 0.87), ('itemcoverage@10', 0.0871), ('averagepopularity@10', 742.4452), ('giniindex@10', 0.996), ('shannonentropy@10', 0.0019), ('tailpercentage@10', 0.0015)])
+Thu 09 May 2024 05:58:03 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/LFM-1b_artist_20U50I_25strat
+checkpoint_dir = saved/LFM-1b_artist_20U50I_25strat/DGCF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+n_factors = 4
+n_iterations = 2
+n_layers = 1
+reg_weight = 0.001
+cor_weight = 0.01
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda:1
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission_step = -1
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 09 May 2024 05:58:04 INFO  LFM-1b_artist_20U50I_25strat
+The number of users: 19842
+Average actions of users: 11.01038254120256
+The number of items: 24879
+Average actions of items: 8.781131923788086
+The number of inters: 218457
+The sparsity of the dataset: 99.95574650251882%
+Remain Fields: ['user_id', 'item_id']
+Thu 09 May 2024 05:58:06 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Thu 09 May 2024 05:58:06 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 09 May 2024 05:58:06 INFO  Loading model structure and parameters from saved/LFM-1b_artist_20U50I_25strat/DGCF/DGCF-May-09-2024_03-50-31.pth
