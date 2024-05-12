@@ -184,12 +184,59 @@ def print_table():
                     print('Riduzione emissioni in percentuale:', round((emissions_result[model].iloc[-1]-emissions_result2[model].iloc[-1])/emissions_result[model].iloc[-1]*100, 4))
                     print('Riduzione performance: in percentuale:', round((metrics_result[model].iloc[-1]-metrics_result2[model].iloc[-1])/metrics_result[model].iloc[-1]*100, 4))
                     print('\n')
+
                 del metrics_result, metrics, metrics_result2, metrics2
 
 
+def printEmissionScorePlot():
+     #Print a plot where y axis is the abs(emission decrease)*100 and X axis is the abs(performance decrease)*100
+    for metric in metrics_list:
+            for dataset in datasets:
+                metrics_result={}
+                emissions_result={}
+                metrics_result2={}
+                emissions_result2={}
+                for model in models:
+
+                    #CLASSIC EARLY STOPPING
+                    results_path = os.path.join(RESULT_PATH, dataset, model)
+                    metrics = pd.read_csv(results_path+"/metrics.csv")
+                    emissions= pd.read_csv(results_path+"/emissions.csv")
+                    metrics_result[model] = metrics[metric]
+                    emissions_result[model] = emissions['emissions']
+
+                    #MODIFIED EARLY STOPPING
+                    results_path = os.path.join(RESULT_PATH2, dataset, model)
+                    metrics2 = pd.read_csv(results_path+"/metrics.csv")
+                    emissions2= pd.read_csv(results_path+"/emissions.csv")
+                    metrics_result2[model] = metrics2[metric]
+                    emissions_result2[model] = emissions2['emissions']
+
+                #stampa la percentuale di riduzione di emissioni e di riduzione di performance tra i due metodi
+                performance_decrease = []
+                emission_decrease = []
+                for model in models:
+                    performance_decrease.append(abs((metrics_result[model].iloc[-1]-metrics_result2[model].iloc[-1])/metrics_result[model].iloc[-1]*100))
+                    emission_decrease.append((abs(emissions_result[model].iloc[-1]-emissions_result2[model].iloc[-1])/emissions_result[model].iloc[-1]*100))
+                plt.scatter(performance_decrease, emission_decrease)
+                for i, txt in enumerate(models):
+                    plt.annotate(txt, (performance_decrease[i], emission_decrease[i]))
+                plt.xlabel('ABS Performance decrease %')
+                plt.ylabel('ABS Emission decrease %')
+                #remove _confrontoEmissioni from dataset in datsaset_label
+                dataset_label=dataset.replace('_confrontoEmissioni','')
+                plt.title('Performance decrease vs Emission decrease '+dataset_label + ' ' + metric, fontsize=10)
+                plt.show()
+                plt.grid(True)
+                plt.gcf().set_size_inches(10, 5)
+                plt.savefig(BASE_PATH + '/graphs2/decrement_'+metric+'_'+dataset_label+'.png')
+                plt.close()
+                del metrics_result, metrics, metrics_result2, metrics2
+
 #plot_emission()
-plot_metrics_comparison()
+#plot_metrics_comparison()
 #print_table()
+printEmissionScorePlot()
 
 
 
