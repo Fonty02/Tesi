@@ -7,7 +7,6 @@ import torch
 
 
 #models = ['BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
-models=['DGCF']
 datasets = ['movielens_1m']
 max_emission_step = 6
 ratio_tolerance = 30
