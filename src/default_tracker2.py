@@ -25,7 +25,7 @@ CHECKPOINT_DIR = config_dict.get('checkpoint_dir')
 BASE_PATH = '/'.join(os.getcwd().split('/'))
 print(BASE_PATH)
 LOG_FILE = os.path.join(BASE_PATH, config.get('LOG_FILE_DEFAULT'))
-RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED'))
+RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED2'))
 if platform == 'win32':
 	BASE_PATH = BASE_PATH.replace('/', '\\')
 	LOG_FILE = LOG_FILE.replace('/', '\\')
@@ -36,7 +36,7 @@ PARAMS_FILE = config.get('PARAMS_FILE')
 ts = calendar.timegm(time.gmtime())
 
 
-def process(dataset, model,max_emission_step):
+def process(dataset, model,max_emission_step, ratio_tolerance):
 	set_param('checkpoint_dir', CHECKPOINT_DIR)
 	# Create directory structure is not already exists
 	_saved = copy.deepcopy(config_dict.get('checkpoint_dir'))
@@ -72,6 +72,7 @@ def process(dataset, model,max_emission_step):
 				dataset=dataset,
 				config_dict=config_dict,
 				max_emission_step=max_emission_step,
+				ratio_tolerance=ratio_tolerance
 			)
 
 	emissions_file=pd.read_csv(emissions_file_path)
@@ -115,9 +116,6 @@ def process(dataset, model,max_emission_step):
 
 		existing_params_file=pd.concat([existing_params_file,full_params_df],ignore_index=True)
 		existing_params_file.to_csv(results_path+PARAMS_FILE,index=False)
-	del config_rec, model_rec, train_data, test_data, trainer, metrics, full_params
-	gc.collect()
-	torch.cuda.empty_cache()
 	log.flush()
 	log.close()
 
@@ -135,6 +133,7 @@ if __name__ == "__main__":
 			dataset = values[keys.index('DATASET')]
 			model = values[keys.index('MODEL')]
 			max_emission_step = float(values[keys.index('MAX_EMISSION_STEP')])
+			ratio_tolerance = float(values[keys.index('RATIO_TOLERANCE')])
 			'''if dataset not in DATASETS:
 				print('WARNING: invalid DATASET value!')
 				print('Valid: ', DATASETS)
@@ -142,7 +141,7 @@ if __name__ == "__main__":
 				print('WARNING: invalid MODEL value!')
 				print('Valid: ', MODELS)
 			else:'''
-			process(dataset, model,max_emission_step)
+			process(dataset, model,max_emission_step, ratio_tolerance)
 		else:
 			print('WARNING: required arguments are missing!')
 			if 'DATASET' not in keys:

@@ -12,8 +12,7 @@ RESULT_PATH = os.path.join(BASE_PATH, _config.get('RESULT_PATH_SHARED'))
 RESULT_PATH2 = os.path.join(BASE_PATH, _config.get('RESULT_PATH_SHARED2'))
 
 models = ['BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
-#models = ['BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF']
-datasets = ['LFM-1b_artist_20U50I_25strat_confrontoEmissioni', 'movielens_1m_confrontoEmissioni']
+datasets = ['movielens_1m_30_6']
 metrics_list = ['recall@10', 'ndcg@10','averagepopularity@10', 'giniindex@10']
 
 def plot_emission():
@@ -25,7 +24,7 @@ def plot_emission():
             emissions_result[model] = emissions.loc[0, 'emissions']
         plt.ylabel("Emissions log2")
         plt.xlabel("Models")
-        plt.title(dataset)
+        plt.title(dataset.replace('_30_6',''))
         plt.xticks(rotation=45,fontsize=8)
         values=list(emissions_result.values())
         x_labels=list(emissions_result.keys())
@@ -52,7 +51,7 @@ def plot_emission():
             emissions_result[model] = emissions.loc[0, 'emissions']
         plt.ylabel("Emissions log2")
         plt.xlabel("Models")
-        plt.title(dataset)
+        plt.title(dataset.replace('_30_6',''))
         plt.xticks(rotation=45,fontsize=8)
         values=list(emissions_result.values())
         x_labels=list(emissions_result.keys())
@@ -94,7 +93,7 @@ def plot_metrics_comparison():
                     metrics_result2[model] = metrics2[metric]
                     emissions_result2[model] = emissions2['emissions']
 
-                plt.title(dataset)
+                plt.title(dataset.replace('_30_6',''))
                 plt.ylabel(metric)
                 plt.xlabel("Emissions log2")
                 for i, model in enumerate(models):
@@ -135,7 +134,7 @@ def plot_metrics():
                     emissions= pd.read_csv(results_path+"/emissions.csv")
                     metrics_result[model] = metrics[metric]
                     emissions_result[model] = emissions['emissions']
-                plt.title(dataset)
+                plt.title(dataset.replace('_30_6',''))
                 plt.ylabel(metric)
                 plt.xlabel("Emissions log2")
                 for i, model in enumerate(models):
@@ -224,18 +223,18 @@ def printEmissionScorePlot():
                 plt.xlabel('ABS Performance decrease %')
                 plt.ylabel('ABS Emission decrease %')
                 #remove _confrontoEmissioni from dataset in datsaset_label
-                dataset_label=dataset.replace('_confrontoEmissioni','')
+                dataset_label=dataset.replace('_30_6','')
                 plt.title('Performance decrease vs Emission decrease '+dataset_label + ' ' + metric, fontsize=10)
                 plt.show()
                 plt.grid(True)
                 plt.gcf().set_size_inches(10, 5)
-                plt.savefig(BASE_PATH + '/graphs2/decrement_'+metric+'_'+dataset_label+'.png')
+                plt.savefig(BASE_PATH + '/graphs2/decrement_'+metric+'_'+dataset+'.png')
                 plt.close()
                 del metrics_result, metrics, metrics_result2, metrics2
 
-#plot_emission()
-#plot_metrics_comparison()
-#print_table()
+plot_emission()
+plot_metrics_comparison()
+print_table()
 printEmissionScorePlot()
 
 

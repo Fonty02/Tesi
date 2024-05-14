@@ -17,7 +17,7 @@ MODELS = config.get('MODELS')
 CHECKPOINT_DIR = config_dict.get('checkpoint_dir')
 BASE_PATH = '/'.join(os.getcwd().split('/'))
 LOG_FILE = os.path.join(BASE_PATH, config.get('LOG_FILE_DEFAULT'))
-RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED'))
+RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED2'))
 if platform == 'win32':
 	BASE_PATH = BASE_PATH.replace('/', '\\')
 	LOG_FILE = LOG_FILE.replace('/', '\\')
@@ -45,7 +45,7 @@ def calc_metrics(dataset,model,metrics):
 	met = dict(met)
 	#rename this file "results_path + METRICS_FILE" into "results_path + METRICS_FILE + "2"
     #write the metrics in met into "results_path + METRICS_FILE"
-	os.rename(results_path + METRICS_FILE, results_path + METRICS_FILE + "2")
+	#os.rename(results_path + METRICS_FILE, results_path + METRICS_FILE + "2")
 	write_dict_to_csv(results_path + METRICS_FILE,met)
 	del config_rec, model_rec, train_data, test_data, trainer, metrics,met
 	gc.collect()
@@ -59,7 +59,7 @@ def calc_metrics(dataset,model,metrics):
 if __name__ == "__main__":
 	args = sys.argv[1:]
 	if len(args) == 0:
-		calc_metrics('LFM-1b_artist_20U50I_25strat', 'LightGCN',metrics)
+		calc_metrics('movielens_1m', 'DGCF',metrics)
 	else:
 		keys = [i.split('=')[0].upper()[2:] for i in args]
 		values = [i.split('=')[1] for i in args]
