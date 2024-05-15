@@ -27,6 +27,7 @@ metrics=['Recall','MRR','NDCG','Hit','MAP','Precision','GAUC','ItemCoverage','Av
 
 
 
+
 def calc_metrics(dataset,model,metrics):
 	pth = os.path.join(config_dict.get('checkpoint_dir'), dataset, model)
 	set_param('checkpoint_dir', pth)
