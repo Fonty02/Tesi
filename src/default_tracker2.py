@@ -25,7 +25,7 @@ CHECKPOINT_DIR = config_dict.get('checkpoint_dir')
 BASE_PATH = '/'.join(os.getcwd().split('/'))
 print(BASE_PATH)
 LOG_FILE = os.path.join(BASE_PATH, config.get('LOG_FILE_DEFAULT'))
-RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED2'))
+RESULT_PATH = os.path.join(BASE_PATH, config.get('RESULT_PATH_SHARED'))
 if platform == 'win32':
 	BASE_PATH = BASE_PATH.replace('/', '\\')
 	LOG_FILE = LOG_FILE.replace('/', '\\')

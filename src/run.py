@@ -8,8 +8,8 @@ import torch
 #models = ['BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
 models = ['BPR', 'DMF', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
 datasets = ['mind']
-max_emission_step = 7
-ratio_tolerance = 30
+max_emission_step = -1
+ratio_tolerance = -1
 #clear with gc and cuda
 for dataset in datasets:
     for model in models:

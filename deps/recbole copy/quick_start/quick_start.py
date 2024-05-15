@@ -109,6 +109,7 @@ def run_recbole(
     saved=True,
     queue=None,
     max_emission_step=-1,
+    ratio_tolerance=0.01,
 
     
 ):
@@ -161,7 +162,7 @@ def run_recbole(
 
     # model training
     best_valid_score, best_valid_result = trainer.fit(
-        train_data,max_emission_step,emission_file_path,proj_name,valid_data, saved=saved, show_progress=config["show_progress"]
+        train_data,max_emission_step, ratio_tolerance, emission_file_path,proj_name,valid_data, saved=saved, show_progress=config["show_progress"]
     )
 
     # model evaluation

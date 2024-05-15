@@ -411,6 +411,7 @@ class Trainer(AbstractTrainer):
         self,
         train_data,
         max_emission_step: int,
+        ratio_tolerance: float,
         emission_file_path,
         proj_name,
         valid_data=None,
@@ -424,6 +425,7 @@ class Trainer(AbstractTrainer):
         Args:
             train_data (DataLoader): the train data
             max_emission_step (float): maximum emissions step allowed
+            ratio_tolerance (float): tolerance ratio for emissions early stopping
             emission_file_path (str): path to the emissions file
             project_name (str): name of the project
             valid_data (DataLoader, optional): the valid data, default: None.
@@ -448,11 +450,11 @@ class Trainer(AbstractTrainer):
         valid_step = 0
         emission_step=0
         last_emissions=0
-        last_rapport=0
+        last_ratio=0
         self.best_valid_score=0
         #emissions_list=[0]
         #score_list=[0]
-        #rapport_list=[0]
+        #ratio_list=[0]
     
 
 
@@ -504,7 +506,7 @@ class Trainer(AbstractTrainer):
                         emission_flag,
                         emission_step,
                         last_emissions,
-                        last_rapport,
+                        last_ratio,
                     ) = early_stopping(
                         valid_score,
                         self.best_valid_score,
@@ -514,7 +516,8 @@ class Trainer(AbstractTrainer):
                         max_emission_step=max_emission_step,
                         total_emissions=total_emissions,
                         last_emissions=last_emissions,
-                        last_rapport=last_rapport,
+                        last_ratio=last_ratio,
+                        ratio_tolerance=ratio_tolerance,
                         bigger=self.valid_metric_bigger,
                     )
                     valid_end_time = time()
@@ -543,7 +546,7 @@ class Trainer(AbstractTrainer):
                     self.best_valid_result = valid_result
                     #emissions_list.append(last_emissions)
                     #score_list.append( self.best_valid_score)
-                    #rapport_list.append(last_rapport)
+                    #ratio_list.append(last_ratio)
 
 
 
@@ -576,7 +579,7 @@ class Trainer(AbstractTrainer):
                 valid_step += 1
         
         '''plt.plot(emissions_list, score_list, 'o', color='red', markersize=2)  # Imposta markersize a 3 per rendere i punti più piccoli
-        for i, txt in enumerate(rapport_list):
+        for i, txt in enumerate(ratio_list):
             plt.annotate(txt, (emissions_list[i], score_list[i]), textcoords="offset points", xytext=(0,8), ha='center', fontsize=4)
         plt.plot(emissions_list, score_list, color='blue', linestyle='-', linewidth=0.5)  # Unisce i punti con una linea grigia
         plt.title('Emissions vs Score')

@@ -110,7 +110,7 @@ def get_trainer(model_type, model_name):
             return getattr(importlib.import_module("recbole.trainer"), "Trainer")
 
 
-def early_stopping(value, best, cur_step, max_step, emission_step, max_emission_step,total_emissions,last_emissions,last_rapport ,bigger=True):
+def early_stopping(value, best, cur_step, max_step, emission_step, max_emission_step,total_emissions,last_emissions,last_ratio,ratio_tolerance,bigger=True):
     r"""validation-based early stopping
 
     Args:
@@ -131,6 +131,8 @@ def early_stopping(value, best, cur_step, max_step, emission_step, max_emission_
         - bool,
           whether to update
     """
+    print("\n\nRatio tolerance: ", ratio_tolerance,"\n\n")
+    print("\n\nMax emission step: ", max_emission_step,"\n\n")
     stop_flag = False
     update_flag = False
     emission_flag = False
@@ -138,15 +140,15 @@ def early_stopping(value, best, cur_step, max_step, emission_step, max_emission_
         if value >= best:
             cur_step = 0
             update_flag = True
-            new_rapport = (value-best)/(total_emissions-last_emissions)
-            if abs(last_rapport -new_rapport)<40:
+            new_ratio = (value-best)/(total_emissions-last_emissions)
+            if abs(last_ratio -new_ratio)<ratio_tolerance:
                 emission_step += 1
                 if emission_step == max_emission_step:
                     emission_flag = True
             else:
                 emission_step = 0
             last_emissions = total_emissions
-            last_rapport = new_rapport
+            last_ratio = new_ratio
             best = value
         else:
             cur_step += 1
@@ -161,7 +163,7 @@ def early_stopping(value, best, cur_step, max_step, emission_step, max_emission_
             cur_step += 1
             if cur_step > max_step:
                 stop_flag = True
-    return best, cur_step, stop_flag, update_flag,emission_flag,emission_step,last_emissions,last_rapport
+    return best, cur_step, stop_flag, update_flag,emission_flag,emission_step,last_emissions,last_ratio
 
 
 def calculate_valid_score(valid_result, valid_metric=None):
