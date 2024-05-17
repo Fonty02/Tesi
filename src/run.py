@@ -6,7 +6,8 @@ import torch
 
 
 #models = ['BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
-models = ['BPR', 'DMF', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
+#models = ['BPR', 'DMF', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
+models=['LightGCN']
 datasets = ['mind']
 max_emission_step = -1
 ratio_tolerance = -1
