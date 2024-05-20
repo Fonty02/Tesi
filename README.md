@@ -1,4 +1,4 @@
-# TIROCIINIO e TESI LAUREA TRIENNALEE IN INFORMATICA UniBa
+# TIROCINIO e TESI LAUREA TRIENNALE IN INFORMATICA UniBa
 
 Il lavoro è ereditato dalla seguente repository: [sustainability-of-recsys](https://github.com/albertovalerio/sustainability-of-recsys)
 
