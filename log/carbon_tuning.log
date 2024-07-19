@@ -1,0 +1,34 @@
+[2024-05-27 15:19:18] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716815958
+[2024-05-27 15:19:21] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716815958. No module named 'py4j'
+[2024-05-27 15:23:00] Experiment session started.EXECUTING: MOVIELENS_1M_LINE_PARAMS_TUNING_1716816180
+[2024-05-27 15:23:00] ERROR: MOVIELENS_1M_LINE_PARAMS_TUNING_1716816180. No module named 'py4j'
+[2024-05-27 15:24:13] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816253
+[2024-05-27 15:24:13] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816253. No module named 'py4j'
+[2024-05-27 15:27:00] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816420
+[2024-05-27 15:27:00] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816420. 'numpy.random.mtrand.RandomState' object has no attribute 'integers'
+[2024-05-27 15:27:40] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816460
+[2024-05-27 15:27:40] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816460. 'numpy.random.mtrand.RandomState' object has no attribute 'integers'
+[2024-05-27 15:28:33] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816513
+[2024-05-27 15:28:49] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816513. fit() missing 3 required positional arguments: 'ratio_tolerance', 'emission_file_path', and 'proj_name'
+[2024-05-27 15:29:05] Experiment session started.EXECUTING: MOVIELENS_1M_LINE_PARAMS_TUNING_1716816545
+[2024-05-27 15:29:21] ERROR: MOVIELENS_1M_LINE_PARAMS_TUNING_1716816545. fit() missing 3 required positional arguments: 'ratio_tolerance', 'emission_file_path', and 'proj_name'
+[2024-05-27 15:31:36] Experiment session started.EXECUTING: MOVIELENS_1M_LINE_PARAMS_TUNING_1716816696
+[2024-05-27 15:31:52] ERROR: MOVIELENS_1M_LINE_PARAMS_TUNING_1716816696. fit() missing 3 required positional arguments: 'ratio_tolerance', 'emission_file_path', and 'proj_name'
+[2024-05-27 15:32:12] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816732
+[2024-05-27 15:32:22] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816732. fit() missing 3 required positional arguments: 'ratio_tolerance', 'emission_file_path', and 'proj_name'
+[2024-05-27 15:34:24] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816864
+[2024-05-27 15:34:35] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816864. fit() missing 3 required positional arguments: 'ratio_tolerance', 'emission_file_path', and 'proj_name'
+[2024-05-27 15:34:53] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816893
+[2024-05-27 15:35:03] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716816893. fit() got multiple values for argument 'max_emission_step'
+[2024-05-27 15:38:06] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817086
+[2024-05-27 15:38:16] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817086. fit() got multiple values for argument 'max_emission_step'
+[2024-05-27 15:38:41] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817121
+[2024-05-27 15:38:52] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817121. fit() got multiple values for argument 'max_emission_step'
+[2024-05-27 15:39:01] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817141
+[2024-05-27 15:39:12] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817141. fit() missing 2 required positional arguments: 'emission_file_path' and 'proj_name'
+[2024-05-27 15:39:43] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817183
+[2024-05-27 15:40:01] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817183. Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cuda:1! (when checking argument for argument index in method wrapper__index_select)
+[2024-05-27 15:41:10] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817270
+[2024-05-27 15:41:11] ERROR: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817270. name 'torch' is not defined
+[2024-05-27 15:41:24] Experiment session started.EXECUTING: MOVIELENS_1M_BPR_PARAMS_TUNING_1716817284
+[2024-05-27 15:42:37] EXECUTING.MOVIELENS_1M_BPR_PARAMS_TUNING_1716817284 RUN 1 OF 27 

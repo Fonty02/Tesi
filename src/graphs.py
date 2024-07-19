@@ -11,10 +11,9 @@ _config = get_global_config()
 RESULT_PATH = os.path.join(BASE_PATH, _config.get('RESULT_PATH_SHARED'))
 RESULT_PATH2 = os.path.join(BASE_PATH, _config.get('RESULT_PATH_SHARED2'))
 
-#models = ['BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
-datasets = ['amazon_books_60core_kg']
-#models=['BPR','LightGCN','KGCN','CKE','NGCF','DGCF']
-models=['DGCF']
+models = ['ItemKNN','BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
+datasets = ['LFM-1b_artist_20U50I','LFM-1b_artist_20U50I_75strat','LFM-1b_artist_20U50I_50strat','LFM-1b_artist_20U50I_25strat']
+#models=['DGCF']
 
 metrics_list = ['recall@10', 'ndcg@10','averagepopularity@10', 'giniindex@10']
 
@@ -28,25 +27,25 @@ def plot_emission():
         plt.ylabel("Emissions log2")
         plt.xlabel("Models")
         plt.title(dataset.replace('_40_7',''))
-        plt.xticks(rotation=45,fontsize=8)
+        plt.xticks(rotation=35,fontsize=10)
         values=list(emissions_result.values())
         x_labels=list(emissions_result.keys())
         sorted_data = sorted(zip(values,x_labels), reverse=True)
         values, x_labels = zip(*sorted_data)
-        plt.bar(x_labels, values,width=0.8)
+        plt.bar(x_labels, values,width=0.9)
         #reduce font size of x labels
         for i, v in enumerate(values):
             #plot the emissions on top of the bars
-            plt.text(i, v + 0.000001, str(round(v, 4)), ha='center', va='bottom', fontsize=8) 
+            plt.text(i, v + 0.000001, str(round(v, 3)), ha='center', va='bottom', fontsize=10) 
         plt.yscale(matplotlib.scale.LogScale(base=2, axis='y'))
         plt.show()
-        plt.savefig(BASE_PATH + '/graphs2/emissions_'+dataset+'_earlyClassic.png')
+        plt.savefig(BASE_PATH + '/graphs/emissions_'+dataset+'.png')
         plt.close()
         del emissions_result, emissions
     #plot the emissions of the modified early stopping
 
-    
-    for dataset in datasets:
+    '''
+   for dataset in datasets:
         emissions_result = {}
         for model in models:
             results_path = os.path.join(RESULT_PATH2, dataset, model)
@@ -70,6 +69,7 @@ def plot_emission():
         plt.savefig(BASE_PATH + '/graphs2/emissions_'+dataset+'_earlyModified.png')
         plt.close()
         del emissions_result, emissions
+        '''
 
         
 
@@ -303,11 +303,11 @@ def sensibilityGraph():
 
 
 
-#plot_emission()
+plot_emission()
 #plot_metrics_comparison()
 #print_table()
 #printEmissionScorePlot()
-sensibilityGraph()
+#sensibilityGraph()
 
 
 

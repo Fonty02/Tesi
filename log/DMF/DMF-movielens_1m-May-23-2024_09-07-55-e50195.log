@@ -1,0 +1,372 @@
+Thu 23 May 2024 09:07:55 INFO  ['src/default_tracker2.py', '--dataset=movielens_1m', '--model=DMF', '--max_emission_step=7', '--ratio_tolerance=40']
+Thu 23 May 2024 09:07:55 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/movielens_1m
+checkpoint_dir = saved/movielens_1m/DMF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+inter_matrix_type = 01
+user_embedding_size = 64
+item_embedding_size = 64
+user_hidden_size_list = [64, 64]
+item_hidden_size_list = [64, 64]
+embedding_size = 10
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda:1
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission_step = 7
+ratio_tolerance = 40
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 23 May 2024 09:07:59 INFO  movielens_1m
+The number of users: 6041
+Average actions of users: 165.5975165562914
+The number of items: 3707
+Average actions of items: 269.88909875876953
+The number of inters: 1000209
+The sparsity of the dataset: 95.53358229599758%
+Remain Fields: ['user_id', 'item_id']
+Thu 23 May 2024 09:08:02 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Thu 23 May 2024 09:08:02 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 23 May 2024 09:08:02 WARNING  Max value of item's history interaction records has reached 45.80367488826354% of the total.
+Thu 23 May 2024 09:08:03 WARNING  Max value of user's history interaction records has reached 49.959536012948476% of the total.
+Thu 23 May 2024 09:08:20 INFO  DMF(
+  (user_linear): Linear(in_features=3707, out_features=64, bias=False)
+  (item_linear): Linear(in_features=6041, out_features=64, bias=False)
+  (user_fc_layers): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.0, inplace=False)
+      (1): Linear(in_features=64, out_features=64, bias=True)
+      (2): ReLU()
+      (3): Dropout(p=0.0, inplace=False)
+      (4): Linear(in_features=64, out_features=64, bias=True)
+      (5): ReLU()
+    )
+  )
+  (item_fc_layers): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.0, inplace=False)
+      (1): Linear(in_features=64, out_features=64, bias=True)
+      (2): ReLU()
+      (3): Dropout(p=0.0, inplace=False)
+      (4): Linear(in_features=64, out_features=64, bias=True)
+      (5): ReLU()
+    )
+  )
+  (sigmoid): Sigmoid()
+  (bce_loss): BCEWithLogitsLoss()
+)
+Trainable parameters: 640512
+Thu 23 May 2024 09:08:20 INFO  FLOPs: 640256.0
+Thu 23 May 2024 09:08:43 INFO  epoch 0 training [time: 16.57s, train loss: 470.1376]
+Thu 23 May 2024 09:09:20 INFO  epoch 0 evaluating [time: 37.59s, valid_score: 0.283100]
+Thu 23 May 2024 09:09:20 INFO  valid result: 
+recall@10 : 0.0893    mrr@10 : 0.2831    ndcg@10 : 0.1401    hit@10 : 0.5666    map@10 : 0.0687    precision@10 : 0.112    gauc : 0.8658    itemcoverage@10 : 0.0682    averagepopularity@10 : 1635.2676    giniindex@10 : 0.9838    shannonentropy@10 : 0.0174    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:09:20 INFO  Saving current: saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:09:36 INFO  epoch 1 training [time: 15.61s, train loss: 450.1697]
+Thu 23 May 2024 09:10:12 INFO  epoch 1 evaluating [time: 36.04s, valid_score: 0.302100]
+Thu 23 May 2024 09:10:12 INFO  valid result: 
+recall@10 : 0.1041    mrr@10 : 0.3021    ndcg@10 : 0.1547    hit@10 : 0.6169    map@10 : 0.0757    precision@10 : 0.1246    gauc : 0.8782    itemcoverage@10 : 0.1392    averagepopularity@10 : 1568.208    giniindex@10 : 0.9714    shannonentropy@10 : 0.0095    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:10:12 INFO  Saving current: saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:10:28 INFO  epoch 2 training [time: 16.38s, train loss: 443.4050]
+Thu 23 May 2024 09:11:04 INFO  epoch 2 evaluating [time: 35.69s, valid_score: 0.322300]
+Thu 23 May 2024 09:11:04 INFO  valid result: 
+recall@10 : 0.112    mrr@10 : 0.3223    ndcg@10 : 0.1671    hit@10 : 0.6412    map@10 : 0.0835    precision@10 : 0.1343    gauc : 0.8829    itemcoverage@10 : 0.167    averagepopularity@10 : 1539.2923    giniindex@10 : 0.9673    shannonentropy@10 : 0.0081    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:11:04 INFO  Saving current: saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:11:17 INFO  epoch 3 training [time: 12.81s, train loss: 439.1317]
+Thu 23 May 2024 09:11:56 INFO  epoch 3 evaluating [time: 39.53s, valid_score: 0.327600]
+Thu 23 May 2024 09:11:56 INFO  valid result: 
+recall@10 : 0.1209    mrr@10 : 0.3276    ndcg@10 : 0.1741    hit@10 : 0.6584    map@10 : 0.0873    precision@10 : 0.1393    gauc : 0.8857    itemcoverage@10 : 0.205    averagepopularity@10 : 1377.2446    giniindex@10 : 0.9522    shannonentropy@10 : 0.0071    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:11:56 INFO  Saving current: saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:12:13 INFO  epoch 4 training [time: 16.09s, train loss: 436.5512]
+Thu 23 May 2024 09:12:49 INFO  epoch 4 evaluating [time: 36.74s, valid_score: 0.330700]
+Thu 23 May 2024 09:12:49 INFO  valid result: 
+recall@10 : 0.1198    mrr@10 : 0.3307    ndcg@10 : 0.1746    hit@10 : 0.6601    map@10 : 0.0875    precision@10 : 0.1402    gauc : 0.8861    itemcoverage@10 : 0.2282    averagepopularity@10 : 1329.5502    giniindex@10 : 0.945    shannonentropy@10 : 0.0066    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:12:49 INFO  Saving current: saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:13:05 INFO  epoch 5 training [time: 16.09s, train loss: 434.9238]
+Thu 23 May 2024 09:13:41 INFO  epoch 5 evaluating [time: 35.91s, valid_score: 0.335100]
+Thu 23 May 2024 09:13:41 INFO  valid result: 
+recall@10 : 0.1235    mrr@10 : 0.3351    ndcg@10 : 0.1765    hit@10 : 0.675    map@10 : 0.0885    precision@10 : 0.1401    gauc : 0.8837    itemcoverage@10 : 0.2431    averagepopularity@10 : 1279.7654    giniindex@10 : 0.9386    shannonentropy@10 : 0.0063    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:13:41 INFO  Saving current: saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:13:58 INFO  epoch 6 training [time: 16.21s, train loss: 433.5598]
+Thu 23 May 2024 09:14:34 INFO  epoch 6 evaluating [time: 36.08s, valid_score: 0.345100]
+Thu 23 May 2024 09:14:34 INFO  valid result: 
+recall@10 : 0.1291    mrr@10 : 0.3451    ndcg@10 : 0.1845    hit@10 : 0.6854    map@10 : 0.0934    precision@10 : 0.1471    gauc : 0.8847    itemcoverage@10 : 0.2336    averagepopularity@10 : 1358.4857    giniindex@10 : 0.9442    shannonentropy@10 : 0.0064    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:14:34 INFO  Saving current: saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:14:49 INFO  epoch 7 training [time: 15.78s, train loss: 432.8632]
+Thu 23 May 2024 09:15:26 INFO  epoch 7 evaluating [time: 36.84s, valid_score: 0.327700]
+Thu 23 May 2024 09:15:26 INFO  valid result: 
+recall@10 : 0.1225    mrr@10 : 0.3277    ndcg@10 : 0.175    hit@10 : 0.6651    map@10 : 0.0874    precision@10 : 0.141    gauc : 0.8866    itemcoverage@10 : 0.239    averagepopularity@10 : 1253.1955    giniindex@10 : 0.9398    shannonentropy@10 : 0.0064    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:15:43 INFO  epoch 8 training [time: 16.42s, train loss: 432.0484]
+Thu 23 May 2024 09:16:19 INFO  epoch 8 evaluating [time: 36.37s, valid_score: 0.347400]
+Thu 23 May 2024 09:16:19 INFO  valid result: 
+recall@10 : 0.1291    mrr@10 : 0.3474    ndcg@10 : 0.1846    hit@10 : 0.6849    map@10 : 0.0932    precision@10 : 0.1464    gauc : 0.8868    itemcoverage@10 : 0.2385    averagepopularity@10 : 1419.8893    giniindex@10 : 0.9501    shannonentropy@10 : 0.0061    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:16:19 INFO  Saving current: saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:16:35 INFO  epoch 9 training [time: 15.48s, train loss: 431.1889]
+Thu 23 May 2024 09:17:12 INFO  epoch 9 evaluating [time: 37.34s, valid_score: 0.342700]
+Thu 23 May 2024 09:17:12 INFO  valid result: 
+recall@10 : 0.1288    mrr@10 : 0.3427    ndcg@10 : 0.1826    hit@10 : 0.6904    map@10 : 0.0918    precision@10 : 0.1453    gauc : 0.8851    itemcoverage@10 : 0.2441    averagepopularity@10 : 1296.605    giniindex@10 : 0.9381    shannonentropy@10 : 0.0063    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:17:28 INFO  epoch 10 training [time: 15.77s, train loss: 430.8768]
+Thu 23 May 2024 09:18:04 INFO  epoch 10 evaluating [time: 36.49s, valid_score: 0.339200]
+Thu 23 May 2024 09:18:04 INFO  valid result: 
+recall@10 : 0.1266    mrr@10 : 0.3392    ndcg@10 : 0.1799    hit@10 : 0.6805    map@10 : 0.0904    precision@10 : 0.1433    gauc : 0.8862    itemcoverage@10 : 0.2428    averagepopularity@10 : 1233.239    giniindex@10 : 0.9326    shannonentropy@10 : 0.0064    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:18:20 INFO  epoch 11 training [time: 15.67s, train loss: 430.4662]
+Thu 23 May 2024 09:18:56 INFO  epoch 11 evaluating [time: 35.87s, valid_score: 0.329500]
+Thu 23 May 2024 09:18:56 INFO  valid result: 
+recall@10 : 0.1278    mrr@10 : 0.3295    ndcg@10 : 0.1759    hit@10 : 0.6816    map@10 : 0.0869    precision@10 : 0.1399    gauc : 0.8847    itemcoverage@10 : 0.2549    averagepopularity@10 : 1226.9662    giniindex@10 : 0.9336    shannonentropy@10 : 0.0061    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:19:12 INFO  epoch 12 training [time: 16.43s, train loss: 430.0872]
+Thu 23 May 2024 09:19:48 INFO  epoch 12 evaluating [time: 35.89s, valid_score: 0.337900]
+Thu 23 May 2024 09:19:48 INFO  valid result: 
+recall@10 : 0.1279    mrr@10 : 0.3379    ndcg@10 : 0.1803    hit@10 : 0.6798    map@10 : 0.0904    precision@10 : 0.1436    gauc : 0.8835    itemcoverage@10 : 0.2487    averagepopularity@10 : 1311.8091    giniindex@10 : 0.94    shannonentropy@10 : 0.0061    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:20:04 INFO  epoch 13 training [time: 15.91s, train loss: 429.9003]
+Thu 23 May 2024 09:20:40 INFO  epoch 13 evaluating [time: 36.17s, valid_score: 0.336300]
+Thu 23 May 2024 09:20:40 INFO  valid result: 
+recall@10 : 0.1263    mrr@10 : 0.3363    ndcg@10 : 0.1785    hit@10 : 0.6762    map@10 : 0.0894    precision@10 : 0.1415    gauc : 0.8838    itemcoverage@10 : 0.2576    averagepopularity@10 : 1295.7041    giniindex@10 : 0.9386    shannonentropy@10 : 0.0059    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:20:56 INFO  epoch 14 training [time: 15.76s, train loss: 429.3881]
+Thu 23 May 2024 09:21:33 INFO  epoch 14 evaluating [time: 36.95s, valid_score: 0.339300]
+Thu 23 May 2024 09:21:33 INFO  valid result: 
+recall@10 : 0.1286    mrr@10 : 0.3393    ndcg@10 : 0.182    hit@10 : 0.6815    map@10 : 0.0915    precision@10 : 0.1449    gauc : 0.8843    itemcoverage@10 : 0.2668    averagepopularity@10 : 1338.2271    giniindex@10 : 0.9419    shannonentropy@10 : 0.0056    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:21:49 INFO  epoch 15 training [time: 16.12s, train loss: 429.3829]
+Thu 23 May 2024 09:22:25 INFO  epoch 15 evaluating [time: 36.16s, valid_score: 0.337700]
+Thu 23 May 2024 09:22:25 INFO  valid result: 
+recall@10 : 0.1273    mrr@10 : 0.3377    ndcg@10 : 0.1812    hit@10 : 0.6828    map@10 : 0.0914    precision@10 : 0.1453    gauc : 0.8848    itemcoverage@10 : 0.2598    averagepopularity@10 : 1290.0937    giniindex@10 : 0.9382    shannonentropy@10 : 0.0059    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:22:38 INFO  epoch 16 training [time: 12.70s, train loss: 428.8753]
+Thu 23 May 2024 09:23:20 INFO  epoch 16 evaluating [time: 42.62s, valid_score: 0.335200]
+Thu 23 May 2024 09:23:20 INFO  valid result: 
+recall@10 : 0.1293    mrr@10 : 0.3352    ndcg@10 : 0.1811    hit@10 : 0.6816    map@10 : 0.0907    precision@10 : 0.1452    gauc : 0.8837    itemcoverage@10 : 0.2727    averagepopularity@10 : 1207.4953    giniindex@10 : 0.9287    shannonentropy@10 : 0.0058    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:23:37 INFO  epoch 17 training [time: 16.38s, train loss: 429.0036]
+Thu 23 May 2024 09:24:13 INFO  epoch 17 evaluating [time: 36.49s, valid_score: 0.336500]
+Thu 23 May 2024 09:24:13 INFO  valid result: 
+recall@10 : 0.1292    mrr@10 : 0.3365    ndcg@10 : 0.181    hit@10 : 0.6854    map@10 : 0.0907    precision@10 : 0.1443    gauc : 0.8838    itemcoverage@10 : 0.2592    averagepopularity@10 : 1191.1514    giniindex@10 : 0.9293    shannonentropy@10 : 0.0061    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:24:30 INFO  epoch 18 training [time: 16.16s, train loss: 429.2299]
+Thu 23 May 2024 09:25:05 INFO  epoch 18 evaluating [time: 35.88s, valid_score: 0.342600]
+Thu 23 May 2024 09:25:05 INFO  valid result: 
+recall@10 : 0.1316    mrr@10 : 0.3426    ndcg@10 : 0.185    hit@10 : 0.6922    map@10 : 0.0937    precision@10 : 0.1471    gauc : 0.8848    itemcoverage@10 : 0.2627    averagepopularity@10 : 1318.2252    giniindex@10 : 0.9386    shannonentropy@10 : 0.0058    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:25:22 INFO  epoch 19 training [time: 16.22s, train loss: 428.8614]
+Thu 23 May 2024 09:25:56 INFO  epoch 19 evaluating [time: 34.37s, valid_score: 0.336700]
+Thu 23 May 2024 09:25:56 INFO  valid result: 
+recall@10 : 0.1327    mrr@10 : 0.3367    ndcg@10 : 0.1835    hit@10 : 0.6882    map@10 : 0.092    precision@10 : 0.1475    gauc : 0.8836    itemcoverage@10 : 0.2743    averagepopularity@10 : 1282.9687    giniindex@10 : 0.9326    shannonentropy@10 : 0.0056    tailpercentage@10 : 0.0
+Thu 23 May 2024 09:25:56 INFO  Finished training, best eval result in epoch 8
+Thu 23 May 2024 09:25:56 INFO  Loading model structure and parameters from saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth
+Thu 23 May 2024 09:26:34 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    12.60 %     |
++-------------+----------------+
+| GPU         | 0.56 G/11.93 G |
++-------------+----------------+
+| Memory      | 2.34 G/31.23 G |
++-------------+----------------+
+Thu 23 May 2024 09:26:34 INFO  best valid : OrderedDict([('recall@10', 0.1291), ('mrr@10', 0.3474), ('ndcg@10', 0.1846), ('hit@10', 0.6849), ('map@10', 0.0932), ('precision@10', 0.1464), ('gauc', 0.8868), ('itemcoverage@10', 0.2385), ('averagepopularity@10', 1419.8893), ('giniindex@10', 0.9501), ('shannonentropy@10', 0.0061), ('tailpercentage@10', 0.0)])
+Thu 23 May 2024 09:26:34 INFO  test result: OrderedDict([('recall@10', 0.1432), ('mrr@10', 0.4074), ('ndcg@10', 0.2289), ('hit@10', 0.7031), ('map@10', 0.1324), ('precision@10', 0.181), ('gauc', 0.8925), ('itemcoverage@10', 0.2595), ('averagepopularity@10', 1379.7292), ('giniindex@10', 0.9443), ('shannonentropy@10', 0.0057), ('tailpercentage@10', 0.0)])
+Thu 23 May 2024 09:26:34 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = data/movielens_1m
+checkpoint_dir = saved/movielens_1m/DMF
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 200
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'MAP', 'Precision', 'GAUC', 'ItemCoverage', 'AveragePopularity', 'GiniIndex', 'ShannonEntropy', 'TailPercentage']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+inter_matrix_type = 01
+user_embedding_size = 64
+item_embedding_size = 64
+user_hidden_size_list = [64, 64]
+item_hidden_size_list = [64, 64]
+embedding_size = 10
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+encoding = utf-8
+device = cuda:1
+my_log_file = /home/fontana/Tesi/log/carbon_default.log
+max_emission_step = 7
+ratio_tolerance = 40
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 23 May 2024 09:26:38 INFO  movielens_1m
+The number of users: 6041
+Average actions of users: 165.5975165562914
+The number of items: 3707
+Average actions of items: 269.88909875876953
+The number of inters: 1000209
+The sparsity of the dataset: 95.53358229599758%
+Remain Fields: ['user_id', 'item_id']
+Thu 23 May 2024 09:26:40 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'dynamic': False, 'candidate_num': 0, 'alpha': 1.0}]
+Thu 23 May 2024 09:26:40 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 23 May 2024 09:26:41 WARNING  Max value of item's history interaction records has reached 45.80367488826354% of the total.
+Thu 23 May 2024 09:26:42 WARNING  Max value of user's history interaction records has reached 49.959536012948476% of the total.
+Thu 23 May 2024 09:26:44 INFO  Loading model structure and parameters from saved/movielens_1m/DMF/DMF-May-23-2024_09-08-21.pth

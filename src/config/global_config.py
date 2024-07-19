@@ -3,9 +3,10 @@ The collection of global configurations
 """
 CONFIG = {
 	'DATASETS':				[
-								'LFM-1b_artist_20U50I'
+								'LFM-1b_artist_20U50I',
+								'movielens_1m'
 							],
-	'MODELS':				[
+	'MODELS':				#[
 								# General Recommendation
 								#'ItemKNN', #-> FORZATO K=20
 								#'Pop',
@@ -68,7 +69,9 @@ CONFIG = {
 								#'RippleNet',
 								#'DGCF'
 
-							],
+							#]
+							['BPR', 'CFKG', 'CKE', 'DMF', 'KGCN', 'KGNNLS', 'LINE', 'MultiDAE', 'LightGCN', 'NGCF', 'DGCF']
+,
 	'LOG_FILE':				'log/carbon_tuning.log',
 	'LOG_FILE_DEFAULT':		'log/carbon_default.log',
 	'DATASET_PATH':			'data/',

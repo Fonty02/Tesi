@@ -1,0 +1,58 @@
+gpu_id: 0
+worker: 0
+use_gpu: 'True'
+seed: 2020
+state: INFO
+encoding: utf-8
+reproducibility: true
+data_path: data/
+checkpoint_dir: saved/movielens_1m/BPR
+show_progress: true
+shuffle: true
+epochs: 200
+train_batch_size: 2048
+learner: adam
+learning_rate: 0.001
+train_neg_sample_args:
+  distribution: uniform
+  sample_num: 1
+  dynamic: false
+  candidate_num: 0
+eval_step: 1
+stopping_step: 10
+clip_grad_norm: null
+loss_decimal_place: 4
+weight_decay: 0.0
+require_pow: false
+enable_amp: false
+enable_scaler: false
+eval_args:
+  group_by: user
+  order: RO
+  split:
+    RS:
+    - 0.8
+    - 0.1
+    - 0.1
+  mode: full
+repeatable: false
+metrics:
+- Recall
+- MRR
+- NDCG
+- Hit
+- MAP
+- Precision
+- GAUC
+- ItemCoverage
+- AveragePopularity
+- GiniIndex
+- ShannonEntropy
+- TailPercentage
+topk: 10
+valid_metric: MRR@10
+eval_batch_size: 4096
+metric_decimal_place: 4
+dataset: movielens_1m
+model: BPR
+device: cuda
